@@ -14,6 +14,15 @@ const Certificate = React.forwardRef(({ overrideData, preview = false }, ref) =>
   const PRIMARY = '#F97316';
   const SECONDARY = '#14B8A6';
 
+  // isPdf = the fixed off-screen render used for PDF generation
+  const isPdf = !preview;
+
+  // ─── Scale helper ───────────────────────────────────────────────────────────
+  // In PDF mode every size is a plain px number (relative to 900×675 canvas).
+  // In preview mode every size is a clamp() string (scales with viewport).
+  // Usage: sz(pdfPx, previewClamp)
+  const sz = (pdfPx, previewClamp) => (isPdf ? `${pdfPx}px` : previewClamp);
+
   const CornerOrnament = ({ flip }) => (
     <svg
       viewBox="0 0 36 36"
@@ -21,8 +30,8 @@ const Certificate = React.forwardRef(({ overrideData, preview = false }, ref) =>
       xmlns="http://www.w3.org/2000/svg"
       style={{
         position: 'absolute',
-        width: 'clamp(20px, 4vw, 40px)',
-        height: 'clamp(20px, 4vw, 40px)',
+        width: isPdf ? '38px' : 'clamp(18px, 3.8vw, 40px)',
+        height: isPdf ? '38px' : 'clamp(18px, 3.8vw, 40px)',
         ...(flip === 'none' && { top: '4%', left: '4%' }),
         ...(flip === 'x'   && { top: '4%', right: '4%', transform: 'scaleX(-1)' }),
         ...(flip === 'y'   && { bottom: '4%', left: '4%', transform: 'scaleY(-1)' }),
@@ -36,12 +45,10 @@ const Certificate = React.forwardRef(({ overrideData, preview = false }, ref) =>
     </svg>
   );
 
-  const isFixed = !preview;
-
   return (
     <div
       style={{
-        ...(isFixed
+        ...(isPdf
           ? { position: 'absolute', top: '-9999px', left: '-9999px' }
           : {
               width: '100%',
@@ -53,6 +60,7 @@ const Certificate = React.forwardRef(({ overrideData, preview = false }, ref) =>
             }),
       }}
     >
+      {/* ── Certificate card ── */}
       <div
         ref={ref}
         style={{
@@ -64,23 +72,23 @@ const Certificate = React.forwardRef(({ overrideData, preview = false }, ref) =>
             ? '"Playfair Display", Georgia, serif'
             : '"Noto Sans Devanagari", Arial, sans-serif',
           color: '#1F2937',
-          ...(isFixed
+
+          ...(isPdf
             ? { width: '900px', height: '675px', flexShrink: 0 }
             : {
                 width: '100%',
                 maxWidth: '860px',
                 aspectRatio: '4 / 3',
                 borderRadius: 'clamp(6px, 1.2vw, 14px)',
-                boxShadow:
-                  '0 4px 16px rgba(0,0,0,0.08), 0 24px 56px rgba(249,115,22,0.1)',
+                boxShadow: '0 4px 16px rgba(0,0,0,0.08), 0 24px 56px rgba(249,115,22,0.10)',
               }),
         }}
       >
         {/* Double border */}
-        <div style={{ position: 'absolute', inset: '2%', border: `2.5px solid ${PRIMARY}`, borderRadius: 'clamp(4px, 0.8vw, 10px)', pointerEvents: 'none' }} />
-        <div style={{ position: 'absolute', inset: '3.2%', border: `1px solid ${SECONDARY}`, borderRadius: 'clamp(2px, 0.5vw, 7px)', pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', inset: '2%', border: `2.5px solid ${PRIMARY}`, borderRadius: isPdf ? '10px' : 'clamp(4px, 0.8vw, 10px)', pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', inset: '3.2%', border: `1px solid ${SECONDARY}`, borderRadius: isPdf ? '7px' : 'clamp(2px, 0.5vw, 7px)', pointerEvents: 'none' }} />
 
-        {/* Corners */}
+        {/* Corner ornaments */}
         <CornerOrnament flip="none" />
         <CornerOrnament flip="x" />
         <CornerOrnament flip="y" />
@@ -107,31 +115,31 @@ const Certificate = React.forwardRef(({ overrideData, preview = false }, ref) =>
           }}
         />
 
-        {/* Main content */}
+        {/* ── Main content ── */}
         <div style={{
           position: 'relative', zIndex: 10,
           height: '100%',
           display: 'flex', flexDirection: 'column',
           alignItems: 'center', justifyContent: 'space-between',
           textAlign: 'center',
-          padding: '5.5% 8% 5%',
+          padding: isPdf ? '37px 72px 34px' : '5.5% 8% 5%',
           boxSizing: 'border-box',
         }}>
 
           {/* TOP — logo + org name */}
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 'clamp(3px, 0.7%, 8px)' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: isPdf ? '7px' : 'clamp(3px, 0.7%, 8px)' }}>
             <img
               src="/logo.png"
               alt="Logo"
               style={{
-                width: 'clamp(32px, 7%, 62px)',
+                width: isPdf ? '56px' : 'clamp(32px, 7%, 62px)',
                 height: 'auto', objectFit: 'contain',
                 filter: 'drop-shadow(0 2px 5px rgba(249,115,22,0.22))',
               }}
             />
             <p style={{
               margin: 0,
-              fontSize: 'clamp(7px, 1.35%, 13px)',
+              fontSize: sz(12, 'clamp(7px, 1.35%, 13px)'),
               color: SECONDARY,
               fontWeight: 600,
               letterSpacing: '0.14em',
@@ -142,12 +150,18 @@ const Certificate = React.forwardRef(({ overrideData, preview = false }, ref) =>
             </p>
           </div>
 
-          {/* MIDDLE — cert title + recipient name + body */}
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 'clamp(4px, 0.9%, 10px)', width: '100%' }}>
+          {/* MIDDLE — cert title + name + body */}
+          <div style={{
+            display: 'flex', flexDirection: 'column',
+            alignItems: 'center',
+            gap: isPdf ? '9px' : 'clamp(4px, 0.9%, 10px)',
+            width: '100%',
+          }}>
 
+            {/* "presented to" */}
             <p style={{
               margin: 0,
-              fontSize: 'clamp(6px, 1%, 10px)',
+              fontSize: sz(9, 'clamp(6px, 1%, 10px)'),
               color: '#9CA3AF',
               letterSpacing: '0.2em',
               textTransform: 'uppercase',
@@ -156,9 +170,10 @@ const Certificate = React.forwardRef(({ overrideData, preview = false }, ref) =>
               {t.labels.certificateSubtitle}
             </p>
 
+            {/* Certificate title */}
             <h1 style={{
               margin: 0,
-              fontSize: 'clamp(14px, 3.6%, 36px)',
+              fontSize: sz(32, 'clamp(14px, 3.6%, 36px)'),
               color: PRIMARY,
               fontWeight: 800,
               textTransform: 'uppercase',
@@ -170,18 +185,19 @@ const Certificate = React.forwardRef(({ overrideData, preview = false }, ref) =>
             </h1>
 
             {/* Ornamental divider */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: 'clamp(4px, 1%, 12px)', width: '55%' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: isPdf ? '10px' : 'clamp(4px, 1%, 12px)', width: '55%' }}>
               <div style={{ flex: 1, height: '1px', background: `linear-gradient(90deg, transparent, ${SECONDARY}70, transparent)` }} />
-              <div style={{ width: 'clamp(3px, 0.5%, 5px)', height: 'clamp(3px, 0.5%, 5px)', borderRadius: '50%', background: SECONDARY, flexShrink: 0 }} />
+              <div style={{ width: isPdf ? '5px' : 'clamp(3px, 0.5%, 5px)', height: isPdf ? '5px' : 'clamp(3px, 0.5%, 5px)', borderRadius: '50%', background: SECONDARY, flexShrink: 0 }} />
               <div style={{ flex: 1, height: '1px', background: `linear-gradient(90deg, transparent, ${SECONDARY}70, transparent)` }} />
             </div>
 
+            {/* Recipient name */}
             <h2 style={{
               margin: 0,
-              fontSize: 'clamp(13px, 2.8%, 28px)',
+              fontSize: sz(26, 'clamp(13px, 2.8%, 28px)'),
               fontWeight: 700,
               color: '#111827',
-              paddingBottom: 'clamp(3px, 0.5%, 7px)',
+              paddingBottom: isPdf ? '6px' : 'clamp(3px, 0.5%, 7px)',
               borderBottom: `2px solid ${PRIMARY}`,
               lineHeight: 1.2,
               maxWidth: '80%',
@@ -189,9 +205,10 @@ const Certificate = React.forwardRef(({ overrideData, preview = false }, ref) =>
               {data.name || 'Participant Name'}
             </h2>
 
+            {/* Body text */}
             <p style={{
               margin: 0,
-              fontSize: 'clamp(6px, 1.05%, 10px)',
+              fontSize: sz(10, 'clamp(6px, 1.05%, 10px)'),
               lineHeight: 1.7,
               color: '#4B5563',
               maxWidth: '72%',
@@ -208,22 +225,22 @@ const Certificate = React.forwardRef(({ overrideData, preview = false }, ref) =>
             width: '82%',
           }}>
 
-            {/* Kumbh Commission signatory */}
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 'clamp(2px, 0.3%, 4px)' }}>
+            {/* Kumbh Commission */}
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: isPdf ? '4px' : 'clamp(2px, 0.3%, 4px)' }}>
               <span style={{
                 fontFamily: '"Dancing Script", cursive',
-                fontSize: 'clamp(10px, 1.7%, 17px)',
+                fontSize: sz(16, 'clamp(10px, 1.7%, 17px)'),
                 color: PRIMARY,
-                minWidth: 'clamp(72px, 11%, 120px)',
+                minWidth: isPdf ? '110px' : 'clamp(72px, 11%, 120px)',
                 textAlign: 'center',
                 lineHeight: 1.1,
               }}>
                 Kumbh Commission
               </span>
-              <div style={{ width: 'clamp(72px, 11%, 120px)', height: '1px', background: '#D1D5DB' }} />
+              <div style={{ width: isPdf ? '110px' : 'clamp(72px, 11%, 120px)', height: '1px', background: '#D1D5DB' }} />
               <span style={{
                 fontFamily: 'Inter, sans-serif',
-                fontSize: 'clamp(5px, 0.85%, 8.5px)',
+                fontSize: sz(8, 'clamp(5px, 0.85%, 8.5px)'),
                 color: '#9CA3AF',
                 textTransform: 'uppercase',
                 letterSpacing: '0.12em',
@@ -234,35 +251,33 @@ const Certificate = React.forwardRef(({ overrideData, preview = false }, ref) =>
             </div>
 
             {/* Centre seal */}
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-              <div style={{
-                width: 'clamp(26px, 4.5%, 44px)',
-                height: 'clamp(26px, 4.5%, 44px)',
-                borderRadius: '50%',
-                border: `1.5px solid ${PRIMARY}40`,
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                overflow: 'hidden',
-              }}>
-                <img src="/logo.png" alt="Seal" style={{ width: '62%', height: 'auto', objectFit: 'contain', opacity: 0.5 }} />
-              </div>
+            <div style={{
+              width: isPdf ? '42px' : 'clamp(26px, 4.5%, 44px)',
+              height: isPdf ? '42px' : 'clamp(26px, 4.5%, 44px)',
+              borderRadius: '50%',
+              border: `1.5px solid ${PRIMARY}40`,
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              overflow: 'hidden',
+            }}>
+              <img src="/logo.png" alt="Seal" style={{ width: '62%', height: 'auto', objectFit: 'contain', opacity: 0.5 }} />
             </div>
 
             {/* Date */}
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 'clamp(2px, 0.3%, 4px)' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: isPdf ? '4px' : 'clamp(2px, 0.3%, 4px)' }}>
               <span style={{
                 fontFamily: isEnglish ? '"Playfair Display", serif' : '"Noto Sans Devanagari", sans-serif',
-                fontSize: 'clamp(7px, 1.1%, 11px)',
+                fontSize: sz(10, 'clamp(7px, 1.1%, 11px)'),
                 color: '#374151',
-                minWidth: 'clamp(72px, 11%, 120px)',
+                minWidth: isPdf ? '110px' : 'clamp(72px, 11%, 120px)',
                 textAlign: 'center',
                 lineHeight: 1.2,
               }}>
                 {formattedDate}
               </span>
-              <div style={{ width: 'clamp(72px, 11%, 120px)', height: '1px', background: '#D1D5DB' }} />
+              <div style={{ width: isPdf ? '110px' : 'clamp(72px, 11%, 120px)', height: '1px', background: '#D1D5DB' }} />
               <span style={{
                 fontFamily: 'Inter, sans-serif',
-                fontSize: 'clamp(5px, 0.85%, 8.5px)',
+                fontSize: sz(8, 'clamp(5px, 0.85%, 8.5px)'),
                 color: '#9CA3AF',
                 textTransform: 'uppercase',
                 letterSpacing: '0.12em',
