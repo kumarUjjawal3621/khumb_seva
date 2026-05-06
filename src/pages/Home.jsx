@@ -31,7 +31,7 @@ const Home = () => {
   useEffect(() => {
     // Automatically scroll to the form after 1.5 seconds
     const timer = setTimeout(() => {
-      const el = document.getElementById('registration-form');
+      const el = document.getElementById('language-selection');
       if (el) {
         // Use an offset to account for the sticky header (approx 80-100px)
         const offset = 100;
@@ -190,6 +190,7 @@ const Home = () => {
 
       {/* Language Selection */}
       <motion.div 
+        id="language-selection"
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3 }}
