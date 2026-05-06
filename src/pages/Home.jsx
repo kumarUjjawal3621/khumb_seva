@@ -195,28 +195,28 @@ const Home = () => {
               <label className="block text-sm font-semibold text-gray-700 mb-1">{t.labels.name} *</label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"><User className="h-5 w-5 text-gray-400" /></div>
-                <input type="text" value={formData.name} onChange={(e) => updateFormData({ name: e.target.value })} className={`block w-full pl-10 pr-3 py-3 border ${errors.name ? 'border-red-500' : 'border-gray-200'} rounded-xl focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent outline-none transition-all`} placeholder="John Doe" />
+                <input type="text" value={formData.name} onChange={(e) => updateFormData({ name: e.target.value })} className={`block w-full pl-10 pr-3 py-3 border ${errors.name ? 'border-red-500' : 'border-gray-200'} rounded-xl focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent outline-none transition-all`} />
               </div>
             </div>
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-1">{t.labels.email} *</label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"><Mail className="h-5 w-5 text-gray-400" /></div>
-                <input type="email" value={formData.email} onChange={(e) => updateFormData({ email: e.target.value })} className={`block w-full pl-10 pr-3 py-3 border ${errors.email ? 'border-red-500' : 'border-gray-200'} rounded-xl focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent outline-none transition-all`} placeholder="john@example.com" />
+                <input type="email" value={formData.email} onChange={(e) => updateFormData({ email: e.target.value })} className={`block w-full pl-10 pr-3 py-3 border ${errors.email ? 'border-red-500' : 'border-gray-200'} rounded-xl focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent outline-none transition-all`} />
               </div>
             </div>
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-1">{t.labels.whatsapp} *</label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"><Phone className="h-5 w-5 text-gray-400" /></div>
-                <input type="tel" value={formData.whatsapp} onChange={(e) => updateFormData({ whatsapp: e.target.value })} className={`block w-full pl-10 pr-3 py-3 border ${errors.whatsapp ? 'border-red-500' : 'border-gray-200'} rounded-xl focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent outline-none transition-all`} placeholder="+91 9876543210" />
+                <input type="tel" value={formData.whatsapp} onChange={(e) => updateFormData({ whatsapp: e.target.value })} className={`block w-full pl-10 pr-3 py-3 border ${errors.whatsapp ? 'border-red-500' : 'border-gray-200'} rounded-xl focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent outline-none transition-all`} />
               </div>
             </div>
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-1">{t.labels.pincode} *</label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"><MapPin className="h-5 w-5 text-gray-400" /></div>
-                <input type="text" value={formData.pincode} onChange={(e) => updateFormData({ pincode: e.target.value })} className={`block w-full pl-10 pr-3 py-3 border ${errors.pincode ? 'border-red-500' : 'border-gray-200'} rounded-xl focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent outline-none transition-all`} placeholder="422001" />
+                <input type="text" value={formData.pincode} onChange={(e) => updateFormData({ pincode: e.target.value })} className={`block w-full pl-10 pr-3 py-3 border ${errors.pincode ? 'border-red-500' : 'border-gray-200'} rounded-xl focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent outline-none transition-all`} />
               </div>
             </div>
           </div>
