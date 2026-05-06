@@ -89,7 +89,7 @@ const AdminDashboard = () => {
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
         <div>
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-800">Analytics Dashboard</h2>
-          <p className="text-gray-500">Overview of Kumbh Parv 2026 Registrations</p>
+          <p className="text-gray-500">Overview of KumbhParv 2026 Registrations</p>
         </div>
         <div className="flex items-center gap-3 w-full sm:w-auto">
           <button 

@@ -122,8 +122,8 @@ const Home = () => {
         const file = new File([blob], 'Kumbh_Certificate.png', { type: 'image/png' });
         if (navigator.share) {
           await navigator.share({
-            title: 'Kumbh Parv 2026 Certificate',
-            text: 'I have taken the Citizens Pledge for Kumbh Parv Nashik 2026!',
+            title: 'KumbhParv 2026 Certificate',
+            text: 'I have taken the Citizens Pledge for KumbhParv Nashik 2026!',
             files: [file]
           });
         } else {
@@ -309,7 +309,7 @@ const Home = () => {
       {/* Submit Button Section */}
       <div className="bg-white p-6 sm:p-10 rounded-2xl border border-gray-100 shadow-sm flex flex-col sm:flex-row justify-between items-center gap-6">
         <div className="text-sm text-gray-500 font-medium text-center sm:text-left max-w-sm">
-          By submitting, you agree to join the Kumbh Parv 2026 digital mission.
+          By submitting, you agree to join the KumbhParv 2026 digital mission.
         </div>
         <button onClick={handleSubmit} disabled={isSubmitting} className="w-full sm:w-auto primary-gradient text-white px-12 py-5 rounded-xl font-bold flex items-center justify-center gap-2 hover:shadow-lg transition-all disabled:opacity-70 text-lg shadow-md">
           {isSubmitting ? <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin" /> : <Save className="w-6 h-6" />}

@@ -1,14 +1,14 @@
 export const content = {
   EN: {
     hero: {
-      tagline: "Kumbh Parv Nashik 2026",
-      title: "Kumbh Parv Nashik 2026",
-      subtitle: "कुंभ पर्व नाशिक २०२६",
+      tagline: "KumbhParv Nashik 2026",
+      title: "KumbhParv Nashik 2026",
+      subtitle: "कुंभपर्व नाशिक २०२६",
       description: "Join millions in this sacred celebration. Take the Citizens' Pledge and register your seva for Nashik.",
       button: "🙏 Take the Pledge"
     },
     pledgePoints: [
-      "Recognize Kumbh Parv as a festival of social harmony and actively participate in it.",
+      "Recognize KumbhParv as a festival of social harmony and actively participate in it.",
       "Study and preserve India's traditional knowledge systems.",
       "Actively support municipal authorities in keeping Nashik city clean.",
       "Segregate wet and dry waste before disposal.",
@@ -49,12 +49,12 @@ export const content = {
       "I will contribute to spreading positive information about the Kumbh Mela through digital platforms."
     ],
     labels: {
-      appTitle: "Kumbh Parv 2026",
+      appTitle: "KumbhParv 2026",
       appLocation: "Nashik, Maharashtra",
-      footerRights: "© 2026 Kumbh Parv Nashik. All rights reserved.",
+      footerRights: "© 2026 KumbhParv Nashik. All rights reserved.",
       footerTagline: "A sacred journey of faith and devotion.",
       dashboardWelcome: "Welcome,",
-      dashboardDesc: "Your journey for Kumbh Parv Nashik 2026 begins here. You can choose to take the Citizens' Pledge or register for Volunteer Seva.",
+      dashboardDesc: "Your journey for KumbhParv Nashik 2026 begins here. You can choose to take the Citizens' Pledge or register for Volunteer Seva.",
       statusCompleted: "Completed",
       statusRegistered: "Registered",
       pledgeReview: "Review Pledge",
@@ -94,19 +94,19 @@ export const content = {
       downloadCertificate: "Download Certificate",
       certificateTitle: "Certificate of Commitment",
       certificateSubtitle: "This is to certify that",
-      certificateBody: "has taken the Citizens' Pledge for Kumbh Parv Nashik 2026 and committed to offering Seva."
+      certificateBody: "has taken the Citizens' Pledge for KumbhParv Nashik 2026 and committed to offering Seva."
     }
   },
   HI: {
     hero: {
-      tagline: "पवित्र कुंभ पर्व • नाशिक 2026",
-      title: "कुंभ पर्व नाशिक 2026",
-      subtitle: "कुंभ पर्व नाशिक २०२६",
+      tagline: "पवित्र कुंभपर्व • नाशिक 2026",
+      title: "कुंभपर्व नाशिक 2026",
+      subtitle: "कुंभपर्व नाशिक २०२६",
       description: "करोड़ों लोगों के साथ इस पवित्र उत्सव में शामिल हों। नागरिक संकल्प लें और नाशिक की सेवा के लिए पंजीकरण करें।",
       button: "🙏 संकल्प लें"
     },
     pledgePoints: [
-      "कुंभ पर्व को सामाजिक सद्भाव के पर्व के रूप में मान्यता दें और सक्रिय रूप से इसमें भाग लें।",
+      "कुंभपर्व को सामाजिक सद्भाव के पर्व के रूप में मान्यता दें और सक्रिय रूप से इसमें भाग लें।",
       "भारत की पारंपरिक ज्ञान प्रणालियों का अध्ययन और संरक्षण करें।",
       "नाशिक शहर को स्वच्छ रखने में नगर प्राधिकरणों का सक्रिय रूप से समर्थन करें।",
       "कचरे का निपटान करने से पहले गीले और सूखे कचरे को अलग करें।",
@@ -147,12 +147,12 @@ export const content = {
       "मैं डिजिटल प्लेटफॉर्म के माध्यम से कुंभ मेले के बारे में सकारात्मक जानकारी फैलाने में योगदान दूंगा।"
     ],
     labels: {
-      appTitle: "कुंभ पर्व 2026",
+      appTitle: "कुंभपर्व 2026",
       appLocation: "नाशिक, महाराष्ट्र",
-      footerRights: "© 2026 कुंभ पर्व नाशिक। सर्वाधिकार सुरक्षित।",
+      footerRights: "© 2026 कुंभपर्व नाशिक। सर्वाधिकार सुरक्षित।",
       footerTagline: "आस्था और भक्ति की एक पवित्र यात्रा।",
       dashboardWelcome: "स्वागत है,",
-      dashboardDesc: "कुंभ पर्व नाशिक 2026 के लिए आपकी यात्रा यहां से शुरू होती है। आप नागरिक संकल्प ले सकते हैं या स्वयंसेवक के रूप में पंजीकरण कर सकते हैं।",
+      dashboardDesc: "कुंभपर्व नाशिक 2026 के लिए आपकी यात्रा यहां से शुरू होती है। आप नागरिक संकल्प ले सकते हैं या स्वयंसेवक के रूप में पंजीकरण कर सकते हैं।",
       statusCompleted: "पूर्ण हुआ",
       statusRegistered: "पंजीकृत",
       pledgeReview: "संकल्प की समीक्षा करें",
@@ -192,19 +192,19 @@ export const content = {
       downloadCertificate: "प्रमाण पत्र डाउनलोड करें",
       certificateTitle: "प्रतिबद्धता का प्रमाण पत्र",
       certificateSubtitle: "यह प्रमाणित किया जाता है कि",
-      certificateBody: "ने कुंभ पर्व नाशिक 2026 के लिए नागरिक संकल्प लिया है और सेवा करने की प्रतिबद्धता जताई है।"
+      certificateBody: "ने कुंभपर्व नाशिक 2026 के लिए नागरिक संकल्प लिया है और सेवा करने की प्रतिबद्धता जताई है।"
     }
   },
   MR: {
     hero: {
-      tagline: "पवित्र कुंभ पर्व • नाशिक 2026",
-      title: "कुंभ पर्व नाशिक 2026",
-      subtitle: "कुंभ पर्व नाशिक २०२६",
+      tagline: "पवित्र कुंभपर्व • नाशिक 2026",
+      title: "कुंभपर्व नाशिक 2026",
+      subtitle: "कुंभपर्व नाशिक २०२६",
       description: "कोट्यवधी लोकांसोबत या पवित्र उत्सवात सहभागी व्हा. नागरिक संकल्प घ्या आणि नाशिकच्या सेवेसाठी नोंदणी करा।",
       button: "🙏 संकल्प घ्या"
     },
     pledgePoints: [
-      "कुंभ पर्वाला सामाजिक सद्भावाचा उत्सव म्हणून ओळखा आणि त्यात सक्रियपणे सहभागी व्हा।",
+      "कुंभपर्वाला सामाजिक सद्भावाचा उत्सव म्हणून ओळखा आणि त्यात सक्रियपणे सहभागी व्हा।",
       "भारताच्या पारंपरिक ज्ञान प्रणालींचा अभ्यास करा आणि त्यांचे संरक्षण करा।",
       "नाशिक शहर स्वच्छ ठेवण्यासाठी नगर प्राधिकरणांना सक्रियपणे सहकार्य करा।",
       "कचरा टाकण्यापूर्वी ओला आणि सुका कचरा वेगळा करा।",
@@ -245,12 +245,12 @@ export const content = {
       "मी डिजिटल प्लॅटफॉर्मद्वारे कुंभमेळ्याबद्दल सकारात्मक माहिती पसरवण्यात योगदान देईन."
     ],
     labels: {
-      appTitle: "कुंभ पर्व 2026",
+      appTitle: "कुंभपर्व 2026",
       appLocation: "नाशिक, महाराष्ट्र",
-      footerRights: "© 2026 कुंभ पर्व नाशिक. सर्व हक्क राखीव.",
+      footerRights: "© 2026 कुंभपर्व नाशिक. सर्व हक्क राखीव.",
       footerTagline: "श्रद्धा आणि भक्तीचा एक पवित्र प्रवास.",
       dashboardWelcome: "स्वागत आहे,",
-      dashboardDesc: "कुंभ पर्व नाशिक 2026 साठी आपला प्रवास येथून सुरू होतो. आपण नागरिक संकल्प घेऊ शकता किंवा स्वयंसेवक म्हणून नोंदणी करू शकता.",
+      dashboardDesc: "कुंभपर्व नाशिक 2026 साठी आपला प्रवास येथून सुरू होतो. आपण नागरिक संकल्प घेऊ शकता किंवा स्वयंसेवक म्हणून नोंदणी करू शकता.",
       statusCompleted: "पूर्ण झाले",
       statusRegistered: "नोंदणीकृत",
       pledgeReview: "संकल्पाचे पुनरावलोकन करा",
@@ -290,7 +290,7 @@ export const content = {
       downloadCertificate: "प्रमाणपत्र डाउनलोड करा",
       certificateTitle: "वचनबद्धतेचे प्रमाणपत्र",
       certificateSubtitle: "हे प्रमाणित करण्यासाठी आहे की",
-      certificateBody: "यांनी कुंभ पर्व नाशिक २०२६ साठी नागरिक संकल्प घेतला आहे आणि सेवा देण्याची वचनबद्धता दर्शवली आहे."
+      certificateBody: "यांनी कुंभपर्व नाशिक २०२६ साठी नागरिक संकल्प घेतला आहे आणि सेवा देण्याची वचनबद्धता दर्शवली आहे."
     }
   }
 };
