@@ -42,7 +42,7 @@ const AdminDashboard = () => {
   const exportToExcel = () => {
     if (users.length === 0) return;
 
-    const headers = ["Name", "Email", "WhatsApp", "Pincode", "Pledge Accepted", "Sevas Selected", "Date"];
+    const headers = ["Name", "Email", "WhatsApp", "Pincode", "Age Group", "Area", "Pledge Accepted", "Sevas Selected", "Suggestion", "Date"];
     const rows = users.map(user => {
       const sevas = user.selectedSevas && user.selectedSevas.length > 0
         ? user.selectedSevas.map(idx => sevaOptions[idx]).join(" | ")
@@ -50,11 +50,14 @@ const AdminDashboard = () => {
         
       return [
         `"${user.name}"`,
-        `"${user.email}"`,
+        `"${user.email || 'N/A'}"`,
         `"${user.whatsapp}"`,
-        `"${user.pincode}"`,
+        `"${user.pincode || 'N/A'}"`,
+        `"${user.ageGroup || 'N/A'}"`,
+        `"${user.area || 'N/A'}"`,
         user.pledgeAccepted ? "Yes" : "No",
         `"${sevas}"`,
+        `"${(user.suggestion || '').replace(/"/g, '""')}"`,
         user.createdAt ? new Date(user.createdAt.seconds * 1000).toLocaleString() : "N/A"
       ];
     });

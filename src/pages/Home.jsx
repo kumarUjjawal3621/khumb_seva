@@ -16,6 +16,9 @@ const Home = () => {
     email: '',
     whatsapp: '',
     pincode: '',
+    ageGroup: '',
+    area: '',
+    suggestion: '',
     pledgeAccepted: false,
     selectedSevas: []
   });
@@ -53,9 +56,7 @@ const Home = () => {
   const validate = () => {
     const newErrors = {};
     if (!formData.name.trim()) newErrors.name = 'Required';
-    if (!formData.email.trim() || !/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = 'Valid email required';
     if (!formData.whatsapp.trim() || formData.whatsapp.length < 10) newErrors.whatsapp = 'Valid number required';
-    if (!formData.pincode.trim() || formData.pincode.length < 6) newErrors.pincode = 'Valid PIN required';
     if (!formData.pledgeAccepted) newErrors.pledge = 'Pledge Required';
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -234,10 +235,10 @@ const Home = () => {
               </div>
             </div>
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-1">{t.labels.email} *</label>
+              <label className="block text-sm font-semibold text-gray-700 mb-1">{t.labels.email}</label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"><Mail className="h-5 w-5 text-gray-400" /></div>
-                <input type="email" value={formData.email} onChange={(e) => updateFormData({ email: e.target.value })} className={`block w-full pl-10 pr-3 py-3 border ${errors.email ? 'border-red-500' : 'border-gray-200'} rounded-xl focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent outline-none transition-all`} />
+                <input type="email" value={formData.email} onChange={(e) => updateFormData({ email: e.target.value })} className={`block w-full pl-10 pr-3 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent outline-none transition-all`} />
               </div>
             </div>
             <div>
@@ -248,11 +249,41 @@ const Home = () => {
               </div>
             </div>
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-1">{t.labels.pincode} *</label>
+              <label className="block text-sm font-semibold text-gray-700 mb-1">{t.labels.pincode}</label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"><MapPin className="h-5 w-5 text-gray-400" /></div>
-                <input type="text" value={formData.pincode} onChange={(e) => updateFormData({ pincode: e.target.value })} className={`block w-full pl-10 pr-3 py-3 border ${errors.pincode ? 'border-red-500' : 'border-gray-200'} rounded-xl focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent outline-none transition-all`} />
+                <input type="text" value={formData.pincode} onChange={(e) => updateFormData({ pincode: e.target.value })} className={`block w-full pl-10 pr-3 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent outline-none transition-all`} />
               </div>
+            </div>
+
+            {/* Age Group Dropdown */}
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-1">{t.labels.ageGroup}</label>
+              <select 
+                value={formData.ageGroup} 
+                onChange={(e) => updateFormData({ ageGroup: e.target.value })}
+                className="block w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent outline-none transition-all bg-white"
+              >
+                <option value="">{t.labels.selectAgeGroup}</option>
+                {t.ageGroups.map((age, idx) => (
+                  <option key={idx} value={age}>{age}</option>
+                ))}
+              </select>
+            </div>
+
+            {/* Area Dropdown */}
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-1">{t.labels.area}</label>
+              <select 
+                value={formData.area} 
+                onChange={(e) => updateFormData({ area: e.target.value })}
+                className="block w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent outline-none transition-all bg-white"
+              >
+                <option value="">{t.labels.selectArea}</option>
+                {t.areas.map((area, idx) => (
+                  <option key={idx} value={area}>{area}</option>
+                ))}
+              </select>
             </div>
           </div>
         </div>
@@ -306,10 +337,26 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Any Other Suggestion */}
+      <section className="glass-card rounded-2xl p-6 sm:p-8 shadow-sm">
+        <div className="mb-4">
+          <h2 className="text-xl font-bold text-gray-800 mb-1">{t.labels.suggestion}</h2>
+        </div>
+        <textarea 
+          value={formData.suggestion}
+          onChange={(e) => updateFormData({ suggestion: e.target.value.slice(0, 3000) })}
+          placeholder={t.labels.suggestionPlaceholder}
+          className="w-full h-32 p-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent outline-none transition-all bg-white resize-none"
+        />
+        <div className="text-right text-xs text-gray-400 mt-1">
+          {t.labels.maxWords}
+        </div>
+      </section>
+
       {/* Submit Button Section */}
       <div className="bg-white p-6 sm:p-10 rounded-2xl border border-gray-100 shadow-sm flex flex-col sm:flex-row justify-between items-center gap-6">
         <div className="text-sm text-gray-500 font-medium text-center sm:text-left max-w-sm">
-          By submitting, you agree to join the KumbhParv 2026 digital mission.
+          {t.labels.missionAgreement}
         </div>
         <button onClick={handleSubmit} disabled={isSubmitting} className="w-full sm:w-auto primary-gradient text-white px-12 py-5 rounded-xl font-bold flex items-center justify-center gap-2 hover:shadow-lg transition-all disabled:opacity-70 text-lg shadow-md">
           {isSubmitting ? <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin" /> : <Save className="w-6 h-6" />}
