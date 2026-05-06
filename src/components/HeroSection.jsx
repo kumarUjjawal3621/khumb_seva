@@ -1,17 +1,9 @@
 import React from 'react';
 import { useAppContext } from '../context/AppContext';
 import { motion } from 'framer-motion';
-import { ArrowDown } from 'lucide-react';
 
 const HeroSection = () => {
   const { t } = useAppContext();
-
-  const scrollToForm = () => {
-    const formElement = document.getElementById('registration-form');
-    if (formElement) {
-      formElement.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
 
   return (
     <motion.div 
@@ -35,16 +27,6 @@ const HeroSection = () => {
       <p className="text-gray-500 max-w-2xl mx-auto text-lg mb-12 leading-relaxed">
         {t.hero.description}
       </p>
-
-      <motion.button
-        whileHover={{ scale: 1.05, y: 2 }}
-        whileTap={{ scale: 0.95 }}
-        onClick={scrollToForm}
-        className="primary-gradient text-white px-10 py-5 rounded-full font-bold text-lg shadow-xl hover:shadow-2xl transition-all flex items-center gap-3 mx-auto"
-      >
-        {t.labels.joinUs}
-        <ArrowDown className="w-6 h-6 animate-bounce" />
-      </motion.button>
     </motion.div>
   );
 };

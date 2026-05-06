@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useAppContext } from '../context/AppContext';
 import { motion } from 'framer-motion';
 import { User, Mail, Phone, MapPin, CheckCircle2, Save, Download, Share2 } from 'lucide-react';
@@ -27,6 +27,26 @@ const Home = () => {
   
   const certificateRef = useRef(null);
   const printRef = useRef(null);
+
+  useEffect(() => {
+    // Automatically scroll to the form after 1.5 seconds
+    const timer = setTimeout(() => {
+      const el = document.getElementById('registration-form');
+      if (el) {
+        // Use an offset to account for the sticky header (approx 80-100px)
+        const offset = 100;
+        const elementPosition = el.getBoundingClientRect().top + window.pageYOffset;
+        const offsetPosition = elementPosition - offset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }, 1500);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const updateFormData = (data) => setFormData(prev => ({ ...prev, ...data }));
 
@@ -238,7 +258,7 @@ const Home = () => {
           <h2 className="text-2xl font-bold text-[var(--color-primary)] mb-2">{t.labels.step3Title}</h2>
           <p className="text-gray-600">{t.labels.step3Desc}</p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-96 overflow-y-auto custom-scrollbar pr-2">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           {t.sevaOptions.map((seva, idx) => {
             const isSelected = formData.selectedSevas.includes(idx);
             return (
@@ -260,7 +280,7 @@ const Home = () => {
         </div>
         <button onClick={handleSubmit} disabled={isSubmitting} className="w-full sm:w-auto primary-gradient text-white px-12 py-5 rounded-xl font-bold flex items-center justify-center gap-2 hover:shadow-lg transition-all disabled:opacity-70 text-lg shadow-md">
           {isSubmitting ? <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin" /> : <Save className="w-6 h-6" />}
-          {isSubmitting ? t.labels.saving : "Confirm & Get Certificate"}
+          {isSubmitting ? t.labels.saving : t.labels.submit}
         </button>
       </div>
     </div>
