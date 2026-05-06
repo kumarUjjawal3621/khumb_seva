@@ -10,7 +10,7 @@ import Certificate from '../components/Certificate';
 import HeroSection from '../components/HeroSection';
 
 const Home = () => {
-  const { t } = useAppContext();
+  const { t, language, setLanguage } = useAppContext();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -56,6 +56,7 @@ const Home = () => {
     if (!formData.email.trim() || !/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = 'Valid email required';
     if (!formData.whatsapp.trim() || formData.whatsapp.length < 10) newErrors.whatsapp = 'Valid number required';
     if (!formData.pincode.trim() || formData.pincode.length < 6) newErrors.pincode = 'Valid PIN required';
+    if (!formData.pledgeAccepted) newErrors.pledge = 'Pledge Required';
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -70,7 +71,11 @@ const Home = () => {
 
   const handleSubmit = async () => {
     if (!validate()) {
-      alert("Please fill all required user details correctly.");
+      if (errors.pledge || !formData.pledgeAccepted) {
+        alert(t.labels.pledgeAcceptError || "Please accept the Citizens' Pledge to continue.");
+      } else {
+        alert("Please fill all required user details correctly.");
+      }
       const el = document.getElementById('registration-form');
       if (el) el.scrollIntoView({ behavior: 'smooth' });
       return;
@@ -183,6 +188,35 @@ const Home = () => {
     <div className="max-w-4xl mx-auto space-y-12 pb-20 px-4">
       <HeroSection />
 
+      {/* Language Selection */}
+      <motion.div 
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.3 }}
+        className="flex flex-col items-center gap-4 -mt-8 mb-4"
+      >
+        <p className="text-sm font-bold text-gray-500 uppercase tracking-widest">{t.labels.language}</p>
+        <div className="flex bg-white p-1.5 rounded-2xl shadow-sm border border-gray-100">
+          {[
+            { code: 'EN', label: 'English' },
+            { code: 'HI', label: 'हिन्दी' },
+            { code: 'MR', label: 'मराठी' }
+          ].map((lang) => (
+            <button
+              key={lang.code}
+              onClick={() => setLanguage(lang.code)}
+              className={`px-6 py-2.5 rounded-xl font-bold transition-all ${
+                language === lang.code 
+                  ? 'primary-gradient text-white shadow-md' 
+                  : 'text-gray-500 hover:text-gray-800 hover:bg-gray-50'
+              }`}
+            >
+              {lang.label}
+            </button>
+          ))}
+        </div>
+      </motion.div>
+
       {/* User Details */}
       <section id="registration-form" className="glass-card rounded-2xl p-6 sm:p-8 shadow-sm">
         <div className="mb-6">
@@ -223,9 +257,8 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Citizens' Pledge (Optional) - Now Full View */}
-      <section className="glass-card rounded-2xl p-6 sm:p-8 shadow-sm relative overflow-hidden">
-        <div className="absolute top-4 right-4 bg-gray-100 text-gray-500 px-3 py-1 text-xs font-bold rounded-full">Optional</div>
+      {/* Citizens' Pledge - Now Compulsory */}
+      <section className={`glass-card rounded-2xl p-6 sm:p-8 shadow-sm relative overflow-hidden transition-all ${errors.pledge ? 'ring-2 ring-red-500' : ''}`}>
         <div className="mb-6">
           <h2 className="text-2xl font-bold text-[var(--color-secondary)] mb-2">{t.labels.step2Title}</h2>
           <p className="text-gray-600">{t.labels.step2Desc}</p>
@@ -251,9 +284,8 @@ const Home = () => {
         </label>
       </section>
 
-      {/* Seva Registration (Optional) */}
+      {/* Seva Registration */}
       <section className="glass-card rounded-2xl p-6 sm:p-8 shadow-sm relative overflow-hidden">
-        <div className="absolute top-4 right-4 bg-gray-100 text-gray-500 px-3 py-1 text-xs font-bold rounded-full">Optional</div>
         <div className="mb-6">
           <h2 className="text-2xl font-bold text-[var(--color-primary)] mb-2">{t.labels.step3Title}</h2>
           <p className="text-gray-600">{t.labels.step3Desc}</p>
