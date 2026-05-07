@@ -15,7 +15,7 @@ const HeroSection = () => {
       <div className="flex justify-center mb-10">
         <img 
           src="/logo.png" 
-          alt="KumbhParv Logo" 
+          alt="Kumbhparv Logo" 
           className="w-32 h-32 sm:w-48 sm:h-48 object-contain drop-shadow-xl" 
         />
       </div>

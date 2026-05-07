@@ -34,7 +34,7 @@ const AdminLogin = () => {
             <Lock className="w-8 h-8" />
           </div>
           <h2 className="text-2xl font-bold text-gray-800">Admin Portal</h2>
-          <p className="text-gray-500 mt-2">Sign in to access KumbhParv analytics.</p>
+          <p className="text-gray-500 mt-2">Sign in to access Kumbhparv analytics.</p>
         </div>
 
         {error && (

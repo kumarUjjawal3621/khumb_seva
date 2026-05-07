@@ -11,7 +11,7 @@ const Layout = ({ children }) => {
       <header className="sticky top-0 z-50 glass-card border-b border-gray-200">
         <div className="max-w-4xl mx-auto px-4 py-4 flex justify-between items-center">
           <Link to="/" className="flex items-center gap-4 hover:opacity-90 transition-opacity">
-            <img src="/logo.png" alt="KumbhParv Logo" className="w-14 h-14 sm:w-16 sm:h-16 object-contain" />
+            <img src="/logo.png" alt="Kumbhparv Logo" className="w-14 h-14 sm:w-16 sm:h-16 object-contain" />
             <div>
               <h1 className="font-bold text-[var(--color-primary)] leading-tight text-lg sm:text-xl">
                 {t.labels.appTitle}

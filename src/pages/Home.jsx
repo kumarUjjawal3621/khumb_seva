@@ -123,8 +123,8 @@ const Home = () => {
         const file = new File([blob], 'Kumbh_Certificate.png', { type: 'image/png' });
         if (navigator.share) {
           await navigator.share({
-            title: 'KumbhParv 2026 Certificate',
-            text: 'I have taken the Citizens Pledge for KumbhParv Nashik 2026!',
+            title: 'Kumbhparv 2027 Certificate',
+            text: 'I have taken the Citizens Pledge for Kumbhparv Nashik 2027!',
             files: [file]
           });
         } else {
