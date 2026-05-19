@@ -11,8 +11,8 @@ const Certificate = React.forwardRef(({ overrideData, preview = false }, ref) =>
   const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
   const formattedDate = today.toLocaleDateString(isEnglish ? 'en-US' : 'hi-IN', dateOptions);
 
-  const PRIMARY = '#F97316';
-  const SECONDARY = '#14B8A6';
+  const PRIMARY = '#7B1C1C'; // Maroon
+  const SECONDARY = '#D4AF37'; // Golden
 
   // isPdf = the fixed off-screen render used for PDF generation
   const isPdf = !preview;

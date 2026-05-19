@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Simhastha Kumbh Mela Nashik 2027 | सिंहस्थ कुंभमेळा नाशिक २०२७</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Sanskrit:ital@0;1&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --saffron: #E8620A;
+    --saffron-light: #F5874A;
+    --saffron-pale: #FDF0E6;
+    --gold: #C8910A;
+    --gold-light: #F2C64A;
+    --gold-pale: #FEF9E7;
+    --maroon: #7B1C1C;
+    --maroon-light: #A83232;
+    --deep: #1A0A00;
+    --ink: #2C1A0E;
+    --muted: #7A5C42;
+    --parchment: #FDF6EE;
+    --cream: #FFFBF5;
+    --border: rgba(200, 145, 10, 0.25);
+    --border-strong: rgba(200, 145, 10, 0.5);
+    --ff-display: 'Cinzel', serif;
+    --ff-body: 'EB Garamond', serif;
+    --ff-devanagari: 'Tiro Devanagari Sanskrit', serif;
+    --ff-serif: 'Cormorant Garamond', serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--ff-body);
+    background: var(--parchment);
+    color: var(--ink);
+    font-size: 18px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(26, 10, 0, 0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(200,145,10,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    height: 60px;
+  }
+
+  .nav-logo {
+    font-family: var(--ff-display);
+    font-size: 14px;
+    color: var(--gold-light);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: var(--ff-display);
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--gold-light); }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 6rem 2rem 4rem;
+    position: relative;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(232,98,10,0.12) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 50% at 20% 80%, rgba(200,145,10,0.08) 0%, transparent 60%),
+      var(--deep);
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: 
+      url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C8910A' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  .hero-om {
+    font-family: var(--ff-devanagari);
+    font-size: clamp(5rem, 12vw, 9rem);
+    color: var(--gold-light);
+    opacity: 0.15;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    user-select: none;
+    animation: pulse 6s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.10; transform: translate(-50%, -50%) scale(1); }
+    50% { opacity: 0.18; transform: translate(-50%, -50%) scale(1.04); }
+  }
+
+  .hero-tagline {
+    font-family: var(--ff-devanagari);
+    font-size: 1rem;
+    color: var(--gold-light);
+    letter-spacing: 4px;
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+    animation: fadeInUp 1s ease both;
+  }
+
+  .hero-title {
+    font-family: var(--ff-display);
+    font-size: clamp(2.2rem, 5.5vw, 4.5rem);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.15;
+    letter-spacing: 2px;
+    margin-bottom: 0.75rem;
+    animation: fadeInUp 1s ease 0.15s both;
+  }
+
+  .hero-title span {
+    color: var(--gold-light);
+    display: block;
+  }
+
+  .hero-subtitle {
+    font-family: var(--ff-serif);
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    font-style: italic;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 2.5rem;
+    animation: fadeInUp 1s ease 0.3s both;
+  }
+
+  .hero-divider {
+    width: 120px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 0 auto 2.5rem;
+    animation: fadeInUp 1s ease 0.4s both;
+  }
+
+  .hero-desc {
+    font-family: var(--ff-body);
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: rgba(255,255,255,0.7);
+    max-width: 680px;
+    line-height: 1.8;
+    animation: fadeInUp 1s ease 0.5s both;
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-top: 2.5rem;
+    padding: 0.85rem 2.2rem;
+    font-family: var(--ff-display);
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--deep);
+    background: var(--gold-light);
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.25s;
+    animation: fadeInUp 1s ease 0.65s both;
+  }
+
+  .hero-cta:hover {
+    background: #fff;
+    transform: translateY(-2px);
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─── COUNTDOWN ─── */
+  .countdown-bar {
+    background: var(--maroon);
+    padding: 1.25rem 2rem;
+    text-align: center;
+  }
+
+  .countdown-label {
+    font-family: var(--ff-display);
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 0.75rem;
+  }
+
+  .countdown-units {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .countdown-unit {
+    text-align: center;
+  }
+
+  .countdown-number {
+    font-family: var(--ff-display);
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    color: var(--gold-light);
+    line-height: 1;
+  }
+
+  .countdown-unit-label {
+    font-family: var(--ff-display);
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-top: 4px;
+  }
+
+  .countdown-sep {
+    font-family: var(--ff-display);
+    font-size: 2rem;
+    color: rgba(200,145,10,0.4);
+    line-height: 1;
+    padding-top: 0.15rem;
+  }
+
+  /* ─── SECTIONS ─── */
+  section {
+    padding: 5rem 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-family: var(--ff-display);
+    font-size: 11px;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: var(--saffron);
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-family: var(--ff-display);
+    font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+    font-weight: 600;
+    color: var(--deep);
+    line-height: 1.2;
+    margin-bottom: 1.25rem;
+  }
+
+  .section-divider {
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--saffron), var(--gold));
+    margin-bottom: 2rem;
+  }
+
+  .section-body {
+    font-size: 1.05rem;
+    color: var(--muted);
+    line-height: 1.85;
+    max-width: 760px;
+  }
+
+  /* ─── ABOUT GRID ─── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+    padding: 5rem 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .about-right {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .fact-card {
+    border-left: 3px solid var(--gold);
+    padding: 1rem 1.25rem;
+    background: var(--gold-pale);
+  }
+
+  .fact-card h4 {
+    font-family: var(--ff-display);
+    font-size: 13px;
+    letter-spacing: 1px;
+    color: var(--maroon);
+    margin-bottom: 0.4rem;
+  }
+
+  .fact-card p {
+    font-size: 0.95rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* ─── FULL-WIDTH BAND ─── */
+  .band {
+    background: var(--deep);
+    padding: 5rem 2rem;
+  }
+
+  .band-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .band .section-title { color: #fff; }
+  .band .section-body { color: rgba(255,255,255,0.65); }
+
+  /* ─── DATES TABLE ─── */
+  .dates-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .date-card {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    padding: 1.75rem;
+    position: relative;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+
+  .date-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--gold);
+  }
+
+  .date-card.shahi {
+    border-color: var(--saffron);
+    border-width: 2px;
+  }
+
+  .date-badge {
+    display: inline-block;
+    font-family: var(--ff-display);
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    background: var(--saffron);
+    color: #fff;
+    padding: 3px 10px;
+    margin-bottom: 1rem;
+  }
+
+  .date-badge.reg {
+    background: var(--gold);
+  }
+
+  .date-day {
+    font-family: var(--ff-display);
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 700;
+    color: var(--maroon);
+    line-height: 1;
+  }
+
+  .date-month-year {
+    font-family: var(--ff-body);
+    font-size: 1rem;
+    color: var(--muted);
+    margin-bottom: 0.75rem;
+  }
+
+  .date-name {
+    font-family: var(--ff-devanagari);
+    font-size: 1.1rem;
+    color: var(--saffron);
+    margin-bottom: 0.35rem;
+  }
+
+  .date-desc {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* ─── TRIKHANDI ─── */
+  .trikhandi-section {
+    background: linear-gradient(135deg, var(--maroon) 0%, #3A0A0A 100%);
+    padding: 5rem 2rem;
+  }
+
+  .trikhandi-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .trikhandi-inner .section-label { color: var(--gold-light); }
+  .trikhandi-inner .section-title { color: #fff; font-size: clamp(1.8rem, 4vw, 3rem); }
+  .trikhandi-inner .section-divider { background: linear-gradient(90deg, var(--gold-light), transparent); }
+
+  .trikhandi-body {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 4rem;
+    margin-top: 3rem;
+    align-items: start;
+  }
+
+  .trikhandi-text {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.9;
+  }
+
+  .trikhandi-text p + p { margin-top: 1.25rem; }
+
+  .trikhandi-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .yoga-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(200,145,10,0.3);
+    padding: 1.25rem 1.5rem;
+  }
+
+  .yoga-card h4 {
+    font-family: var(--ff-devanagari);
+    font-size: 1.15rem;
+    color: var(--gold-light);
+    margin-bottom: 0.4rem;
+  }
+
+  .yoga-card p {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.65;
+  }
+
+  /* ─── MULTILINGUAL SECTION ─── */
+  .lang-tabs {
+    display: flex;
+    gap: 0;
+    border-bottom: 2px solid var(--border);
+    margin-bottom: 2rem;
+  }
+
+  .lang-tab {
+    font-family: var(--ff-display);
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 0.6rem 1.4rem;
+    cursor: pointer;
+    color: var(--muted);
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    transition: all 0.2s;
+    background: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+  }
+
+  .lang-tab.active {
+    color: var(--saffron);
+    border-bottom-color: var(--saffron);
+  }
+
+  .lang-panel { display: none; }
+  .lang-panel.active { display: block; }
+
+  .lang-panel h3 {
+    font-family: var(--ff-devanagari);
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    color: var(--deep);
+    margin-bottom: 1rem;
+    line-height: 1.4;
+  }
+
+  .lang-panel p {
+    font-family: var(--ff-devanagari);
+    font-size: 1.05rem;
+    color: var(--muted);
+    line-height: 2;
+    margin-bottom: 1rem;
+  }
+
+  .lang-panel p.marathi {
+    font-family: var(--ff-devanagari);
+  }
+
+  /* ─── LOCATIONS ─── */
+  .locations-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2.5rem;
+  }
+
+  .location-card {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .location-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--saffron), var(--gold));
+  }
+
+  .location-card.vaish::before {
+    background: linear-gradient(90deg, #E06C1A, #E8A21A);
+  }
+
+  .location-card.shaiv::before {
+    background: linear-gradient(90deg, var(--maroon), #8B3A3A);
+  }
+
+  .location-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .location-card h3 {
+    font-family: var(--ff-display);
+    font-size: 1.2rem;
+    color: var(--deep);
+    margin-bottom: 0.4rem;
+  }
+
+  .location-card .loc-sub {
+    font-family: var(--ff-devanagari);
+    font-size: 1rem;
+    color: var(--saffron);
+    margin-bottom: 0.75rem;
+  }
+
+  .location-card p {
+    font-size: 0.95rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--deep);
+    padding: 3rem 2rem;
+    text-align: center;
+    border-top: 1px solid rgba(200,145,10,0.2);
+  }
+
+  .footer-om {
+    font-family: var(--ff-devanagari);
+    font-size: 2.5rem;
+    color: var(--gold-light);
+    opacity: 0.5;
+    margin-bottom: 1rem;
+  }
+
+  .footer-text {
+    font-family: var(--ff-devanagari);
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.4);
+    line-height: 1.7;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    .about-grid, .trikhandi-body, .locations-grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+    .nav-links { display: none; }
+    .hero-title { font-size: clamp(1.8rem, 7vw, 3rem); }
+  }
+
+  /* ─── ORNAMENTAL DIVIDERS ─── */
+  .ornament {
+    text-align: center;
+    padding: 1rem 0;
+    color: var(--gold);
+    opacity: 0.5;
+    font-size: 1.1rem;
+    letter-spacing: 8px;
+  }
+
+  .full-band {
+    background: var(--saffron-pale);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Kumbh Mela Nashik 2027</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#dates">Dates</a></li>
+    <li><a href="#trikhandi">Trikhandi Yog</a></li>
+    <li><a href="#locations">Sacred Sites</a></li>
+    <li><a href="#languages">हिंदी / मराठी</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-om" aria-hidden="true">ॐ</div>
+  <div class="hero-tagline">॥ हर हर गंगे · जय गोदावरी · हर हर महादेव ॥</div>
+  <h1 class="hero-title">
+    Simhastha Kumbh Mela
+    <span>Nashik · Trimbakeshwar 2027</span>
+  </h1>
+  <p class="hero-subtitle">A Sacred Confluence on the Banks of the Holy Godavari</p>
+  <div class="hero-divider"></div>
+  <p class="hero-desc">
+    Once every twelve years, the celestial alignment of Jupiter entering Leo (Simha Rashi) transforms the banks of the Godavari into a portal of liberation. Come, immerse yourself in the oldest living spiritual tradition on Earth.
+  </p>
+  <a href="#about" class="hero-cta">Begin Your Yatra ↓</a>
+</div>
+
+<!-- COUNTDOWN BAR -->
+<div class="countdown-bar" id="countdown-bar">
+  <div class="countdown-label">Countdown to First Shahi Snan · August 2, 2027</div>
+  <div class="countdown-units">
+    <div class="countdown-unit">
+      <div class="countdown-number" id="cd-days">--</div>
+      <div class="countdown-unit-label">Days</div>
+    </div>
+    <div class="countdown-sep">:</div>
+    <div class="countdown-unit">
+      <div class="countdown-number" id="cd-hours">--</div>
+      <div class="countdown-unit-label">Hours</div>
+    </div>
+    <div class="countdown-sep">:</div>
+    <div class="countdown-unit">
+      <div class="countdown-number" id="cd-mins">--</div>
+      <div class="countdown-unit-label">Minutes</div>
+    </div>
+    <div class="countdown-sep">:</div>
+    <div class="countdown-unit">
+      <div class="countdown-number" id="cd-secs">--</div>
+      <div class="countdown-unit-label">Seconds</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT SECTION -->
+<div class="about-grid" id="about">
+  <div class="about-left">
+    <div class="section-label">The Divine Story</div>
+    <h2 class="section-title">What is Simhastha Kumbh Mela Nashik?</h2>
+    <div class="section-divider"></div>
+    <div class="section-body">
+      <p>The Nashik–Trimbakeshwar Kumbh Mela, also known as <em>Simhastha</em>, is one of the four sacred Kumbh Melas held in India — alongside Prayagraj, Haridwar, and Ujjain. It stands apart as the only Kumbh governed by the planet Guru (Jupiter) entering the zodiac sign of <em>Simha</em> (Leo), a celestial event that occurs once every twelve years.</p>
+      <br/>
+      <p>Unlike any other Kumbh, the Nashik Simhastha is a <strong>Dual Kumbh</strong> — the divine energy flows across two distinct sacred power centers separated by 30 km: Ramkund in Panchavati for the Vaishnava Akhadas, and Kushavarta in Trimbakeshwar for the Shaiva Akhadas. This sacred duality makes it uniquely profound among all the Kumbh gatherings.</p>
+      <br/>
+      <p>During this Parva, the waters of <em>Goda-Mai</em> — the Godavari River, revered as the Ganges of the South — are believed to be charged with extraordinary cosmic energy, transmuted into <em>Amrit</em>, the nectar of immortality. A single holy dip (Shahi Snan) during the prescribed auspicious moments is said to cleanse the karma of countless lifetimes and open the gates of Moksha.</p>
+    </div>
+  </div>
+  <div class="about-right">
+    <div class="fact-card">
+      <h4>Sacred River</h4>
+      <p>The Godavari — "Goda-Mai" — originates in the Brahmagiri hills of Trimbakeshwar and is revered as the Dakshina Ganga (Ganges of the South), one of India's most holy rivers.</p>
+    </div>
+    <div class="fact-card">
+      <h4>The Amrit Legend</h4>
+      <p>During the cosmic churning of the ocean (Samudra Manthan), drops of Amrit (immortal nectar) fell at four places on Earth — Nashik being one of them — sanctifying it for eternity.</p>
+    </div>
+    <div class="fact-card">
+      <h4>13 Akhadas</h4>
+      <p>All thirteen major Akhadas — Shaiva, Vaishnava, and Udasin — converge at Nashik-Trimbakeshwar, bringing together thousands of Sadhus, Naga Babas, Mahamandaleshwars, and Acharyas.</p>
+    </div>
+    <div class="fact-card">
+      <h4>Panchavati Connection</h4>
+      <p>Nashik holds the sacred distinction of being the site of the Panchavati forest, where Lord Ram, Sita Mata, and Lakshman resided during their exile — making it a centre of both Shaiva and Vaishnava reverence.</p>
+    </div>
+  </div>
+</div>
+
+<!-- DATES SECTION -->
+<div class="band" id="dates">
+  <div class="band-inner">
+    <div class="section-label" style="color: var(--gold-light);">Snan Patrika 2027</div>
+    <h2 class="section-title">Important Bathing Dates</h2>
+    <div class="section-divider"></div>
+    <p class="section-body">The Shahi Snans are the most sacred bathing processions, led by the Akhadas in full ceremonial grandeur. Bathing on these dates during the prescribed Muhurta is considered supremely auspicious — a once-in-twelve-years opportunity for liberation.</p>
+
+    <div class="dates-grid">
+
+      <div class="date-card shahi">
+        <div class="date-badge">Shahi Snan 1</div>
+        <div class="date-day">2</div>
+        <div class="date-month-year">August 2027 · Sunday</div>
+        <div class="date-name">आषाढ सोमवती अमावस्या</div>
+        <div class="date-desc">Ashadh Somvati Amavasya — The rarest convergence of a new moon with Soma (lunar) energy. Held simultaneously at Ramkund, Nashik &amp; Kushavarta, Trimbakeshwar.</div>
+      </div>
+
+      <div class="date-card shahi">
+        <div class="date-badge">Shahi Snan 2</div>
+        <div class="date-day">31</div>
+        <div class="date-month-year">August 2027 · Monday</div>
+        <div class="date-name">श्रावण अमावस्या</div>
+        <div class="date-desc">Shravan Amavasya — The new moon of the sacred month of Shravan, deeply auspicious for ancestral rites and spiritual purification. The Akhadas bathe in grand procession.</div>
+      </div>
+
+      <div class="date-card shahi">
+        <div class="date-badge">Shahi Snan 3 (Nashik)</div>
+        <div class="date-day">11</div>
+        <div class="date-month-year">September 2027 · Friday</div>
+        <div class="date-name">भाद्रपद एकादशी</div>
+        <div class="date-desc">Bhadrapada Ekadashi — Held at Ramkund, Nashik (Panchavati). The Vaishnava Akhadas lead the Shahi procession with full honours and Vedic chants of 'Jai Shri Ram'.</div>
+      </div>
+
+      <div class="date-card shahi">
+        <div class="date-badge">Shahi Snan 3 (Trimbakeshwar)</div>
+        <div class="date-day">12</div>
+        <div class="date-month-year">September 2027 · Saturday</div>
+        <div class="date-name">भाद्रपद द्वादशी</div>
+        <div class="date-desc">Bhadrapada Dwadashi — Held at Kushavarta, Trimbakeshwar. The Shaiva Akhadas and Naga Babas perform the sacred bath amidst thunderous chants of 'Har Har Mahadev'.</div>
+      </div>
+
+      <div class="date-card">
+        <div class="date-badge reg">Parvani Snan</div>
+        <div class="date-day">10</div>
+        <div class="date-month-year">July 2027 · Thursday</div>
+        <div class="date-name">गुरु पौर्णिमा</div>
+        <div class="date-desc">Guru Purnima — The full moon dedicated to the Guru principle. An auspicious bathing date that marks the spiritual beginning of the Kumbh season.</div>
+      </div>
+
+      <div class="date-card">
+        <div class="date-badge reg">Parvani Snan</div>
+        <div class="date-day">9</div>
+        <div class="date-month-year">August 2027 · Sunday</div>
+        <div class="date-name">श्रावण पौर्णिमा / रक्षाबंधन</div>
+        <div class="date-desc">Shravan Purnima / Raksha Bandhan — Full moon of Shravan, sacred to Lord Shiva. Pilgrims perform Abhishek at Trimbakeshwar Jyotirlinga before taking the holy dip.</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- TRIKHANDI YOG -->
+<div class="trikhandi-section" id="trikhandi">
+  <div class="trikhandi-inner">
+    <div class="section-label">The Celestial Science</div>
+    <h2 class="section-title">Trikhandi Yog — त्रिखंडी योग</h2>
+    <div class="section-divider"></div>
+
+    <div class="trikhandi-body">
+      <div class="trikhandi-text">
+        <p>
+          The <em>Trikhandi Yog</em> is the rarest and most sacred astronomical conjunction that governs the Nashik Simhastha Kumbh — a celestial alignment so powerful that the ancient sages designated it as the supreme moment of liberation on earth.
+        </p>
+        <p>
+          The name <em>Trikhandi</em> (तीन खंड — three celestial segments or realms) refers to the simultaneous alignment of three cosmic forces across the three realms of existence: <em>Swarga</em> (the heavens), <em>Martya</em> (the earth), and <em>Patal</em> (the underworld). When these three realms align through the positions of specific celestial bodies, the veil between the mortal and the divine becomes the thinnest.
+        </p>
+        <p>
+          This Yoga is activated by three specific planetary conditions occurring simultaneously:
+        </p>
+        <p>
+          <strong style="color: var(--gold-light);">1. Guru in Simha Rashi</strong> — Jupiter, the planet of Dharma and wisdom, enters Leo (Simha). This is the primary trigger of the entire Nashik Kumbh. In Vedic astronomy, Jupiter in Leo is considered the most auspicious cosmic position for purification and moksha.
+        </p>
+        <p>
+          <strong style="color: var(--gold-light);">2. Surya in Simha Rashi</strong> — The Sun also occupies Leo, amplifying the solar-divine energy. The Sun's presence in its own sign (Leo is the Sun's own house in Jyotisha) creates a <em>Swagrihi Surya</em> — the sovereign Sun in full power.
+        </p>
+        <p>
+          <strong style="color: var(--gold-light);">3. Chandra in specific Nakshatra</strong> — The Moon's placement in a designated sacred Nakshatra on the day of Shahi Snan locks the Trikhandi Yog into its full potency, creating the precise <em>Muhurta</em> during which bathing bestows liberation.
+        </p>
+        <p>
+          According to the <em>Nashik Mahatmya</em> in the Skandha Purana, bathing at Kushavarta or Ramkund during the Trikhandi Yog grants the spiritual merit equivalent to a thousand Ashwamedha Yagnas and ten million pilgrimages to all sacred tirthas combined.
+        </p>
+        <p>
+          This is not merely folklore — it is a sophisticated system of Vedic astronomy and spiritual science, refined over millennia, that recognizes the earth's sacred geography as a receiver of cosmic transmissions, with the Godavari as its most powerful antenna.
+        </p>
+      </div>
+
+      <div class="trikhandi-sidebar">
+        <div class="yoga-card">
+          <h4>गुरु सिंह राशि</h4>
+          <p><strong>Jupiter in Leo (Simha)</strong> — The foundational celestial event that awakens the Kumbh. Occurs once every ~12 years. Jupiter's wisdom energy pours into the Godavari, sanctifying its waters as Amrit.</p>
+        </div>
+        <div class="yoga-card">
+          <h4>स्वगृही सूर्य</h4>
+          <p><strong>Sun in Leo (Swagrihi)</strong> — The Sun in its own sign amplifies divine solar energy. The Godavari reflects this as Surya's grace, purifying all who bathe in her waters during this period.</p>
+        </div>
+        <div class="yoga-card">
+          <h4>चंद्र नक्षत्र</h4>
+          <p><strong>Moon in Sacred Nakshatra</strong> — The Moon's position in the designated Nakshatra on each Shahi Snan date forms the final lock of the Trikhandi Yog, creating the precise divine window (Muhurta) for liberation.</p>
+        </div>
+        <div class="yoga-card">
+          <h4>त्रिखंडी योग फल</h4>
+          <p><strong>The Fruit of Trikhandi Yog</strong> — According to Skandha Purana, a single bath during this Yoga equals the merit of a thousand Ashwamedha Yagnas and liberates the bather and seven generations of ancestors.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SACRED LOCATIONS -->
+<section id="locations">
+  <div class="section-label">The Two Sacred Poles</div>
+  <h2 class="section-title">The Dual Kumbh — Twin Power Centres</h2>
+  <div class="section-divider"></div>
+  <p class="section-body">Unlike any other Kumbh in India, the Nashik Simhastha is uniquely blessed with two sacred bathing sites, each presided over by its own Akhada tradition, each thundering with a distinct divine name.</p>
+
+  <div class="locations-grid">
+    <div class="location-card vaish">
+      <div class="location-icon">🪷</div>
+      <h3>Ramkund — Panchavati, Nashik</h3>
+      <div class="loc-sub">रामकुंड, पंचवटी, नाशिक</div>
+      <p><strong>Presiding Tradition:</strong> Vaishnava Akhadas</p>
+      <p><strong>Sacred Chant:</strong> <em>"Jai Shri Ram"</em></p>
+      <br/>
+      <p>Ramkund is a sacred kund (pool) in the Panchavati forest where Lord Ram is believed to have bathed and offered water to his ancestors during his 14-year exile. The site pulsates with Vaishnava devotion — it is here that the Ram-bhakti tradition merges with the Kumbh's cosmic waters. During Simhastha, the Vaishnava Akhadas perform their Shahi Snan here in colourful processions of elephants, palanquins, and chariots.</p>
+    </div>
+    <div class="location-card shaiv">
+      <div class="location-icon">🔱</div>
+      <h3>Kushavarta — Trimbakeshwar</h3>
+      <div class="loc-sub">कुशावर्त, त्र्यंबकेश्वर</div>
+      <p><strong>Presiding Tradition:</strong> Shaiva Akhadas</p>
+      <p><strong>Sacred Chant:</strong> <em>"Har Har Mahadev"</em></p>
+      <br/>
+      <p>Kushavarta is the sacred kund at Trimbakeshwar, the very source of the Godavari River emerging from the Brahmagiri hills. Trimbakeshwar also houses one of the twelve sacred Jyotirlingas — Trimbakeshwar Mahadev — making this location among the holiest Shaiva pilgrimages on earth. During Simhastha, the awe-inspiring Naga Babas and Shaiva Akhadas descend in procession, ash-covered and trident-bearing, roaring Har Har Mahadev.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MULTILINGUAL SECTION -->
+<div class="full-band" id="languages">
+  <section>
+    <div class="section-label">In Three Sacred Tongues</div>
+    <h2 class="section-title">The Call to Pilgrimage</h2>
+    <div class="section-divider"></div>
+
+    <div class="lang-tabs">
+      <button class="lang-tab active" onclick="switchLang('hindi', this)">हिंदी</button>
+      <button class="lang-tab" onclick="switchLang('marathi', this)">मराठी</button>
+    </div>
+
+    <!-- HINDI PANEL -->
+    <div class="lang-panel active" id="panel-hindi">
+      <h3>सिंहस्थ कुंभ मेला नाशिक २०२७ में आपका स्वागत है</h3>
+      <p>
+        बारह वर्षों की प्रतीक्षा का अंत होने वाला है। नाशिक-त्र्यंबकेश्वर सिंहस्थ कुंभ मेला केवल एक सामूहिक आयोजन नहीं है — यह एक दुर्लभ खगोलीय संरेखण है जो भारत की आध्यात्मिक नींव को जागृत कर देता है।
+      </p>
+      <p>
+        जब गुरु ग्रह सिंह राशि में प्रवेश करते हैं, तो पवित्र गोदावरी नदी — दक्षिण की गंगा — के जल में अमृत की शक्ति समाहित हो जाती है। स्कंद पुराण में वर्णित <em>नाशिक महात्म्य</em> के अनुसार, इस पवित्र महापर्व में एक बार स्नान करने से सहस्र अश्वमेध यज्ञों का पुण्य प्राप्त होता है और सात पीढ़ियों के पूर्वजों का उद्धार होता है।
+      </p>
+      <p>
+        <strong>महत्वपूर्ण स्नान तिथियाँ:</strong>
+      </p>
+      <p>
+        🪷 <strong>प्रथम शाही स्नान</strong> — २ अगस्त २०२७, आषाढ सोमवती अमावस्या<br/>
+        🪷 <strong>द्वितीय शाही स्नान</strong> — ३१ अगस्त २०२७, श्रावण अमावस्या<br/>
+        🪷 <strong>तृतीय शाही स्नान</strong> — ११ सितंबर २०२७ (नाशिक) · १२ सितंबर २०२७ (त्र्यंबकेश्वर)
+      </p>
+      <p>
+        त्रिखंडी योग — तीन लोकों (स्वर्ग, मर्त्य, पाताल) का एक साथ संरेखण — इस कुंभ को अन्य सभी कुंभों से श्रेष्ठ और अद्वितीय बनाता है। पंचवटी के रामकुंड में वैष्णव अखाड़े और त्र्यंबकेश्वर के कुशावर्त में शैव अखाड़े — दोनों शाही स्नानों की पवित्र परंपरा इस दिव्य संगम को अविस्मरणीय बनाती है।
+      </p>
+      <p>
+        आइए, इस महाकुंभ में सम्मिलित हों — जहाँ जल केवल जल नहीं, बल्कि मोक्ष का द्वार है।
+      </p>
+      <p style="font-style: italic; color: var(--saffron);">
+        ॥ हर हर गंगे · जय गोदावरी माँ · हर हर महादेव ॥
+      </p>
+    </div>
+
+    <!-- MARATHI PANEL -->
+    <div class="lang-panel" id="panel-marathi">
+      <h3>सिंहस्थ कुंभमेळा नाशिक २०२७ मध्ये आपले स्वागत आहे</h3>
+      <p class="marathi">
+        बारा वर्षांची प्रतीक्षा संपत आली आहे. नाशिक-त्र्यंबकेश्वर सिंहस्थ कुंभमेळा हा केवळ एक जत्रा नाही — तो एक विश्वनाट्य आहे, ज्यात आकाश, पृथ्वी आणि गोदावरी माता एकत्र येऊन मोक्षाचे दार उघडतात.
+      </p>
+      <p class="marathi">
+        गुरु ग्रह सिंह राशीत प्रवेश करतो तेव्हा, गोदावरीच्या पाण्यात अमृताची शक्ती संचारते असे स्कंद पुराणातील <em>नाशिक माहात्म्य</em> सांगते. या महापर्वावर एकदा स्नान केल्याने हजार अश्वमेध यज्ञांचे पुण्य मिळते आणि सात पिढ्यांचा उद्धार होतो, असा आपल्या पूर्वजांचा विश्वास आहे.
+      </p>
+      <p class="marathi">
+        <strong>महत्त्वाच्या स्नान तिथी:</strong>
+      </p>
+      <p class="marathi">
+        🪷 <strong>प्रथम शाही स्नान</strong> — २ ऑगस्ट २०२७, आषाढ सोमवती अमावस्या<br/>
+        🪷 <strong>द्वितीय शाही स्नान</strong> — ३१ ऑगस्ट २०२७, श्रावण अमावस्या<br/>
+        🪷 <strong>तृतीय शाही स्नान</strong> — ११ सप्टेंबर २०२७ (नाशिक) · १२ सप्टेंबर २०२७ (त्र्यंबकेश्वर)
+      </p>
+      <p class="marathi">
+        <strong>त्रिखंडी योग</strong> म्हणजे तीन लोकांचा — स्वर्ग, मर्त्य आणि पाताल — एकत्रित संयोग. हा योग नाशिकच्या सिंहस्थाला इतर कुंभांपेक्षा वेगळा आणि अतिशय श्रेष्ठ बनवतो. पंचवटीतील रामकुंडावर वैष्णव अखाड्यांचा शाही स्नान सोहळा "जय श्रीराम"च्या जयघोषात होतो, तर त्र्यंबकेश्वरातील कुशावर्तावर शैव अखाड्यांचा सोहळा "हर हर महादेव"च्या गर्जनेत संपन्न होतो.
+      </p>
+      <p class="marathi">
+        नाशिक — ज्या भूमीवर प्रभू श्रीराम, सीतामाता आणि लक्ष्मण यांनी वनवास काळात निवास केला, जेथे त्र्यंबकेश्वर ज्योतिर्लिंग आहे, जिथून गोदावरी माता उगम पावते — त्या पवित्र भूमीवर आपले स्वागत आहे.
+      </p>
+      <p class="marathi" style="font-style: italic; color: var(--saffron);">
+        ॥ हर हर गंगे · गोदावरी माऊलीचा विजय असो · हर हर महादेव ॥
+      </p>
+    </div>
+  </section>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-om">ॐ</div>
+  <p class="footer-text">
+    सिंहस्थ कुंभमेळा नाशिक-त्र्यंबकेश्वर २०२७<br/>
+    Simhastha Kumbh Mela Nashik–Trimbakeshwar 2027<br/><br/>
+    This website is a public information resource for pilgrims visiting the Kumbh Mela.<br/>
+    All content presented here is for devotional and informational purposes.
+  </p>
+</footer>
+
+<script>
+  // COUNTDOWN
+  function updateCountdown() {
+    const target = new Date('2027-08-02T05:00:00+05:30').getTime();
+    const now = new Date().getTime();
+    const diff = target - now;
+    if (diff <= 0) {
+      document.getElementById('countdown-bar').innerHTML = '<div class="countdown-label" style="font-size:1.1rem; color: var(--gold-light);">The Shahi Snan has begun! Har Har Mahadev!</div>';
+      return;
+    }
+    const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const s = Math.floor((diff % (1000 * 60)) / 1000);
+    document.getElementById('cd-days').textContent = String(d).padStart(3,'0');
+    document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
+    document.getElementById('cd-mins').textContent = String(m).padStart(2,'0');
+    document.getElementById('cd-secs').textContent = String(s).padStart(2,'0');
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  // LANGUAGE TABS
+  function switchLang(lang, btn) {
+    document.querySelectorAll('.lang-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.lang-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('panel-' + lang).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>

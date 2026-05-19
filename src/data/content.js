@@ -1,16 +1,16 @@
 export const content = {
   EN: {
     hero: {
-      tagline: "Kumbhparv Nashik 2027",
-      title: "Kumbhparv Nashik 2027",
+      tagline: "Kumbhparv Nasik 2027",
+      title: "Kumbhparv Nasik 2027",
       subtitle: "कुंभपर्व नासिक २०२७",
-      description: "Join millions in this sacred celebration. Take the Citizens' Pledge and register your seva for Nashik.",
+      description: "Join millions in this sacred celebration. Take the Citizens' Pledge and register your seva for Nasik.",
       button: "🙏 Take the Pledge"
     },
     pledgePoints: [
       "Recognize Kumbhparv as a festival of social harmony and actively participate in it.",
       "Study and preserve India's traditional knowledge systems.",
-      "Actively support municipal authorities in keeping Nashik city clean.",
+      "Actively support municipal authorities in keeping Nasik city clean.",
       "Segregate wet and dry waste before disposal.",
       "Minimize plastic usage and adopt eco-friendly alternatives.",
       "Plant at least one tree as part of the Kumbh initiative.",
@@ -42,7 +42,7 @@ export const content = {
       "I am willing to provide my space / room / accommodation (home stay) for pilgrims.",
       "I am ready to undergo various types of training for preparedness and service activities.",
       "I am willing to provide training for different types of preparedness activities.",
-      "I am willing to dedicate time and participate in various initiatives required for Nashik's preparations, including environment and civic support, and local artisan / vendor support.",
+      "I am willing to dedicate time and participate in various initiatives required for Nasik's preparations, including environment and civic support, and local artisan / vendor support.",
       "I am willing to actively participate in cleanliness drives and contribute to maintaining cleanliness in public places.",
       "I am willing to work as a volunteer to guide pilgrims, provide information, and help them with directions.",
       "I am willing to assist the administration in traffic management and crowd control.",
@@ -50,11 +50,11 @@ export const content = {
     ],
     labels: {
       appTitle: "Kumbhparv 2027",
-      appLocation: "Nashik, Maharashtra",
-      footerRights: "© 2027 Kumbhparv Nashik. All rights reserved.",
+      appLocation: "Nasik, Maharashtra",
+      footerRights: "© 2027 Kumbhparv Nasik. All rights reserved.",
       footerTagline: "A sacred journey of faith and devotion.",
       dashboardWelcome: "Welcome,",
-      dashboardDesc: "Your journey for Kumbhparv Nashik 2027 begins here. You can choose to take the Citizens' Pledge or register for Volunteer Seva.",
+      dashboardDesc: "Your journey for Kumbhparv Nasik 2027 begins here. You can choose to take the Citizens' Pledge or register for Volunteer Seva.",
       statusCompleted: "Completed",
       statusRegistered: "Registered",
       pledgeReview: "Review Pledge",
@@ -82,7 +82,7 @@ export const content = {
       next: "Next Step",
       back: "Back",
       step2Title: "Citizens' Pledge",
-      step2Desc: "Please read and accept the 18 sacred commitments for Nashik city.",
+      step2Desc: "Please read and accept the 18 sacred commitments for Nasik city.",
       acceptAll: "I accept all the above commitments.",
       pledgeAcceptError: "You must accept the pledge to continue.",
       step3Title: "Seva Registration",
@@ -94,7 +94,7 @@ export const content = {
       downloadCertificate: "Download Certificate",
       certificateTitle: "Certificate of Commitment",
       certificateSubtitle: "This is to certify that",
-      certificateBody: "has taken the Citizens' Pledge for Kumbhparv Nashik 2027 and committed to offering Seva.",
+      certificateBody: "has taken the Citizens' Pledge for Kumbhparv Nasik 2027 and committed to offering Seva.",
       ageGroup: "Age Group",
       area: "Area",
       suggestion: "Any other suggestion",
@@ -105,7 +105,7 @@ export const content = {
       maxWords: "Max 500 words"
     },
     ageGroups: ["Below 18", "18-30", "31-45", "45-60", "60 and above"],
-    areas: ["Adgaon", "Adgaon Naka", "Ashoka Road", "Ashwin Nagar", "Aurangabad Road", "Bhabha Nagar", "Bodhale Nagar", "Canada Corner", "CBS", "Chehdi", "Deolali Camp", "DGP Nagar", "Dwarka", "Gangapur Road", "Ganjmal", "Govind Nagar", "Indira Nagar", "Jai Bhavani Road", "Jail Road", "Kalpataru Nagar", "Kamatwade", "Kathe Galli", "Mahatma Nagar", "Mhasrul", "MIDC Ambad", "Nashik Road", "Panchavati", "Parijat Nagar", "Pathardi Phata", "Pawan Nagar", "Peth Road", "Pimpalgaon", "Rajiv Nagar", "Ramdas Swami nagar", "Ramkund", "Ravivar Karanja", "Sambhaji Chowk", "Satpur Colony", "Shalimar", "Shivaji Nagar", "Tagore Nagar", "Tidke Colony", "Tidke Nagar", "Trimbak Road", "Trimurti Chowk", "Untwadi", "Upnagar", "Uttam Nagar", "Wadala Pathardi Road"]
+    areas: ["Adgaon", "Adgaon Naka", "Ashoka Road", "Ashwin Nagar", "Aurangabad Road", "Bhabha Nagar", "Bodhale Nagar", "Canada Corner", "CBS", "Chehdi", "Deolali Camp", "DGP Nagar", "Dwarka", "Gangapur Road", "Ganjmal", "Govind Nagar", "Indira Nagar", "Jai Bhavani Road", "Jail Road", "Kalpataru Nagar", "Kamatwade", "Kathe Galli", "Mahatma Nagar", "Mhasrul", "MIDC Ambad", "Nasik Road", "Panchavati", "Parijat Nagar", "Pathardi Phata", "Pawan Nagar", "Peth Road", "Pimpalgaon", "Rajiv Nagar", "Ramdas Swami nagar", "Ramkund", "Ravivar Karanja", "Sambhaji Chowk", "Satpur Colony", "Shalimar", "Shivaji Nagar", "Tagore Nagar", "Tidke Colony", "Tidke Nagar", "Trimbak Road", "Trimurti Chowk", "Untwadi", "Upnagar", "Uttam Nagar", "Wadala Pathardi Road"]
   },
   HI: {
     hero: {

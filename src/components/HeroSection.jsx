@@ -12,13 +12,7 @@ const HeroSection = () => {
       transition={{ duration: 0.6 }}
       className="text-center py-8 sm:py-16"
     >
-      <div className="flex justify-center mb-10">
-        <img 
-          src="/logo.png" 
-          alt="Kumbhparv Logo" 
-          className="w-32 h-32 sm:w-48 sm:h-48 object-contain drop-shadow-xl" 
-        />
-      </div>
+
       
       <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold text-[var(--color-kumbh-charcoal)] mb-8 tracking-tight leading-[1.1]">
         {t.hero.title}
