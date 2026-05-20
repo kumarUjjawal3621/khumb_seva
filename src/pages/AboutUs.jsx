@@ -23,7 +23,6 @@ const AboutUs = () => {
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[var(--color-maroon)] mb-6 leading-tight font-serif whitespace-pre-line">
             {content.title}
           </h1>
-          <div className="w-24 h-1 bg-[var(--color-golden)] mx-auto rounded-full"></div>
         </div>
 
         {/* Responsive Table Container */}

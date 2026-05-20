@@ -79,29 +79,29 @@ const Home = () => {
       {/* ─── HERO ─── */}
       <div className="relative min-h-[70vh] flex flex-col items-center justify-center text-center px-4 overflow-hidden rounded-3xl mt-4 shadow-lg border border-[var(--color-golden)]/30">
         {/* Scrolling Background Banner */}
-        <div className="absolute inset-0 overflow-hidden select-none pointer-events-none">
-          <div className="animate-scroll-infinite flex h-full">
+        <div className="absolute inset-0 overflow-hidden select-none pointer-events-none bg-black/80">
+          <div className="animate-scroll-infinite flex h-full items-center">
             {scrollingImages.map((src, idx) => (
               <img
                 key={idx}
                 src={src}
                 alt=""
-                className="h-full w-[280px] sm:w-[350px] object-cover flex-shrink-0 opacity-80"
+                className="h-[85%] w-auto object-contain flex-shrink-0 mx-2 opacity-90 transition-all duration-300"
               />
             ))}
           </div>
-          {/* Dark Overlay */}
-          <div className="absolute inset-0 bg-black/65 backdrop-blur-[1px]"></div>
+          {/* Softer Vignette Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/25 to-black/45 backdrop-blur-[0.5px]"></div>
         </div>
 
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[15vw] font-bold text-white opacity-[0.04] pointer-events-none select-none">ॐ</div>
         
-        <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center py-16 px-6">
+        <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center py-16 px-4 sm:px-6 text-center">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-[var(--color-golden)] leading-tight tracking-wide font-serif drop-shadow-lg text-center"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-[var(--color-golden)] leading-tight tracking-wide font-serif drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)] mb-4"
           >
             {content.heroTitle}
           </motion.h1>
@@ -110,7 +110,7 @@ const Home = () => {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl sm:text-2xl md:text-3xl font-bold text-[var(--color-vanilla)] tracking-widest mt-3 mb-5 font-sans drop-shadow-md text-center"
+            className="text-xl sm:text-2xl md:text-3xl font-bold text-[var(--color-vanilla)] tracking-widest mb-6 font-sans drop-shadow-[0_3px_8px_rgba(0,0,0,0.9)]"
           >
             {content.heroYears}
           </motion.div>
@@ -119,7 +119,7 @@ const Home = () => {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-base sm:text-lg md:text-xl italic text-[var(--color-vanilla)]/90 mb-8 max-w-2xl font-serif drop-shadow-sm text-center"
+            className="text-base sm:text-lg md:text-xl italic text-[var(--color-vanilla)]/95 mb-10 max-w-2xl font-serif drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)] leading-relaxed"
           >
             {content.heroSubtitle}
           </motion.p>
@@ -138,7 +138,7 @@ const Home = () => {
           >
             <Link 
               to="/register" 
-              className="primary-gradient px-8 py-3.5 rounded-full text-xs uppercase tracking-widest hover:shadow-[0_4px_15px_rgba(212,175,55,0.4)] transition-all border border-[var(--color-golden)]/50 font-bold block sm:inline-block"
+              className="primary-gradient px-8 py-3.5 rounded-full text-xs uppercase tracking-widest hover:shadow-[0_4px_15px_rgba(212,175,55,0.4)] transition-all border border-[var(--color-golden)]/50 font-bold block sm:inline-block shadow-lg"
             >
               {t.labels.volunteerRegistration}
             </Link>
@@ -180,7 +180,6 @@ const Home = () => {
           <div>
             <div className="text-[11px] font-bold tracking-[0.2em] text-[var(--color-golden)] uppercase mb-3 drop-shadow-sm">The Divine Story</div>
             <h2 className="text-3xl sm:text-4xl font-bold text-[var(--color-maroon)] mb-5 leading-tight font-serif">{content.intro.title}</h2>
-            <div className="w-20 h-1 bg-[var(--color-golden)] mb-8 rounded-full"></div>
             
             <div className="space-y-5 text-gray-700 text-lg leading-relaxed">
               {content.intro.paragraphs.map((para, idx) => (
@@ -210,7 +209,6 @@ const Home = () => {
         <h2 className="text-3xl sm:text-4xl font-bold text-[var(--color-maroon)] mb-5 leading-tight font-serif">
           {content.snanPatrika.title}
         </h2>
-        <div className="w-20 h-1 bg-[var(--color-golden)] mb-8 rounded-full"></div>
         <p className="text-gray-700 text-lg mb-10 max-w-3xl leading-relaxed">
           {content.snanPatrika.description}
         </p>
@@ -251,7 +249,6 @@ const Home = () => {
           <h2 className="text-3xl sm:text-4xl font-bold text-[var(--color-maroon)] mb-5 leading-tight font-serif">
             {content.trikhandiYog.title}
           </h2>
-          <div className="w-20 h-1 bg-[var(--color-golden)] mb-10 rounded-full"></div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             <div className="lg:col-span-7 space-y-6 text-[var(--color-text-main)] text-lg leading-relaxed">

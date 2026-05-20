@@ -73,12 +73,6 @@ const Verticals = () => {
         >
           {headings.title}
         </motion.h1>
-        <motion.div
-          initial={{ width: 0 }}
-          animate={{ width: 96 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="h-1 bg-[var(--color-golden)] mx-auto rounded-full mb-5"
-        ></motion.div>
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
