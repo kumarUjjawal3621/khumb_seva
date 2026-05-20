@@ -19,32 +19,32 @@ const Layout = ({ children }) => {
     <div className="min-h-screen flex flex-col bg-[var(--color-vanilla)]">
       {/* Header */}
       <header className="sticky top-0 z-50 bg-[var(--color-maroon)] border-b border-[var(--color-golden)]/30 shadow-lg">
-        <div className="max-w-5xl mx-auto px-4 py-3 sm:py-4">
+        <div className="max-w-5xl mx-auto px-4 py-3 lg:py-4">
           <div className="flex justify-between items-center gap-3">
             <button
               type="button"
               onClick={() => setIsMenuOpen((open) => !open)}
-              className="sm:hidden w-10 h-10 rounded-full border border-[var(--color-golden)]/35 text-[var(--color-golden)] flex items-center justify-center hover:bg-[var(--color-maroon-dark)] transition-colors"
+              className="lg:hidden w-10 h-10 rounded-full border border-[var(--color-golden)]/35 text-[var(--color-golden)] flex items-center justify-center hover:bg-[var(--color-maroon-dark)] transition-colors flex-shrink-0"
               aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
               aria-expanded={isMenuOpen}
             >
               {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
 
-            <Link to="/" onClick={() => setIsMenuOpen(false)} className="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-4 hover:opacity-90 transition-opacity min-w-0 flex-1 sm:flex-none">
+            <Link to="/" onClick={() => setIsMenuOpen(false)} className="flex flex-col lg:flex-row items-center justify-center gap-1 lg:gap-4 hover:opacity-90 transition-opacity min-w-0 flex-1 lg:flex-none">
               <img 
                 src="/logo.jpeg" 
                 alt="Kumbhparv Logo" 
-                className="max-h-10 sm:max-h-14 w-auto h-auto object-contain flex-shrink-0" 
+                className="max-h-10 lg:max-h-14 w-auto h-auto object-contain flex-shrink-0" 
               />
-              <div className="min-w-0 max-w-[8.5rem] sm:max-w-none">
-                <h1 className="font-bold text-[var(--color-golden)] leading-tight text-center sm:text-left text-sm sm:text-xl font-serif whitespace-normal">
+              <div className="min-w-0 max-w-[8.5rem] lg:max-w-none">
+                <h1 className="font-bold text-[var(--color-golden)] leading-tight text-center lg:text-left text-sm lg:text-xl font-serif whitespace-normal">
                   {t.labels.appTitle}
                 </h1>
               </div>
             </Link>
             
-            <nav className="hidden sm:flex items-center gap-6">
+            <nav className="hidden lg:flex items-center gap-6">
               {navLinks.map((link) => (
                 <Link
                   key={link.path}
@@ -65,7 +65,7 @@ const Layout = ({ children }) => {
                 <button
                   key={lang}
                   onClick={() => setLanguage(lang)}
-                  className={`px-2.5 sm:px-3 py-1 rounded-full text-xs font-bold transition-all ${
+                  className={`min-w-8 lg:min-w-9 px-2 lg:px-3 py-1 rounded-full text-xs font-bold transition-all text-center ${
                     language === lang 
                       ? 'bg-[var(--color-golden)] text-[var(--color-maroon)] shadow-md' 
                       : 'text-[var(--color-vanilla)]/60 hover:text-[var(--color-golden)]'
@@ -77,13 +77,13 @@ const Layout = ({ children }) => {
             </div>
           </div>
 
-          <nav className={`${isMenuOpen ? 'flex' : 'hidden'} sm:hidden flex-col gap-1 mt-3 pt-3 border-t border-[var(--color-golden)]/20`}>
+          <nav className={`${isMenuOpen ? 'flex' : 'hidden'} lg:hidden flex-col gap-1 mt-3 pt-3 border-t border-[var(--color-golden)]/20`}>
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
                 onClick={() => setIsMenuOpen(false)}
-                className={`px-3 py-3 rounded-xl text-sm font-bold transition-colors ${
+                className={`w-full px-3 py-3 rounded-xl text-sm leading-snug font-bold transition-colors break-words ${
                   location.pathname === link.path
                     ? 'bg-[var(--color-golden)] text-[var(--color-maroon)]'
                     : 'text-[var(--color-vanilla)]/85 hover:bg-[var(--color-maroon-dark)] hover:text-[var(--color-golden)]'
