@@ -4,8 +4,22 @@ import { motion } from 'framer-motion';
 import { useAppContext } from '../context/AppContext';
 import { homeContent } from '../data/homeContent';
 
+const heroImages = [
+  '/images/hero/Kumbh Certificate.png',
+  '/images/hero/Kumbh Certificate (1).png',
+  '/images/hero/Kumbh Certificate (2).png',
+  '/images/hero/Kumbh Certificate (3).png',
+  '/images/hero/Kumbh Certificate (4).png',
+  '/images/hero/Kumbh Certificate (5).png',
+  '/images/hero/Kumbh Certificate (6).png',
+  '/images/hero/Kumbh Certificate (7).png',
+  '/images/hero/Kumbh Certificate (8).png'
+];
+
+const scrollingImages = [...heroImages, ...heroImages];
+
 const Home = () => {
-  const { language } = useAppContext();
+  const { language, t } = useAppContext();
   const content = homeContent[language] || homeContent['EN'];
 
   // Countdown State
@@ -17,13 +31,17 @@ const Home = () => {
   });
 
   useEffect(() => {
-    const target = new Date('2027-08-02T05:00:00+05:30').getTime();
+    // Target date set to 31 October 2026
+    const target = new Date('2026-10-31T00:00:00+05:30').getTime();
 
     const updateCountdown = () => {
       const now = new Date().getTime();
       const diff = target - now;
 
-      if (diff <= 0) return;
+      if (diff <= 0) {
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+        return;
+      }
 
       setTimeLeft({
         days: Math.floor(diff / (1000 * 60 * 60 * 24)),
@@ -59,34 +77,49 @@ const Home = () => {
   return (
     <div className="w-full space-y-12 pb-20">
       {/* ─── HERO ─── */}
-      <div className="relative min-h-[70vh] flex flex-col items-center justify-center text-center px-4 overflow-hidden rounded-3xl mt-4 bg-[var(--color-camel)] shadow-lg border border-[var(--color-golden)]/30">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[var(--color-maroon)]/40 pointer-events-none mix-blend-multiply"></div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[15vw] font-bold text-[var(--color-maroon)] opacity-10 pointer-events-none animate-pulse">ॐ</div>
+      <div className="relative min-h-[70vh] flex flex-col items-center justify-center text-center px-4 overflow-hidden rounded-3xl mt-4 shadow-lg border border-[var(--color-golden)]/30">
+        {/* Scrolling Background Banner */}
+        <div className="absolute inset-0 overflow-hidden select-none pointer-events-none">
+          <div className="animate-scroll-infinite flex h-full">
+            {scrollingImages.map((src, idx) => (
+              <img
+                key={idx}
+                src={src}
+                alt=""
+                className="h-full w-[280px] sm:w-[350px] object-cover flex-shrink-0 opacity-80"
+              />
+            ))}
+          </div>
+          {/* Dark Overlay */}
+          <div className="absolute inset-0 bg-black/65 backdrop-blur-[1px]"></div>
+        </div>
+
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[15vw] font-bold text-white opacity-[0.04] pointer-events-none select-none">ॐ</div>
         
-        <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center py-12">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-xs sm:text-sm font-bold tracking-[0.2em] text-[var(--color-maroon-dark)] mb-6 uppercase"
-          >
-            ॥ हर हर गंगे · जय गोदावरी · हर हर महादेव ॥
-          </motion.div>
-          
+        <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center py-16 px-6">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-4xl sm:text-5xl md:text-7xl font-bold text-[var(--color-maroon)] mb-4 leading-tight tracking-wide font-serif"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-[var(--color-golden)] leading-tight tracking-wide font-serif drop-shadow-lg text-center"
           >
             {content.heroTitle}
           </motion.h1>
           
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
+          <motion.div 
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-lg sm:text-xl md:text-2xl italic text-[var(--color-maroon-dark)]/90 mb-8 font-serif"
+            className="text-xl sm:text-2xl md:text-3xl font-bold text-[var(--color-vanilla)] tracking-widest mt-3 mb-5 font-sans drop-shadow-md text-center"
+          >
+            {content.heroYears}
+          </motion.div>
+          
+          <motion.p 
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="text-base sm:text-lg md:text-xl italic text-[var(--color-vanilla)]/90 mb-8 max-w-2xl font-serif drop-shadow-sm text-center"
           >
             {content.heroSubtitle}
           </motion.p>
@@ -94,28 +127,22 @@ const Home = () => {
           <motion.div 
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="w-32 h-[2px] bg-gradient-to-r from-transparent via-[var(--color-golden)] to-transparent mb-8"
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="w-32 h-[2px] bg-gradient-to-r from-transparent via-[var(--color-golden)] to-transparent mb-10"
           ></motion.div>
           
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-base sm:text-lg text-[var(--color-maroon-dark)]/80 max-w-2xl leading-relaxed mb-10 font-medium"
-          >
-            {content.intro.paragraphs[0]}
-          </motion.p>
-          
-          <Link 
-            initial={{ opacity: 0, y: 20 }}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            to="/register" 
-            className="primary-gradient px-8 py-3.5 rounded-full text-xs uppercase tracking-widest hover:shadow-[0_4px_15px_rgba(212,175,55,0.4)] transition-all border border-[var(--color-golden)]/50"
           >
-            Volunteer Registration
-          </Link>
+            <Link 
+              to="/register" 
+              className="primary-gradient px-8 py-3.5 rounded-full text-xs uppercase tracking-widest hover:shadow-[0_4px_15px_rgba(212,175,55,0.4)] transition-all border border-[var(--color-golden)]/50 font-bold block sm:inline-block"
+            >
+              {t.labels.volunteerRegistration}
+            </Link>
+          </motion.div>
         </div>
       </div>
 
@@ -156,7 +183,7 @@ const Home = () => {
             <div className="w-20 h-1 bg-[var(--color-golden)] mb-8 rounded-full"></div>
             
             <div className="space-y-5 text-gray-700 text-lg leading-relaxed">
-              {content.intro.paragraphs.slice(1, 4).map((para, idx) => (
+              {content.intro.paragraphs.map((para, idx) => (
                 <p key={idx}>{para}</p>
               ))}
             </div>
@@ -177,11 +204,15 @@ const Home = () => {
 
       {/* ─── DATES SECTION ─── */}
       <section id="dates" className="glass-card rounded-3xl p-8 sm:p-12 shadow-sm bg-white/40">
-        <div className="text-[11px] font-bold tracking-[0.2em] text-[var(--color-golden)] uppercase mb-3 drop-shadow-sm">Snan Patrika 2027</div>
-        <h2 className="text-3xl sm:text-4xl font-bold text-[var(--color-maroon)] mb-5 leading-tight font-serif">{content.snanPatrika.title.split('—')[0]}</h2>
+        <div className="text-[11px] font-bold tracking-[0.2em] text-[var(--color-golden)] uppercase mb-3 drop-shadow-sm">
+          {content.snanPatrika.sectionLabel || "Snan Patrika 2027"}
+        </div>
+        <h2 className="text-3xl sm:text-4xl font-bold text-[var(--color-maroon)] mb-5 leading-tight font-serif">
+          {content.snanPatrika.title}
+        </h2>
         <div className="w-20 h-1 bg-[var(--color-golden)] mb-8 rounded-full"></div>
         <p className="text-gray-700 text-lg mb-10 max-w-3xl leading-relaxed">
-          The Shahi Snans are the most sacred bathing processions, led by the Akhadas in full ceremonial grandeur. Bathing on these dates during the prescribed Muhurta is considered supremely auspicious — a once-in-twelve-years opportunity for liberation.
+          {content.snanPatrika.description}
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -217,8 +248,9 @@ const Home = () => {
       <section id="trikhandi" className="glass-card rounded-3xl p-8 sm:p-12 shadow-sm relative overflow-hidden bg-[var(--color-maroon)]/5">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[var(--color-golden)] rounded-full mix-blend-multiply filter blur-[120px] opacity-20 -translate-y-1/2 translate-x-1/3"></div>
         <div className="relative z-10">
-          <div className="text-[11px] font-bold tracking-[0.2em] text-[var(--color-golden)] uppercase mb-3 drop-shadow-sm">The Celestial Science</div>
-          <h2 className="text-3xl sm:text-4xl font-bold text-[var(--color-maroon)] mb-5 leading-tight font-serif">{content.trikhandiYog.title.split('—')[0]} <span className="text-[var(--color-camel)] font-sans">— त्रिखंडी योग</span></h2>
+          <h2 className="text-3xl sm:text-4xl font-bold text-[var(--color-maroon)] mb-5 leading-tight font-serif">
+            {content.trikhandiYog.title}
+          </h2>
           <div className="w-20 h-1 bg-[var(--color-golden)] mb-10 rounded-full"></div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
@@ -226,9 +258,6 @@ const Home = () => {
               {content.trikhandiYog.paragraphs.slice(0, 3).map((para, idx) => (
                 <p key={idx}>{para}</p>
               ))}
-              <div className="mt-8 p-6 bg-[var(--color-camel)]/10 border border-[var(--color-camel)]/30 rounded-2xl">
-                <p className="italic text-center text-[var(--color-maroon)] font-serif text-xl">"{content.trikhandiYog.footer}"</p>
-              </div>
             </div>
             
             <div className="lg:col-span-5 flex flex-col gap-5">

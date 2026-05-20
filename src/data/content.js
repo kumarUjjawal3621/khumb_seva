@@ -49,8 +49,12 @@ export const content = {
       "I will contribute to spreading positive information about the Kumbh Mela through digital platforms."
     ],
     labels: {
-      appTitle: "Kumbhparv 2027",
+      appTitle: "Simhastha Kumbhparv",
       appLocation: "Nasik, Maharashtra",
+      volunteerRegistration: "Volunteer Registration",
+      navHome: "Home",
+      navAbout: "About Us",
+      navVerticals: "Verticals",
       footerRights: "© 2027 Kumbhparv Nasik. All rights reserved.",
       footerTagline: "A sacred journey of faith and devotion.",
       dashboardWelcome: "Welcome,",
@@ -157,8 +161,12 @@ export const content = {
       "मैं डिजिटल प्लेटफॉर्म के माध्यम से कुंभ मेले के बारे में सकारात्मक जानकारी फैलाने में योगदान दूंगा।"
     ],
     labels: {
-      appTitle: "कुंभपर्व 2027",
+      appTitle: "सिंहस्थ कुंभपर्व",
       appLocation: "नासिक, महाराष्ट्र",
+      volunteerRegistration: "स्वयंसेवक पंजीकरण",
+      navHome: "मुख्य",
+      navAbout: "हमारे बारे में",
+      navVerticals: "कार्य क्षेत्र",
       footerRights: "© 2027 कुंभपर्व नासिक। सर्वाधिकार सुरक्षित।",
       footerTagline: "आस्था और भक्ति की एक पवित्र यात्रा।",
       dashboardWelcome: "स्वागत है,",
@@ -265,8 +273,12 @@ export const content = {
       "मी डिजिटल प्लॅटफॉर्मद्वारे कुंभमेळ्याबद्दल सकारात्मक माहिती पसरवण्यात योगदान देईन."
     ],
     labels: {
-      appTitle: "कुंभपर्व 2027",
+      appTitle: "सिंहस्थ कुंभपर्व",
       appLocation: "नासिक, महाराष्ट्र",
+      volunteerRegistration: "स्वयंसेवक नोंदणी",
+      navHome: "मुख्य",
+      navAbout: "आमच्याबद्दल",
+      navVerticals: "कार्य क्षेत्र",
       footerRights: "© 2027 कुंभपर्व नासिक. सर्व हक्क राखीव.",
       footerTagline: "श्रद्धा आणि भक्तीचा एक पवित्र प्रवास.",
       dashboardWelcome: "स्वागत आहे,",

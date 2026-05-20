@@ -38,3 +38,19 @@
   color: var(--color-maroon);
   font-weight: bold;
 }
+
+@keyframes infiniteScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll-infinite {
+  display: flex;
+  width: max-content;
+  animation: infiniteScroll 40s linear infinite;
+}
+

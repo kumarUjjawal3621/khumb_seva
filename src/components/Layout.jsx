@@ -7,9 +7,10 @@ const Layout = ({ children }) => {
   const location = useLocation();
 
   const navLinks = [
-    { path: '/', label: 'Home' },
-    { path: '/register', label: 'Register' },
-    { path: '/about', label: 'About Us' }
+    { path: '/', label: t.labels.navHome || 'Home' },
+    { path: '/about', label: t.labels.navAbout || 'About Us' },
+    { path: '/verticals', label: t.labels.navVerticals || 'Verticals' },
+    { path: '/register', label: t.labels.volunteerRegistration || 'Volunteer Registration' }
   ];
 
   return (
@@ -18,14 +19,15 @@ const Layout = ({ children }) => {
       <header className="sticky top-0 z-50 bg-[var(--color-maroon)] border-b border-[var(--color-golden)]/30 shadow-lg">
         <div className="max-w-5xl mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
           <Link to="/" className="flex items-center gap-4 hover:opacity-90 transition-opacity">
-            <div className="bg-[var(--color-vanilla)] p-1 rounded-full shadow-sm border border-[var(--color-golden)]/50">
-              <img src="/logo.jpeg" alt="Kumbhparv Logo" className="w-12 h-12 sm:w-14 sm:h-14 object-contain rounded-full" />
-            </div>
+            <img 
+              src="/logo.jpeg" 
+              alt="Kumbhparv Logo" 
+              className="max-h-12 sm:max-h-14 w-auto h-auto object-contain" 
+            />
             <div>
               <h1 className="font-bold text-[var(--color-golden)] leading-tight text-lg sm:text-xl font-serif">
                 {t.labels.appTitle}
               </h1>
-              <p className="text-xs text-[var(--color-vanilla)]/80 font-medium tracking-wide">{t.labels.appLocation}</p>
             </div>
           </Link>
           
