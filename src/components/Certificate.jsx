@@ -1,49 +1,52 @@
 import React from 'react';
 import { useAppContext } from '../context/AppContext';
 
+const certificateCopy = {
+  EN: {
+    title: 'Nasik Kumbhparv Pledge Certificate',
+    certify: 'This is to certify that',
+    body:
+      'has taken the Nashik Kumbhparv Pledge and remains committed to promoting social harmony, preserving Indian traditions and cultural values, maintaining cleanliness and environmental sustainability, protecting sacred rivers, practicing responsible civic conduct, supporting local communities and artisans, ensuring safety and discipline, and serving pilgrims and society with dedication, compassion, and unity.',
+    cmName: 'Devendra Fadnavis',
+    cmTitle: 'Chief Minister',
+    government: 'Government of Maharashtra',
+  },
+  HI: {
+    title: 'नासिक कुंभपर्व संकल्प प्रमाणपत्र',
+    certify: 'यह प्रमाणित किया जाता है कि',
+    body:
+      'ने नासिक कुंभपर्व संकल्प लिया है और सामाजिक सद्भाव को बढ़ावा देने, भारतीय परंपराओं और सांस्कृतिक मूल्यों के संरक्षण, स्वच्छता और पर्यावरणीय स्थिरता बनाए रखने, पवित्र नदियों की रक्षा करने, जिम्मेदार नागरिक आचरण का पालन करने, स्थानीय समुदायों और कारीगरों का समर्थन करने, सुरक्षा और अनुशासन सुनिश्चित करने तथा श्रद्धालुओं और समाज की सेवा समर्पण, करुणा और एकता के साथ करने के लिए प्रतिबद्ध हैं।',
+    cmName: 'देवेंद्र फडणवीस',
+    cmTitle: 'मुख्यमंत्री',
+    government: 'महाराष्ट्र शासन',
+  },
+  MR: {
+    title: 'नाशिक कुंभपर्व संकल्प प्रमाणपत्र',
+    certify: 'हे प्रमाणित करण्यात येते की',
+    body:
+      'यांनी नाशिक कुंभपर्व संकल्प घेतला आहे आणि सामाजिक सलोखा वाढवणे, भारतीय परंपरा व सांस्कृतिक मूल्यांचे जतन करणे, स्वच्छता व पर्यावरणीय शाश्वतता राखणे, पवित्र नद्यांचे संरक्षण करणे, जबाबदार नागरी आचरण पाळणे, स्थानिक समुदाय व कारागीरांना पाठबळ देणे, सुरक्षा व शिस्त सुनिश्चित करणे आणि भाविक व समाजाची सेवा समर्पण, करुणा आणि एकतेने करण्यासाठी वचनबद्ध आहेत.',
+    cmName: 'देवेंद्र फडणवीस',
+    cmTitle: 'मुख्यमंत्री',
+    government: 'महाराष्ट्र शासन',
+  },
+};
+
 const Certificate = React.forwardRef(({ overrideData, preview = false }, ref) => {
-  const { t, language } = useAppContext();
+  const { language } = useAppContext();
+  const copy = certificateCopy[language] || certificateCopy.EN;
+  const data = overrideData || { name: 'Participant Name' };
+  const nameWords = (data.name || 'Participant Name').trim().split(/\s+/);
+  const displayName =
+    nameWords.length % 2 === 0 &&
+    nameWords.slice(0, nameWords.length / 2).join(' ') === nameWords.slice(nameWords.length / 2).join(' ')
+      ? nameWords.slice(0, nameWords.length / 2).join(' ')
+      : nameWords.join(' ');
+  const isPdf = !preview;
   const isEnglish = language === 'EN';
 
-  const data = overrideData || { name: 'Participant Name' };
-
-  const today = new Date();
-  const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
-  const formattedDate = today.toLocaleDateString(isEnglish ? 'en-US' : 'hi-IN', dateOptions);
-
-  const PRIMARY = '#7B1C1C'; // Maroon
-  const SECONDARY = '#D4AF37'; // Golden
-
-  // isPdf = the fixed off-screen render used for PDF generation
-  const isPdf = !preview;
-
-  // ─── Scale helper ───────────────────────────────────────────────────────────
-  // In PDF mode every size is a plain px number (relative to 900×675 canvas).
-  // In preview mode every size is a clamp() string (scales with viewport).
-  // Usage: sz(pdfPx, previewClamp)
   const sz = (pdfPx, previewClamp) => (isPdf ? `${pdfPx}px` : previewClamp);
-
-  const CornerOrnament = ({ flip }) => (
-    <svg
-      viewBox="0 0 36 36"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      style={{
-        position: 'absolute',
-        width: isPdf ? '38px' : 'clamp(18px, 3.8vw, 40px)',
-        height: isPdf ? '38px' : 'clamp(18px, 3.8vw, 40px)',
-        ...(flip === 'none' && { top: '4%', left: '4%' }),
-        ...(flip === 'x'   && { top: '4%', right: '4%', transform: 'scaleX(-1)' }),
-        ...(flip === 'y'   && { bottom: '4%', left: '4%', transform: 'scaleY(-1)' }),
-        ...(flip === 'xy'  && { bottom: '4%', right: '4%', transform: 'scale(-1,-1)' }),
-        pointerEvents: 'none',
-      }}
-    >
-      <path d="M2 18 L2 2 L18 2" stroke={PRIMARY} strokeWidth="2" strokeLinecap="round" />
-      <circle cx="2" cy="2" r="2.5" fill={PRIMARY} />
-      <circle cx="8" cy="8" r="1.2" fill={SECONDARY} opacity="0.7" />
-    </svg>
-  );
+  const logoSize = sz(165, 'clamp(30px, 16.5%, 118px)');
+  const portraitSize = sz(190, 'clamp(36px, 19%, 136px)');
 
   return (
     <div
@@ -55,238 +58,228 @@ const Certificate = React.forwardRef(({ overrideData, preview = false }, ref) =>
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
-              padding: 'clamp(8px, 2vw, 32px)',
+              padding: 'clamp(6px, 1.6vw, 24px)',
               boxSizing: 'border-box',
             }),
       }}
     >
-      {/* ── Certificate card ── */}
       <div
         ref={ref}
         style={{
           position: 'relative',
           overflow: 'hidden',
-          background: '#ffffff',
+          background: '#fffaf0',
           boxSizing: 'border-box',
+          color: '#3a2015',
           fontFamily: isEnglish
             ? '"Playfair Display", Georgia, serif'
-            : '"Noto Sans Devanagari", Arial, sans-serif',
-          color: '#1F2937',
-
+            : '"Noto Sans Devanagari", "Mangal", Arial, sans-serif',
           ...(isPdf
-            ? { width: '900px', height: '675px', flexShrink: 0 }
+            ? { width: '1000px', height: '707px', flexShrink: 0 }
             : {
                 width: '100%',
                 maxWidth: '860px',
-                aspectRatio: '4 / 3',
+                aspectRatio: '2048 / 1448',
                 borderRadius: 'clamp(6px, 1.2vw, 14px)',
-                boxShadow: '0 4px 16px rgba(0,0,0,0.08), 0 24px 56px rgba(249,115,22,0.10)',
+                boxShadow: '0 10px 30px rgba(58,32,21,0.18)',
               }),
         }}
       >
-        {/* Double border */}
-        <div style={{ position: 'absolute', inset: '2%', border: `2.5px solid ${PRIMARY}`, borderRadius: isPdf ? '10px' : 'clamp(4px, 0.8vw, 10px)', pointerEvents: 'none' }} />
-        <div style={{ position: 'absolute', inset: '3.2%', border: `1px solid ${SECONDARY}`, borderRadius: isPdf ? '7px' : 'clamp(2px, 0.5vw, 7px)', pointerEvents: 'none' }} />
-
-        {/* Corner ornaments */}
-        <CornerOrnament flip="none" />
-        <CornerOrnament flip="x" />
-        <CornerOrnament flip="y" />
-        <CornerOrnament flip="xy" />
-
-        {/* Top accent stripe */}
-        <div style={{
-          position: 'absolute', top: '3%', left: '50%', transform: 'translateX(-50%)',
-          width: '16%', height: '2.5px',
-          background: `linear-gradient(90deg, ${SECONDARY}, ${PRIMARY}, ${SECONDARY})`,
-          borderRadius: '99px', opacity: 0.65,
-        }} />
-
-        {/* Watermark */}
         <img
-          src="/logo.png"
+          src="/images/certificate/frame%20.png"
           alt=""
           aria-hidden="true"
           style={{
-            position: 'absolute', top: '50%', left: '50%',
-            transform: 'translate(-50%, -50%)',
-            width: '38%', height: 'auto', objectFit: 'contain',
-            opacity: 0.04, pointerEvents: 'none', userSelect: 'none',
+            position: 'absolute',
+            inset: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'fill',
+            pointerEvents: 'none',
+            userSelect: 'none',
+            zIndex: 4,
           }}
         />
 
-        {/* ── Main content ── */}
-        <div style={{
-          position: 'relative', zIndex: 10,
-          height: '100%',
-          display: 'flex', flexDirection: 'column',
-          alignItems: 'center', justifyContent: 'space-between',
-          textAlign: 'center',
-          padding: isPdf ? '37px 72px 34px' : '5.5% 8% 5%',
-          boxSizing: 'border-box',
-        }}>
+        <div
+          style={{
+            position: 'absolute',
+            inset: isPdf ? '54px 66px 52px' : '7.6% 6.6% 7.4%',
+            background:
+              'radial-gradient(circle at 50% 40%, rgba(255,255,255,0.96), rgba(255,250,240,0.9) 58%, rgba(246,226,178,0.68))',
+            border: '1px solid rgba(153, 92, 38, 0.28)',
+            zIndex: 1,
+          }}
+        />
 
-          {/* TOP — logo + org name */}
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: isPdf ? '7px' : 'clamp(3px, 0.7%, 8px)' }}>
+        <div
+          style={{
+            position: 'relative',
+            zIndex: 5,
+            height: '100%',
+            padding: isPdf ? '78px 88px 78px' : '8.6% 8.8% 7.4%',
+            boxSizing: 'border-box',
+            display: 'flex',
+            flexDirection: 'column',
+          }}
+        >
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'flex-start',
+              marginBottom: isPdf ? '10px' : '0.8%',
+            }}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', gap: sz(12, 'clamp(5px, 1.5vw, 12px)') }}>
+              <img
+                src="/logo.jpeg"
+                alt="Kumbhparv logo"
+                style={{
+                  width: logoSize,
+                  height: logoSize,
+                  objectFit: 'contain',
+                }}
+              />
+              <img
+                src="/images/certificate/candle.png"
+                alt=""
+                aria-hidden="true"
+                style={{
+                  width: logoSize,
+                  height: logoSize,
+                  objectFit: 'contain',
+                }}
+              />
+            </div>
+
             <img
-              src="/logo.png"
-              alt="Logo"
+              src="/images/certificate/fadnavis.png"
+              alt="Devendra Fadnavis"
               style={{
-                width: isPdf ? '56px' : 'clamp(32px, 7%, 62px)',
-                height: 'auto', objectFit: 'contain',
-                filter: 'drop-shadow(0 2px 5px rgba(249,115,22,0.22))',
+                width: portraitSize,
+                height: portraitSize,
+                objectFit: 'contain',
               }}
             />
-            <p style={{
-              margin: 0,
-              fontSize: sz(12, 'clamp(7px, 1.35%, 13px)'),
-              color: SECONDARY,
-              fontWeight: 600,
-              letterSpacing: '0.14em',
-              textTransform: 'uppercase',
-              lineHeight: 1.3,
-            }}>
-              {t.hero.title}
-            </p>
           </div>
 
-          {/* MIDDLE — cert title + name + body */}
-          <div style={{
-            display: 'flex', flexDirection: 'column',
-            alignItems: 'center',
-            gap: isPdf ? '9px' : 'clamp(4px, 0.9%, 10px)',
-            width: '100%',
-          }}>
-
-            {/* "presented to" */}
-            <p style={{
-              margin: 0,
-              fontSize: sz(9, 'clamp(6px, 1%, 10px)'),
-              color: '#9CA3AF',
-              letterSpacing: '0.2em',
-              textTransform: 'uppercase',
-              fontWeight: 500,
-            }}>
-              {t.labels.certificateSubtitle}
-            </p>
-
-            {/* Certificate title */}
-            <h1 style={{
-              margin: 0,
-              fontSize: sz(32, 'clamp(14px, 3.6%, 36px)'),
-              color: PRIMARY,
-              fontWeight: 800,
-              textTransform: 'uppercase',
-              letterSpacing: '0.06em',
-              lineHeight: 1.1,
-              textShadow: '0 1px 3px rgba(249,115,22,0.18)',
-            }}>
-              {t.labels.certificateTitle}
+          <div
+            style={{
+              flex: 1,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              textAlign: 'center',
+              minHeight: 0,
+            }}
+          >
+            <h1
+              style={{
+                margin: 0,
+                maxWidth: '100%',
+                color: '#7B1C1C',
+                fontSize: isEnglish ? sz(26, 'clamp(7px, 1.65vw, 17px)') : sz(34, 'clamp(9px, 2.25vw, 24px)'),
+                lineHeight: 1.15,
+                fontWeight: 800,
+                whiteSpace: 'nowrap',
+                textTransform: isEnglish ? 'uppercase' : 'none',
+                letterSpacing: isEnglish ? '0.015em' : 0,
+              }}
+            >
+              {copy.title}
             </h1>
 
-            {/* Ornamental divider */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: isPdf ? '10px' : 'clamp(4px, 1%, 12px)', width: '55%' }}>
-              <div style={{ flex: 1, height: '1px', background: `linear-gradient(90deg, transparent, ${SECONDARY}70, transparent)` }} />
-              <div style={{ width: isPdf ? '5px' : 'clamp(3px, 0.5%, 5px)', height: isPdf ? '5px' : 'clamp(3px, 0.5%, 5px)', borderRadius: '50%', background: SECONDARY, flexShrink: 0 }} />
-              <div style={{ flex: 1, height: '1px', background: `linear-gradient(90deg, transparent, ${SECONDARY}70, transparent)` }} />
+            <div
+              style={{
+                width: '42%',
+                height: '2px',
+                margin: isPdf ? '8px 0 10px' : '0.8% 0 1%',
+                background: 'linear-gradient(90deg, transparent, #D4AF37, #7B1C1C, #D4AF37, transparent)',
+              }}
+            />
+
+            <p
+              style={{
+                margin: 0,
+                color: '#6f4a21',
+                fontSize: sz(15, 'clamp(5px, 1.2vw, 12px)'),
+                lineHeight: 1.3,
+                fontWeight: 700,
+              }}
+            >
+              {copy.certify}
+            </p>
+
+            <div
+              style={{
+                minWidth: '48%',
+                maxWidth: '78%',
+                margin: isPdf ? '4px 0 8px' : '0.5% 0 1%',
+                padding: isPdf ? '2px 24px 6px' : '0.2% 3% 0.8%',
+                borderBottom: '2px solid #7B1C1C',
+              }}
+            >
+              <span
+                style={{
+                  display: 'block',
+                  color: '#111827',
+                  fontSize: sz(25, 'clamp(8px, 1.8vw, 18px)'),
+                  lineHeight: 1.15,
+                  fontWeight: 800,
+                  overflowWrap: 'anywhere',
+                }}
+              >
+                {displayName}
+              </span>
             </div>
 
-            {/* Recipient name */}
-            <h2 style={{
-              margin: 0,
-              fontSize: sz(26, 'clamp(13px, 2.8%, 28px)'),
-              fontWeight: 700,
-              color: '#111827',
-              paddingBottom: isPdf ? '6px' : 'clamp(3px, 0.5%, 7px)',
-              borderBottom: `2px solid ${PRIMARY}`,
-              lineHeight: 1.2,
-              maxWidth: '80%',
-            }}>
-              {data.name || 'Participant Name'}
-            </h2>
-
-            {/* Body text */}
-            <p style={{
-              margin: 0,
-              fontSize: sz(10, 'clamp(6px, 1.05%, 10px)'),
-              lineHeight: 1.7,
-              color: '#4B5563',
-              maxWidth: '72%',
-            }}>
-              {t.labels.certificateBody}
+            <p
+              style={{
+                margin: 0,
+                maxWidth: isEnglish ? '84%' : '86%',
+                color: '#3a2015',
+                fontSize: sz(isEnglish ? 15 : 14, isEnglish ? 'clamp(4.5px, 0.92vw, 11px)' : 'clamp(4.5px, 0.88vw, 10px)'),
+                lineHeight: isEnglish ? 1.32 : 1.38,
+                fontWeight: 600,
+              }}
+            >
+              {copy.body}
             </p>
           </div>
 
-          {/* BOTTOM — signatures */}
-          <div style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'flex-end',
-            width: '82%',
-          }}>
-
-            {/* Kumbh Commission */}
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: isPdf ? '4px' : 'clamp(2px, 0.3%, 4px)' }}>
-              <span style={{
-                fontFamily: '"Dancing Script", cursive',
-                fontSize: sz(16, 'clamp(10px, 1.7%, 17px)'),
-                color: PRIMARY,
-                minWidth: isPdf ? '110px' : 'clamp(72px, 11%, 120px)',
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'flex-end',
+              minHeight: sz(88, 'clamp(22px, 8%, 64px)'),
+            }}
+          >
+            <div
+              style={{
+                width: sz(230, 'clamp(112px, 28%, 172px)'),
                 textAlign: 'center',
-                lineHeight: 1.1,
-              }}>
-                Kumbh Commission
-              </span>
-              <div style={{ width: isPdf ? '110px' : 'clamp(72px, 11%, 120px)', height: '1px', background: '#D1D5DB' }} />
-              <span style={{
-                fontFamily: 'Inter, sans-serif',
-                fontSize: sz(8, 'clamp(5px, 0.85%, 8.5px)'),
-                color: '#9CA3AF',
-                textTransform: 'uppercase',
-                letterSpacing: '0.12em',
-                fontWeight: 600,
-              }}>
-                {t.labels.authSignatory}
-              </span>
+                color: '#3a2015',
+              }}
+            >
+              <div
+                style={{
+                  height: sz(22, 'clamp(5px, 2.4%, 16px)'),
+                  borderBottom: '1.5px solid rgba(58,32,21,0.5)',
+                  marginBottom: sz(5, 'clamp(2px, 0.6vw, 5px)'),
+                }}
+              />
+              <div style={{ fontSize: sz(15, 'clamp(5px, 1vw, 11px)'), fontWeight: 800, lineHeight: 1.15 }}>
+                {copy.cmName}
+              </div>
+              <div style={{ fontSize: sz(11, 'clamp(4px, 0.85vw, 9px)'), fontWeight: 700, lineHeight: 1.2 }}>
+                {copy.cmTitle}
+              </div>
+              <div style={{ fontSize: sz(10, 'clamp(4px, 0.78vw, 8px)'), fontWeight: 700, lineHeight: 1.2 }}>
+                {copy.government}
+              </div>
             </div>
-
-            {/* Centre seal */}
-            <div style={{
-              width: isPdf ? '42px' : 'clamp(26px, 4.5%, 44px)',
-              height: isPdf ? '42px' : 'clamp(26px, 4.5%, 44px)',
-              borderRadius: '50%',
-              border: `1.5px solid ${PRIMARY}40`,
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              overflow: 'hidden',
-            }}>
-              <img src="/logo.png" alt="Seal" style={{ width: '62%', height: 'auto', objectFit: 'contain', opacity: 0.5 }} />
-            </div>
-
-            {/* Date */}
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: isPdf ? '4px' : 'clamp(2px, 0.3%, 4px)' }}>
-              <span style={{
-                fontFamily: isEnglish ? '"Playfair Display", serif' : '"Noto Sans Devanagari", sans-serif',
-                fontSize: sz(10, 'clamp(7px, 1.1%, 11px)'),
-                color: '#374151',
-                minWidth: isPdf ? '110px' : 'clamp(72px, 11%, 120px)',
-                textAlign: 'center',
-                lineHeight: 1.2,
-              }}>
-                {formattedDate}
-              </span>
-              <div style={{ width: isPdf ? '110px' : 'clamp(72px, 11%, 120px)', height: '1px', background: '#D1D5DB' }} />
-              <span style={{
-                fontFamily: 'Inter, sans-serif',
-                fontSize: sz(8, 'clamp(5px, 0.85%, 8.5px)'),
-                color: '#9CA3AF',
-                textTransform: 'uppercase',
-                letterSpacing: '0.12em',
-                fontWeight: 600,
-              }}>
-                {t.labels.dateText}
-              </span>
-            </div>
-
           </div>
         </div>
       </div>

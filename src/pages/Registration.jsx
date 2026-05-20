@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useAppContext } from '../context/AppContext';
 import { motion } from 'framer-motion';
 import { User, Mail, Phone, MapPin, CheckCircle2, Save, Download, Share2 } from 'lucide-react';
@@ -28,7 +28,6 @@ const Registration = () => {
   const [isDownloading, setIsDownloading] = useState(false);
   const [isSharing, setIsSharing] = useState(false);
   
-  const certificateRef = useRef(null);
   const printRef = useRef(null);
 
   useEffect(() => {
@@ -104,8 +103,8 @@ const Registration = () => {
     try {
       const canvas = await html2canvas(printRef.current, { scale: 2, useCORS: true, backgroundColor: '#ffffff' });
       const imgData = canvas.toDataURL('image/png');
-      const pdf = new jsPDF({ orientation: 'landscape', unit: 'px', format: [800, 600] });
-      pdf.addImage(imgData, 'PNG', 0, 0, 800, 600);
+      const pdf = new jsPDF({ orientation: 'landscape', unit: 'px', format: [1000, 707] });
+      pdf.addImage(imgData, 'PNG', 0, 0, 1000, 707);
       pdf.save('Kumbh_Parv_Certificate.pdf');
     } catch (error) {
       console.error("Error generating PDF", error);
