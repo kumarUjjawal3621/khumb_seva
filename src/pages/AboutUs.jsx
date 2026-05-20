@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { useAppContext } from '../context/AppContext';
 import { aboutContent } from '../data/aboutContent';
@@ -25,8 +24,31 @@ const AboutUs = () => {
           </h1>
         </div>
 
-        {/* Responsive Table Container */}
-        <div className="overflow-x-auto rounded-xl border border-[var(--color-golden)]/30 shadow-sm">
+        <div className="sm:hidden space-y-3">
+          {members.map((member) => (
+            <div
+              key={member.sno}
+              className="bg-white/80 border border-[var(--color-golden)]/30 rounded-xl p-4 shadow-sm"
+            >
+              <div className="flex items-start gap-3">
+                <div className="w-8 h-8 rounded-full bg-[var(--color-maroon)] text-[var(--color-golden)] flex items-center justify-center text-xs font-bold flex-shrink-0">
+                  {member.sno}
+                </div>
+                <div className="min-w-0 flex-1">
+                  <div className="text-sm font-bold text-[var(--color-maroon)] leading-snug">
+                    {member.role}
+                  </div>
+                  <div className="mt-1 text-sm text-[var(--color-text-main)] leading-relaxed font-medium break-words">
+                    {member.designation}
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Desktop Table Container */}
+        <div className="hidden sm:block overflow-x-auto rounded-xl border border-[var(--color-golden)]/30 shadow-sm">
           <table className="w-full min-w-[600px] text-left border-collapse bg-white/50">
             <thead className="bg-[var(--color-maroon)] border-b-2 border-[var(--color-golden)]">
               <tr>

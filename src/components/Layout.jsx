@@ -31,14 +31,14 @@ const Layout = ({ children }) => {
               {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
 
-            <Link to="/" onClick={() => setIsMenuOpen(false)} className="flex items-center gap-3 sm:gap-4 hover:opacity-90 transition-opacity min-w-0">
+            <Link to="/" onClick={() => setIsMenuOpen(false)} className="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-4 hover:opacity-90 transition-opacity min-w-0 flex-1 sm:flex-none">
               <img 
                 src="/logo.jpeg" 
                 alt="Kumbhparv Logo" 
-                className="max-h-11 sm:max-h-14 w-auto h-auto object-contain flex-shrink-0" 
+                className="max-h-10 sm:max-h-14 w-auto h-auto object-contain flex-shrink-0" 
               />
-              <div className="min-w-0">
-                <h1 className="font-bold text-[var(--color-golden)] leading-tight text-base sm:text-xl font-serif truncate">
+              <div className="min-w-0 max-w-[8.5rem] sm:max-w-none">
+                <h1 className="font-bold text-[var(--color-golden)] leading-tight text-center sm:text-left text-sm sm:text-xl font-serif whitespace-normal">
                   {t.labels.appTitle}
                 </h1>
               </div>

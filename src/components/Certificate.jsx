@@ -31,18 +31,149 @@ const certificateCopy = {
   },
 };
 
+const independentVowels = {
+  a: 'अ',
+  aa: 'आ',
+  i: 'इ',
+  ee: 'ई',
+  ii: 'ई',
+  u: 'उ',
+  oo: 'ऊ',
+  uu: 'ऊ',
+  e: 'ए',
+  ai: 'ऐ',
+  o: 'ओ',
+  au: 'औ',
+};
+
+const vowelMarks = {
+  a: '',
+  aa: 'ा',
+  i: 'ि',
+  ee: 'ी',
+  ii: 'ी',
+  u: 'ु',
+  oo: 'ू',
+  uu: 'ू',
+  e: 'े',
+  ai: 'ै',
+  o: 'ो',
+  au: 'ौ',
+};
+
+const consonants = {
+  ksh: 'क्ष',
+  tra: 'त्र',
+  gya: 'ज्ञ',
+  chh: 'छ',
+  kh: 'ख',
+  gh: 'घ',
+  ch: 'च',
+  jh: 'झ',
+  th: 'थ',
+  dh: 'ध',
+  ph: 'फ',
+  bh: 'भ',
+  sh: 'श',
+  k: 'क',
+  g: 'ग',
+  c: 'क',
+  j: 'ज',
+  t: 'त',
+  d: 'द',
+  n: 'न',
+  p: 'प',
+  f: 'फ',
+  b: 'ब',
+  m: 'म',
+  y: 'य',
+  r: 'र',
+  l: 'ल',
+  v: 'व',
+  w: 'व',
+  s: 'स',
+  h: 'ह',
+};
+
+const commonNameWords = {
+  kumar: 'कुमार',
+  ujjawal: 'उज्जवल',
+  ujwal: 'उज्ज्वल',
+  ujjwal: 'उज्ज्वल',
+};
+
+const hasDevanagari = (value) => /[\u0900-\u097F]/.test(value);
+
+const matchToken = (value, index, dictionary) => {
+  const keys = Object.keys(dictionary).sort((a, b) => b.length - a.length);
+  const key = keys.find((candidate) => value.startsWith(candidate, index));
+  return key ? [key, dictionary[key]] : null;
+};
+
+const transliterateWord = (word) => {
+  if (!word || hasDevanagari(word)) return word;
+
+  const common = commonNameWords[word.toLowerCase()];
+  if (common) return common;
+
+  let result = '';
+  let index = 0;
+  const normalized = word.toLowerCase();
+
+  while (index < normalized.length) {
+    const char = normalized[index];
+
+    if (!/[a-z]/.test(char)) {
+      result += word[index];
+      index += 1;
+      continue;
+    }
+
+    const vowel = matchToken(normalized, index, independentVowels);
+    if (vowel) {
+      result += vowel[1];
+      index += vowel[0].length;
+      continue;
+    }
+
+    const consonant = matchToken(normalized, index, consonants);
+    if (!consonant) {
+      result += word[index];
+      index += 1;
+      continue;
+    }
+
+    index += consonant[0].length;
+    const nextVowel = matchToken(normalized, index, vowelMarks);
+
+    if (nextVowel) {
+      result += consonant[1] + nextVowel[1];
+      index += nextVowel[0].length;
+    } else if (index < normalized.length && /[a-z]/.test(normalized[index])) {
+      result += `${consonant[1]}्`;
+    } else {
+      result += consonant[1];
+    }
+  }
+
+  return result;
+};
+
+const transliterateName = (name) => name.split(/(\s+)/).map(transliterateWord).join('');
+
 const Certificate = React.forwardRef(({ overrideData, preview = false }, ref) => {
   const { language } = useAppContext();
   const copy = certificateCopy[language] || certificateCopy.EN;
   const data = overrideData || { name: 'Participant Name' };
+  const isEnglish = language === 'EN';
   const nameWords = (data.name || 'Participant Name').trim().split(/\s+/);
   const displayName =
     nameWords.length % 2 === 0 &&
     nameWords.slice(0, nameWords.length / 2).join(' ') === nameWords.slice(nameWords.length / 2).join(' ')
       ? nameWords.slice(0, nameWords.length / 2).join(' ')
       : nameWords.join(' ');
+  const certificateName = isEnglish ? displayName : transliterateName(displayName);
   const isPdf = !preview;
-  const isEnglish = language === 'EN';
 
   const sz = (pdfPx, previewClamp) => (isPdf ? `${pdfPx}px` : previewClamp);
   const logoSize = sz(165, 'clamp(30px, 16.5%, 118px)');
@@ -230,7 +361,7 @@ const Certificate = React.forwardRef(({ overrideData, preview = false }, ref) =>
                   overflowWrap: 'anywhere',
                 }}
               >
-                {displayName}
+                {certificateName}
               </span>
             </div>
 
