@@ -19,6 +19,7 @@ export const homeContent = {
       }
     ],
     intro: {
+      sectionLabel: "The Divine Story",
       title: "Introduction",
       paragraphs: [
         "The wait of twelve years is drawing to a close. The Nasik - Trimbakeshwar Simhastha Kumbh Mela is not merely a gathering - it is a cosmic event, a sacred convergence where the heavens, the earth, and the holy Godavari River unite to throw open the doors of liberation.",
@@ -115,6 +116,7 @@ export const homeContent = {
       }
     ],
     intro: {
+        sectionLabel: "अमृतकथा",
       title: "परिचय",
       paragraphs: [
         "बारह वर्षों की प्रतीक्षा का अंत होने वाला है। नासिक-त्र्यंबकेश्वर सिंहस्थ कुंभ मेला केवल एक सामूहिक आयोजन नहीं है — यह एक दुर्लभ खगोलीय संरेखण है, एक पवित्र महासंगम है, जिसमें आकाश, पृथ्वी और गोदावरी माँ एकत्रित होकर मोक्ष के द्वार खोलते हैं।",
@@ -210,6 +212,7 @@ export const homeContent = {
       }
     ],
     intro: {
+      sectionLabel: "अमृतकथा",
       title: "परिचय",
       paragraphs: [
         "आता बारा वर्षांची प्रतीक्षा संपत आली आहे. नासिक-त्र्यंबकेश्वर सिंहस्थ कुंभमेळा हा केवळ एक जत्रा नाही — हे एक विश्वनाट्य आहे, एक दिव्य महासंगम आहे, ज्यामध्ये आकाश, पृथ्वी आणि गोदावरी माऊली एकत्र येऊन मोक्षाचे दार उघडतात.",

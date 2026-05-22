@@ -176,7 +176,9 @@ const Home = () => {
 
       {/* ─── ABOUT SECTION ─── */}
       <section id="about" className="glass-card rounded-3xl p-8 sm:p-12 shadow-sm">
-        <div className="text-[11px] font-bold tracking-[0.2em] text-[var(--color-golden)] uppercase mb-3 drop-shadow-sm">The Divine Story</div>
+        <div className="text-[11px] font-bold tracking-[0.2em] text-[var(--color-golden)] uppercase mb-3 drop-shadow-sm">
+          {content.intro.sectionLabel || 'The Divine Story'}
+        </div>
         <h2 className="text-3xl sm:text-4xl font-bold text-[var(--color-maroon)] mb-5 leading-tight font-serif">{content.intro.title}</h2>
         <div className="space-y-5 text-gray-700 text-lg leading-relaxed mb-8">
           {content.intro.paragraphs.map((para, idx) => (
