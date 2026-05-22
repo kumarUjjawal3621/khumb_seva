@@ -7,11 +7,11 @@ export const homeContent = {
     infoCards: [
       {
         title: "Sacred River",
-        desc: "The Godavari — \"Goda-Mai\" — originates in the Brahmagiri hills of Trimbakeshwar and is revered as the Dakshina Ganga (Ganges of the South), one of India's most holy rivers."
+        desc: "The Godavari - \"Goda-Mai\" - originates in the Brahmagiri hills of Trimbakeshwar and is revered as the Dakshina Ganga (Ganges of the South), one of India's most holy rivers."
       },
       {
         title: "The Amrit Legend",
-        desc: "During the cosmic churning of the ocean (Samudra Manthan), drops of Amrit (immortal nectar) fell at four places on Earth — Nasik being one of them — sanctifying it for eternity."
+        desc: "During the cosmic churning of the ocean (Samudra Manthan), drops of Amrit (immortal nectar) fell at four places on Earth - Nasik being one of them - sanctifying it for eternity."
       },
       {
         title: "Panchavati Connection",
@@ -21,20 +21,20 @@ export const homeContent = {
     intro: {
       title: "Introduction",
       paragraphs: [
-        "The wait of twelve years is drawing to a close. The Nasik–Trimbakeshwar Simhastha Kumbh Mela is not merely a gathering — it is a cosmic event, a sacred convergence where the heavens, the earth, and the holy Godavari River unite to throw open the doors of liberation.",
-        "The Nasik Kumbh, known as Simhastha, is one of the four great Kumbh Melas held in India — alongside Prayagraj, Haridwar, and Ujjain. It stands uniquely apart as the only Kumbh governed by the planet Guru (Jupiter) entering the zodiac sign of Simha (Leo) — a celestial event that graces the earth once every twelve years.",
+        "The wait of twelve years is drawing to a close. The Nasik - Trimbakeshwar Simhastha Kumbh Mela is not merely a gathering - it is a cosmic event, a sacred convergence where the heavens, the earth, and the holy Godavari River unite to throw open the doors of liberation.",
+        "The Nasik Kumbh, known as Simhastha, is one of the four great Kumbh Melas held in India - alongside Prayagraj, Haridwar, and Ujjain. It stands uniquely apart as the only Kumbh governed by the planet Guru (Jupiter) entering the zodiac sign of Simha (Leo) - a celestial event that graces the earth once every twelve years.",
         "What makes the Nasik Simhastha extraordinary beyond all other Kumbhs is its dual sacred nature. The divine energy flows across two distinct power centres separated by 30 km:",
-        "• Ramkund, Panchavati (Nasik) — the sacred ground of the Vaishnava Akhadas, echoing with cries of \"Jai Shri Ram\"",
-        "• Kushavarta, Trimbakeshwar — the ancient seat of the Shaiva Akhadas, where Naga Babas roar \"Har Har Mahadev\"",
-        "During this Parva, the waters of Goda-Mai — the Godavari River, revered as the Dakshina Ganga (Ganges of the South) — are believed to be charged with extraordinary cosmic energy, transformed into Amrit, the nectar of immortality. A single holy dip during the prescribed auspicious Muhurta is said to cleanse the karma of countless lifetimes, grant the merit of a thousand Ashwamedha Yagnas, and liberate seven generations of one's ancestors.",
-        "Nasik also carries the unique spiritual distinction of being the land of Panchavati — where Lord Ram, Sita Mata, and Lakshman resided during their fourteen-year exile — making it a site of both Shaiva and Vaishnava devotion, unlike any other on earth.",
-        "Come, witness Sanatan Dharma come alive on the banks of the Godavari. This is not a journey of miles — it is a journey of the soul."
+        "• Ramkund, Panchavati (Nasik) - the sacred ground of the Vaishnava Akhadas, echoing with cries of \"Jai Shri Ram\"",
+        "• Kushavarta, Trimbakeshwar - the ancient seat of the Shaiva Akhadas, where Naga Babas roar \"Har Har Mahadev\"",
+        "During this Parva, the waters of Goda-Mai - the Godavari River, revered as the Dakshina Ganga (Ganges of the South) - are believed to be charged with extraordinary cosmic energy, transformed into Amrit, the nectar of immortality. A single holy dip during the prescribed auspicious Muhurta is said to cleanse the karma of countless lifetimes, grant the merit of a thousand Ashwamedha Yagnas, and liberate seven generations of one's ancestors.",
+        "Nasik also carries the unique spiritual distinction of being the land of Panchavati - where Lord Ram, Sita Mata, and Lakshman resided during their fourteen-year exile - making it a site of both Shaiva and Vaishnava devotion, unlike any other on earth.",
+        "Come, witness Sanatan Dharma come alive on the banks of the Godavari. This is not a journey of miles - it is a journey of the soul."
       ]
     },
     snanPatrika: {
       sectionLabel: "Snan Patrika 2027",
       title: "Important Bathing Dates",
-      description: "The Shahi Snans are the most sacred bathing processions, led by the Akhadas in full ceremonial grandeur. Bathing on these dates during the prescribed Muhurta is considered supremely auspicious — a once-in-twelve-years opportunity for liberation.",
+      description: "The Shahi Snans are the most sacred bathing processions, led by the Akhadas in full ceremonial grandeur. Bathing on these dates during the prescribed Muhurta is considered supremely auspicious - a once-in-twelve-years opportunity for liberation.",
       dates: [
         {
           date: "10 July 2027",
@@ -81,16 +81,16 @@ export const homeContent = {
       ]
     },
     trikhandiYog: {
-      title: "Trikhandi Yog — The Celestial Science of Liberation",
+      title: "Trikhandi Yog - The Celestial Science of Liberation",
       paragraphs: [
-        "The Trikhandi Yog (त्रिखंडी योग) is the rarest and most sacred astronomical conjunction that governs the Nasik Simhastha Kumbh — a celestial alignment so profound that the ancient sages designated it as the supreme moment of liberation available on this earth.",
-        "The name Trikhandi — meaning three realms or segments — refers to the simultaneous alignment of cosmic forces across the three planes of existence: Swarga (the heavens), Martya (the mortal earth), and Patal (the underworld). When these three realms align through the positions of specific celestial bodies, the veil between the mortal world and the divine becomes its thinnest, and the waters of the Godavari become a living channel of grace.",
+        "The Trikhandi Yog (त्रिखंडी योग) is the rarest and most sacred astronomical conjunction that governs the Nasik Simhastha Kumbh - a celestial alignment so profound that the ancient sages designated it as the supreme moment of liberation available on this earth.",
+        "The name Trikhandi - meaning three realms or segments - refers to the simultaneous alignment of cosmic forces across the three planes of existence: Swarga (the heavens), Martya (the mortal earth), and Patal (the underworld). When these three realms align through the positions of specific celestial bodies, the veil between the mortal world and the divine becomes its thinnest, and the waters of the Godavari become a living channel of grace.",
         "This Yoga is activated by three specific planetary conditions occurring in conjunction:",
-        "1. Guru in Simha Rashi (Jupiter in Leo): Jupiter — the planet of Dharma, wisdom, and spiritual expansion — enters Leo (Simha Rashi). This is the primary cosmic trigger of the entire Nasik Kumbh Mela. In Vedic astronomy (Jyotisha), Jupiter in Leo represents the most auspicious alignment for purification and the attainment of Moksha. It is the breath of Brihaspati himself descending into the waters of the Godavari.",
-        "2. Surya in Simha Rashi — Swagrihi Surya (Sun in Leo): The Sun also occupies Leo, its own zodiac sign — making it a Swagrihi Sun, the sovereign solar force operating in full divine authority. The Sun in its own house radiates peak spiritual energy, sanctifying every drop of the Godavari with the light of a thousand suns. This amplification of solar divinity, combined with Jupiter's wisdom, creates an atmosphere of cosmic grace unparalleled in the annual cycle.",
-        "3. Chandra in Sacred Nakshatra (Moon in Designated Star): The Moon's placement in the specifically designated sacred Nakshatra on the day of each Shahi Snan locks the Trikhandi Yog into its complete and full potency. The Moon governs the tides of cosmic energy, and when it rests in the correct Nakshatra, it creates the precise Muhurta — the sacred window of time — during which bathing bestows complete liberation.",
-        "According to the Nasik Mahatmya in the Skandha Purana, bathing at Kushavarta or Ramkund during the Trikhandi Yog grants the spiritual merit equivalent to a thousand Ashwamedha Yagnas and ten million pilgrimages to all sacred tirthas combined. The Kumbh itself is considered the tirtha of all tirthas — and Nasik's Trikhandi Yog is its crown.",
-        "This is not merely ancient lore. It is a sophisticated system of Vedic astronomy and spiritual science, refined over millennia, that recognises the earth's sacred geography as a receiver of cosmic transmissions — with the Godavari as its most powerful and ancient antenna."
+        "1. Guru in Simha Rashi (Jupiter in Leo): Jupiter - the planet of Dharma, wisdom, and spiritual expansion - enters Leo (Simha Rashi). This is the primary cosmic trigger of the entire Nasik Kumbh Mela. In Vedic astronomy (Jyotisha), Jupiter in Leo represents the most auspicious alignment for purification and the attainment of Moksha. It is the breath of Brihaspati himself descending into the waters of the Godavari.",
+        "2. Surya in Simha Rashi - Swagrihi Surya (Sun in Leo): The Sun also occupies Leo, its own zodiac sign - making it a Swagrihi Sun, the sovereign solar force operating in full divine authority. The Sun in its own house radiates peak spiritual energy, sanctifying every drop of the Godavari with the light of a thousand suns. This amplification of solar divinity, combined with Jupiter's wisdom, creates an atmosphere of cosmic grace unparalleled in the annual cycle.",
+        "3. Chandra in Sacred Nakshatra (Moon in Designated Star): The Moon's placement in the specifically designated sacred Nakshatra on the day of each Shahi Snan locks the Trikhandi Yog into its complete and full potency. The Moon governs the tides of cosmic energy, and when it rests in the correct Nakshatra, it creates the precise Muhurta - the sacred window of time - during which bathing bestows complete liberation.",
+        "According to the Nasik Mahatmya in the Skandha Purana, bathing at Kushavarta or Ramkund during the Trikhandi Yog grants the spiritual merit equivalent to a thousand Ashwamedha Yagnas and ten million pilgrimages to all sacred tirthas combined. The Kumbh itself is considered the tirtha of all tirthas - and Nasik's Trikhandi Yog is its crown.",
+        "This is not merely ancient lore. It is a sophisticated system of Vedic astronomy and spiritual science, refined over millennia, that recognises the earth's sacred geography as a receiver of cosmic transmissions - with the Godavari as its most powerful and ancient antenna."
       ],
       footer: ""
     }
