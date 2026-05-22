@@ -11,7 +11,6 @@ const Layout = ({ children }) => {
   const navLinks = [
     { path: '/', label: t.labels.navHome || 'Home' },
     { path: '/about', label: t.labels.navAbout || 'About Us' },
-    { path: '/verticals', label: t.labels.navVerticals || 'Verticals' },
     { path: '/register', label: t.labels.volunteerRegistration || 'Volunteer Registration' }
   ];
 
