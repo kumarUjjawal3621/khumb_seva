@@ -100,6 +100,8 @@ export const content = {
       certificateSubtitle: "This is to certify that",
       certificateBody: "has taken the Citizens' Pledge for Kumbhparv Nasik 2027 and committed to offering Seva.",
       ageGroup: "Age Group",
+      gender: "Gender",
+      selectGender: "Select Gender",
       area: "Area",
       suggestion: "Any other suggestion",
       missionAgreement: "By submitting, you agree to join the Kumbhparv 2027 digital mission.",
@@ -108,6 +110,7 @@ export const content = {
       suggestionPlaceholder: "Enter your suggestions here...",
       maxWords: "Max 500 words"
     },
+    genderOptions: ["Male", "Female", "Transgender", "Prefer not to disclose"],
     ageGroups: ["Below 18", "18-30", "31-45", "45-60", "60 and above"],
     areas: ["Adgaon", "Adgaon Naka", "Ashoka Road", "Ashwin Nagar", "Aurangabad Road", "Bhabha Nagar", "Bodhale Nagar", "Canada Corner", "CBS", "Chehdi", "Deolali Camp", "DGP Nagar", "Dwarka", "Gangapur Road", "Ganjmal", "Govind Nagar", "Indira Nagar", "Jai Bhavani Road", "Jail Road", "Kalpataru Nagar", "Kamatwade", "Kathe Galli", "Mahatma Nagar", "Mhasrul", "MIDC Ambad", "Nasik Road", "Panchavati", "Parijat Nagar", "Pathardi Phata", "Pawan Nagar", "Peth Road", "Pimpalgaon", "Rajiv Nagar", "Ramdas Swami nagar", "Ramkund", "Ravivar Karanja", "Sambhaji Chowk", "Satpur Colony", "Shalimar", "Shivaji Nagar", "Tagore Nagar", "Tidke Colony", "Tidke Nagar", "Trimbak Road", "Trimurti Chowk", "Untwadi", "Upnagar", "Uttam Nagar", "Wadala Pathardi Road"]
   },
@@ -212,6 +215,8 @@ export const content = {
       certificateSubtitle: "यह प्रमाणित किया जाता है कि",
       certificateBody: "ने कुंभपर्व नासिक 2027 के लिए नागरिक संकल्प लिया है और सेवा करने की प्रतिबद्धता जताई है।",
       ageGroup: "आयु वर्ग",
+      gender: "लिंग",
+      selectGender: "लिंग चुनें",
       area: "क्षेत्र",
       suggestion: "कोई अन्य सुझाव",
       missionAgreement: "सबमिट करके, आप कुंभपर्व 2027 डिजिटल मिशन में शामिल होने के लिए सहमत हैं।",
@@ -220,6 +225,7 @@ export const content = {
       suggestionPlaceholder: "अपने सुझाव यहाँ दर्ज करें...",
       maxWords: "अधिकतम 500 शब्द"
     },
+    genderOptions: ["पुरुष", "महिला", "ट्रांसजेंडर", "बताना नहीं चाहते"],
     ageGroups: ["18 से कम", "18-30", "31-45", "45-60", "60 और उससे अधिक"],
     areas: ["आडगांव", "आडगांव नाका", "अशोका रोड", "अश्विन नगर", "औरंगाबाद रोड", "भाभा नगर", "बोधले नगर", "कॅनडा कॉर्नर", "सी.बी.एस.", "चेहडी", "देवळाली कॅम्प", "डी.जी.पी. नगर", "द्वारका", "गंगापूर रोड", "गांजमाळ", "गोविंद नगर", "इंदिरा नगर", "जय भवानी रोड", "जेल रोड", "कल्पतरू नगर", "कामटवाडे", "काठे गल्ली", "महात्मा नगर", "म्हसरूळ", "एम.आय.डी.सी. अंबड", "नासिक रोड", "पंचवटी", "पारिजात नगर", "पाथर्डी फाटा", "पवन नगर", "पेठ रोड", "पिंपळगाव", "राजिव नगर", "रामदास स्वामी नगर", "रामकुंड", "रविवार कारंजा", "संभाजी चौक", "सातपूर कॉलनी", "शालिमार", "शिवाजी नगर", "टागोर नगर", "तिडके कॉलनी", "तिडके नगर", "त्र्यंबक रोड", "त्रिमूर्ती चौक", "उंटवाडी", "उपनगर", "उत्तम नगर", "वडाळा पाथर्डी रोड"]
   },
@@ -313,7 +319,7 @@ export const content = {
       step2Desc: "कृपया नासिक शहरासाठी १८ पवित्र वचनबद्धता वाचा आणि स्वीकारा.",
       acceptAll: "मी वरील सर्व वचनबद्धता स्वीकारतो.",
       pledgeAcceptError: "पुढे जाण्यासाठी तुम्हाला संकल्प स्वीकारणे आवश्यक आहे.",
-      step3Title: "सेवा नोंदणी",
+      step3Title: "स्वयंसेवक नोंदणी",
       step3Desc: "तुम्ही तुमची सेवा देऊ इच्छित असलेले क्षेत्र निवडा.",
       selectAtLeastOne: "कृपया किमान एक सेवा पर्याय निवडा.",
       submit: "सबमिट करा",
@@ -324,6 +330,8 @@ export const content = {
       certificateSubtitle: "हे प्रमाणित करण्यासाठी आहे की",
       certificateBody: "यांनी कुंभपर्व नासिक २०२७ साठी नागरिक संकल्प घेतला आहे आणि सेवा देण्याची वचनबद्धता दर्शवली आहे।",
       ageGroup: "वयोगट",
+      gender: "लिंग",
+      selectGender: "लिंग निवडा",
       area: "क्षेत्र",
       suggestion: "इतर काही सूचना",
       missionAgreement: "सबमिट करून, आपण कुंभपर्व 2027 डिजिटल मिशनमध्ये सामील होण्यास सहमत आहात।",
@@ -332,6 +340,7 @@ export const content = {
       suggestionPlaceholder: "तुमच्या सूचना येथे प्रविष्ट करा...",
       maxWords: "कमाल 500 शब्द"
     },
+    genderOptions: ["पुरुष", "महिला", "तृतीयपंथी", "सांगू इच्छित नाही"],
     ageGroups: ["18 पेक्षा कमी", "18-30", "31-45", "45-60", "60 आणि त्यापेक्षा जास्त"],
     areas: ["आडगांव", "आडगांव नाका", "अशोका रोड", "अश्विन नगर", "औरंगाबाद रोड", "भाभा नगर", "बोधले नगर", "कॅनडा कॉर्नर", "सी.बी.एस.", "चेहडी", "देवळाली कॅम्प", "डी.जी.पी. नगर", "द्वारका", "गंगापूर रोड", "गांजमाळ", "गोविंद नगर", "इंदिरा नगर", "जय भवानी रोड", "जेल रोड", "कल्पतरू नगर", "कामटवाडे", "काठे गल्ली", "महात्मा नगर", "म्हसरूळ", "एम.आय.डी.सी. अंबड", "नासिक रोड", "पंचवटी", "पारिजात नगर", "पाथर्डी फाटा", "पवन नगर", "पेठ रोड", "पिंपळगाव", "राजिव नगर", "रामदास स्वामी नगर", "रामकुंड", "रविवार कारंजा", "संभाजी चौक", "सातपूर कॉलनी", "शालिमार", "शिवाजी नगर", "टागोर नगर", "तिडके कॉलनी", "तिडके नगर", "त्र्यंबक रोड", "त्रिमूर्ती चौक", "उंटवाडी", "उपनगर", "उत्तम नगर", "वडाळा पाथर्डी रोड"]
   }

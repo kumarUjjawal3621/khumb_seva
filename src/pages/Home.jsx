@@ -250,7 +250,7 @@ const Home = () => {
               <p key={idx}>{para}</p>
             ))}
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             {content.trikhandiYog.paragraphs.slice(3, 6).map((para, idx) => {
               let title = '';
               let desc = para;
@@ -263,8 +263,9 @@ const Home = () => {
                 title = para.substring(0, dashIdx);
                 desc = para.substring(dashIdx + 3).trim();
               }
+              const extraClass = idx === 2 ? 'sm:col-span-2' : '';
               return (
-                <div key={idx} className="bg-white/60 backdrop-blur-sm border border-[var(--color-golden)]/30 p-5 rounded-2xl shadow-sm">
+                <div key={idx} className={`${extraClass} bg-white/60 backdrop-blur-sm border border-[var(--color-golden)]/30 p-5 rounded-2xl shadow-sm`}>
                   {title && <h4 className="text-lg font-bold text-[var(--color-maroon-dark)] mb-2 font-serif">{title}</h4>}
                   <p className="text-sm text-gray-700 leading-relaxed">{desc}</p>
                 </div>

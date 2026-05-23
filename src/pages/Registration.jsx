@@ -16,6 +16,7 @@ const Registration = () => {
     email: '',
     whatsapp: '',
     pincode: '',
+    gender: '',
     ageGroup: '',
     area: '',
     suggestion: '',
@@ -56,6 +57,7 @@ const Registration = () => {
     const newErrors = {};
     if (!formData.name.trim()) newErrors.name = 'Required';
     if (!formData.whatsapp.trim() || formData.whatsapp.length < 10) newErrors.whatsapp = 'Valid number required';
+    if (!formData.gender) newErrors.gender = 'Required';
     if (!formData.pledgeAccepted) newErrors.pledge = 'Pledge Required';
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -281,6 +283,21 @@ const Registration = () => {
                 <option value="">{t.labels.selectArea}</option>
                 {t.areas.map((area, idx) => (
                   <option key={idx} value={area}>{area}</option>
+                ))}
+              </select>
+            </div>
+
+            {/* Gender Dropdown (mandatory, placed last) */}
+            <div>
+              <label className="block text-sm font-semibold text-[var(--color-text-main)] mb-1">{t.labels.gender} *</label>
+              <select
+                value={formData.gender}
+                onChange={(e) => updateFormData({ gender: e.target.value })}
+                className={`block w-full px-4 py-3 rounded-xl focus:ring-2 focus:ring-[var(--color-golden)] focus:border-transparent outline-none transition-all shadow-sm text-[var(--color-text-main)] ${errors.gender ? 'border-red-500 bg-red-50' : 'border border-[var(--color-camel)]/30 bg-white/80'}`}
+              >
+                <option value="">{t.labels.selectGender}</option>
+                {(t.genderOptions || []).map((g, i) => (
+                  <option key={i} value={g}>{g}</option>
                 ))}
               </select>
             </div>

@@ -82,16 +82,14 @@ export const homeContent = {
       ]
     },
     trikhandiYog: {
-      title: "Trikhandi Yog - The Celestial Science of Liberation",
+      title: "Trikhandi Yog — The Celestial Wonder of Simhastha Kumbh",
       paragraphs: [
-        "The Trikhandi Yog (त्रिखंडी योग) is the rarest and most sacred astronomical conjunction that governs the Nasik Simhastha Kumbh - a celestial alignment so profound that the ancient sages designated it as the supreme moment of liberation available on this earth.",
-        "The name Trikhandi - meaning three realms or segments - refers to the simultaneous alignment of cosmic forces across the three planes of existence: Swarga (the heavens), Martya (the mortal earth), and Patal (the underworld). When these three realms align through the positions of specific celestial bodies, the veil between the mortal world and the divine becomes its thinnest, and the waters of the Godavari become a living channel of grace.",
-        "This Yoga is activated by three specific planetary conditions occurring in conjunction:",
-        "1. Guru in Simha Rashi (Jupiter in Leo): Jupiter - the planet of Dharma, wisdom, and spiritual expansion - enters Leo (Simha Rashi). This is the primary cosmic trigger of the entire Nasik Kumbh Mela. In Vedic astronomy (Jyotisha), Jupiter in Leo represents the most auspicious alignment for purification and the attainment of Moksha. It is the breath of Brihaspati himself descending into the waters of the Godavari.",
-        "2. Surya in Simha Rashi - Swagrihi Surya (Sun in Leo): The Sun also occupies Leo, its own zodiac sign - making it a Swagrihi Sun, the sovereign solar force operating in full divine authority. The Sun in its own house radiates peak spiritual energy, sanctifying every drop of the Godavari with the light of a thousand suns. This amplification of solar divinity, combined with Jupiter's wisdom, creates an atmosphere of cosmic grace unparalleled in the annual cycle.",
-        "3. Chandra in Sacred Nakshatra (Moon in Designated Star): The Moon's placement in the specifically designated sacred Nakshatra on the day of each Shahi Snan locks the Trikhandi Yog into its complete and full potency. The Moon governs the tides of cosmic energy, and when it rests in the correct Nakshatra, it creates the precise Muhurta - the sacred window of time - during which bathing bestows complete liberation.",
-        "According to the Nasik Mahatmya in the Skandha Purana, bathing at Kushavarta or Ramkund during the Trikhandi Yog grants the spiritual merit equivalent to a thousand Ashwamedha Yagnas and ten million pilgrimages to all sacred tirthas combined. The Kumbh itself is considered the tirtha of all tirthas - and Nasik's Trikhandi Yog is its crown.",
-        "This is not merely ancient lore. It is a sophisticated system of Vedic astronomy and spiritual science, refined over millennia, that recognises the earth's sacred geography as a receiver of cosmic transmissions - with the Godavari as its most powerful and ancient antenna."
+        "The Celestial Wonder of Trikhand Yog: Nashik-Trimbakeshwar Simhastha Kumbh Mela (2026–2028)",
+        "The upcoming Simhastha Kumbhparva is not just a congregation; it is a timeless celebration of social harmony that has been observed for thousands of years. Bringing together people across all castes, languages, sects, regions, culinary habits, and customs, it transcends all barriers. Rich or poor, man or woman, scholar or unlearned, householder or ascetic - everyone gathers with equal enthusiasm to take a holy dip in the sacred Godavari River. It stands as the world's largest peaceful festival and a living testament to the Indian philosophy of 'Vasudhaiva Kutumbakam' - The World is One Family.",
+        "Why is the 2026–2028 Kumbh Mela unique? The upcoming Nashik-Trimbakeshwar Kumbh Mela is historic and extraordinary due to a rare astronomical and astrological alignment known as the Trikhand Yog. Occurring after a massive gap of 75 years, this rare phenomenon has extended the duration of the Kumbh Mela from its usual 12 or 13 months to an unprecedented 22 months (nearly 2 years).",
+        "Grand Commencement (Dhvajarohan): October 31, 2026, at 12:02 PM, marking Jupiter’s entry into the Leo (Simha) zodiac sign.",
+        "Culmination (Dhvajaavaturan): July 24, 2028, at 3:36 PM, when Jupiter moves to the next zodiac sign.",
+        "The Astrological Science Behind Trikhand Yog: Traditionally, the Simhastha Kumbh Mela begins when Jupiter enters Leo (Simha rashi). While Jupiter usually changes its zodiac sign after 13 months, this time it will turn retrograde (Vakri) twice before 2028. This rare celestial movement delays its exit, extending the holy period to last from October 31, 2026, to July 24, 2028. Just as Prayagraj witnessed a rare 144-year cycle, Nashik is witnessing this 75-year Trikhand Yog, last seen in 1956, giving this Kumbh Mela immense spiritual significance."
       ],
       footer: ""
     }
@@ -179,15 +177,14 @@ export const homeContent = {
       ]
     },
     trikhandiYog: {
-      title: "त्रिखंडी योग — मोक्ष का दुर्लभ खगोलीय द्वार",
+      title: "त्रिखंड योग — नाशिक-त्र्यंबकेश्वर सिंहस्थ कुंभमेला का अलौकिक संयोग",
       paragraphs: [
-        "त्रिखंडी योग वह अत्यंत दुर्लभ और सर्वश्रेष्ठ खगोलीय संयोग है जो नासिक सिंहस्थ कुंभ को संचालित करता है — एक ऐसा दैवीय संरेखण जिसे प्राचीन ऋषियों ने पृथ्वी पर मोक्ष का सर्वोच्च क्षण घोषित किया था।",
-        "त्रिखंडी का अर्थ है — तीन खंडों (तीन लोकों) का एक साथ संरेखण। यह तीन लोक हैं: स्वर्ग (देवलोक), मर्त्य (पृथ्वी लोक), और पाताल (अधोलोक)। जब ये तीनों लोक विशेष ग्रह स्थितियों के माध्यम से एकत्रित होते हैं, तब मर्त्य और दिव्य के बीच का पर्दा सबसे पतला हो जाता है और गोदावरी का जल साक्षात अमृत बन जाता है।",
-        "त्रिखंडी योग के तीन खगोलीय स्तम्भ:",
-        "१. गुरु सिंह राशि में — धर्म, ज्ञान और आध्यात्मिक विस्तार के कारक गुरु (बृहस्पति) का सिंह राशि में प्रवेश — यही नासिक कुंभ का मूल आधार है। वैदिक ज्योतिष में गुरु का सिंह राशि में होना मोक्ष की प्राप्ति के लिए सर्वाधिक शुभ माना गया है।",
-        "२. स्वगृही सूर्य (सूर्य सिंह राशि में) — सूर्य अपनी स्वयं की राशि (सिंह) में विराजमान होते हैं — इसे स्वगृही सूर्य कहते हैं, अर्थात् अपने घर में विराजमान सार्वभौम सूर्य, पूर्ण तेज और दिव्यता के साथ। यह गुरु की शक्ति के साथ मिलकर एक अद्वितीय दिव्य वातावरण उत्पन्न करता है।",
-        "३. चंद्रमा विशिष्ट नक्षत्र में — प्रत्येक शाही स्नान के दिन चंद्रमा की निर्धारित पवित्र नक्षत्र में स्थिति त्रिखंडी योग को पूर्ण करती है। चंद्रमा ब्रह्माण्डीय ऊर्जा का नियामक है, और जब वह सही नक्षत्र में होता है, तब वह उस विशेष मुहूर्त को जन्म देता है जिसमें स्नान करने से मोक्ष सुनिश्चित होता है।",
-        "स्कंद पुराण के नासिक माहात्म्य के अनुसार, त्रिखंडी योग में गोदावरी स्नान करने से सहस्र अश्वमेध यज्ञों का पुण्य और कोटि तीर्थों की यात्रा का फल एक साथ प्राप्त होता है।"
+        "त्रिखंड योग का अलौकिक संयोग: नाशिक-त्र्यंबकेश्वर सिंहस्थ कुंभमेला (२०२६–२०२८)",
+        "हजारों वर्षों से चली आ रही सामाजिक समरसता को सुदृढ़ करने वाला अनूठा उत्सव यानी सिंहस्थ कुंभपर्व है । हिंदू धर्म के सभी जातियों, भाषाओं, पंथों, क्षेत्रों, खान-पान की पद्धतियों और रीति-रिवाजों के लोग, अमीर-गरीब, स्त्री-पुरुष, विद्वान-अज्ञानी, और गृहस्थ-संन्यासी का भेद भूलकर एक साथ आते हैं और पूर्ण उत्साह के साथ गोदावरी नदी में पवित्र स्नान करते हैं । यह दुनिया का सबसे बड़ा शांतिपूर्ण उत्सव है , जो भारतीय दर्शन 'वसुधैव कुटुंबकम्' (संपूर्ण विश्व एक परिवार है) का जीवंत उदाहरण प्रस्तुत करता है ।",
+        "इस बार का कुंभमेला क्यों है अद्वितीय? इस बार नाशिक-त्र्यंबकेश्वर में आयोजित होने वाला कुंभ मेला एक दुर्लभ खगोलीय और ज्योतिषीय संयोग के कारण अद्वितीय है, जिसे 'त्रिखंड योग' कहा जाता है। ७५ वर्षों के लंबे अंतराल के बाद बन रहे इस अद्भुत योग के कारण, सामान्यतः १२ या १३ महीने तक चलने वाला कुंभमेला इस बार २२ महीनों (लगभग २ साल) तक चलेगा। यह मेला ३१ अक्टूबर २०२६ से २४ जुलाई २०२८ तक आयोजित होगा।",
+        "महत्वपूर्ण तिथियां: कुंभपर्व का प्रारंभ (ध्वजारोहण): ३१ अक्टूबर २०२६, दोपहर १२:०२ बजे (जब गुरु का सिंह राशि में प्रवेश होगा)।",
+        "कुंभपर्व का समापन (ध्वजावतरण): २४ जुलाई २०२८, दोपहर ३:३६ बजे (जब गुरु अगली राशि में मार्गस्थ होंगे)।",
+        "क्या है त्रिखंड योग का खगोलीय महत्व? जब गुरु (बृहस्पति) सिंह राशि में प्रवेश करते हैं, तब नाशिक का सिंहस्थ कुंभ मेला शुरू होता है। आमतौर पर गुरु १३ महीने में राशि बदलते हैं, लेकिन २०२८ तक गुरु दो बार वक्री होंगे। इस दुर्लभ चाल के कारण गुरु लंबे समय तक सिंह राशि में रहेंगे, जिससे मेले की अवधि बढ़ गई है। ठीक वैसे ही जैसे प्रयागराज में १४४ वर्षों के बाद महाकुंभ का योग बना था, वैसे ही नाशिक में ७५ वर्षों के बाद यह त्रिखंड योग आया है। इससे पहले ऐसा त्रिखंड कुंभमेला वर्ष १९५६ में आया था, जिसके कारण इस वर्ष के कुंभमेले का धार्मिक और आध्यात्मिक महत्व अत्यंत बढ़ गया है।"
       ],
       footer: ""
     }
@@ -275,15 +272,14 @@ export const homeContent = {
       ]
     },
     trikhandiYog: {
-      title: "त्रिखंडी योग — मोक्षाचा दुर्मिळ खगोलीय संयोग",
+      title: "त्रिखंड योग — नाशिक-त्र्यंबकेश्वर सिंहस्थ कुंभपर्वाचा दुर्मिळ खगोलीय चमत्कार",
       paragraphs: [
-        "त्रिखंडी योग हा तो अत्यंत दुर्मिळ आणि सर्वश्रेष्ठ खगोलीय संयोग आहे जो नासिक सिंहस्थ कुंभाला इतर सर्व तीर्थांपेक्षा श्रेष्ठ ठरवतो — असा दैवी संरेखण ज्याला प्राचीन ऋषींनी पृथ्वीवरील मोक्षाचा सर्वोच्च क्षण म्हणून घोषित केले होते.",
-        "त्रिखंडी म्हणजे तीन लोकांचा एकत्रित संयोग — स्वर्ग (देवलोक), मर्त्य (पृथ्वीलोक) आणि पाताल (अधोलोक). जेव्हा विशिष्ट ग्रहस्थितींमुळे हे तीन लोक एकाच अक्षावर येतात, तेव्हा मर्त्य आणि दैवी यांच्यातील पडदा सर्वात पातळ होतो आणि गोदावरीचे पाणी साक्षात अमृत बनते.",
-        "त्रिखंडी योगाचे तीन खगोलीय स्तंभ:",
-        "१. गुरु सिंह राशीत — धर्म, ज्ञान आणि आध्यात्मिक विकासाचे कारक गुरु (बृहस्पती) यांचा सिंह राशीत प्रवेश — हाच नासिक कुंभाचा मूळ आधार आहे. वैदिक ज्योतिषानुसार सिंह राशीतील गुरु हा मोक्षप्राप्तीसाठी सर्वात शुभ ग्रहयोग मानला जातो.",
-        "२. स्वगृही सूर्य (सूर्य सिंह राशीत) — सूर्य आपल्या स्वतःच्या राशीत (सिंह) विराजमान होतो, ज्याला स्वगृही सूर्य म्हणतात — म्हणजे आपल्या घरात पूर्ण तेजात विराजलेला सार्वभौम सूर्य. गुरूच्या शक्तीसोबत हे एक अतुलनीय दिव्य वातावरण निर्माण करते.",
-        "३. चंद्र विशिष्ट नक्षत्रात — प्रत्येक शाही स्नानाच्या दिवशी चंद्राची निर्धारित पवित्र नक्षत्रातील स्थिती त्रिखंडी योगाला परिपूर्ण करते. चंद्र हा ब्रह्मांडीय ऊर्जेचा नियंत्रक आहे, आणि जेव्हा तो योग्य नक्षत्रात असतो, तेव्हा तो तो विशेष मुहूर्त निर्माण करतो ज्यात स्नान केल्याने मोक्ष निश्चित होतो.",
-        "स्कंद पुराणातील नासिक माहात्म्य नुसार, त्रिखंडी योगात कुशावर्त किंवा रामकुंडावर स्नान केल्याने सहस्र अश्वमेध यज्ञांचे पुण्य आणि कोटी तीर्थांच्या यात्रेचे फळ एकत्र मिळते। कुंभ हा सर्व तीर्थांचा तीर्थराज आहे — आणि नासिकचा त्रिखंडी योग हा त्याचा मुकुट आहे।"
+        "त्रिखंड योगाचा दुर्मिळ खगोलीय चमत्कार: नाशिक-त्र्यंबकेश्वर सिंहस्थ कुंभपर्व (२०२६–२०२८)",
+        "हजारो वर्षांपासून चालत आलेला, सामाजिक समरसता वाढीस लावणारा अपूर्व उत्सव म्हणजे सिंहस्थ कुंभपर्व! हिंदू धर्मातील सर्व जात, भाषा, पंथ, प्रदेश, निरनिराळ्या खानपान पद्धती आणि चालीरिती असणारा; तसेच गरीब-श्रीमंत, स्त्री-पुरुष, विद्वान-अनभिज्ञ, गृहस्थ-संन्यासी असा कोणताही भेद न मानता एक प्रचंड समुदाय एकाच ठिकाणी एकत्र जमतो आणि गोदावरी नदीत पवित्र स्नान करतो. विशेष म्हणजे, यानिमित्ताने जगातील सर्वात मोठा शांततापूर्ण उत्सव जल्लोषात साजरा होतो. 'वसुधैव कुटुंबकम्' (संपूर्ण विश्व एक कुटुंब आहे) या भारतीय तत्त्वज्ञानाचे हे एक जिवंत उदाहरण आहे.",
+        "यंदाचा कुंभमेळा अद्वितीय का आहे? नाशिक-त्र्यंबकेश्वर येथे आयोजित होणारा हा कुंभमेळा 'त्रिखंड योग' या अत्यंत दुर्मिळ ज्योतिषीय संयोगामुळे ऐतिहासिक ठरणार आहे. तब्बल ७५ वर्षांच्या प्रदीर्घ कालखंडानंतर हा अद्भुत योग जुळून येत आहे. सर्वसाधारणपणे कुंभमेळा १२ ते १३ महिन्यांचा असतो, परंतु या त्रिखंड योगाच्या प्रभावामुळे यंदाचा कुंभमेळा १३ महिन्यांऐवजी २२ महिने (अंदाजे २ वर्षे) चालणार आहे. हा सोहळा ३१ ऑक्टोबर २०२६ ते २४ जुलै २०२८ या कालावधीत संपन्न होईल.",
+        "महत्त्वाचे मुहूर्त: कुंभपर्व प्रारंभ (ध्वजारोहण): ३१ ऑक्टोबर २०२६, दुपारी १२ वाजून २ मिनिटांनी (गुरूचा सिंह राशीत प्रवेश).",
+        "कुंभपर्व समाप्ती (ध्वजावतरण): २४ जुलै २०२८, दुपारी ३ वाजून ३६ मिनिटांनी (गुरू पुढील राशीत मार्गस्थ होईल).",
+        "त्रिखंड योगामागील खगोलीय शास्त्र: गुरुने सिंह राशीत प्रवेश केला की नाशिकचे सिंहस्थ कुंभपर्व सुरू होते. यंदा ३१ ऑक्टोबर २०२६ रोजी गुरूचे सिंह राशीत आगमन होईल आणि ध्वजारोहणाने सोहळ्याची सुरुवात होईल. मात्र, यंदा वर्षभराने गुरूचा राशिबदल होणार नाही; कारण २०२८ पर्यंत गुरू दोन वेळा वक्री होणार आहे. त्यामुळे गुरू दीर्घकाळ सिंह राशीतच विराजमान राहील आणि २४ जुलै २०२८ रोजी तो पुढील राशीत मार्गस्थ होईल, ज्या दिवशी ध्वजावतरण केले जाईल. जितके प्रयागराजमध्ये १४४ वर्षांनंतर महाकुंभमेळ्याचा योग जुळला, तितकाच ७५ वर्षांनंतर नाशिकमध्ये हा 'त्रिखंड योग' जुळत आहे, ज्याने या कुंभमेळ्याला अगदी विशेष आध्यात्मिक आणि धार्मिक महत्त्व प्राप्त केले आहे."
       ],
       footer: ""
     }
