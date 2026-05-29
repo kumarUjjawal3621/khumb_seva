@@ -193,15 +193,15 @@ const HeroBanner = ({ title, text, imageUrl, tagline, subtitle, id }) => (
 // Sections: Rama(1), Goda Aarti(13), Gudi Padwa(17), Trimbakeshwar(18)
 // ─────────────────────────────────────────────────────────────────────────────
 const CarouselSection = ({ slides, id, label }) => {
-  const [active, setActive] = useState(0);
+  const [[active, direction], setActive] = useState([0, 1]);
   const timer = useRef(null);
 
-  const go = (idx) => {
-    setActive((idx + slides.length) % slides.length);
+  const go = (idx, nextDirection = 1) => {
+    setActive([(idx + slides.length) % slides.length, nextDirection]);
   };
 
   useEffect(() => {
-    timer.current = setInterval(() => go(active + 1), 6000);
+    timer.current = setInterval(() => go(active + 1, 1), 6000);
     return () => clearInterval(timer.current);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [active]);
@@ -214,13 +214,14 @@ const CarouselSection = ({ slides, id, label }) => {
 
       <div className="relative w-full overflow-hidden rounded-[2rem] shadow-2xl border border-[var(--color-golden)]/20" style={{ minHeight: '540px' }}>
         {/* Background image with transition */}
-        <AnimatePresence mode="wait">
+        <AnimatePresence initial={false} custom={direction}>
           <motion.div
             key={active}
-            initial={{ opacity: 0, scale: 1.04 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.98 }}
-            transition={{ duration: 0.65, ease: 'easeInOut' }}
+            custom={direction}
+            initial={(dir) => ({ x: `${dir * 100}%` })}
+            animate={{ x: '0%' }}
+            exit={(dir) => ({ x: `${dir * -100}%` })}
+            transition={{ duration: 0.75, ease: [0.76, 0, 0.24, 1] }}
             className="absolute inset-0"
           >
             <img src={slide.imageUrl} alt={slide.title} className="absolute inset-y-0 right-0 h-full w-[72%] object-contain object-right" style={{ minHeight: '540px' }} />
@@ -228,41 +229,31 @@ const CarouselSection = ({ slides, id, label }) => {
             <div className="absolute inset-0 bg-gradient-to-r from-[#150202] via-[#2a0808]/80 to-[#1a0505]/20" />
             {/* Bottom vignette for dot-nav contrast */}
             <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black/60 to-transparent" />
+            <div className="relative z-10 flex flex-col justify-center h-full min-h-[540px] px-8 sm:px-14 lg:px-20 py-14 max-w-2xl">
+              <div className="space-y-5">
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[var(--color-vanilla)] leading-tight drop-shadow-2xl">
+                  {slide.title}
+                </h2>
+                <div className="h-[2px] w-16 bg-[var(--color-golden)]" />
+                <p className="text-[var(--color-vanilla)]/90 text-sm sm:text-base lg:text-lg leading-relaxed font-medium border-l-4 border-[var(--color-golden)] pl-5 drop-shadow">
+                  {slide.text}
+                </p>
+              </div>
+            </div>
           </motion.div>
         </AnimatePresence>
 
         {/* Text overlay — directly on the image, left side */}
-        <div className="relative z-10 flex flex-col justify-center h-full min-h-[540px] px-8 sm:px-14 lg:px-20 py-14 max-w-2xl">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={`text-${active}`}
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -16 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="space-y-5"
-            >
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[var(--color-vanilla)] leading-tight drop-shadow-2xl">
-                {slide.title}
-              </h2>
-              <div className="h-[2px] w-16 bg-[var(--color-golden)]" />
-              <p className="text-[var(--color-vanilla)]/90 text-sm sm:text-base lg:text-lg leading-relaxed font-medium border-l-4 border-[var(--color-golden)] pl-5 drop-shadow">
-                {slide.text}
-              </p>
-            </motion.div>
-          </AnimatePresence>
-        </div>
-
         {/* Prev / Next arrows */}
         <button
-          onClick={() => go(active - 1)}
+          onClick={() => go(active - 1, -1)}
           className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-[var(--color-maroon)]/80 border border-[var(--color-golden)]/40 flex items-center justify-center text-[var(--color-golden)] hover:bg-[var(--color-maroon)] transition-colors shadow-lg backdrop-blur-sm"
           aria-label="Previous slide"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" /></svg>
         </button>
         <button
-          onClick={() => go(active + 1)}
+          onClick={() => go(active + 1, 1)}
           className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-[var(--color-maroon)]/80 border border-[var(--color-golden)]/40 flex items-center justify-center text-[var(--color-golden)] hover:bg-[var(--color-maroon)] transition-colors shadow-lg backdrop-blur-sm"
           aria-label="Next slide"
         >
@@ -274,7 +265,7 @@ const CarouselSection = ({ slides, id, label }) => {
           {slides.map((_, i) => (
             <button
               key={i}
-              onClick={() => setActive(i)}
+              onClick={() => go(i, i >= active ? 1 : -1)}
               className={`rounded-full transition-all duration-300 border border-[var(--color-golden)]/50 ${i === active ? 'bg-[var(--color-golden)] w-6 h-2.5' : 'bg-white/30 w-2.5 h-2.5 hover:bg-[var(--color-golden)]/60'}`}
               aria-label={`Go to slide ${i + 1}`}
             />
@@ -387,28 +378,25 @@ const TimelineSection = ({ sections, imgIndices, id, label }) => (
 // UI Family 5 — CULTURAL / EDITORIAL SHOWCASE
 // Sections: Revolutionaries(5), Savarkar(6), Heroines(7), Phalke(12)
 // ─────────────────────────────────────────────────────────────────────────────
-const EditorialCard = ({ title, text, imgUrl, accent, isReversed }) => (
+const EditorialCard = ({ title, text, imgUrl, accent }) => (
   <motion.div
     initial={{ opacity: 0, y: 40 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true, margin: '-60px' }}
     transition={{ duration: 0.6 }}
-    className={`relative rounded-[2rem] overflow-hidden border border-[var(--color-golden)]/25 shadow-xl bg-[var(--color-maroon)] flex flex-col ${isReversed ? 'sm:flex-row-reverse' : 'sm:flex-row'}`}
-    style={{ minHeight: '320px' }}
+    className="relative h-full overflow-hidden rounded-2xl border border-[var(--color-golden)]/25 bg-white shadow-sm transition-shadow hover:shadow-lg"
   >
-    {/* image pane */}
-    <div className="sm:w-[42%] flex-shrink-0 relative overflow-hidden">
-      <img src={imgUrl} alt={title} className="w-full h-full object-cover object-center min-h-[220px]" style={{ minHeight: '220px' }} />
-      <div className={`absolute inset-0 ${isReversed ? 'bg-gradient-to-l' : 'bg-gradient-to-r'} from-[var(--color-maroon)]/70 to-transparent`} />
+    <div className="relative h-56 overflow-hidden">
+      <img src={imgUrl} alt={title} className="absolute inset-0 h-full w-full object-cover object-center" />
+      <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[var(--color-maroon)]/80 to-transparent" />
     </div>
-    {/* text pane */}
-    <div className="flex-1 p-7 sm:p-10 flex flex-col justify-center space-y-4">
+    <div className="p-6 sm:p-7 space-y-4">
       {accent && (
         <span className="text-[var(--color-golden)] text-xs font-bold uppercase tracking-widest font-serif">{accent}</span>
       )}
-      <h3 className="text-2xl sm:text-3xl font-serif font-bold text-[var(--color-vanilla)] leading-tight">{title}</h3>
-      <div className="h-[2px] w-12 bg-[var(--color-golden)]/60" />
-      <p className="text-[var(--color-vanilla)]/80 text-sm sm:text-base leading-relaxed">{text}</p>
+      <h3 className="text-2xl font-serif font-bold text-[var(--color-maroon)] leading-tight">{title}</h3>
+      <div className="h-[2px] w-12 bg-[var(--color-golden)]/70" />
+      <p className="text-[var(--color-text-main)] text-sm sm:text-base leading-relaxed">{text}</p>
     </div>
   </motion.div>
 );
@@ -416,14 +404,13 @@ const EditorialCard = ({ title, text, imgUrl, accent, isReversed }) => (
 const EditorialSection = ({ sections, imgIndices, id, label }) => (
   <section id={id} className="space-y-0">
     <SectionHeader title={label} />
-    <div className="space-y-6">
+    <div className="grid gap-6 md:grid-cols-2">
       {sections.map((sec, i) => (
         <EditorialCard
           key={sec.title}
           title={sec.title}
           text={sec.text}
           imgUrl={sectionImages[imgIndices[i]]}
-          isReversed={i % 2 !== 0}
         />
       ))}
     </div>
