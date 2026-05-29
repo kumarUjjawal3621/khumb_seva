@@ -8,6 +8,8 @@ const Layout = ({ children }) => {
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const hasHeroOverlayHeader = location.pathname === '/' || location.pathname === '/about-nasik';
+  const isHeaderOverlay = hasHeroOverlayHeader && !isScrolled && !isMenuOpen;
 
   const navLinks = [
     { path: '/', label: t.labels.navHome || 'Home' },
@@ -26,10 +28,10 @@ const Layout = ({ children }) => {
   return (
     <div className="min-h-screen flex flex-col bg-[var(--color-vanilla)]">
       {/* Header */}
-      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled || isMenuOpen
-          ? 'bg-[var(--color-maroon)] border-b border-[var(--color-golden)]/30 shadow-lg'
-          : 'bg-transparent border-b border-transparent shadow-none'
+      <header className={`${hasHeroOverlayHeader ? 'fixed left-0 right-0' : 'sticky'} top-0 z-50 transition-all duration-300 ${
+        isHeaderOverlay
+          ? 'bg-transparent border-b border-transparent shadow-none'
+          : 'bg-[var(--color-maroon)] border-b border-[var(--color-golden)]/30 shadow-lg'
       }`}>
         <div className="max-w-5xl mx-auto px-4 py-3 lg:py-4">
           <div className="flex justify-between items-center gap-3">
@@ -37,7 +39,7 @@ const Layout = ({ children }) => {
               type="button"
               onClick={() => setIsMenuOpen((open) => !open)}
               className={`lg:hidden w-10 h-10 rounded-full border border-[var(--color-golden)]/35 text-[var(--color-golden)] flex items-center justify-center transition-colors flex-shrink-0 ${
-                isScrolled || isMenuOpen ? 'hover:bg-[var(--color-maroon-dark)]' : 'bg-black/20 backdrop-blur-sm hover:bg-black/30'
+                isHeaderOverlay ? 'bg-black/20 backdrop-blur-sm hover:bg-black/30' : 'hover:bg-[var(--color-maroon-dark)]'
               }`}
               aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
               aria-expanded={isMenuOpen}
@@ -75,7 +77,7 @@ const Layout = ({ children }) => {
             </nav>
 
             <div className={`flex rounded-full p-1 shadow-inner border border-[var(--color-golden)]/20 flex-shrink-0 ${
-              isScrolled || isMenuOpen ? 'bg-[var(--color-maroon-dark)]' : 'bg-black/25 backdrop-blur-sm'
+              isHeaderOverlay ? 'bg-black/25 backdrop-blur-sm' : 'bg-[var(--color-maroon-dark)]'
             }`}>
               {['EN', 'HI', 'MR'].map((lang) => (
                 <button
