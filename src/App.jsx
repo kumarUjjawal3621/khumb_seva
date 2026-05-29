@@ -5,6 +5,7 @@ import Layout from './components/Layout';
 import Home from './pages/Home';
 import Registration from './pages/Registration';
 import AboutUs from './pages/AboutUs';
+import AboutNasik from './pages/AboutNasik';
 import Verticals from './pages/Verticals';
 import AdminLogin from './pages/AdminLogin';
 import AdminDashboard from './pages/AdminDashboard';
@@ -25,6 +26,7 @@ const MainApp = () => {
         <Route path="/" element={<Layout><Home /></Layout>} />
         <Route path="/register" element={<Layout><Registration /></Layout>} />
         <Route path="/about" element={<Layout><AboutUs /></Layout>} />
+        <Route path="/about-nasik" element={<Layout><AboutNasik /></Layout>} />
         <Route path="/verticals" element={<Layout><Verticals /></Layout>} />
         <Route path="/admin/login" element={<Layout><AdminLogin /></Layout>} />
         <Route path="/admin" element={

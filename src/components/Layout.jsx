@@ -11,6 +11,7 @@ const Layout = ({ children }) => {
   const navLinks = [
     { path: '/', label: t.labels.navHome || 'Home' },
     { path: '/about', label: t.labels.navAbout || 'About Us' },
+    { path: '/about-nasik', label: t.labels.navAboutNasik || 'About Nasik' },
     { path: '/register', label: t.labels.volunteerRegistration || 'Volunteer Registration' }
   ];
 
@@ -96,7 +97,7 @@ const Layout = ({ children }) => {
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 max-w-5xl w-full mx-auto p-4 sm:p-6 lg:p-8">
+      <main className="flex-1 w-full mx-auto">
         {children}
       </main>
 

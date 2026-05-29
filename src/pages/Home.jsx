@@ -75,9 +75,9 @@ const Home = () => {
   };
 
   return (
-    <div className="w-full space-y-12 pb-20">
+    <div className="w-full pb-20">
       {/* ─── HERO ─── */}
-      <div className="relative min-h-[70vh] flex flex-col items-center justify-center text-center px-4 overflow-hidden rounded-3xl mt-4 shadow-lg border border-[var(--color-golden)]/30">
+      <div className="relative min-h-[70vh] flex flex-col items-center justify-center text-center px-4 overflow-hidden shadow-lg border-b border-[var(--color-golden)]/30 mb-12">
         {/* Scrolling Background Banner */}
         <div className="absolute inset-0 overflow-hidden select-none pointer-events-none bg-black/80">
           <div className="animate-scroll-infinite flex h-full items-center">
@@ -146,6 +146,7 @@ const Home = () => {
         </div>
       </div>
 
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
       {/* ─── COUNTDOWN ─── */}
       <div className="glass-card py-8 px-4 rounded-2xl shadow-sm text-center border-t-4 border-[var(--color-maroon)]">
         <div className="text-[10px] sm:text-xs font-bold tracking-[0.2em] uppercase text-[var(--color-maroon-dark)] mb-4">
@@ -274,6 +275,7 @@ const Home = () => {
           </div>
         </div>
       </section>
+      </div>
     </div>
   );
 };

@@ -9,6 +9,8 @@
   --color-golden: #D4AF37;
   --color-golden-light: #F0D060;
   
+  --font-serif: 'Playfair Display', 'Noto Serif Devanagari', Georgia, serif;
+  
   --color-primary: var(--color-maroon);
   --color-secondary: var(--color-camel);
   --color-accent: var(--color-golden);
