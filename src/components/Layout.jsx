@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useAppContext } from '../context/AppContext';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
@@ -7,6 +7,7 @@ const Layout = ({ children }) => {
   const { language, setLanguage, t } = useAppContext();
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const navLinks = [
     { path: '/', label: t.labels.navHome || 'Home' },
@@ -15,16 +16,29 @@ const Layout = ({ children }) => {
     { path: '/register', label: t.labels.volunteerRegistration || 'Volunteer Registration' }
   ];
 
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 24);
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <div className="min-h-screen flex flex-col bg-[var(--color-vanilla)]">
       {/* Header */}
-      <header className="sticky top-0 z-50 bg-[var(--color-maroon)] border-b border-[var(--color-golden)]/30 shadow-lg">
+      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled || isMenuOpen
+          ? 'bg-[var(--color-maroon)] border-b border-[var(--color-golden)]/30 shadow-lg'
+          : 'bg-transparent border-b border-transparent shadow-none'
+      }`}>
         <div className="max-w-5xl mx-auto px-4 py-3 lg:py-4">
           <div className="flex justify-between items-center gap-3">
             <button
               type="button"
               onClick={() => setIsMenuOpen((open) => !open)}
-              className="lg:hidden w-10 h-10 rounded-full border border-[var(--color-golden)]/35 text-[var(--color-golden)] flex items-center justify-center hover:bg-[var(--color-maroon-dark)] transition-colors flex-shrink-0"
+              className={`lg:hidden w-10 h-10 rounded-full border border-[var(--color-golden)]/35 text-[var(--color-golden)] flex items-center justify-center transition-colors flex-shrink-0 ${
+                isScrolled || isMenuOpen ? 'hover:bg-[var(--color-maroon-dark)]' : 'bg-black/20 backdrop-blur-sm hover:bg-black/30'
+              }`}
               aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
               aria-expanded={isMenuOpen}
             >
@@ -60,7 +74,9 @@ const Layout = ({ children }) => {
               ))}
             </nav>
 
-            <div className="flex bg-[var(--color-maroon-dark)] rounded-full p-1 shadow-inner border border-[var(--color-golden)]/20 flex-shrink-0">
+            <div className={`flex rounded-full p-1 shadow-inner border border-[var(--color-golden)]/20 flex-shrink-0 ${
+              isScrolled || isMenuOpen ? 'bg-[var(--color-maroon-dark)]' : 'bg-black/25 backdrop-blur-sm'
+            }`}>
               {['EN', 'HI', 'MR'].map((lang) => (
                 <button
                   key={lang}
@@ -102,20 +118,55 @@ const Layout = ({ children }) => {
       </main>
 
       {/* Footer */}
-      <footer className="py-10 bg-[var(--color-maroon)] border-t border-[var(--color-golden)]/30 mt-10 shadow-[0_-4px_20px_rgba(0,0,0,0.1)]">
-        <div className="max-w-5xl mx-auto px-4">
-          <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-            <div className="text-center lg:text-left">
-              <p className="text-[var(--color-golden)] text-base lg:text-lg font-semibold mb-2">{t.labels.footerRights}</p>
-              <p className="text-[var(--color-vanilla)]/80 text-sm mt-1 font-serif italic">{t.labels.footerTagline}</p>
+      <footer className="bg-[var(--color-camel-light)] border-t border-[var(--color-golden)]/40 mt-10">
+        <div className="max-w-6xl mx-auto px-4 py-10 lg:py-12">
+          <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
+            <div>
+              <Link to="/" className="inline-flex items-center gap-3 hover:opacity-90 transition-opacity">
+                <img
+                  src="/logo.jpeg"
+                  alt="Kumbhparv Logo"
+                  className="h-14 w-auto object-contain"
+                />
+                <span className="font-serif text-xl font-bold leading-tight text-[var(--color-maroon)]">
+                  {t.labels.appTitle}
+                </span>
+              </Link>
+              <p className="mt-4 max-w-md text-sm leading-6 text-[var(--color-maroon)]/75">
+                {t.labels.footerTagline}
+              </p>
             </div>
-            <div className="flex items-center justify-center gap-3 text-[var(--color-vanilla)]/85">
-              <div className="text-[0.72rem] font-semibold uppercase tracking-[0.24em] leading-tight">{t.labels.footerCollab}</div>
-              <img src="/images/eyeviewlogo.png" alt="Eye View Enterprises logo" className="h-10 w-auto object-contain" />
+
+            <div>
+              <h2 className="text-xs font-bold uppercase tracking-[0.22em] text-[var(--color-maroon)]/70">
+                Quick Links
+              </h2>
+              <nav className="mt-4 flex flex-col gap-3">
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.path}
+                    to={link.path}
+                    className="text-sm font-semibold text-[var(--color-maroon)]/75 transition-colors hover:text-[var(--color-maroon)]"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </nav>
+            </div>
+
+            <div>
+              <div className="mt-4 inline-flex max-w-sm flex-col items-start gap-3 rounded-xl border border-[var(--color-golden)]/35 bg-[var(--color-vanilla)]/45 px-4 py-4">
+                <p className="text-[0.68rem] font-bold uppercase tracking-[0.2em] text-[var(--color-maroon)]/60">
+                  In Collaboration With
+                </p>
+                <img src="/images/eyeviewlogo.png" alt="Eye View Enterprises logo" className="h-16 max-w-full object-contain" />
+              </div>
             </div>
           </div>
-          <div className="mt-6 flex justify-center">
-            <Link to="/admin/login" className="px-4 py-1.5 border border-[var(--color-golden)]/40 rounded-full text-[var(--color-golden)]/80 text-xs font-semibold hover:bg-[var(--color-golden)] hover:text-[var(--color-maroon)] transition-all">
+
+          <div className="mt-10 flex flex-col gap-4 border-t border-[var(--color-maroon)]/15 pt-5 sm:flex-row sm:items-center sm:justify-between">
+            <p className="text-xs text-[var(--color-maroon)]/65">{t.labels.footerRights}</p>
+            <Link to="/admin/login" className="text-xs font-semibold text-[var(--color-maroon)]/65 transition-colors hover:text-[var(--color-maroon)]">
               Admin Portal
             </Link>
           </div>

@@ -6,14 +6,14 @@ import { useAppContext } from '../context/AppContext';
 // Section image map  (index = parsed section index from the txt file)
 // ─────────────────────────────────────────────────────────────────────────────
 const sectionImages = [
-  '/images/Illustrations/Nashik olakh.png',            // 0  Identity of Nashik
+  '/images/Illustrations/Nashik olakh.png',            // 0  Identity of Nasik
   '/images/Illustrations/ram.png',                     // 1  Land Sanctified by Lord Rama
-  '/images/Illustrations/Nashikcha Pravas.png',        // 2  Journey from Janasthan to Nashik
-  '/images/Illustrations/Rajgharani.png',              // 3  Dynasties of Nashik
-  '/images/Illustrations/nashik bhartachi rajdhani.png', // 4  Nashik Would Have Been the Capital
+  '/images/Illustrations/Nashikcha Pravas.png',        // 2  Journey from Janasthan to Nasik
+  '/images/Illustrations/Rajgharani.png',              // 3  Dynasties of Nasik
+  '/images/Illustrations/nashik bhartachi rajdhani.png', // 4  Nasik Would Have Been the Capital
   '/images/Illustrations/krantikaranchya chalvali.png', // 5  Revolutionaries' Movements
   '/images/Illustrations/savarkar bandhu.png',         // 6  Savarkar Brothers
-  '/images/Illustrations/ranragini.png',               // 7  Heroines of Nashik
+  '/images/Illustrations/ranragini.png',               // 7  Heroines of Nasik
   '/images/Illustrations/samajik vatchal.png',         // 8  Social Journey
   '/images/Illustrations/Dnyanparampara.png',          // 9  Educational Journey
   '/images/Illustrations/Audyogik va krushi.png',      // 10 Industrial & Agricultural Journey
@@ -21,8 +21,8 @@ const sectionImages = [
   '/images/Illustrations/dadasaheb phalke.png',        // 12 Dadasaheb Phalke
   '/images/Illustrations/Goda aarti.png',              // 13 Tradition of Goda Aarti
   '/images/Illustrations/varsa sthal.png',             // 14 Heritage Sites
-  '/images/Illustrations/jaivavividhata.png',          // 15 Biodiversity of Nashik
-  '/images/Illustrations/khadyasanskruti.png',         // 16 Food Culture of Nashik
+  '/images/Illustrations/jaivavividhata.png',          // 15 Biodiversity of Nasik
+  '/images/Illustrations/khadyasanskruti.png',         // 16 Food Culture of Nasik
   '/images/Illustrations/gudipadwa.png',               // 17 Gudi Padwa and Festivals
   '/images/Illustrations/trambakeshwar 1.png',         // 18 Trimbakeshwar Pilgrimage Site
 ];
@@ -32,14 +32,14 @@ const sectionImages = [
 // ─────────────────────────────────────────────────────────────────────────────
 const localT = {
   EN: {
-    aboutNasik: 'About Nashik',
+    aboutNasik: 'About Nasik',
     aboutNasikSub: 'Explore the city that hosts Kumbhparv',
-    loading: 'Loading About Nashik content…',
-    error: 'Unable to load the About Nashik content.',
+    loading: 'Loading About Nasik content…',
+    error: 'Unable to load the About Nasik content.',
     carouselLabel: 'Sacred Stories',
     accordionLabel: 'History & Legacy',
     timelineLabel: 'Civilisational Journey',
-    editorialLabel: 'Icons of Nashik',
+    editorialLabel: 'Icons of Nasik',
     splitLabel: 'Land & Nature',
   },
   HI: {
@@ -72,7 +72,7 @@ const sideNavDefs = {
     { id: 'carousel',   label: 'Sacred Stories' },
     { id: 'accordion',  label: 'History & Legacy' },
     { id: 'timeline',   label: 'Civilisational Journey' },
-    { id: 'editorial',  label: 'Icons of Nashik' },
+    { id: 'editorial',  label: 'Icons of Nasik' },
     { id: 'split',      label: 'Land & Nature' },
   ],
   HI: [
@@ -119,20 +119,20 @@ const parseAboutText = (rawText, language) => {
 // Shared Section Header
 // ─────────────────────────────────────────────────────────────────────────────
 const SectionHeader = ({ label, title, light = false }) => (
-  <div className="text-center space-y-3 mb-12">
+  <div className="max-w-3xl space-y-4 mb-12">
     {label && (
-      <span className={`inline-block px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest border font-serif
+      <span className={`inline-block text-xs font-bold uppercase tracking-widest font-serif
         ${light
-          ? 'bg-[var(--color-vanilla)]/15 text-[var(--color-vanilla)] border-[var(--color-vanilla)]/30'
-          : 'bg-[var(--color-golden)]/10 text-[var(--color-maroon)] border-[var(--color-golden)]/25'}`}>
+          ? 'text-[var(--color-vanilla)]/75'
+          : 'text-[var(--color-golden)]'}`}>
         {label}
       </span>
     )}
-    <h2 className={`text-3xl sm:text-4xl lg:text-5xl font-serif font-bold leading-tight
+    <h2 className={`text-4xl sm:text-5xl lg:text-6xl font-serif font-bold leading-[0.98]
       ${light ? 'text-[var(--color-vanilla)]' : 'text-[var(--color-maroon)]'}`}>
       {title}
     </h2>
-    <div className={`h-[2px] w-20 mx-auto ${light ? 'bg-[var(--color-golden)]/60' : 'bg-[var(--color-golden)]'}`} />
+    <div className={`h-px w-32 ${light ? 'bg-[var(--color-golden)]/60' : 'bg-[var(--color-golden)]/70'}`} />
   </div>
 );
 
@@ -140,19 +140,8 @@ const SectionHeader = ({ label, title, light = false }) => (
 // Temple Divider
 // ─────────────────────────────────────────────────────────────────────────────
 const TempleDivider = () => (
-  <div className="flex items-center justify-center gap-5 my-10">
-    <div className="hidden sm:block h-px w-28 bg-gradient-to-r from-transparent to-[var(--color-golden)]/60" />
-    <div className="flex items-center gap-2 text-[var(--color-golden)]">
-      <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-golden)]" />
-      <span className="w-2.5 h-2.5 rotate-45 border border-[var(--color-golden)] bg-[var(--color-golden)]/30" />
-      <svg className="w-10 h-10 opacity-80" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinejoin="round">
-        <path d="M50 12 L60 38 L54 38 L66 72 L34 72 L46 38 L40 38 Z" />
-        <circle cx="50" cy="8" r="2.5" fill="currentColor" />
-      </svg>
-      <span className="w-2.5 h-2.5 rotate-45 border border-[var(--color-golden)] bg-[var(--color-golden)]/30" />
-      <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-golden)]" />
-    </div>
-    <div className="hidden sm:block h-px w-28 bg-gradient-to-l from-transparent to-[var(--color-golden)]/60" />
+  <div className="my-16">
+    <div className="h-px w-full bg-gradient-to-r from-transparent via-[var(--color-golden)]/45 to-transparent" />
   </div>
 );
 
@@ -160,7 +149,7 @@ const TempleDivider = () => (
 // UI Family 1 — HERO / IMMERSIVE BANNER
 // ─────────────────────────────────────────────────────────────────────────────
 const HeroBanner = ({ title, text, imageUrl, tagline, subtitle, id }) => (
-  <section id={id} className="relative w-full h-[70vh] sm:h-[88vh] overflow-hidden shadow-2xl border-b border-[var(--color-golden)]/25 flex items-end">
+  <section id={id} className="relative w-full min-h-screen overflow-hidden shadow-2xl border-b border-[var(--color-golden)]/25 flex items-end">
     <div className="absolute inset-0 z-0">
       <img src={imageUrl} alt={title} className="w-full h-full object-cover object-center scale-105" />
       <div className="absolute inset-0 bg-gradient-to-t from-[#1a0505] via-[#5C1515]/55 to-black/20 z-10" />
@@ -181,7 +170,7 @@ const HeroBanner = ({ title, text, imageUrl, tagline, subtitle, id }) => (
       <h1 className="text-4xl sm:text-6xl lg:text-7xl font-serif font-bold text-[var(--color-vanilla)] leading-tight drop-shadow-2xl">
         {title}
       </h1>
-      <p className="text-[var(--color-vanilla)]/85 text-sm sm:text-base lg:text-lg leading-relaxed max-w-3xl drop-shadow font-medium">
+      <p className="text-[var(--color-vanilla)]/88 text-base sm:text-lg lg:text-xl leading-8 max-w-3xl drop-shadow font-medium">
         {text}
       </p>
     </div>
@@ -235,7 +224,7 @@ const CarouselSection = ({ slides, id, label }) => {
                   {slide.title}
                 </h2>
                 <div className="h-[2px] w-16 bg-[var(--color-golden)]" />
-                <p className="text-[var(--color-vanilla)]/90 text-sm sm:text-base lg:text-lg leading-relaxed font-medium border-l-4 border-[var(--color-golden)] pl-5 drop-shadow">
+                <p className="text-[var(--color-vanilla)]/90 text-base lg:text-lg leading-8 font-medium border-l-4 border-[var(--color-golden)] pl-5 drop-shadow">
                   {slide.text}
                 </p>
               </div>
@@ -281,25 +270,25 @@ const CarouselSection = ({ slides, id, label }) => {
 // Sections: Janasthan(2), Dynasties(3), Capital(4)
 // ─────────────────────────────────────────────────────────────────────────────
 const AccordionItem = ({ title, text, imgUrl, isOpen, onToggle }) => (
-  <div className={`border rounded-2xl overflow-hidden transition-all duration-300 ${isOpen ? 'border-[var(--color-golden)]/50 shadow-md' : 'border-[var(--color-golden)]/20 shadow-sm'} bg-white`}>
+  <div className="border-b border-[var(--color-golden)]/25 overflow-hidden transition-all duration-300">
     <button
       onClick={onToggle}
-      className="w-full flex items-center justify-between px-6 py-5 text-left hover:bg-[var(--color-vanilla)]/60 transition-colors"
+      className="w-full flex items-center justify-between py-6 text-left"
     >
-      <span className="font-serif font-bold text-lg sm:text-xl text-[var(--color-maroon)] pr-4">{title}</span>
-      <span className={`flex-shrink-0 w-8 h-8 rounded-full border-2 border-[var(--color-golden)]/50 flex items-center justify-center text-[var(--color-golden)] transition-transform duration-300 ${isOpen ? 'rotate-180 bg-[var(--color-golden)]/10' : ''}`}>
+      <span className="font-serif font-bold text-2xl sm:text-3xl text-[var(--color-maroon)] leading-tight pr-4">{title}</span>
+      <span className={`flex-shrink-0 w-8 h-8 rounded-full border border-[var(--color-golden)]/50 flex items-center justify-center text-[var(--color-golden)] transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>
         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
       </span>
     </button>
     <div className={`overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? 'max-h-[600px]' : 'max-h-0'}`}>
-      <div className="border-t border-[var(--color-golden)]/15 flex flex-col sm:flex-row gap-0">
+      <div className="flex flex-col sm:flex-row gap-8 pb-8">
         {imgUrl && (
-          <div className="sm:w-56 flex-shrink-0 overflow-hidden">
-            <img src={imgUrl} alt={title} className="w-full h-48 sm:h-full object-cover" />
+          <div className="sm:w-64 flex-shrink-0 overflow-hidden">
+            <img src={imgUrl} alt={title} className="w-full h-52 sm:h-full object-cover rounded-xl" />
           </div>
         )}
-        <div className="flex-1 px-6 py-6">
-          <p className="text-[var(--color-text-main)] text-sm sm:text-base leading-relaxed font-medium">{text}</p>
+        <div className="flex-1">
+          <p className="text-[var(--color-text-main)] text-base sm:text-lg leading-8 font-medium">{text}</p>
         </div>
       </div>
     </div>
@@ -311,7 +300,7 @@ const AccordionSection = ({ sections, imgIndices, id, label }) => {
   return (
     <section id={id} className="space-y-0">
       <SectionHeader title={label} />
-      <div className="space-y-4 max-w-4xl mx-auto">
+      <div className="max-w-5xl">
         {sections.map((sec, i) => (
           <AccordionItem
             key={sec.title}
@@ -334,39 +323,70 @@ const AccordionSection = ({ sections, imgIndices, id, label }) => {
 const TimelineSection = ({ sections, imgIndices, id, label }) => (
   <section id={id} className="space-y-0">
     <SectionHeader title={label} />
-    <div className="relative max-w-6xl mx-auto">
-      {/* vertical line */}
-      <div className="absolute left-7 sm:left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-[var(--color-golden)]/10 via-[var(--color-golden)]/50 to-[var(--color-golden)]/10 -translate-x-1/2" />
-      <div className="space-y-10">
+    <div className="relative max-w-7xl mx-auto">
+      <div className="absolute left-7 sm:left-1/2 top-0 bottom-0 w-[2px] bg-[var(--color-golden)]/15 -translate-x-1/2" />
+      <div className="space-y-16">
         {sections.map((sec, idx) => {
           const isEven = idx % 2 === 0;
-          return (
+          const imagePanel = (
             <motion.div
-              key={sec.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-80px' }}
-              transition={{ duration: 0.5, delay: idx * 0.08 }}
-              className={`relative flex flex-col sm:flex-row items-start sm:items-center gap-6 ${isEven ? 'sm:flex-row' : 'sm:flex-row-reverse'}`}
+              initial={{ opacity: 0, x: isEven ? -36 : 36 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: '-120px' }}
+              transition={{ duration: 0.55, delay: idx === 0 ? 0.1 : 0.9 }}
+              className="ml-14 sm:ml-0 sm:w-[calc(50%-2.25rem)] overflow-hidden"
             >
-              {/* dot */}
-              <div className="absolute left-7 sm:left-1/2 -translate-x-1/2 w-7 h-7 rounded-full bg-[var(--color-vanilla)] border-[3px] border-[var(--color-maroon)] z-10 shadow-md flex items-center justify-center">
-                <span className="w-2 h-2 rounded-full bg-[var(--color-golden)]" />
-              </div>
-              {/* content card */}
-              <div className={`ml-14 sm:ml-0 sm:w-[calc(50%-2rem)] bg-white border border-[var(--color-golden)]/20 rounded-2xl shadow-sm hover:shadow-md transition-shadow overflow-hidden`}>
-                <div className="relative h-44 overflow-hidden">
-                  <img src={sectionImages[imgIndices[idx]]} alt={sec.title} className="w-full h-full object-cover" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-maroon)]/80 via-transparent to-transparent" />
-                  <div className="absolute bottom-3 left-4 right-4">
-                    <h3 className="font-serif font-bold text-base sm:text-lg text-white drop-shadow">{sec.title}</h3>
-                  </div>
-                </div>
-                <div className="px-5 py-4">
-                  <p className="text-[var(--color-text-main)] text-sm leading-relaxed">{sec.text}</p>
-                </div>
-              </div>
+              <img src={sectionImages[imgIndices[idx]]} alt={sec.title} className="h-64 w-full object-cover object-center rounded-xl" />
             </motion.div>
+          );
+          const textPanel = (
+            <motion.div
+              initial={{ opacity: 0, x: isEven ? 36 : -36 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: '-120px' }}
+              transition={{ duration: 0.55, delay: idx === 0 ? 0.22 : 1.02 }}
+              className="ml-14 sm:ml-0 sm:w-[calc(50%-2.25rem)] px-1 sm:px-2 py-4"
+            >
+              <h3 className="font-serif font-bold text-2xl text-[var(--color-maroon)] leading-tight">{sec.title}</h3>
+              <div className="my-4 h-[2px] w-14 bg-[var(--color-golden)]/70" />
+              <p className="text-[var(--color-text-main)] text-base sm:text-lg leading-8">{sec.text}</p>
+            </motion.div>
+          );
+          return (
+            <div
+              key={sec.title}
+              className="relative flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-[4.5rem]"
+            >
+              {idx > 0 && (
+                <motion.div
+                  initial={{ scaleY: 0 }}
+                  whileInView={{ scaleY: 1 }}
+                  viewport={{ once: true, margin: '-120px' }}
+                  transition={{ duration: 0.75, ease: 'easeInOut' }}
+                  className="absolute left-7 sm:left-1/2 bottom-1/2 h-[calc(100%+4rem)] w-[2px] origin-top bg-[var(--color-golden)] -translate-x-1/2"
+                />
+              )}
+              <motion.div
+                initial={{ scale: 0, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                viewport={{ once: true, margin: '-120px' }}
+                transition={{ duration: 0.35, delay: idx === 0 ? 0.05 : 0.78 }}
+                className="absolute left-7 sm:left-1/2 -translate-x-1/2 w-7 h-7 rounded-full bg-[var(--color-vanilla)] border-[3px] border-[var(--color-maroon)] z-10 shadow-md flex items-center justify-center"
+              >
+                <span className="w-2 h-2 rounded-full bg-[var(--color-golden)]" />
+              </motion.div>
+              {isEven ? (
+                <>
+                  {imagePanel}
+                  {textPanel}
+                </>
+              ) : (
+                <>
+                  {textPanel}
+                  {imagePanel}
+                </>
+              )}
+            </div>
           );
         })}
       </div>
@@ -386,9 +406,8 @@ const EditorialCard = ({ title, text, imgUrl, accent }) => (
     transition={{ duration: 0.6 }}
     className="relative h-full overflow-hidden rounded-2xl border border-[var(--color-golden)]/25 bg-white shadow-sm transition-shadow hover:shadow-lg"
   >
-    <div className="relative h-56 overflow-hidden">
-      <img src={imgUrl} alt={title} className="absolute inset-0 h-full w-full object-cover object-center" />
-      <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[var(--color-maroon)]/80 to-transparent" />
+    <div className="relative h-72 overflow-hidden bg-[var(--color-vanilla)]/50">
+      <img src={imgUrl} alt={title} className="absolute inset-0 h-full w-full object-contain object-center p-3" />
     </div>
     <div className="p-6 sm:p-7 space-y-4">
       {accent && (
@@ -422,20 +441,20 @@ const EditorialSection = ({ sections, imgIndices, id, label }) => (
 // Sections: Heritage(14), Biodiversity(15), Food Culture(16)
 // ─────────────────────────────────────────────────────────────────────────────
 const SplitStory = ({ title, text, imgUrl, imgIndex, isReversed, id }) => (
-  <div id={id} className={`flex flex-col ${isReversed ? 'sm:flex-row-reverse' : 'sm:flex-row'} gap-0 items-stretch rounded-[2rem] overflow-hidden border border-[var(--color-golden)]/20 shadow-lg bg-white`}>
+  <div id={id} className={`flex flex-col ${isReversed ? 'sm:flex-row-reverse' : 'sm:flex-row'} gap-8 sm:gap-12 items-center border-t border-[var(--color-golden)]/25 pt-10`}>
     {/* image */}
-    <div className="sm:w-[48%] flex-shrink-0 relative overflow-hidden min-h-[260px]">
+    <div className="sm:w-[45%] flex-shrink-0 relative overflow-hidden min-h-[300px] rounded-xl">
       <img src={imgUrl} alt={title} className="w-full h-full object-cover absolute inset-0" />
       <div className={`absolute inset-0 ${isReversed ? 'bg-gradient-to-l' : 'bg-gradient-to-r'} from-[var(--color-maroon)]/10 to-transparent`} />
     </div>
     {/* text */}
-    <div className="flex-1 px-8 sm:px-12 py-10 flex flex-col justify-center space-y-5">
+    <div className="flex-1 flex flex-col justify-center space-y-5">
       <div className="flex items-center gap-3">
         <span className="h-[2px] w-8 bg-[var(--color-golden)]" />
-        <span className="text-[var(--color-golden)] text-xs font-bold uppercase tracking-widest font-serif">Nashik</span>
+        <span className="text-[var(--color-golden)] text-xs font-bold uppercase tracking-widest font-serif">Nasik</span>
       </div>
-      <h3 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-[var(--color-maroon)] leading-tight">{title}</h3>
-      <p className="text-[var(--color-text-main)] text-sm sm:text-base lg:text-lg leading-relaxed border-l-2 border-[var(--color-golden)]/40 pl-4 py-1 italic">{text}</p>
+      <h3 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[var(--color-maroon)] leading-tight">{title}</h3>
+      <p className="text-[var(--color-text-main)] text-base lg:text-lg leading-8 border-l-2 border-[var(--color-golden)]/40 pl-5 py-1 italic">{text}</p>
     </div>
   </div>
 );
@@ -443,7 +462,7 @@ const SplitStory = ({ title, text, imgUrl, imgIndex, isReversed, id }) => (
 const SplitSection = ({ sections, imgIndices, id, label }) => (
   <section id={id} className="space-y-0">
     <SectionHeader title={label} />
-    <div className="space-y-8">
+    <div className="space-y-14">
       {sections.map((sec, i) => (
         <SplitStory
           key={sec.title}
@@ -490,10 +509,8 @@ const AboutNasik = () => {
   const [sections, setSections] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-  const [activeSection, setActiveSection] = useState('identity');
 
   const t = localT[language] || localT.EN;
-  const sideNavItems = sideNavDefs[language] || sideNavDefs.EN;
 
   useEffect(() => {
     setLoading(true);
@@ -504,18 +521,6 @@ const AboutNasik = () => {
       .catch(() => setError(t.error))
       .finally(() => setLoading(false));
   }, [language, t.error]);
-
-  // Intersection observer for side-nav highlighting
-  useEffect(() => {
-    if (loading || !sections.length) return;
-    const ids = ['identity', 'carousel', 'accordion', 'timeline', 'editorial', 'split'];
-    const observer = new IntersectionObserver(
-      entries => entries.forEach(e => { if (e.isIntersecting) setActiveSection(e.target.id); }),
-      { threshold: 0.15, rootMargin: '-10% 0px -50% 0px' }
-    );
-    ids.forEach(id => { const el = document.getElementById(id); if (el) observer.observe(el); });
-    return () => ids.forEach(id => { const el = document.getElementById(id); if (el) observer.unobserve(el); });
-  }, [loading, sections]);
 
   const hasData = sections.length >= 19;
 
@@ -545,8 +550,6 @@ const AboutNasik = () => {
 
   return (
     <div className="relative w-full">
-      <SideNav items={sideNavItems} activeSection={activeSection} />
-
       {loading ? (
         <div className="max-w-7xl mx-auto py-8 sm:py-14 px-4 lg:px-6">
           <div className="rounded-3xl border border-[var(--color-golden)]/20 bg-white/90 p-20 text-center shadow-sm">
@@ -563,7 +566,7 @@ const AboutNasik = () => {
       ) : hasData ? (
         <div className="space-y-4 w-full">
 
-          {/* ── 1. HERO BANNER — Identity of Nashik (index 0) ──────────── */}
+          {/* ── 1. HERO BANNER — Identity of Nasik (index 0) ──────────── */}
           <HeroBanner
             id="identity"
             title={sections[0].title}

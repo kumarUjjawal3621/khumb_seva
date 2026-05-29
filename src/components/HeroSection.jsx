@@ -22,7 +22,7 @@ const HeroSection = () => {
   const hc = homeContent[language] || homeContent['EN'];
 
   return (
-    <div className="relative min-h-[50vh] flex flex-col items-center justify-center text-center px-4 overflow-hidden rounded-3xl mt-4 shadow-lg border border-[var(--color-golden)]/30">
+    <div className="relative min-h-screen flex flex-col items-center justify-center text-center px-4 overflow-hidden shadow-lg border-b border-[var(--color-golden)]/30">
       {/* Scrolling Background Banner */}
       <div className="absolute inset-0 overflow-hidden select-none pointer-events-none bg-black/80">
         <div className="animate-scroll-infinite flex h-full items-center">
@@ -31,7 +31,7 @@ const HeroSection = () => {
               key={idx}
               src={src}
               alt=""
-              className="h-[85%] w-auto object-contain flex-shrink-0 mx-2 opacity-90 transition-all duration-300"
+              className="h-full w-auto object-cover flex-shrink-0 mx-2 opacity-90 transition-all duration-300"
             />
           ))}
         </div>

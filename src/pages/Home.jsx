@@ -77,7 +77,7 @@ const Home = () => {
   return (
     <div className="w-full pb-20">
       {/* ─── HERO ─── */}
-      <div className="relative min-h-[70vh] flex flex-col items-center justify-center text-center px-4 overflow-hidden shadow-lg border-b border-[var(--color-golden)]/30 mb-12">
+      <div className="relative min-h-screen flex flex-col items-center justify-center text-center px-4 overflow-hidden shadow-lg border-b border-[var(--color-golden)]/30 mb-12">
         {/* Scrolling Background Banner */}
         <div className="absolute inset-0 overflow-hidden select-none pointer-events-none bg-black/80">
           <div className="animate-scroll-infinite flex h-full items-center">
@@ -86,7 +86,7 @@ const Home = () => {
                 key={idx}
                 src={src}
                 alt=""
-                className="h-[85%] w-auto object-contain flex-shrink-0 mx-2 opacity-90 transition-all duration-300"
+                className="h-full w-auto object-cover flex-shrink-0 mx-2 opacity-90 transition-all duration-300"
               />
             ))}
           </div>
