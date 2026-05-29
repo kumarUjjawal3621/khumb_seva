@@ -101,10 +101,18 @@ const Layout = ({ children }) => {
       </main>
 
       {/* Footer */}
-      <footer className="py-10 text-center bg-[var(--color-maroon)] border-t border-[var(--color-golden)]/30 mt-10 shadow-[0_-4px_20px_rgba(0,0,0,0.1)]">
+      <footer className="py-10 bg-[var(--color-maroon)] border-t border-[var(--color-golden)]/30 mt-10 shadow-[0_-4px_20px_rgba(0,0,0,0.1)]">
         <div className="max-w-5xl mx-auto px-4">
-          <p className="text-[var(--color-golden)] text-sm font-semibold mb-2">{t.labels.footerRights}</p>
-          <p className="text-[var(--color-vanilla)]/70 text-xs mt-1 font-serif italic">{t.labels.footerTagline}</p>
+          <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+            <div className="text-center lg:text-left">
+              <p className="text-[var(--color-golden)] text-base lg:text-lg font-semibold mb-2">{t.labels.footerRights}</p>
+              <p className="text-[var(--color-vanilla)]/80 text-sm mt-1 font-serif italic">{t.labels.footerTagline}</p>
+            </div>
+            <div className="flex items-center justify-center gap-3 text-[var(--color-vanilla)]/85">
+              <div className="text-[0.72rem] font-semibold uppercase tracking-[0.24em] leading-tight">{t.labels.footerCollab}</div>
+              <img src="/images/eyeviewlogo.png" alt="Eye View Enterprises logo" className="h-10 w-auto object-contain" />
+            </div>
+          </div>
           <div className="mt-6 flex justify-center">
             <Link to="/admin/login" className="px-4 py-1.5 border border-[var(--color-golden)]/40 rounded-full text-[var(--color-golden)]/80 text-xs font-semibold hover:bg-[var(--color-golden)] hover:text-[var(--color-maroon)] transition-all">
               Admin Portal

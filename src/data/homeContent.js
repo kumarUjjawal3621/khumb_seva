@@ -35,7 +35,7 @@ export const homeContent = {
     snanPatrika: {
       sectionLabel: "Snan Patrika 2027",
       title: "Important Bathing Dates",
-      description: "The Shahi Snans are the most sacred bathing processions, led by the Akhadas in full ceremonial grandeur. Bathing on these dates during the prescribed Muhurta is considered supremely auspicious - a once-in-twelve-years opportunity for liberation.",
+      description: "The Amrut Snans are the most sacred bathing processions, led by the Akhadas in full ceremonial grandeur. Bathing on these dates during the prescribed Muhurta is considered supremely auspicious - a once-in-twelve-years opportunity for liberation.",
       dates: [
         {
           date: "10 July 2027",
@@ -48,7 +48,7 @@ export const homeContent = {
           date: "2 August 2027",
           day: "Sunday",
           tithi: "आषाढ सोमवती अमावस्या",
-          occasion: "Shahi Snan 1 — Ashadh Somvati Amavasya. The rarest convergence of a new moon with lunar (Soma) energy. Supreme auspiciousness.",
+          occasion: "Amrut Snan 1 — Ashadh Somvati Amavasya. The rarest convergence of a new moon with lunar (Soma) energy. Supreme auspiciousness.",
           location: "Nasik & Trimbakeshwar"
         },
         {
@@ -62,27 +62,27 @@ export const homeContent = {
           date: "31 August 2027",
           day: "Monday",
           tithi: "श्रावण अमावस्या",
-          occasion: "Shahi Snan 2 — Shravan Amavasya. New moon of the sacred month of Shravan, deeply auspicious for ancestral rites and purification.",
+          occasion: "Amrut Snan 2 — Shravan Amavasya. New moon of the sacred month of Shravan, deeply auspicious for ancestral rites and purification.",
           location: "Nasik & Trimbakeshwar"
         },
         {
           date: "11 September 2027",
           day: "Friday",
           tithi: "भाद्रपद एकादशी",
-          occasion: "Shahi Snan 3 (Nasik) — Bhadrapada Ekadashi. The Vaishnava Akhadas lead the Shahi procession at Ramkund with the chant of Jai Shri Ram.",
+          occasion: "Amrut Snan 3 (Nasik) — Bhadrapada Ekadashi. The Vaishnava Akhadas lead the Amrut procession at Ramkund with the chant of Jai Shri Ram.",
           location: "Ramkund, Nasik"
         },
         {
           date: "12 September 2027",
           day: "Saturday",
           tithi: "भाद्रपद द्वादशी",
-          occasion: "Shahi Snan 3 (Trimbakeshwar) — Bhadrapada Dwadashi. The Shaiva Akhadas and Naga Babas perform the sacred bath at Kushavarta.",
+          occasion: "Amrut Snan 3 (Trimbakeshwar) — Bhadrapada Dwadashi. The Shaiva Akhadas and Naga Babas perform the sacred bath at Kushavarta.",
           location: "Kushavarta, Trimbakeshwar"
         }
       ]
     },
     trikhandiYog: {
-      title: "Trikhandi Yog — The Celestial Wonder of Simhastha Kumbh",
+      title: "Trikhand Yog — The Celestial Wonder of Simhastha Kumbh",
       paragraphs: [
         "The Celestial Wonder of Trikhand Yog: Nashik-Trimbakeshwar Simhastha Kumbh Mela (2026–2028)",
         "The upcoming Simhastha Kumbhparva is not just a congregation; it is a timeless celebration of social harmony that has been observed for thousands of years. Bringing together people across all castes, languages, sects, regions, culinary habits, and customs, it transcends all barriers. Rich or poor, man or woman, scholar or unlearned, householder or ascetic - everyone gathers with equal enthusiasm to take a holy dip in the sacred Godavari River. It stands as the world's largest peaceful festival and a living testament to the Indian philosophy of 'Vasudhaiva Kutumbakam' - The World is One Family.",
@@ -130,7 +130,7 @@ export const homeContent = {
     snanPatrika: {
       sectionLabel: "स्नान पत्रिका 2027",
       title: "महत्वपूर्ण स्नान तिथियाँ",
-      description: "शाही स्नान सबसे पवित्र स्नान जुलूस हैं, जिनका नेतृत्व अखाड़े पूरे भव्य और औपचारिक रूप से करते हैं। निर्धारित मुहूर्त के दौरान इन तिथियों पर स्नान करना परम मंगलकारी माना जाता है — मोक्ष प्राप्ति का यह बारह वर्षों में एक बार आने वाला पावन अवसर है।",
+      description: "अमृत स्नान सबसे पवित्र स्नान जुलूस हैं, जिनका नेतृत्व अखाड़े पूरे भव्य और औपचारिक रूप से करते हैं। निर्धारित मुहूर्त के दौरान इन तिथियों पर स्नान करना परम मंगलकारी माना जाता है — मोक्ष प्राप्ति का यह बारह वर्षों में एक बार आने वाला पावन अवसर है।",
       dates: [
         {
           date: "१० जुलाई २०२७",
@@ -143,7 +143,7 @@ export const homeContent = {
           date: "२ अगस्त २०२७",
           day: "रविवार",
           tithi: "आषाढ सोमवती अमावस्या",
-          occasion: "प्रथम शाही स्नान — सोमवती अमावस्या का अत्यंत दुर्लभ और सर्वश्रेष्ठ योग। नासिक और त्र्यंबकेश्वर दोनों स्थानों पर एक साथ आयोजित।",
+          occasion: "प्रथम अमृत स्नान — सोमवती अमावस्या का अत्यंत दुर्लभ और सर्वश्रेष्ठ योग। नासिक और त्र्यंबकेश्वर दोनों स्थानों पर एक साथ आयोजित।",
           location: "नासिक एवं त्र्यंबकेश्वर"
         },
         {
@@ -157,21 +157,21 @@ export const homeContent = {
           date: "३१ अगस्त २०२७",
           day: "सोमवार",
           tithi: "श्रावण अमावस्या",
-          occasion: "द्वितीय शाही स्नान — श्रावण मास की अमावस्या, पितृ तर्पण और आत्म शुद्धि के लिए अत्यंत महत्वपूर्ण। अखाड़ों का भव्य जुलूस।",
+          occasion: "द्वितीय अमृत स्नान — श्रावण मास की अमावस्या, पितृ तर्पण और आत्म शुद्धि के लिए अत्यंत महत्वपूर्ण। अखाड़ों का भव्य जुलूस।",
           location: "नासिक एवं त्र्यंबकेश्वर"
         },
         {
           date: "११ सितंबर २०२७",
           day: "शुक्रवार",
           tithi: "भाद्रपद एकादशी",
-          occasion: "तृतीय शाही स्नान (नासिक) — रामकुंड, पंचवटी में वैष्णव अखाड़ों का शाही स्नान। \"जय श्रीराम\" के जयघोष के साथ भव्य शोभायात्रा।",
+          occasion: "तृतीय अमृत स्नान (नासिक) — रामकुंड, पंचवटी में वैष्णव अखाड़ों का अमृत स्नान। \"जय श्रीराम\" के जयघोष के साथ भव्य शोभायात्रा।",
           location: "रामकुंड, नासिक"
         },
         {
           date: "१२ सितंबर २०२७",
           day: "शनिवार",
           tithi: "भाद्रपद द्वादशी",
-          occasion: "तृतीय शाही स्नान (त्र्यंबकेश्वर) — कुशावर्त में शैव अखाड़ों और नागा बाबाओं का शाही स्नान। \"हर हर महादेव\" की गर्जना के साथ दिव्य स्नान।",
+          occasion: "तृतीय अमृत स्नान (त्र्यंबकेश्वर) — कुशावर्त में शैव अखाड़ों और नागा बाबाओं का अमृत स्नान। \"हर हर महादेव\" की गर्जना के साथ दिव्य स्नान।",
           location: "कुशावर्त, त्र्यंबकेश्वर"
         }
       ]
@@ -225,7 +225,7 @@ export const homeContent = {
     snanPatrika: {
       sectionLabel: "स्नान पत्रिका 2027",
       title: "महत्त्वाच्या स्नान तिथी",
-      description: "शाही स्नान हे सर्वात पवित्र स्नान मिरवणूक सोहळे आहेत, ज्यांचे नेतृत्व अखाडे संपूर्ण भव्य आणि औपचारिक सोहळ्यांसह करतात। निर्धारित मुहूर्तावर या तिथींना स्नान करणे अत्यंत मंगलकारी मानले जाते — मोक्ष प्राप्तीची ही बारा वर्षांतून एकदाच मिळणारी पावन संधी आहे।",
+      description: "अमृत स्नान हे सर्वात पवित्र स्नान मिरवणूक सोहळे आहेत, ज्यांचे नेतृत्व अखाडे संपूर्ण भव्य आणि औपचारिक सोहळ्यांसह करतात। निर्धारित मुहूर्तावर या तिथींना स्नान करणे अत्यंत मंगलकारी मानले जाते — मोक्ष प्राप्तीची ही बारा वर्षांतून एकदाच मिळणारी पावन संधी आहे.",
       dates: [
         {
           date: "१० जुलै २०२७",
@@ -238,7 +238,7 @@ export const homeContent = {
           date: "२ ऑगस्ट २०२७",
           day: "रविवार",
           tithi: "आषाढ सोमवती अमावस्या",
-          occasion: "प्रथम शाही स्नान — सोमवती अमावस्येचा अत्यंत दुर्मिळ योग। नासिक आणि त्र्यंबकेश्वर दोन्ही ठिकाणी एकाच वेळी भव्य सोहळा।",
+          occasion: "प्रथम अमृत स्नान — सोमवती अमावस्येचा अत्यंत दुर्मिळ योग। नासिक आणि त्र्यंबकेश्वर दोन्ही ठिकाणी एकाच वेळी भव्य सोहळा।",
           location: "नासिक व त्र्यंबकेश्वर"
         },
         {
@@ -252,21 +252,21 @@ export const homeContent = {
           date: "३१ ऑगस्ट २०२७",
           day: "सोमवार",
           tithi: "श्रावण अमावस्या",
-          occasion: "द्वितीय शाही स्नान — श्रावण मासातील अमावस्या, पितृतर्पण व आत्मशुद्धीसाठी अत्यंत पवित्र। अखाड्यांचा भव्य मिरवणूक सोहळा।",
+          occasion: "द्वितीय अमृत स्नान — श्रावण मासातील अमावस्या, पितृतर्पण व आत्मशुद्धीसाठी अत्यंत पवित्र। अखाड्यांचा भव्य मिरवणूक सोहळा।",
           location: "नासिक व त्र्यंबकेश्वर"
         },
         {
           date: "११ सप्टेंबर २०२७",
           day: "शुक्रवार",
           tithi: "भाद्रपद एकादशी",
-          occasion: "तृतीय शाही स्नान (नासिक) — रामकुंड, पंचवटी येथे वैष्णव अखाड्यांचा शाही स्नान सोहळा। \"जय श्रीराम\" च्या जयघोषात दिव्य मिरवणूक।",
+          occasion: "तृतीय अमृत स्नान (नासिक) — रामकुंड, पंचवटी येथे वैष्णव अखाड्यांचा अमृत स्नान सोहळा। \"जय श्रीराम\" च्या जयघोषात दिव्य मिरवणूक।",
           location: "रामकुंड, नासिक"
         },
         {
           date: "१२ सप्टेंबर २०२७",
           day: "शनिवार",
           tithi: "भाद्रपद द्वादशी",
-          occasion: "तृतीय शाही स्नान (त्र्यंबकेश्वर) — कुशावर्त येथे शैव अखाडे व नागा बाबांचा शाही स्नान सोहळा। \"हर हर महादेव\" च्या गर्जनेत पवित्र स्नान।",
+          occasion: "तृतीय अमृत स्नान (त्र्यंबकेश्वर) — कुशावर्त येथे शैव अखाडे व नागा बाबांचा अमृत स्नान सोहळा। \"हर हर महादेव\" च्या गर्जनेत पवित्र स्नान।",
           location: "कुशावर्त, त्र्यंबकेश्वर"
         }
       ]

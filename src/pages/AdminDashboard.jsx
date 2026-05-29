@@ -42,18 +42,18 @@ const AdminDashboard = () => {
   const exportToExcel = () => {
     if (users.length === 0) return;
 
-    const headers = ["Name", "Email", "WhatsApp", "Pincode", "Age Group", "Area", "Pledge Accepted", "Sevas Selected", "Suggestion", "Date"];
+    const headers = ["Name", "Email", "WhatsApp", "Address", "Birthdate", "Area", "Pledge Accepted", "Sevas Selected", "Suggestion", "Date"];
     const rows = users.map(user => {
       const sevas = user.selectedSevas && user.selectedSevas.length > 0
         ? user.selectedSevas.map(idx => sevaOptions[idx]).join(" | ")
         : "None";
         
-      return [
+        return [
         `"${user.name}"`,
         `"${user.email || 'N/A'}"`,
         `"${user.whatsapp}"`,
-        `"${user.pincode || 'N/A'}"`,
-        `"${user.ageGroup || 'N/A'}"`,
+        `"${user.address || 'N/A'}"`,
+        `"${user.birthdate || 'N/A'}"`,
         `"${user.area || 'N/A'}"`,
         user.pledgeAccepted ? "Yes" : "No",
         `"${sevas}"`,
@@ -162,7 +162,7 @@ const AdminDashboard = () => {
                   <td className="p-6">
                     <div className="font-bold text-gray-800 text-base">{user.name}</div>
                     <div className="text-xs text-gray-400 mt-0.5 flex items-center gap-1">
-                      <MapPin className="w-3 h-3" /> {user.pincode}
+                      <MapPin className="w-3 h-3" /> {user.address}
                     </div>
                   </td>
                   <td className="p-6">

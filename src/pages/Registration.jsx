@@ -15,9 +15,9 @@ const Registration = () => {
     name: '',
     email: '',
     whatsapp: '',
-    pincode: '',
+    address: '',
     gender: '',
-    ageGroup: '',
+    birthdate: '',
     area: '',
     suggestion: '',
     pledgeAccepted: false,
@@ -250,26 +250,22 @@ const Registration = () => {
               </div>
             </div>
             <div>
-              <label className="block text-sm font-semibold text-[var(--color-text-main)] mb-1">{t.labels.pincode}</label>
+              <label className="block text-sm font-semibold text-[var(--color-text-main)] mb-1">{t.labels.address}</label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"><MapPin className="h-5 w-5 text-[var(--color-maroon)]/50" /></div>
-                <input type="text" value={formData.pincode} onChange={(e) => updateFormData({ pincode: e.target.value })} className={`block w-full pl-10 pr-3 py-3 border border-[var(--color-camel)]/30 bg-white/80 rounded-xl focus:ring-2 focus:ring-[var(--color-golden)] focus:border-transparent outline-none transition-all shadow-sm`} />
+                <input type="text" value={formData.address} onChange={(e) => updateFormData({ address: e.target.value })} className={`block w-full pl-10 pr-3 py-3 border border-[var(--color-camel)]/30 bg-white/80 rounded-xl focus:ring-2 focus:ring-[var(--color-golden)] focus:border-transparent outline-none transition-all shadow-sm`} />
               </div>
             </div>
 
             {/* Age Group Dropdown */}
             <div>
-              <label className="block text-sm font-semibold text-[var(--color-text-main)] mb-1">{t.labels.ageGroup}</label>
-              <select 
-                value={formData.ageGroup} 
-                onChange={(e) => updateFormData({ ageGroup: e.target.value })}
+              <label className="block text-sm font-semibold text-[var(--color-text-main)] mb-1">{t.labels.birthdate}</label>
+              <input
+                type="date"
+                value={formData.birthdate}
+                onChange={(e) => updateFormData({ birthdate: e.target.value })}
                 className="block w-full px-4 py-3 border border-[var(--color-camel)]/30 bg-white/80 rounded-xl focus:ring-2 focus:ring-[var(--color-golden)] focus:border-transparent outline-none transition-all shadow-sm text-[var(--color-text-main)]"
-              >
-                <option value="">{t.labels.selectAgeGroup}</option>
-                {t.ageGroups.map((age, idx) => (
-                  <option key={idx} value={age}>{age}</option>
-                ))}
-              </select>
+              />
             </div>
 
             {/* Area Dropdown */}
