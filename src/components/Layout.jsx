@@ -34,12 +34,12 @@ const Layout = ({ children }) => {
           ? 'bg-transparent border-b border-transparent shadow-none'
           : 'bg-[var(--color-maroon)] border-b border-[var(--color-golden)]/30 shadow-lg'
       }`}>
-        <div className="max-w-5xl mx-auto px-4 py-3 lg:py-4">
-          <div className="flex justify-between items-center gap-3">
+        <div className="max-w-5xl mx-auto px-4 py-1.5 lg:py-2">
+          <div className="flex justify-between items-center gap-2 lg:gap-3">
             <button
               type="button"
               onClick={() => setIsMenuOpen((open) => !open)}
-              className={`lg:hidden w-10 h-10 rounded-full border border-[var(--color-golden)]/35 text-[var(--color-golden)] flex items-center justify-center transition-colors flex-shrink-0 ${
+              className={`lg:hidden w-9 h-9 rounded-full border border-[var(--color-golden)]/35 text-[var(--color-golden)] flex items-center justify-center transition-colors flex-shrink-0 ${
                 isHeaderOverlay ? 'bg-black/20 backdrop-blur-sm hover:bg-black/30' : 'hover:bg-[var(--color-maroon-dark)]'
               }`}
               aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
@@ -48,13 +48,13 @@ const Layout = ({ children }) => {
               {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
 
-            <Link to="/" onClick={() => setIsMenuOpen(false)} className="flex flex-col lg:flex-row items-center justify-center gap-1 lg:gap-4 hover:opacity-90 transition-opacity min-w-0 flex-1 lg:flex-none">
+            <Link to="/" onClick={() => setIsMenuOpen(false)} className="flex flex-row items-center justify-center gap-2 lg:gap-3 hover:opacity-90 transition-opacity min-w-0 flex-1 lg:flex-none">
               <img 
                 src="/logo.jpeg" 
                 alt="Kumbhparv Logo" 
-                className="max-h-10 lg:max-h-14 w-auto h-auto object-contain flex-shrink-0" 
+                className="max-h-8 lg:max-h-10 w-auto h-auto object-contain flex-shrink-0" 
               />
-              <div className="min-w-0 max-w-[8.5rem] lg:max-w-none">
+              <div className="min-w-0 max-w-[9rem] sm:max-w-[10rem] lg:max-w-none">
                 <h1 className="font-bold text-[var(--color-golden)] leading-tight text-center lg:text-left text-sm lg:text-xl font-serif whitespace-normal">
                   {t.labels.appTitle}
                 </h1>
@@ -77,14 +77,14 @@ const Layout = ({ children }) => {
               ))}
             </nav>
 
-            <div className={`flex rounded-full p-1 shadow-inner border border-[var(--color-golden)]/20 flex-shrink-0 ${
+            <div className={`flex rounded-full p-0.5 shadow-inner border border-[var(--color-golden)]/20 flex-shrink-0 ${
               isHeaderOverlay ? 'bg-black/25 backdrop-blur-sm' : 'bg-[var(--color-maroon-dark)]'
             }`}>
               {['EN', 'HI', 'MR'].map((lang) => (
                 <button
                   key={lang}
                   onClick={() => setLanguage(lang)}
-                  className={`min-w-8 lg:min-w-9 px-2 lg:px-3 py-1 rounded-full text-xs font-bold transition-all text-center ${
+                  className={`min-w-8 lg:min-w-9 px-2 lg:px-3 py-0.5 rounded-full text-xs font-bold transition-all text-center ${
                     language === lang 
                       ? 'bg-[var(--color-golden)] text-[var(--color-maroon)] shadow-md' 
                       : 'text-[var(--color-vanilla)]/60 hover:text-[var(--color-golden)]'
@@ -96,13 +96,13 @@ const Layout = ({ children }) => {
             </div>
           </div>
 
-          <nav className={`${isMenuOpen ? 'flex' : 'hidden'} lg:hidden flex-col gap-1 mt-3 pt-3 border-t border-[var(--color-golden)]/20`}>
+          <nav className={`${isMenuOpen ? 'flex' : 'hidden'} lg:hidden flex-col gap-0.5 mt-2 pt-2 border-t border-[var(--color-golden)]/20`}>
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
                 onClick={() => setIsMenuOpen(false)}
-                className={`w-full px-3 py-3 rounded-xl text-sm leading-snug font-bold transition-colors break-words ${
+                className={`w-full px-3 py-2 rounded-xl text-sm leading-snug font-bold transition-colors break-words ${
                   location.pathname === link.path
                     ? 'bg-[var(--color-golden)] text-[var(--color-maroon)]'
                     : 'text-[var(--color-vanilla)]/85 hover:bg-[var(--color-maroon-dark)] hover:text-[var(--color-golden)]'
@@ -124,7 +124,7 @@ const Layout = ({ children }) => {
       <footer className="bg-[var(--color-camel-light)] border-t border-[var(--color-golden)]/40 mt-10">
         <div className="max-w-6xl mx-auto px-4 py-10 lg:py-12">
           <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
-            <div>
+            <div className="-ml-4">
               <Link to="/" className="inline-flex items-center gap-3 hover:opacity-90 transition-opacity">
                 <img
                   src="/logo.jpeg"

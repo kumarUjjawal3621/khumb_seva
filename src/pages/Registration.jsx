@@ -7,7 +7,6 @@ import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import Certificate from '../components/Certificate';
-import HeroSection from '../components/HeroSection';
 
 const Registration = () => {
   const { t, language, setLanguage } = useAppContext();
@@ -187,8 +186,7 @@ const Registration = () => {
   }
 
   return (
-    <div className="max-w-4xl mx-auto space-y-12 pb-20 px-4">
-      <HeroSection />
+    <div className="max-w-4xl mx-auto space-y-12 pb-20 px-4 pt-10 sm:pt-12">
 
       {/* Language Selection */}
       <motion.div 
@@ -196,7 +194,7 @@ const Registration = () => {
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3 }}
-        className="flex flex-col items-center gap-4 -mt-8 mb-4"
+        className="flex flex-col items-center gap-4 mb-4"
       >
         <p className="text-sm font-bold text-[var(--color-maroon-dark)]/70 uppercase tracking-widest">{t.labels.language}</p>
         <div className="flex bg-white/80 backdrop-blur-md p-1.5 rounded-2xl shadow-sm border border-[var(--color-golden)]/30">

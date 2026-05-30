@@ -324,68 +324,71 @@ const TimelineSection = ({ sections, imgIndices, id, label }) => (
   <section id={id} className="space-y-0">
     <SectionHeader title={label} />
     <div className="relative max-w-7xl mx-auto">
-      <div className="absolute left-7 sm:left-1/2 top-0 bottom-0 w-[2px] bg-[var(--color-golden)]/15 -translate-x-1/2" />
-      <div className="space-y-16">
+      <div className="absolute left-3.5 sm:left-1/2 top-0 bottom-0 w-[2px] bg-[var(--color-golden)]/15 sm:-translate-x-1/2" />
+      <div className="space-y-12 sm:space-y-16">
         {sections.map((sec, idx) => {
           const isEven = idx % 2 === 0;
           const imagePanel = (
             <motion.div
-              initial={{ opacity: 0, x: isEven ? -36 : 36 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: '-120px' }}
-              transition={{ duration: 0.55, delay: idx === 0 ? 0.1 : 0.9 }}
-              className="ml-14 sm:ml-0 sm:w-[calc(50%-2.25rem)] overflow-hidden"
+              initial={{ opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.25 }}
+              transition={{ duration: 0.5, delay: 0.05 }}
+              className="w-full overflow-hidden rounded-xl"
             >
-              <img src={sectionImages[imgIndices[idx]]} alt={sec.title} className="h-64 w-full object-cover object-center rounded-xl" />
+              <img
+                src={sectionImages[imgIndices[idx]]}
+                alt={sec.title}
+                className="h-52 sm:h-64 w-full object-cover object-center"
+              />
             </motion.div>
           );
           const textPanel = (
             <motion.div
-              initial={{ opacity: 0, x: isEven ? 36 : -36 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: '-120px' }}
-              transition={{ duration: 0.55, delay: idx === 0 ? 0.22 : 1.02 }}
-              className="ml-14 sm:ml-0 sm:w-[calc(50%-2.25rem)] px-1 sm:px-2 py-4"
+              initial={{ opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.25 }}
+              transition={{ duration: 0.5, delay: 0.15 }}
+              className="w-full px-0 sm:px-2 py-2 sm:py-4"
             >
-              <h3 className="font-serif font-bold text-2xl text-[var(--color-maroon)] leading-tight">{sec.title}</h3>
-              <div className="my-4 h-[2px] w-14 bg-[var(--color-golden)]/70" />
-              <p className="text-[var(--color-text-main)] text-base sm:text-lg leading-8">{sec.text}</p>
+              <h3 className="font-serif font-bold text-xl sm:text-2xl text-[var(--color-maroon)] leading-tight">{sec.title}</h3>
+              <div className="my-3 sm:my-4 h-[2px] w-14 bg-[var(--color-golden)]/70" />
+              <p className="text-[var(--color-text-main)] text-base sm:text-lg leading-7 sm:leading-8">{sec.text}</p>
             </motion.div>
           );
           return (
-            <div
-              key={sec.title}
-              className="relative flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-[4.5rem]"
-            >
+            <div key={sec.title} className="relative pl-10 sm:pl-0">
               {idx > 0 && (
                 <motion.div
                   initial={{ scaleY: 0 }}
                   whileInView={{ scaleY: 1 }}
-                  viewport={{ once: true, margin: '-120px' }}
-                  transition={{ duration: 0.75, ease: 'easeInOut' }}
-                  className="absolute left-7 sm:left-1/2 bottom-1/2 h-[calc(100%+4rem)] w-[2px] origin-top bg-[var(--color-golden)] -translate-x-1/2"
+                  viewport={{ once: true, amount: 0.1 }}
+                  transition={{ duration: 0.5, ease: 'easeInOut' }}
+                  className="absolute left-3.5 sm:left-1/2 -top-12 sm:-top-16 h-12 sm:h-16 w-[2px] origin-top bg-[var(--color-golden)] sm:-translate-x-1/2"
                 />
               )}
               <motion.div
                 initial={{ scale: 0, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
-                viewport={{ once: true, margin: '-120px' }}
-                transition={{ duration: 0.35, delay: idx === 0 ? 0.05 : 0.78 }}
-                className="absolute left-7 sm:left-1/2 -translate-x-1/2 w-7 h-7 rounded-full bg-[var(--color-vanilla)] border-[3px] border-[var(--color-maroon)] z-10 shadow-md flex items-center justify-center"
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.35 }}
+                className="absolute left-3.5 sm:left-1/2 top-2 sm:top-1/2 sm:-translate-y-1/2 -translate-x-1/2 w-7 h-7 rounded-full bg-[var(--color-vanilla)] border-[3px] border-[var(--color-maroon)] z-10 shadow-md flex items-center justify-center"
               >
                 <span className="w-2 h-2 rounded-full bg-[var(--color-golden)]" />
               </motion.div>
-              {isEven ? (
-                <>
-                  {imagePanel}
-                  {textPanel}
-                </>
-              ) : (
-                <>
-                  {textPanel}
-                  {imagePanel}
-                </>
-              )}
+              <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:gap-[4.5rem]">
+                {isEven ? (
+                  <>
+                    <div className="w-full sm:w-[calc(50%-2.25rem)] sm:ml-auto">{imagePanel}</div>
+                    <div className="w-full sm:w-[calc(50%-2.25rem)]">{textPanel}</div>
+                  </>
+                ) : (
+                  <>
+                    <div className="w-full sm:w-[calc(50%-2.25rem)] order-2 sm:order-1">{textPanel}</div>
+                    <div className="w-full sm:w-[calc(50%-2.25rem)] sm:ml-auto order-1 sm:order-2">{imagePanel}</div>
+                  </>
+                )}
+              </div>
             </div>
           );
         })}
@@ -440,12 +443,15 @@ const EditorialSection = ({ sections, imgIndices, id, label }) => (
 // UI Family 6 — SPLIT STORYTELLING
 // Sections: Heritage(14), Biodiversity(15), Food Culture(16)
 // ─────────────────────────────────────────────────────────────────────────────
-const SplitStory = ({ title, text, imgUrl, imgIndex, isReversed, id }) => (
-  <div id={id} className={`flex flex-col ${isReversed ? 'sm:flex-row-reverse' : 'sm:flex-row'} gap-8 sm:gap-12 items-center border-t border-[var(--color-golden)]/25 pt-10`}>
+const SplitStory = ({ title, text, imgUrl, isReversed, id }) => (
+  <div id={id} className={`flex flex-col ${isReversed ? 'sm:flex-row-reverse' : 'sm:flex-row'} gap-6 sm:gap-12 items-stretch sm:items-center border-t border-[var(--color-golden)]/25 pt-10`}>
     {/* image */}
-    <div className="sm:w-[45%] flex-shrink-0 relative overflow-hidden min-h-[300px] rounded-xl">
-      <img src={imgUrl} alt={title} className="w-full h-full object-cover absolute inset-0" />
-      <div className={`absolute inset-0 ${isReversed ? 'bg-gradient-to-l' : 'bg-gradient-to-r'} from-[var(--color-maroon)]/10 to-transparent`} />
+    <div className="w-full sm:w-[45%] flex-shrink-0 overflow-hidden rounded-xl border border-[var(--color-golden)]/20 shadow-sm bg-[var(--color-vanilla)]/40">
+      <img
+        src={imgUrl}
+        alt={title}
+        className="w-full h-56 sm:h-72 object-cover object-center"
+      />
     </div>
     {/* text */}
     <div className="flex-1 flex flex-col justify-center space-y-5">
@@ -469,7 +475,6 @@ const SplitSection = ({ sections, imgIndices, id, label }) => (
           title={sec.title}
           text={sec.text}
           imgUrl={sectionImages[imgIndices[i]]}
-          imgIndex={imgIndices[i]}
           isReversed={i % 2 !== 0}
         />
       ))}

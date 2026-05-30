@@ -10,6 +10,7 @@
   --color-golden-light: #F0D060;
   
   --font-serif: 'Playfair Display', 'Noto Serif Devanagari', Georgia, serif;
+  --font-sans: 'Inter', 'Noto Sans Devanagari', sans-serif;
   
   --color-primary: var(--color-maroon);
   --color-secondary: var(--color-camel);
@@ -23,7 +24,168 @@
   body {
     background-color: var(--color-kumbh-bg);
     color: var(--color-text-main);
-    font-family: 'Inter', 'Noto Sans Devanagari', sans-serif;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-serif);
+    text-wrap: balance;
+  }
+}
+
+@layer components {
+  /* ── Home page typography scale ── */
+  .type-display {
+    font-family: var(--font-serif);
+    font-weight: 800;
+    font-size: clamp(2.25rem, 4.5vw + 1rem, 4.5rem);
+    line-height: 1.1;
+    letter-spacing: 0.015em;
+  }
+
+  .type-hero-years {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: clamp(1.25rem, 2vw + 0.75rem, 1.875rem);
+    line-height: 1.3;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .type-hero-lead {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-style: italic;
+    font-size: clamp(1rem, 1.2vw + 0.85rem, 1.25rem);
+    line-height: 1.75;
+    letter-spacing: 0.01em;
+  }
+
+  .type-eyebrow {
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    line-height: 1.4;
+    text-transform: uppercase;
+  }
+
+  .type-section-title {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: clamp(1.75rem, 2.5vw + 1rem, 2.25rem);
+    line-height: 1.15;
+    letter-spacing: 0.01em;
+  }
+
+  .type-lead {
+    font-family: var(--font-sans);
+    font-size: clamp(1.0625rem, 0.6vw + 0.95rem, 1.125rem);
+    font-weight: 500;
+    line-height: 1.75;
+    letter-spacing: 0.005em;
+  }
+
+  .type-body {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.7;
+    letter-spacing: 0.01em;
+  }
+
+  .type-body-sm {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.65;
+    letter-spacing: 0.01em;
+  }
+
+  .type-card-title {
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    line-height: 1.4;
+    text-transform: uppercase;
+  }
+
+  .type-card-heading {
+    font-family: var(--font-serif);
+    font-size: 1.125rem;
+    font-weight: 700;
+    line-height: 1.35;
+    letter-spacing: 0.01em;
+  }
+
+  .type-stat {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: clamp(2.25rem, 4vw + 1rem, 3rem);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.02em;
+  }
+
+  .type-stat-label {
+    font-family: var(--font-sans);
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    line-height: 1.3;
+    text-transform: uppercase;
+  }
+
+  .type-date-day {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: clamp(2rem, 3vw + 1rem, 3rem);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .type-badge {
+    font-family: var(--font-sans);
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    line-height: 1.3;
+    text-transform: uppercase;
+  }
+
+  .type-btn {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+
+  /* Devanagari — slightly more breathing room */
+  [data-lang="hi"] .type-display,
+  [data-lang="mr"] .type-display,
+  [data-lang="hi"] .type-section-title,
+  [data-lang="mr"] .type-section-title {
+    line-height: 1.22;
+    letter-spacing: 0.008em;
+  }
+
+  [data-lang="hi"] .type-hero-years,
+  [data-lang="mr"] .type-hero-years {
+    letter-spacing: 0.08em;
+  }
+
+  [data-lang="hi"] .type-body,
+  [data-lang="mr"] .type-body,
+  [data-lang="hi"] .type-lead,
+  [data-lang="mr"] .type-lead {
+    line-height: 1.85;
   }
 }
 

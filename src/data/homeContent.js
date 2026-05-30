@@ -1,7 +1,7 @@
 export const homeContent = {
   EN: {
-    heroTitle: "Simhastha Kumbhparv Nasik",
-    heroYears: "2026–2027–2028",
+    heroTitle: "Sinhastha Kumbhparv Nasik",
+    heroYears: "2026–2027",
     heroSubtitle: "A Sacred Confluence on the Banks of the Holy Godavari",
     countdownText: "Countdown to Flag Hosting",
     infoCards: [
@@ -22,9 +22,9 @@ export const homeContent = {
       sectionLabel: "The Divine Story",
       title: "Introduction",
       paragraphs: [
-        "The wait of twelve years is drawing to a close. The Nasik - Trimbakeshwar Simhastha Kumbh Mela is not merely a gathering - it is a cosmic event, a sacred convergence where the heavens, the earth, and the holy Godavari River unite to throw open the doors of liberation.",
-        "The Nasik Kumbh, known as Simhastha, is one of the four great Kumbh Melas held in India - alongside Prayagraj, Haridwar, and Ujjain. It stands uniquely apart as the only Kumbh governed by the planet Guru (Jupiter) entering the zodiac sign of Simha (Leo) - a celestial event that graces the earth once every twelve years.",
-        "What makes the Nasik Simhastha extraordinary beyond all other Kumbhs is its dual sacred nature. The divine energy flows across two distinct power centres separated by 30 km:",
+        "The wait of twelve years is drawing to a close. The Nasik - Trimbakeshwar Sinhastha Kumbh Mela is not merely a gathering - it is a cosmic event, a sacred convergence where the heavens, the earth, and the holy Godavari River unite to throw open the doors of liberation.",
+        "The Nasik Kumbh, known as Sinhastha, is one of the four great Kumbh Melas held in India - alongside Prayagraj, Haridwar, and Ujjain. It stands uniquely apart as the only Kumbh governed by the planet Guru (Jupiter) entering the zodiac sign of Simha (Leo) - a celestial event that graces the earth once every twelve years.",
+        "What makes the Nasik Sinhastha extraordinary beyond all other Kumbhs is its dual sacred nature. The divine energy flows across two distinct power centres separated by 30 km:",
         "• Ramkund, Panchavati (Nasik) - the sacred ground of the Vaishnava Akhadas, echoing with cries of \"Jai Shri Ram\"",
         "• Kushavarta, Trimbakeshwar - the ancient seat of the Shaiva Akhadas, where Naga Babas roar \"Har Har Mahadev\"",
         "During this Parva, the waters of Goda-Mai - the Godavari River, revered as the Dakshina Ganga (Ganges of the South) - are believed to be charged with extraordinary cosmic energy, transformed into Amrit, the nectar of immortality. A single holy dip during the prescribed auspicious Muhurta is said to cleanse the karma of countless lifetimes, grant the merit of a thousand Ashwamedha Yagnas, and liberate seven generations of one's ancestors.",
@@ -82,14 +82,14 @@ export const homeContent = {
       ]
     },
     trikhandiYog: {
-      title: "Trikhand Yog — The Celestial Wonder of Simhastha Kumbh",
+      title: "Trikhand Yog — The Celestial Wonder of Sinhastha Kumbh",
       paragraphs: [
-        "The Celestial Wonder of Trikhand Yog: Nashik-Trimbakeshwar Simhastha Kumbh Mela (2026–2028)",
-        "The upcoming Simhastha Kumbhparva is not just a congregation; it is a timeless celebration of social harmony that has been observed for thousands of years. Bringing together people across all castes, languages, sects, regions, culinary habits, and customs, it transcends all barriers. Rich or poor, man or woman, scholar or unlearned, householder or ascetic - everyone gathers with equal enthusiasm to take a holy dip in the sacred Godavari River. It stands as the world's largest peaceful festival and a living testament to the Indian philosophy of 'Vasudhaiva Kutumbakam' - The World is One Family.",
+        "The Celestial Wonder of Trikhand Yog: Nashik-Trimbakeshwar Sinhastha Kumbh Mela (2026–2028)",
+        "The upcoming Sinhastha Kumbhparva is not just a congregation; it is a timeless celebration of social harmony that has been observed for thousands of years. Bringing together people across all castes, languages, sects, regions, culinary habits, and customs, it transcends all barriers. Rich or poor, man or woman, scholar or unlearned, householder or ascetic - everyone gathers with equal enthusiasm to take a holy dip in the sacred Godavari River. It stands as the world's largest peaceful festival and a living testament to the Indian philosophy of 'Vasudhaiva Kutumbakam' - The World is One Family.",
         "Why is the 2026–2028 Kumbh Mela unique? The upcoming Nashik-Trimbakeshwar Kumbh Mela is historic and extraordinary due to a rare astronomical and astrological alignment known as the Trikhand Yog. Occurring after a massive gap of 75 years, this rare phenomenon has extended the duration of the Kumbh Mela from its usual 12 or 13 months to an unprecedented 22 months (nearly 2 years).",
         "Grand Commencement (Dhvajarohan): October 31, 2026, at 12:02 PM, marking Jupiter’s entry into the Leo (Simha) zodiac sign.",
         "Culmination (Dhvajaavaturan): July 24, 2028, at 3:36 PM, when Jupiter moves to the next zodiac sign.",
-        "The Astrological Science Behind Trikhand Yog: Traditionally, the Simhastha Kumbh Mela begins when Jupiter enters Leo (Simha rashi). While Jupiter usually changes its zodiac sign after 13 months, this time it will turn retrograde (Vakri) twice before 2028. This rare celestial movement delays its exit, extending the holy period to last from October 31, 2026, to July 24, 2028. Just as Prayagraj witnessed a rare 144-year cycle, Nashik is witnessing this 75-year Trikhand Yog, last seen in 1956, giving this Kumbh Mela immense spiritual significance."
+        "The Astrological Science Behind Trikhand Yog: Traditionally, the Sinhastha Kumbh Mela begins when Jupiter enters Leo (Simha rashi). While Jupiter usually changes its zodiac sign after 13 months, this time it will turn retrograde (Vakri) twice before 2028. This rare celestial movement delays its exit, extending the holy period to last from October 31, 2026, to July 24, 2028. Just as Prayagraj witnessed a rare 144-year cycle, Nashik is witnessing this 75-year Trikhand Yog, last seen in 1956, giving this Kumbh Mela immense spiritual significance."
       ],
       footer: ""
     }
