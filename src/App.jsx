@@ -7,6 +7,7 @@ import Registration from './pages/Registration';
 import AboutUs from './pages/AboutUs';
 import AboutNasik from './pages/AboutNasik';
 import Verticals from './pages/Verticals';
+import Media from './pages/Media';
 import AdminLogin from './pages/AdminLogin';
 import AdminDashboard from './pages/AdminDashboard';
 
@@ -28,6 +29,7 @@ const MainApp = () => {
         <Route path="/about" element={<Layout><AboutUs /></Layout>} />
         <Route path="/about-nasik" element={<Layout><AboutNasik /></Layout>} />
         <Route path="/verticals" element={<Layout><Verticals /></Layout>} />
+        <Route path="/media" element={<Layout><Media /></Layout>} />
         <Route path="/admin/login" element={<Layout><AdminLogin /></Layout>} />
         <Route path="/admin" element={
           <ProtectedRoute>

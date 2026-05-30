@@ -56,3 +56,7 @@
   animation: infiniteScroll 40s linear infinite;
 }
 
+.perspective-\[1400px\] {
+  perspective: 1400px;
+}
+

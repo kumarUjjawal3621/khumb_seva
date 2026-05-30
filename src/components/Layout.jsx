@@ -15,6 +15,7 @@ const Layout = ({ children }) => {
     { path: '/', label: t.labels.navHome || 'Home' },
     { path: '/about', label: t.labels.navAbout || 'About Us' },
     { path: '/about-nasik', label: t.labels.navAboutNasik || 'About Nasik' },
+    { path: '/media', label: t.labels.navMedia || 'Media' },
     { path: '/register', label: t.labels.volunteerRegistration || 'Volunteer Registration' }
   ];
 
