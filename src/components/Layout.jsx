@@ -7,7 +7,9 @@ const Layout = ({ children }) => {
   const { language, setLanguage, t } = useAppContext();
   const location = useLocation();
   const isHome = location.pathname === '/';
-  const [scrolled, setScrolled] = useState(!isHome);
+  const isAboutNasik = location.pathname === '/about-nasik';
+  const transparentHeader = isHome || isAboutNasik;
+  const [scrolled, setScrolled] = useState(!transparentHeader);
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const navLinks = [
@@ -20,14 +22,14 @@ const Layout = ({ children }) => {
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80);
-    if (isHome) {
+    if (transparentHeader) {
       onScroll();
       window.addEventListener('scroll', onScroll, { passive: true });
       return () => window.removeEventListener('scroll', onScroll);
     } else {
       setScrolled(true);
     }
-  }, [isHome]);
+  }, [transparentHeader]);
 
   useEffect(() => {
     setMobileOpen(false);
@@ -39,8 +41,8 @@ const Layout = ({ children }) => {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? 'bg-[var(--color-maroon)]/95 backdrop-blur-md shadow-lg pointer-events-auto'
-            : 'bg-transparent pointer-events-none'
+            ? 'bg-[var(--color-maroon)]/95 backdrop-blur-md shadow-lg'
+            : 'bg-transparent'
         }`}
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
