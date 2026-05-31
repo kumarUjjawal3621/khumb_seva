@@ -1,14 +1,53 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useTransform, useInView } from 'framer-motion';
 import { useAppContext } from '../context/AppContext';
 import { homeContent } from '../data/homeContent';
 
-const HERO_IMAGE = '/images/hero/image1.webp';
-
 const Home = () => {
-  const { language, t } = useAppContext();
+  const { language, setLanguage, t } = useAppContext();
   const content = homeContent[language] || homeContent['EN'];
+
+  const heroImages = [
+    '/images/hero/image1.jpeg',
+    '/images/hero/image2.jpeg',
+    '/images/hero/image3.jpeg',
+    '/images/hero/image5.jpeg',
+  ];
+
+  const heroTaglines = [
+    {
+      EN: 'A sacred confluence on the banks of the holy Godavari.',
+      HI: 'पावन गोदावरी के तट पर आस्था का दिव्य संगम।',
+      MR: 'पवित्र गोदावरीच्या तीरावर श्रद्धेचा दिव्य संगम.',
+    },
+    {
+      EN: 'A divine gathering where faith flows eternally along the sacred waters of the Godavari.',
+      HI: 'पावन गोदावरी की पवित्र धाराओं के संग अनंत श्रद्धा का दिव्य संगम।',
+      MR: 'पवित्र गोदावरीच्या जलधारांसोबत अखंड श्रद्धेचा दिव्य संगम.',
+    },
+    {
+      EN: 'A timeless celebration of devotion unfolding on the revered banks of the holy Godavari.',
+      HI: 'पावन गोदावरी के पूजनीय तटों पर आस्था और भक्ति का शाश्वत उत्सव।',
+      MR: 'पवित्र गोदावरीच्या पूजनीय तीरावर श्रद्धा आणि भक्तीचा शाश्वत उत्सव.',
+    },
+    {
+      EN: 'A spiritual confluence of millions, united by faith beside the blessed Godavari River.',
+      HI: 'पुण्यदायिनी गोदावरी के तट पर आस्था के सूत्र में बंधे करोड़ों श्रद्धालुओं का आध्यात्मिक संगम।',
+      MR: 'पुण्यसलिला गोदावरीच्या तीरावर श्रद्धेच्या बंधनात एकत्र आलेल्या लाखो भाविकांचा आध्यात्मिक संगम.',
+    },
+
+  ];
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    setCurrentIndex((prev) => (prev >= heroImages.length ? 0 : prev));
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % heroImages.length);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, [heroImages.length]);
 
   // Countdown State
   const [timeLeft, setTimeLeft] = useState({
@@ -44,6 +83,17 @@ const Home = () => {
     return () => clearInterval(timer);
   }, []);
 
+  const { scrollY } = useScroll();
+  const countdownRef = useRef(null);
+  const countdownInView = useInView(countdownRef, { once: false, amount: 0.3 });
+  const [countdownAnimated, setCountdownAnimated] = useState(false);
+  useEffect(() => {
+    if (countdownInView && !countdownAnimated) {
+      setCountdownAnimated(true);
+    }
+  }, [countdownInView]);
+  const bgY = useTransform(scrollY, [0, 500], [0, -100]);
+
   const parseDate = (dateStr) => {
     const parts = dateStr.split(' ');
     if (parts.length >= 3) {
@@ -65,118 +115,365 @@ const Home = () => {
   return (
     <div className="w-full pb-20" data-lang={language.toLowerCase()}>
       {/* ─── HERO ─── */}
-      <div className="relative min-h-screen flex flex-col items-center justify-center text-center px-4 overflow-hidden shadow-lg border-b border-[var(--color-golden)]/30 mb-12">
+      <div className="relative min-h-screen flex flex-col items-end justify-center px-4 sm:px-10 lg:px-16 overflow-hidden shadow-lg border-b border-[var(--color-golden)]/30 mb-12">
         <div className="absolute inset-0 overflow-hidden select-none pointer-events-none bg-black">
-          <img
-            src={HERO_IMAGE}
-            alt=""
-            aria-hidden
-            className="absolute inset-0 w-full h-full object-cover opacity-90"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/25 to-black/45 backdrop-blur-[0.5px] z-10" />
+          <AnimatePresence>
+            <motion.img
+              key={currentIndex}
+              src={heroImages[currentIndex]}
+              alt=""
+              aria-hidden
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '-100%' }}
+              transition={{ duration: 1.5, ease: 'easeInOut' }}
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+          </AnimatePresence>
+          <div className="absolute inset-0 bg-black/35 z-10" />
         </div>
 
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[15vw] font-bold text-white opacity-[0.04] pointer-events-none select-none">ॐ</div>
-        
-        <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center py-16 px-4 sm:px-6 text-center">
-          <motion.h1 
+        {/* Desktop logo top-left */}
+        <div className="absolute top-2 sm:top-4 left-4 sm:left-10 lg:left-16 z-20 sm:block hidden">
+          <a href="/" className="hover:opacity-90 transition-opacity">
+            <img src="/images/logo.png" alt="Kumbhparv Logo" className="h-20 sm:h-24 w-auto object-contain drop-shadow-lg brightness-0 invert" />
+          </a>
+        </div>
+
+        {/* Desktop lang toggle top-right */}
+        <div className="absolute top-8 right-4 sm:right-10 lg:right-16 z-20 sm:block hidden">
+          <div className="flex items-center gap-2">
+            {[
+              { code: 'EN', label: 'English' },
+              { code: 'HI', label: 'हिन्दी' },
+              { code: 'MR', label: 'मराठी' }
+            ].map((lang, idx) => (
+              <span key={lang.code} className="flex items-center">
+                {idx > 0 && <span className="text-white/20 mx-0.5">|</span>}
+                <button
+                  onClick={() => setLanguage(lang.code)}
+                  className={`text-[11px] sm:text-xs font-bold tracking-wide transition-all duration-200 ${
+                    language === lang.code
+                      ? 'text-white'
+                      : 'text-white/40 hover:text-white/80'
+                  }`}
+                >
+                  {lang.label}
+                </button>
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Mobile logo centered */}
+        <div className="absolute top-16 left-0 right-0 z-20 flex items-center justify-center sm:hidden">
+          <a href="/" className="hover:opacity-90 transition-opacity">
+            <img src="/images/logo.png" alt="Kumbhparv Logo" className="h-20 w-auto object-contain drop-shadow-lg brightness-0 invert" />
+          </a>
+        </div>
+
+        <div className="relative z-10 text-right max-w-lg sm:max-w-2xl -mt-8 sm:-mt-10 mr-4 sm:mr-10 lg:mr-16">
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+            className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-white leading-[1.15] tracking-wider font-heading drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)]"
+          >
+            <span className="whitespace-nowrap">{content.heroTitle.split(' ').slice(0, -1).join(' ')}</span>
+            <br />
+            <span className="text-[var(--color-golden)]">{content.heroTitle.split(' ').pop()}</span>
+          </motion.h1>
+
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className="type-display text-[var(--color-golden)] drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)] mb-4"
+            transition={{ duration: 0.7, ease: 'easeOut', delay: 0.2 }}
+            className="mt-4 sm:mt-5 flex items-center gap-2 sm:gap-3 justify-end"
           >
-            {content.heroTitle}
-          </motion.h1>
-          
-          <motion.p 
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="type-hero-years text-[var(--color-vanilla)] mb-6 drop-shadow-[0_3px_8px_rgba(0,0,0,0.9)]"
-          >
-            {content.heroYears}
-          </motion.p>
-          
-          <motion.p 
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="type-hero-lead text-[var(--color-vanilla)]/95 mb-10 max-w-2xl drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]"
-          >
-            {content.heroSubtitle}
-          </motion.p>
-          
-          <motion.div 
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="w-32 h-[2px] bg-gradient-to-r from-transparent via-[var(--color-golden)] to-transparent mb-10"
-          ></motion.div>
-          
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-          >
-            <Link 
-              to="/register" 
-              className="type-btn primary-gradient px-8 py-3.5 rounded-full hover:shadow-[0_4px_15px_rgba(212,175,55,0.4)] transition-all border border-[var(--color-golden)]/50 block sm:inline-block shadow-lg"
-            >
-              {t.labels.volunteerRegistration}
-            </Link>
+            <span className="h-px w-8 sm:w-12 bg-[var(--color-golden)]/60"></span>
+            <span className="text-sm sm:text-lg md:text-xl font-semibold text-[var(--color-vanilla)]/90 tracking-[0.25em] font-sans">
+              {content.heroYears}
+            </span>
+            <span className="h-px w-8 sm:w-12 bg-[var(--color-golden)]/60"></span>
           </motion.div>
+
+          {/* Mobile CTA below years */}
+          <div className="sm:hidden mt-5 flex justify-end">
+            <Link
+              to="/register"
+              className="inline-block px-6 py-3 rounded-xl text-sm font-bold uppercase tracking-wider bg-[var(--color-golden)] text-[var(--color-maroon)] shadow-lg"
+            >
+              Volunteer Registration
+            </Link>
+          </div>
+        </div>
+
+        <div className="absolute bottom-6 sm:bottom-10 left-4 sm:left-10 lg:left-16 z-20">
+          <AnimatePresence mode="wait">
+            <motion.p
+              key={currentIndex}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.5, ease: 'easeOut', delay: 0.35 }}
+              className="px-5 py-3 sm:px-6 sm:py-4"
+            >
+              <span className="text-lg sm:text-xl md:text-2xl text-white/95 leading-snug font-serif italic tracking-wide max-w-sm block">
+                {heroTaglines[currentIndex][language] || heroTaglines[currentIndex]['EN']}
+              </span>
+            </motion.p>
+          </AnimatePresence>
         </div>
       </div>
 
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-      {/* ─── COUNTDOWN ─── */}
-      <div className="glass-card py-8 px-4 rounded-2xl shadow-sm text-center border-t-4 border-[var(--color-maroon)]">
-        <p className="type-eyebrow text-[var(--color-maroon-dark)] mb-4">
+      <div className="relative">
+        <motion.div
+          style={{ y: bgY }}
+          animate={{ opacity: countdownInView ? 0.04 : 0 }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
+          className="absolute inset-0 flex items-start justify-center pointer-events-none select-none mt-16"
+        >
+          <span className="text-[min(30vw,16rem)] font-bold text-[var(--color-maroon)] leading-none whitespace-nowrap">
+            कुम्भपर्व
+          </span>
+        </motion.div>
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+        {/* ─── COUNTDOWN ─── */}
+        <div ref={countdownRef} className="pt-6 pb-0 text-center relative">
+        <p className="type-eyebrow text-[var(--color-maroon-dark)] mb-8">
           {content.countdownText}
         </p>
-        <div className="flex justify-center items-center gap-4 sm:gap-8 flex-wrap">
-          <div className="text-center">
-            <div className="type-stat text-[var(--color-maroon)]">{String(timeLeft.days).padStart(3, '0')}</div>
-            <div className="type-stat-label text-[var(--color-maroon)]/60 mt-2">Days</div>
-          </div>
-          <div className="type-stat text-[var(--color-golden)] mb-5 leading-none">:</div>
-          <div className="text-center">
-            <div className="type-stat text-[var(--color-maroon)]">{String(timeLeft.hours).padStart(2, '0')}</div>
-            <div className="type-stat-label text-[var(--color-maroon)]/60 mt-2">Hours</div>
-          </div>
-          <div className="type-stat text-[var(--color-golden)] mb-5 leading-none">:</div>
-          <div className="text-center">
-            <div className="type-stat text-[var(--color-maroon)]">{String(timeLeft.minutes).padStart(2, '0')}</div>
-            <div className="type-stat-label text-[var(--color-maroon)]/60 mt-2">Minutes</div>
-          </div>
-          <div className="type-stat text-[var(--color-golden)] mb-5 leading-none">:</div>
-          <div className="text-center">
-            <div className="type-stat text-[var(--color-maroon)]">{String(timeLeft.seconds).padStart(2, '0')}</div>
-            <div className="type-stat-label text-[var(--color-maroon)]/60 mt-2">Seconds</div>
-          </div>
+        <div className="flex justify-center items-center gap-3 sm:gap-6">
+          <motion.div
+            initial={{ y: -80, opacity: 0 }}
+            animate={countdownAnimated ? { y: 0, opacity: 1 } : { y: -80, opacity: 0 }}
+            transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.05 }}
+            className="text-center"
+          >
+            <div className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-[var(--color-golden)] drop-shadow-lg leading-none tracking-[0.05em]">
+              {String(timeLeft.days).padStart(3, '0')}
+            </div>
+            <div className="text-xs sm:text-sm uppercase tracking-[0.2em] text-[var(--color-maroon)]/60 mt-1.5 font-medium">Days</div>
+          </motion.div>
+          <motion.span
+            initial={{ y: -80, opacity: 0 }}
+            animate={countdownAnimated ? { y: 0, opacity: 1 } : { y: -80, opacity: 0 }}
+            transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.1 }}
+            className="text-2xl sm:text-3xl lg:text-4xl text-[var(--color-golden)]/40 font-light leading-none self-center mt-2 sm:mt-3"
+          >:</motion.span>
+          <motion.div
+            initial={{ y: -80, opacity: 0 }}
+            animate={countdownAnimated ? { y: 0, opacity: 1 } : { y: -80, opacity: 0 }}
+            transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.15 }}
+            className="text-center"
+          >
+            <div className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-[var(--color-golden)] drop-shadow-lg leading-none tracking-[0.05em]">
+              {String(timeLeft.hours).padStart(2, '0')}
+            </div>
+            <div className="text-xs sm:text-sm uppercase tracking-[0.2em] text-[var(--color-maroon)]/60 mt-1.5 font-medium">Hours</div>
+          </motion.div>
+          <motion.span
+            initial={{ y: -80, opacity: 0 }}
+            animate={countdownAnimated ? { y: 0, opacity: 1 } : { y: -80, opacity: 0 }}
+            transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.2 }}
+            className="text-2xl sm:text-3xl lg:text-4xl text-[var(--color-golden)]/40 font-light leading-none self-center mt-2 sm:mt-3"
+          >:</motion.span>
+          <motion.div
+            initial={{ y: -80, opacity: 0 }}
+            animate={countdownAnimated ? { y: 0, opacity: 1 } : { y: -80, opacity: 0 }}
+            transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.25 }}
+            className="text-center"
+          >
+            <div className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-[var(--color-golden)] drop-shadow-lg leading-none tracking-[0.05em]">
+              {String(timeLeft.minutes).padStart(2, '0')}
+            </div>
+            <div className="text-xs sm:text-sm uppercase tracking-[0.2em] text-[var(--color-maroon)]/60 mt-1.5 font-medium">Minutes</div>
+          </motion.div>
+          <motion.span
+            initial={{ y: -80, opacity: 0 }}
+            animate={countdownAnimated ? { y: 0, opacity: 1 } : { y: -80, opacity: 0 }}
+            transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.3 }}
+            className="text-2xl sm:text-3xl lg:text-4xl text-[var(--color-golden)]/40 font-light leading-none self-center mt-2 sm:mt-3"
+          >:</motion.span>
+          <motion.div
+            initial={{ y: -80, opacity: 0 }}
+            animate={countdownAnimated ? { y: 0, opacity: 1 } : { y: -80, opacity: 0 }}
+            transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.35 }}
+            className="text-center"
+          >
+            <div className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-[var(--color-golden)] drop-shadow-lg leading-none tracking-[0.05em]">
+              {String(timeLeft.seconds).padStart(2, '0')}
+            </div>
+            <div className="text-xs sm:text-sm uppercase tracking-[0.2em] text-[var(--color-maroon)]/60 mt-1.5 font-medium">Seconds</div>
+          </motion.div>
+        </div>
         </div>
       </div>
 
       {/* ─── ABOUT SECTION ─── */}
-      <section id="about" className="p-8 sm:p-12">
-        <p className="type-eyebrow text-[var(--color-golden)] mb-3 drop-shadow-sm">
-          {content.intro.sectionLabel || 'The Divine Story'}
-        </p>
-        <h2 className="type-section-title text-[var(--color-maroon)] mb-5">{content.intro.title}</h2>
-        <div className="space-y-5 mb-8">
-          {content.intro.paragraphs.map((para, idx) => (
-            <p key={idx} className="type-lead text-[var(--color-text-main)]">{para}</p>
-          ))}
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {content.infoCards?.map((card, idx) => (
-            <div key={idx} className="border-l-4 border-[var(--color-maroon)] p-5 bg-[var(--color-camel)]/10 rounded-r-xl border-y border-r border-[var(--color-camel)]/30 shadow-sm">
-              <h4 className="type-card-title text-[var(--color-maroon)] mb-2">{card.title}</h4>
-              <p className="type-body-sm text-[var(--color-text-main)]">
-                {card.desc}
-              </p>
-            </div>
-          ))}
+      <section id="about" className="px-4 sm:px-6 lg:px-8 pb-4 sm:pb-8 pt-20 sm:pt-28">
+        <div className="max-w-5xl mx-auto">
+          <div className="flex items-center justify-center gap-3 mb-6">
+            <span className="h-px w-8 bg-[var(--color-golden)]/40"></span>
+            <span className="h-px w-16 bg-gradient-to-r from-[var(--color-golden)]/60 via-[var(--color-golden)] to-[var(--color-golden)]/60"></span>
+            <span className="h-px w-8 bg-[var(--color-golden)]/40"></span>
+          </div>
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+            className="text-center text-[var(--color-golden)] text-xs sm:text-sm font-bold uppercase tracking-[0.3em] mb-4"
+          >
+            {content.intro.sectionLabel || 'The Divine Story'}
+          </motion.p>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: 'easeOut', delay: 0.15 }}
+            className="text-center text-[var(--color-maroon)] text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight"
+          >
+            {content.intro.title}
+          </motion.h2>
+          <div className="max-w-4xl mx-auto mb-10 mt-6 space-y-6">
+            {content.intro.paragraphs.flatMap((para, idx) => {
+              const triggers = {
+                EN: '30 km',
+                HI: 'दो पवित्र केंद्रों',
+                MR: 'दोन पवित्र स्थळांवर',
+              };
+              const isDualSection = para.includes(triggers[language] || triggers.EN);
+              const pEl = (
+                <motion.p
+                  key={`p-${idx}`}
+                  initial={{ y: 30, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.6, ease: 'easeOut', delay: idx * 0.2 }}
+                  className="text-[var(--color-text-main)] text-base sm:text-lg leading-[1.9] font-serif tracking-wide text-center"
+                >
+                  {para}
+                </motion.p>
+              );
+              if (!isDualSection) return [pEl];
+              return [
+                pEl,
+                <div key="dual-section" className="pt-6 pb-2 w-full">
+                  <div className="relative flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-0">
+
+                    {/* Ramkund */}
+                    <div className="flex flex-col items-center gap-2 relative z-10 sm:flex-1 sm:max-w-[45%]">
+                      <motion.img
+                        src="/images/ramakund.png"
+                        alt="Ramkund"
+                        initial={{ x: -80, opacity: 0 }}
+                        whileInView={{ x: 0, opacity: 1 }}
+                        viewport={{ once: true, amount: 0.3 }}
+                        transition={{ duration: 0.7, ease: 'easeOut' }}
+                        className="w-full h-auto object-contain drop-shadow-xl"
+                      />
+                      <div className="text-center">
+                        <p className="text-[var(--color-maroon)] text-sm sm:text-base font-bold tracking-wide">Ramkund, Panchavati</p>
+                        <p className="text-[var(--color-maroon)]/60 text-xs sm:text-sm font-medium">Nasik</p>
+                      </div>
+                    </div>
+
+                    {/* 30 KM connector line + label */}
+                    <div className="relative z-20 flex flex-col sm:flex-row items-center justify-center w-full sm:w-auto py-2 sm:px-0">
+                      <div className="sm:hidden h-12 w-px border-l-2 border-dotted border-[var(--color-golden)]/50"></div>
+                      <div className="hidden sm:block w-8 h-px border-t-2 border-dotted border-[var(--color-golden)]/50"></div>
+                      <motion.span
+                        initial={{ scale: 0 }}
+                        whileInView={{ scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.4, delay: 0.3, type: 'spring' }}
+                        className="text-[var(--color-golden)] text-sm sm:text-base font-bold tracking-[0.2em] mx-2"
+                      >
+                        30 KM
+                      </motion.span>
+                      <div className="hidden sm:block w-8 h-px border-t-2 border-dotted border-[var(--color-golden)]/50"></div>
+                      <div className="sm:hidden h-12 w-px border-l-2 border-dotted border-[var(--color-golden)]/50"></div>
+                    </div>
+
+                    {/* Kushavarta */}
+                    <div className="flex flex-col items-center gap-2 relative z-10 sm:flex-1 sm:max-w-[45%]">
+                      <motion.img
+                        src="/images/kushvarta.png"
+                        alt="Kushavarta"
+                        initial={{ x: 80, opacity: 0 }}
+                        whileInView={{ x: 0, opacity: 1 }}
+                        viewport={{ once: true, amount: 0.3 }}
+                        transition={{ duration: 0.7, ease: 'easeOut' }}
+                        className="w-full h-auto object-contain drop-shadow-xl"
+                      />
+                      <div className="text-center">
+                        <p className="text-[var(--color-maroon)] text-sm sm:text-base font-bold tracking-wide">Kushavarta, Trimbakeshwar</p>
+                        <p className="text-[var(--color-maroon)]/60 text-xs sm:text-sm font-medium">Nasik</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ];
+            })}
+          </div>
+
+          {/* ─── INFO CARDS ─── */}
+          <div className="space-y-12 sm:space-y-16">
+            {content.infoCards?.map((card, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.3 }}
+                className="relative flex flex-col justify-center"
+              >
+                <motion.span
+                  initial={{ x: 200, opacity: 0 }}
+                  whileInView={{ x: 0, opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, ease: 'easeOut' }}
+                  className="absolute top-1/2 left-[55%] -translate-x-1/2 -translate-y-1/2 text-[6rem] sm:text-[10rem] font-bold leading-none text-[var(--color-maroon)]/[0.06] select-none pointer-events-none whitespace-nowrap"
+                >
+                  {['ॐ', 'अमृतस्य', 'मार्गः'][idx]}
+                </motion.span>
+                <motion.div
+                  initial={{ x: -80, opacity: 0 }}
+                  whileInView={{ x: 0, opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, ease: 'easeOut', delay: 0.15 }}
+                  className="relative z-10"
+                >
+                  <h3 className="text-[var(--color-maroon)] text-2xl sm:text-3xl font-bold mb-3">
+                    {card.title}
+                  </h3>
+                  <p className="text-[var(--color-text-main)] text-base sm:text-lg leading-[1.9] font-serif tracking-wide max-w-4xl">
+                    {card.desc}
+                  </p>
+                  {idx === content.infoCards.length - 1 && (
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6, delay: 0.3 }}
+                      className="flex justify-end mt-8"
+                    >
+                      <Link
+                        to="/about-nasik"
+                        className="group inline-flex items-center gap-2 text-[var(--color-golden)] hover:text-[var(--color-maroon)] text-sm sm:text-base font-semibold tracking-wide transition-colors duration-300"
+                      >
+                        <span className="border-b-2 border-current pb-0.5">
+                          {language === 'HI' ? 'जानें नासिक के बारे में' : language === 'MR' ? 'जाणून घ्या नासिक बद्दल' : 'Know more about Nasik'}
+                        </span>
+                        <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
+                      </Link>
+                    </motion.div>
+                  )}
+                </motion.div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 

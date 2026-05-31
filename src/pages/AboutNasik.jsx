@@ -128,7 +128,7 @@ const SectionHeader = ({ label, title, light = false }) => (
         {label}
       </span>
     )}
-    <h2 className={`text-4xl sm:text-5xl lg:text-6xl font-serif font-bold leading-[0.98]
+    <h2 className={`text-4xl sm:text-5xl lg:text-6xl font-heading font-bold leading-[0.98]
       ${light ? 'text-[var(--color-vanilla)]' : 'text-[var(--color-maroon)]'}`}>
       {title}
     </h2>
