@@ -16,6 +16,7 @@ const Registration = () => {
     whatsapp: '',
     address: '',
     gender: '',
+    bloodGroup: '',
     birthdate: '',
     area: '',
     suggestion: '',
@@ -57,6 +58,7 @@ const Registration = () => {
     if (!formData.name.trim()) newErrors.name = 'Required';
     if (!formData.whatsapp.trim() || formData.whatsapp.length < 10) newErrors.whatsapp = 'Valid number required';
     if (!formData.gender) newErrors.gender = 'Required';
+    if (!formData.bloodGroup) newErrors.bloodGroup = 'Required';
     if (!formData.pledgeAccepted) newErrors.pledge = 'Pledge Required';
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -281,7 +283,7 @@ const Registration = () => {
               </select>
             </div>
 
-            {/* Gender Dropdown (mandatory, placed last) */}
+            {/* Gender Dropdown (mandatory) */}
             <div>
               <label className="block text-sm font-semibold text-[var(--color-text-main)] mb-1">{t.labels.gender} *</label>
               <select
@@ -292,6 +294,21 @@ const Registration = () => {
                 <option value="">{t.labels.selectGender}</option>
                 {(t.genderOptions || []).map((g, i) => (
                   <option key={i} value={g}>{g}</option>
+                ))}
+              </select>
+            </div>
+
+            {/* Blood Group Dropdown (mandatory) */}
+            <div>
+              <label className="block text-sm font-semibold text-[var(--color-text-main)] mb-1">{t.labels.bloodGroup} *</label>
+              <select
+                value={formData.bloodGroup}
+                onChange={(e) => updateFormData({ bloodGroup: e.target.value })}
+                className={`block w-full px-4 py-3 rounded-xl focus:ring-2 focus:ring-[var(--color-golden)] focus:border-transparent outline-none transition-all shadow-sm text-[var(--color-text-main)] ${errors.bloodGroup ? 'border-red-500 bg-red-50' : 'border border-[var(--color-camel)]/30 bg-white/80'}`}
+              >
+                <option value="">{t.labels.selectBloodGroup}</option>
+                {(t.bloodGroupOptions || []).map((b, i) => (
+                  <option key={i} value={b}>{b}</option>
                 ))}
               </select>
             </div>

@@ -41,10 +41,10 @@ const Home = () => {
   };
 
   const heroImages = [
-    '/images/hero/image1.jpeg',
-    '/images/hero/image2.jpeg',
-    '/images/hero/image3.jpeg',
-    '/images/hero/image5.jpeg',
+    '/images/hero/heroimage1.png',
+    '/images/hero/heroimage2.png',
+    '/images/hero/heroimage3.png',
+    '/images/hero/heroimage4.png',
   ];
 
   const heroTaglines = [
@@ -99,8 +99,8 @@ const Home = () => {
   });
 
   useEffect(() => {
-    // Target date set to 31 October 2026
-    const target = new Date('2026-10-31T00:00:00+05:30').getTime();
+    // Target date set to 31 October 2026 12:02 PM for flag hosting
+    const target = new Date('2026-10-31T12:02:00+05:30').getTime();
 
     const updateCountdown = () => {
       const now = new Date().getTime();
@@ -158,6 +158,13 @@ const Home = () => {
     arr.sort((a, b) => new Date(a.date) - new Date(b.date));
     return arr;
   }, [content.snanPatrika.dates]);
+
+  const countdownLabels = content.countdownUnits || {
+    days: 'Days',
+    hours: 'Hours',
+    minutes: 'Minutes',
+    seconds: 'Seconds'
+  };
 
   return (
     <div className="w-full pb-20" data-lang={language.toLowerCase()}>
@@ -293,16 +300,6 @@ const Home = () => {
       </div>
 
       <div className="relative">
-        <motion.div
-          style={{ y: bgY }}
-          animate={{ opacity: countdownInView ? 0.04 : 0 }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
-          className="absolute inset-0 flex items-start justify-center pointer-events-none select-none mt-16"
-        >
-          <span className="text-[min(30vw,16rem)] font-bold text-[var(--color-maroon)] leading-none whitespace-nowrap">
-            कुम्भपर्व
-          </span>
-        </motion.div>
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
         {/* ─── COUNTDOWN ─── */}
         <div ref={countdownRef} className="pt-6 pb-0 text-center relative">
@@ -319,7 +316,7 @@ const Home = () => {
             <div className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-[var(--color-golden)] drop-shadow-lg leading-none tracking-[0.05em]">
               {String(timeLeft.days).padStart(3, '0')}
             </div>
-            <div className="text-xs sm:text-sm uppercase tracking-[0.2em] text-[var(--color-maroon)]/60 mt-1.5 font-medium">Days</div>
+            <div className="text-xs sm:text-sm uppercase tracking-[0.2em] text-[var(--color-maroon)]/60 mt-1.5 font-medium">{countdownLabels.days}</div>
           </motion.div>
           <motion.span
             initial={{ y: -80, opacity: 0 }}
@@ -336,7 +333,7 @@ const Home = () => {
             <div className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-[var(--color-golden)] drop-shadow-lg leading-none tracking-[0.05em]">
               {String(timeLeft.hours).padStart(2, '0')}
             </div>
-            <div className="text-xs sm:text-sm uppercase tracking-[0.2em] text-[var(--color-maroon)]/60 mt-1.5 font-medium">Hours</div>
+            <div className="text-xs sm:text-sm uppercase tracking-[0.2em] text-[var(--color-maroon)]/60 mt-1.5 font-medium">{countdownLabels.hours}</div>
           </motion.div>
           <motion.span
             initial={{ y: -80, opacity: 0 }}
@@ -353,7 +350,7 @@ const Home = () => {
             <div className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-[var(--color-golden)] drop-shadow-lg leading-none tracking-[0.05em]">
               {String(timeLeft.minutes).padStart(2, '0')}
             </div>
-            <div className="text-xs sm:text-sm uppercase tracking-[0.2em] text-[var(--color-maroon)]/60 mt-1.5 font-medium">Minutes</div>
+            <div className="text-xs sm:text-sm uppercase tracking-[0.2em] text-[var(--color-maroon)]/60 mt-1.5 font-medium">{countdownLabels.minutes}</div>
           </motion.div>
           <motion.span
             initial={{ y: -80, opacity: 0 }}
@@ -370,7 +367,7 @@ const Home = () => {
             <div className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-[var(--color-golden)] drop-shadow-lg leading-none tracking-[0.05em]">
               {String(timeLeft.seconds).padStart(2, '0')}
             </div>
-            <div className="text-xs sm:text-sm uppercase tracking-[0.2em] text-[var(--color-maroon)]/60 mt-1.5 font-medium">Seconds</div>
+            <div className="text-xs sm:text-sm uppercase tracking-[0.2em] text-[var(--color-maroon)]/60 mt-1.5 font-medium">{countdownLabels.seconds}</div>
           </motion.div>
         </div>
         </div>
@@ -545,7 +542,6 @@ const Home = () => {
 
       {/* ─── DATES SECTION ─── */}
       <section id="dates" ref={snanRef} className="px-4 sm:px-6 lg:px-8 pb-4 sm:pb-8 pt-20 sm:pt-28 relative overflow-hidden">
-        <span className="absolute top-[65%] right-[10%] -translate-y-1/2 text-[min(20vw,14rem)] font-bold leading-none text-[var(--color-maroon)]/[0.04] select-none pointer-events-none whitespace-nowrap">ॐ तत् सत्</span>
         <div className="max-w-5xl mx-auto relative z-10">
           <div className="flex items-center justify-center gap-3 mb-6">
             <span className="h-px w-8 bg-[var(--color-golden)]/40"></span>
@@ -700,18 +696,6 @@ const Home = () => {
 
       {/* ─── TRIKHANDI YOG ─── */}
       <section id="trikhandi" className="px-4 sm:px-6 lg:px-8 pb-4 sm:pb-8 pt-20 sm:pt-28 relative">
-        {/* Full-width background watermark */}
-        <div className="absolute inset-0 flex items-end justify-center pb-[16%] sm:pb-[12%] pointer-events-none select-none">
-          <motion.div
-            initial={{ clipPath: 'inset(0 100% 0 0)' }}
-            whileInView={{ clipPath: 'inset(0 0% 0 0)' }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.5, ease: 'easeInOut' }}
-            className="text-[min(22vw,14rem)] font-bold leading-[1.15] text-[var(--color-maroon)]/[0.04] whitespace-nowrap tracking-wider"
-          >
-            त्रिखण्डयोगः
-          </motion.div>
-        </div>
         <div className="max-w-5xl mx-auto relative z-10">
           <div className="flex items-center justify-start gap-3 mb-6">
             <span className="h-px w-8 bg-[var(--color-golden)]/40"></span>
@@ -787,12 +771,16 @@ const Home = () => {
               let title = '';
               let desc = para;
               const colonIdx = para.indexOf(':');
-              const dashIdx = para.indexOf(' \u2014 ');
-              if (colonIdx !== -1) {
-                title = para.substring(0, colonIdx);
+              const dashIdx = para.indexOf('  ');
+              const questionIdx = para.indexOf('? ');
+              if (questionIdx !== -1 && (colonIdx === -1 || questionIdx < colonIdx) && (dashIdx === -1 || questionIdx < dashIdx)) {
+                title = para.substring(0, questionIdx + 1).trim();
+                desc = para.substring(questionIdx + 2).trim();
+              } else if (colonIdx !== -1) {
+                title = para.substring(0, colonIdx).trim();
                 desc = para.substring(colonIdx + 1).trim();
               } else if (dashIdx !== -1) {
-                title = para.substring(0, dashIdx);
+                title = para.substring(0, dashIdx).trim();
                 desc = para.substring(dashIdx + 3).trim();
               }
               const isFullWidth = idx === 2;

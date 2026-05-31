@@ -106,6 +106,8 @@ export const content = {
       birthdate: "Birthdate",
       gender: "Gender",
       selectGender: "Select Gender",
+      bloodGroup: "Blood Group",
+      selectBloodGroup: "Select Blood Group",
       area: "Area",
       suggestion: "Any other suggestion",
       missionAgreement: "By submitting, you agree to join the Kumbhparv 2027 digital mission.",
@@ -115,6 +117,7 @@ export const content = {
       maxWords: "Max 500 words"
     },
     genderOptions: ["Male", "Female", "Transgender", "Prefer not to disclose"],
+    bloodGroupOptions: ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"],
     ageGroups: ["Below 18", "18-30", "31-45", "45-60", "60 and above"],
     areas: ["Adgaon", "Adgaon Naka", "Ashoka Road", "Ashwin Nagar", "Aurangabad Road", "Bhabha Nagar", "Bodhale Nagar", "Canada Corner", "CBS", "Chehdi", "Deolali Camp", "DGP Nagar", "Dwarka", "Gangapur Road", "Ganjmal", "Govind Nagar", "Indira Nagar", "Jai Bhavani Road", "Jail Road", "Kalpataru Nagar", "Kamatwade", "Kathe Galli", "Mahatma Nagar", "Mhasrul", "MIDC Ambad", "Nasik Road", "Panchavati", "Parijat Nagar", "Pathardi Phata", "Pawan Nagar", "Peth Road", "Pimpalgaon", "Rajiv Nagar", "Ramdas Swami nagar", "Ramkund", "Ravivar Karanja", "Sambhaji Chowk", "Satpur Colony", "Shalimar", "Shivaji Nagar", "Tagore Nagar", "Tidke Colony", "Tidke Nagar", "Trimbak Road", "Trimurti Chowk", "Untwadi", "Upnagar", "Uttam Nagar", "Wadala Pathardi Road"]
   },
@@ -224,6 +227,8 @@ export const content = {
       birthdate: "जन्मतारीख",
       gender: "लिंग",
       selectGender: "लिंग चुनें",
+      bloodGroup: "ब्लड ग्रुप",
+      selectBloodGroup: "ब्लड ग्रुप चुनें",
       area: "क्षेत्र",
       suggestion: "कोई अन्य सुझाव",
       missionAgreement: "सबमिट करके, आप कुंभपर्व 2027 डिजिटल मिशन में शामिल होने के लिए सहमत हैं।",
@@ -233,6 +238,7 @@ export const content = {
       maxWords: "अधिकतम 500 शब्द"
     },
     genderOptions: ["पुरुष", "महिला", "ट्रांसजेंडर", "बताना नहीं चाहते"],
+    bloodGroupOptions: ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"],
     ageGroups: ["18 से कम", "18-30", "31-45", "45-60", "60 और उससे अधिक"],
     areas: ["आडगांव", "आडगांव नाका", "अशोका रोड", "अश्विन नगर", "औरंगाबाद रोड", "भाभा नगर", "बोधले नगर", "कॅनडा कॉर्नर", "सी.बी.एस.", "चेहडी", "देवळाली कॅम्प", "डी.जी.पी. नगर", "द्वारका", "गंगापूर रोड", "गांजमाळ", "गोविंद नगर", "इंदिरा नगर", "जय भवानी रोड", "जेल रोड", "कल्पतरू नगर", "कामटवाडे", "काठे गल्ली", "महात्मा नगर", "म्हसरूळ", "एम.आय.डी.सी. अंबड", "नासिक रोड", "पंचवटी", "पारिजात नगर", "पाथर्डी फाटा", "पवन नगर", "पेठ रोड", "पिंपळगाव", "राजिव नगर", "रामदास स्वामी नगर", "रामकुंड", "रविवार कारंजा", "संभाजी चौक", "सातपूर कॉलनी", "शालिमार", "शिवाजी नगर", "टागोर नगर", "तिडके कॉलनी", "तिडके नगर", "त्र्यंबक रोड", "त्रिमूर्ती चौक", "उंटवाडी", "उपनगर", "उत्तम नगर", "वडाळा पाथर्डी रोड"]
   },
@@ -342,6 +348,8 @@ export const content = {
       birthdate: "जन्मतारीख",
       gender: "लिंग",
       selectGender: "लिंग निवडा",
+      bloodGroup: "रक्तगट",
+      selectBloodGroup: "रक्तगट निवडा",
       area: "क्षेत्र",
       suggestion: "इतर काही सूचना",
       missionAgreement: "सबमिट करून, आपण कुंभपर्व 2027 डिजिटल मिशनमध्ये सामील होण्यास सहमत आहात।",
@@ -351,6 +359,7 @@ export const content = {
       maxWords: "कमाल 500 शब्द"
     },
     genderOptions: ["पुरुष", "महिला", "तृतीयपंथी", "सांगू इच्छित नाही"],
+    bloodGroupOptions: ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"],
     ageGroups: ["18 पेक्षा कमी", "18-30", "31-45", "45-60", "60 आणि त्यापेक्षा जास्त"],
     areas: ["आडगांव", "आडगांव नाका", "अशोका रोड", "अश्विन नगर", "औरंगाबाद रोड", "भाभा नगर", "बोधले नगर", "कॅनडा कॉर्नर", "सी.बी.एस.", "चेहडी", "देवळाली कॅम्प", "डी.जी.पी. नगर", "द्वारका", "गंगापूर रोड", "गांजमाळ", "गोविंद नगर", "इंदिरा नगर", "जय भवानी रोड", "जेल रोड", "कल्पतरू नगर", "कामटवाडे", "काठे गल्ली", "महात्मा नगर", "म्हसरूळ", "एम.आय.डी.सी. अंबड", "नासिक रोड", "पंचवटी", "पारिजात नगर", "पाथर्डी फाटा", "पवन नगर", "पेठ रोड", "पिंपळगाव", "राजिव नगर", "रामदास स्वामी नगर", "रामकुंड", "रविवार कारंजा", "संभाजी चौक", "सातपूर कॉलनी", "शालिमार", "शिवाजी नगर", "टागोर नगर", "तिडके कॉलनी", "तिडके नगर", "त्र्यंबक रोड", "त्रिमूर्ती चौक", "उंटवाडी", "उपनगर", "उत्तम नगर", "वडाळा पाथर्डी रोड"]
   }

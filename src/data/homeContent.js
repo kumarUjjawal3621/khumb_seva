@@ -4,6 +4,12 @@ export const homeContent = {
     heroYears: "2026–2027",
     heroSubtitle: "A Sacred Confluence on the Banks of the Holy Godavari",
     countdownText: "Countdown to Flag Hosting",
+    countdownUnits: {
+      days: 'Days',
+      hours: 'Hours',
+      minutes: 'Minutes',
+      seconds: 'Seconds'
+    },
     infoCards: [
       {
         title: "Sacred River",
@@ -107,7 +113,13 @@ export const homeContent = {
     heroTitle: "सिंहस्थ कुंभपर्व नासिक",
     heroYears: "२०२६–२०२७–२०२८",
     heroSubtitle: "पवित्र गोदावरी के तट पर एक पावन महासंगम",
-    countdownText: "ध्वजारोहण के लिए उलटी गिनती",
+    countdownText: "ध्वजारोहण प्रारंभ होने में",
+    countdownUnits: {
+      days: 'दिन',
+      hours: 'घंटे',
+      minutes: 'मिनट',
+      seconds: 'सेकंड'
+    },
     infoCards: [
       {
         title: "पवित्र नदी",
@@ -211,7 +223,13 @@ export const homeContent = {
     heroTitle: "सिंहस्थ कुंभपर्व नासिक",
     heroYears: "२०२६–२०२७–२०२८",
     heroSubtitle: "पवित्र गोदावरीच्या तीरावर एक पावन महासंगम",
-    countdownText: "ध्वजारोहणासाठी उलटी गिनती",
+    countdownText: "ध्वजारोहण सुरू होण्यासाठी",
+    countdownUnits: {
+      days: 'दिवस',
+      hours: 'तास',
+      minutes: 'मिनिटे',
+      seconds: 'सेकंद'
+    },
     infoCards: [
       {
         title: "पवित्र नदी",
