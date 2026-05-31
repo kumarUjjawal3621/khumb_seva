@@ -197,7 +197,7 @@ const Home = () => {
         </div>
 
         {/* Desktop lang toggle top-right */}
-        <div className="absolute top-8 right-4 sm:right-10 lg:right-16 z-20 sm:block hidden">
+        <div className="absolute top-8 right-4 sm:right-10 lg:right-16 z-[60] sm:block hidden">
           <div className="flex items-center gap-2">
             {[
               { code: 'EN', label: 'English' },
