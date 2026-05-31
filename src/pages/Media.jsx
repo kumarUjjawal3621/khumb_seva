@@ -43,7 +43,7 @@ const Media = () => {
   const [hoveredSide, setHoveredSide] = useState(null);
 
   return (
-    <div className="relative min-h-screen overflow-hidden pt-6 sm:pt-8">
+    <div className="relative min-h-[100dvh] overflow-hidden pt-6 sm:pt-8">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-32 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-[var(--color-golden)]/6 rounded-full blur-3xl" />
         <div className="absolute bottom-0 right-0 w-[600px] h-[400px] bg-[var(--color-maroon)]/4 rounded-full blur-3xl" />

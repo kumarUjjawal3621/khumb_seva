@@ -52,7 +52,7 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <div className="relative min-h-screen flex flex-col items-end justify-center px-4 sm:px-10 lg:px-16 overflow-hidden shadow-lg border-b border-[var(--color-golden)]/30">
+    <div className="relative min-h-[100dvh] flex flex-col items-end justify-center px-4 sm:px-10 lg:px-16 overflow-hidden shadow-lg border-b border-[var(--color-golden)]/30">
       <div className="absolute inset-0 overflow-hidden select-none pointer-events-none bg-black/80">
         <AnimatePresence>
           <motion.img

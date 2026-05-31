@@ -36,7 +36,7 @@ const Layout = ({ children }) => {
   }, [location]);
 
   return (
-    <div data-lang={language.toLowerCase()} className="min-h-screen flex flex-col bg-[var(--color-vanilla)]">
+    <div data-lang={language.toLowerCase()} className="min-h-[100dvh] flex flex-col bg-[var(--color-vanilla)]">
       {/* Sticky Header */}
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -179,7 +179,7 @@ const Layout = ({ children }) => {
                           : 'text-white/80 hover:text-white hover:bg-white/10'
                     }`}
                   >
-                    {isCTA ? `✨ ${link.label}` : link.label}
+                    {link.label}
                   </Link>
                 );
               })}

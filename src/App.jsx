@@ -1,4 +1,4 @@
-import React from 'react';
+import { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AppProvider, useAppContext } from './context/AppContext';
 import Layout from './components/Layout';
@@ -14,7 +14,7 @@ import AdminDashboard from './pages/AdminDashboard';
 const ProtectedRoute = ({ children }) => {
   const { adminUser, authLoading } = useAppContext();
   
-  if (authLoading) return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
+  if (authLoading) return <div className="min-h-[100dvh] flex items-center justify-center">Loading...</div>;
   if (!adminUser) return <Navigate to="/admin/login" replace />;
   
   return children;
@@ -42,6 +42,23 @@ const MainApp = () => {
 };
 
 const App = () => {
+  // Force mobile browsers to recalculate viewport scale after fonts/images load
+  // Fixes Chrome Android bug where page renders zoomed-out on initial load
+  useEffect(() => {
+    const fixViewport = () => {
+      const meta = document.querySelector('meta[name=viewport]');
+      if (meta) {
+        meta.content = 'width=device-width, initial-scale=1.0';
+      }
+    };
+    if (document.readyState === 'complete') {
+      fixViewport();
+    } else {
+      window.addEventListener('load', fixViewport);
+      return () => window.removeEventListener('load', fixViewport);
+    }
+  }, []);
+
   return (
     <AppProvider>
       <MainApp />

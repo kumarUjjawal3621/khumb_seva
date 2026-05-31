@@ -162,7 +162,7 @@ const Home = () => {
   return (
     <div className="w-full pb-20" data-lang={language.toLowerCase()}>
       {/* ─── HERO ─── */}
-      <div className="relative min-h-screen flex flex-col items-end justify-center px-4 sm:px-10 lg:px-16 overflow-hidden shadow-lg border-b border-[var(--color-golden)]/30 mb-12">
+      <div className="relative min-h-[100dvh] flex flex-col items-end justify-center px-4 sm:px-10 lg:px-16 overflow-hidden shadow-lg border-b border-[var(--color-golden)]/30 mb-12">
         <div className="absolute inset-0 overflow-hidden select-none pointer-events-none bg-black">
           {carouselStarted ? (
             <AnimatePresence>
@@ -197,7 +197,7 @@ const Home = () => {
         </div>
 
         {/* Desktop lang toggle top-right */}
-        <div className="absolute top-8 right-4 sm:right-10 lg:right-16 z-20 sm:block hidden">
+        <div className="absolute top-8 right-4 sm:right-10 lg:right-16 z-[60] sm:block hidden">
           <div className="flex items-center gap-2">
             {[
               { code: 'EN', label: 'English' },
@@ -235,7 +235,7 @@ const Home = () => {
             transition={{ duration: 0.8, ease: 'easeOut' }}
             className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-white leading-[1.15] tracking-wider font-heading drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)]"
           >
-            <span className="whitespace-nowrap">{content.heroTitle.split(' ').slice(0, -1).join(' ')}</span>
+            <span className="sm:whitespace-nowrap max-w-[85vw] inline-block">{content.heroTitle.split(' ').slice(0, -1).join(' ')}</span>
             <br />
             <span className="text-[var(--color-golden)]">{content.heroTitle.split(' ').pop()}</span>
           </motion.h1>
@@ -658,7 +658,7 @@ const Home = () => {
       </section>
 
       {/* ─── Hidden render for image capture ─── */}
-      <div ref={pdfContentRef} style={{ position: 'absolute', left: '-9999px', top: 0, width: '600px', background: '#FAF5F0', fontFamily: 'Georgia, serif', padding: '40px' }}>
+      <div ref={pdfContentRef} style={{ position: 'fixed', left: '-9999px', top: '-9999px', width: '600px', background: '#FAF5F0', fontFamily: 'Georgia, serif', padding: '40px' }}>
         <div style={{ textAlign: 'center' }}>
           <img src="/logo.jpeg" alt="logo" style={{ width: '80px', height: 'auto', margin: '0 auto 16px', display: 'block' }} />
           <div style={{ fontSize: '22px', fontWeight: 900, color: '#7B1C1C', letterSpacing: '1px', margin: '0 0 2px' }}>SINHASTHA KUMBHPARV NASIK</div>
@@ -699,13 +699,19 @@ const Home = () => {
       </div>
 
       {/* ─── TRIKHANDI YOG ─── */}
-      <section id="trikhandi" className="px-4 sm:px-6 lg:px-8 pb-4 sm:pb-8 pt-20 sm:pt-28 relative overflow-hidden">
-        <img
-          src="/images/trikhand.png"
-          alt=""
-          aria-hidden
-          className="absolute top-24 right-[5%] w-[45%] sm:w-[40%] lg:w-[35%] h-auto object-contain pointer-events-none select-none hidden lg:block"
-        />
+      <section id="trikhandi" className="px-4 sm:px-6 lg:px-8 pb-4 sm:pb-8 pt-20 sm:pt-28 relative">
+        {/* Full-width background watermark */}
+        <div className="absolute inset-0 flex items-end justify-center pb-[16%] sm:pb-[12%] pointer-events-none select-none">
+          <motion.div
+            initial={{ clipPath: 'inset(0 100% 0 0)' }}
+            whileInView={{ clipPath: 'inset(0 0% 0 0)' }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.5, ease: 'easeInOut' }}
+            className="text-[min(22vw,14rem)] font-bold leading-[1.15] text-[var(--color-maroon)]/[0.04] whitespace-nowrap tracking-wider"
+          >
+            त्रिखण्डयोगः
+          </motion.div>
+        </div>
         <div className="max-w-5xl mx-auto relative z-10">
           <div className="flex items-center justify-start gap-3 mb-6">
             <span className="h-px w-8 bg-[var(--color-golden)]/40"></span>
@@ -755,6 +761,11 @@ const Home = () => {
             className="block lg:hidden w-3/4 mx-auto my-6 h-auto object-contain"
           />
           <div className="mb-12 mt-8 space-y-6">
+            <img
+              src="/images/trikhand.png"
+              alt="Trikhand Yog"
+              className="hidden lg:block float-right w-[40%] lg:w-[35%] ml-6 lg:ml-8 mb-4 h-auto object-contain"
+            />
             {content.trikhandiYog.paragraphs.slice(1, 3).map((para, idx) => {
               const contentEl = (
                 <motion.p
@@ -768,28 +779,6 @@ const Home = () => {
                   {para}
                 </motion.p>
               );
-              if (idx === 1) {
-                return (
-                  <div key={idx} className="relative">
-                    <div className="absolute top-0 bottom-0 left-0 right-[-4rem] flex flex-col items-end justify-start pt-20 gap-2 pointer-events-none select-none">
-                      <div className="text-[min(18vw,10rem)] font-bold leading-[1.15] text-[var(--color-maroon)]/[0.18] whitespace-nowrap text-center tracking-wider">
-                        {['त्रिखण्डयोगः'].map((line, i) => (
-                          <motion.div
-                            key={i}
-                            initial={{ clipPath: 'inset(0 100% 0 0)' }}
-                            whileInView={{ clipPath: 'inset(0 0% 0 0)' }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 1.5, ease: 'easeInOut', delay: i * 0.5 }}
-                          >
-                            {line}
-                          </motion.div>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="relative z-10">{contentEl}</div>
-                  </div>
-                );
-              }
               return contentEl;
             })}
           </div>
