@@ -6,7 +6,8 @@ import { Menu, X } from 'lucide-react';
 const Layout = ({ children }) => {
   const { language, setLanguage, t } = useAppContext();
   const location = useLocation();
-  const [scrolled, setScrolled] = useState(false);
+  const isHome = location.pathname === '/';
+  const [scrolled, setScrolled] = useState(!isHome);
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const navLinks = [
@@ -19,9 +20,14 @@ const Layout = ({ children }) => {
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80);
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+    if (isHome) {
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
+      return () => window.removeEventListener('scroll', onScroll);
+    } else {
+      setScrolled(true);
+    }
+  }, [isHome]);
 
   useEffect(() => {
     setMobileOpen(false);
@@ -294,12 +300,12 @@ const Layout = ({ children }) => {
                 </div>
               </div>
 
-              <div className="mt-6 inline-flex flex-col gap-2.5 rounded-xl border border-[var(--color-golden)]/35 bg-[var(--color-vanilla)]/45 px-4 py-3.5 w-full">
+              <a href="https://eyeview.org.in" target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex flex-col gap-2.5 rounded-xl border border-[var(--color-golden)]/35 bg-[var(--color-vanilla)]/45 px-4 py-3.5 w-full hover:bg-[var(--color-golden)]/10 hover:border-[var(--color-golden)]/60 transition-all duration-300 cursor-pointer">
                 <p className="text-xs font-bold uppercase tracking-wider text-[var(--color-maroon)]/60">
                   {language === 'HI' ? 'सहयोग से' : language === 'MR' ? 'सहकार्याने' : 'In Collaboration With'}
                 </p>
                 <img src="/images/eyeviewlogo.png" alt="Eye View Enterprises logo" className="h-14 max-w-full object-contain" />
-              </div>
+              </a>
             </div>
           </div>
 

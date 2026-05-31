@@ -1,12 +1,44 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence, useScroll, useTransform, useInView } from 'framer-motion';
 import { useAppContext } from '../context/AppContext';
 import { homeContent } from '../data/homeContent';
+import html2canvas from 'html2canvas';
 
 const Home = () => {
   const { language, setLanguage, t } = useAppContext();
   const content = homeContent[language] || homeContent['EN'];
+  const snanRef = useRef(null);
+  const pdfContentRef = useRef(null);
+  const [downloading, setDownloading] = useState(false);
+
+  const downloadImage = async () => {
+    if (downloading) return;
+    setDownloading(true);
+    try {
+      // Preload logo
+      const img = new Image();
+      img.crossOrigin = 'anonymous';
+      await new Promise((resolve, reject) => {
+        img.onload = resolve;
+        img.onerror = resolve;
+        img.src = '/logo.jpeg';
+      });
+      await new Promise((r) => setTimeout(r, 100));
+      const canvas = await html2canvas(pdfContentRef.current, {
+        scale: 3,
+        backgroundColor: '#FAF5F0',
+        logging: false,
+      });
+      const link = document.createElement('a');
+      link.download = 'Sinhastha-Nasik-Snan-Patrika-2027.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    } catch (err) {
+      console.error('Image generation failed:', err);
+    }
+    setDownloading(false);
+  };
 
   const heroImages = [
     '/images/hero/image1.jpeg',
@@ -40,14 +72,23 @@ const Home = () => {
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [carouselStarted, setCarouselStarted] = useState(false);
 
   useEffect(() => {
-    setCurrentIndex((prev) => (prev >= heroImages.length ? 0 : prev));
+    const startTimer = setTimeout(() => {
+      setCarouselStarted(true);
+      setCurrentIndex(1);
+    }, 3500);
+    return () => clearTimeout(startTimer);
+  }, []);
+
+  useEffect(() => {
+    if (!carouselStarted) return;
     const timer = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % heroImages.length);
     }, 3000);
     return () => clearInterval(timer);
-  }, [heroImages.length]);
+  }, [carouselStarted, heroImages.length]);
 
   // Countdown State
   const [timeLeft, setTimeLeft] = useState({
@@ -112,24 +153,39 @@ const Home = () => {
     return { label: occasion.split('—')[0].trim(), type: 'parvani' };
   };
 
+  const sortedDates = useMemo(() => {
+    const arr = [...(content.snanPatrika.dates || [])];
+    arr.sort((a, b) => new Date(a.date) - new Date(b.date));
+    return arr;
+  }, [content.snanPatrika.dates]);
+
   return (
     <div className="w-full pb-20" data-lang={language.toLowerCase()}>
       {/* ─── HERO ─── */}
       <div className="relative min-h-screen flex flex-col items-end justify-center px-4 sm:px-10 lg:px-16 overflow-hidden shadow-lg border-b border-[var(--color-golden)]/30 mb-12">
         <div className="absolute inset-0 overflow-hidden select-none pointer-events-none bg-black">
-          <AnimatePresence>
-            <motion.img
-              key={currentIndex}
-              src={heroImages[currentIndex]}
+          {carouselStarted ? (
+            <AnimatePresence>
+              <motion.img
+                key={currentIndex}
+                src={heroImages[currentIndex]}
+                alt=""
+                aria-hidden
+                initial={{ x: '100%' }}
+                animate={{ x: 0 }}
+                exit={{ x: '-100%' }}
+                transition={{ duration: 1.5, ease: 'easeInOut' }}
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+            </AnimatePresence>
+          ) : (
+            <img
+              src={heroImages[0]}
               alt=""
               aria-hidden
-              initial={{ x: '100%' }}
-              animate={{ x: 0 }}
-              exit={{ x: '-100%' }}
-              transition={{ duration: 1.5, ease: 'easeInOut' }}
               className="absolute inset-0 w-full h-full object-cover"
             />
-          </AnimatePresence>
+          )}
           <div className="absolute inset-0 bg-black/35 z-10" />
         </div>
 
@@ -208,22 +264,32 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="absolute bottom-6 sm:bottom-10 left-4 sm:left-10 lg:left-16 z-20">
-          <AnimatePresence mode="wait">
-            <motion.p
-              key={currentIndex}
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.5, ease: 'easeOut', delay: 0.35 }}
-              className="px-5 py-3 sm:px-6 sm:py-4"
-            >
+        {carouselStarted ? (
+          <div className="absolute bottom-6 sm:bottom-10 left-4 sm:left-10 lg:left-16 z-20">
+            <AnimatePresence mode="wait">
+              <motion.p
+                key={currentIndex}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.5, ease: 'easeOut', delay: 0.35 }}
+                className="px-5 py-3 sm:px-6 sm:py-4"
+              >
+                <span className="text-lg sm:text-xl md:text-2xl text-white/95 leading-snug font-serif italic tracking-wide max-w-sm block">
+                  {heroTaglines[currentIndex][language] || heroTaglines[currentIndex]['EN']}
+                </span>
+              </motion.p>
+            </AnimatePresence>
+          </div>
+        ) : (
+          <div className="absolute bottom-6 sm:bottom-10 left-4 sm:left-10 lg:left-16 z-20">
+            <p className="px-5 py-3 sm:px-6 sm:py-4">
               <span className="text-lg sm:text-xl md:text-2xl text-white/95 leading-snug font-serif italic tracking-wide max-w-sm block">
-                {heroTaglines[currentIndex][language] || heroTaglines[currentIndex]['EN']}
+                {heroTaglines[0][language] || heroTaglines[0]['EN']}
               </span>
-            </motion.p>
-          </AnimatePresence>
-        </div>
+            </p>
+          </div>
+        )}
       </div>
 
       <div className="relative">
@@ -478,59 +544,256 @@ const Home = () => {
       </section>
 
       {/* ─── DATES SECTION ─── */}
-      <section id="dates" className="p-8 sm:p-12">
-        <p className="type-eyebrow text-[var(--color-golden)] mb-3 drop-shadow-sm">
-          {content.snanPatrika.sectionLabel || "Snan Patrika 2027"}
-        </p>
-        <h2 className="type-section-title text-[var(--color-maroon)] mb-5">
-          {content.snanPatrika.title}
-        </h2>
-        <p className="type-lead text-[var(--color-text-main)] mb-10 max-w-3xl">
-          {content.snanPatrika.description}
-        </p>
+      <section id="dates" ref={snanRef} className="px-4 sm:px-6 lg:px-8 pb-4 sm:pb-8 pt-20 sm:pt-28 relative overflow-hidden">
+        <span className="absolute top-[65%] right-[10%] -translate-y-1/2 text-[min(20vw,14rem)] font-bold leading-none text-[var(--color-maroon)]/[0.04] select-none pointer-events-none whitespace-nowrap">ॐ तत् सत्</span>
+        <div className="max-w-5xl mx-auto relative z-10">
+          <div className="flex items-center justify-center gap-3 mb-6">
+            <span className="h-px w-8 bg-[var(--color-golden)]/40"></span>
+            <span className="h-px w-16 bg-gradient-to-r from-[var(--color-golden)]/60 via-[var(--color-golden)] to-[var(--color-golden)]/60"></span>
+            <span className="h-px w-8 bg-[var(--color-golden)]/40"></span>
+          </div>
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+            className="text-center text-[var(--color-golden)] text-xs sm:text-sm font-bold uppercase tracking-[0.3em] mb-4"
+          >
+            {content.snanPatrika.sectionLabel || "Snan Patrika 2027"}
+          </motion.p>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: 'easeOut', delay: 0.15 }}
+            className="text-center text-[var(--color-maroon)] text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight"
+          >
+            {content.snanPatrika.title}
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: 'easeOut', delay: 0.25 }}
+            className="text-center text-[var(--color-text-main)] text-base sm:text-lg leading-[1.9] font-serif tracking-wide max-w-4xl mx-auto mb-12"
+          >
+            {content.snanPatrika.description}
+          </motion.p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {content.snanPatrika.dates.map((item, idx) => {
-            const { day, monthYear } = parseDate(item.date);
-            const { label, type } = getBadgeType(item.occasion);
-            const isShahi = type === 'shahi';
-            
-            return (
-              <div key={idx} className={`bg-white/80 backdrop-blur-sm p-6 rounded-2xl relative shadow-sm hover:shadow-md transition-shadow ${isShahi ? 'border-2 border-[var(--color-maroon)]' : 'border border-[var(--color-camel)]/40'}`}>
-                <div className={`type-badge inline-block px-3 py-1 rounded-full mb-4 ${isShahi ? 'bg-[var(--color-maroon)] text-[var(--color-vanilla)] shadow-sm' : 'bg-[var(--color-camel)] text-[var(--color-maroon-dark)]'}`}>
-                  {label}
-                </div>
-                <div className="flex gap-4 items-baseline mb-3">
-                  <div className="type-date-day text-[var(--color-maroon)]">{day}</div>
-                  <div className="type-body-sm font-bold text-[var(--color-camel)] tracking-wide">
-                    <div>{monthYear}</div>
-                    <div>{item.day}</div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {sortedDates.map((item, idx) => {
+              const { day, monthYear } = parseDate(item.date);
+              const { label, type } = getBadgeType(item.occasion);
+              const isShahi = type === 'shahi';
+              
+              return (
+                <div
+                  key={idx}
+                  onClick={() => {
+                    if (item.coords) {
+                      window.open(`https://www.google.com/maps?q=${item.coords.lat},${item.coords.lng}`, '_blank');
+                    }
+                  }}
+                  className="group flex flex-col items-center text-center bg-white/10 backdrop-blur-[2px] border border-[var(--color-maroon)]/15 rounded-2xl px-6 py-8 cursor-pointer transition-all duration-300 ease-out hover:scale-[1.04] hover:shadow-xl hover:shadow-[var(--color-maroon)]/10 hover:border-[var(--color-maroon)]/40"
+                >
+                  {/* Badge */}
+                  <div className={`type-badge inline-block px-3 py-1 rounded-full mb-5 transition-all duration-300 ${isShahi ? 'text-[var(--color-maroon)] bg-[var(--color-maroon)]/8 group-hover:bg-[var(--color-maroon)]/15' : 'text-[var(--color-camel)] bg-[var(--color-camel)]/10 group-hover:bg-[var(--color-camel)]/20'}`}>
+                    {label}
+                  </div>
+
+                  {/* Date number - massive and elegant */}
+                  <div className="type-stat text-[var(--color-maroon)] leading-none mb-2 transition-all duration-300 group-hover:text-[var(--color-maroon-dark)]">
+                    {day}
+                  </div>
+
+                  {/* Month, year and weekday */}
+                  <div className="text-[11px] font-bold text-[var(--color-camel)] tracking-[0.25em] uppercase mb-4">
+                    {monthYear} <span className="text-[var(--color-maroon)]/30 mx-1.5">•</span> {item.day}
+                  </div>
+
+                  {/* Decorative divider */}
+                  <div className="w-12 h-px bg-gradient-to-r from-transparent via-[var(--color-golden)]/50 to-transparent mb-4 transition-all duration-300 group-hover:w-20 group-hover:via-[var(--color-golden)]/80"></div>
+
+                  {/* Tithi */}
+                  <div className="type-card-heading text-[var(--color-maroon-dark)] mb-2">
+                    {item.tithi}
+                  </div>
+
+                  {/* Occasion */}
+                  <p className="type-body-sm text-[var(--color-text-main)]/80 max-w-xs">
+                    {item.occasion.split('—')[1] ? item.occasion.split('—')[1].trim() : item.occasion}
+                  </p>
+
+                  {/* Location */}
+                  <div className="mt-4 flex flex-col items-center gap-1">
+                    <div className="flex items-center gap-1.5 group-hover:gap-2 transition-all duration-300">
+                      <svg className="w-3.5 h-3.5 text-[var(--color-golden)]/60 group-hover:text-[var(--color-golden)] transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                      <span className="text-[10px] font-bold text-[var(--color-golden)] tracking-[0.15em] uppercase group-hover:text-[var(--color-golden-light)] transition-all duration-300">{item.location}</span>
+                    </div>
+                    <span className="text-[9px] text-[var(--color-golden)]/40 group-hover:text-[var(--color-golden)]/80 font-medium tracking-wider transition-all duration-300 opacity-0 group-hover:opacity-100">
+                      {content.snanPatrika.tapToView}
+                    </span>
                   </div>
                 </div>
-                <div className="type-card-heading text-[var(--color-maroon-dark)] mb-2">{item.tithi}</div>
-                <p className="type-body-sm text-[var(--color-text-main)] mb-4">{item.occasion.split('—')[1] ? item.occasion.split('—')[1].trim() : item.occasion}</p>
-                <div className="type-badge text-[var(--color-golden)] border-t border-[var(--color-camel)]/20 pt-3">
-                  📍 {item.location}
-                </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
+
+          {/* Download Snan Patrika */}
+          <div className="flex justify-end mt-6">
+            <button
+              onClick={downloadImage}
+              disabled={downloading}
+              className="group inline-flex items-center gap-2.5 px-3 py-1.5 -mx-3 rounded text-[var(--color-maroon)] hover:text-[var(--color-maroon-dark)] text-xs font-semibold tracking-wider transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed underline underline-offset-4 decoration-[var(--color-golden)]/60 hover:decoration-[var(--color-golden)] decoration-2 hover:bg-[var(--color-maroon)]/[0.06]"
+            >
+              {downloading ? (
+                <span className="inline-block w-3 h-3 border border-[var(--color-maroon)]/30 border-t-[var(--color-maroon)] rounded-full animate-spin"></span>
+              ) : (
+                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+              )}
+              {content.snanPatrika.downloadLabel || 'Download Snan Patrika'}
+            </button>
+          </div>
         </div>
       </section>
 
+      {/* ─── Hidden render for image capture ─── */}
+      <div ref={pdfContentRef} style={{ position: 'absolute', left: '-9999px', top: 0, width: '600px', background: '#FAF5F0', fontFamily: 'Georgia, serif', padding: '40px' }}>
+        <div style={{ textAlign: 'center' }}>
+          <img src="/logo.jpeg" alt="logo" style={{ width: '80px', height: 'auto', margin: '0 auto 16px', display: 'block' }} />
+          <div style={{ fontSize: '22px', fontWeight: 900, color: '#7B1C1C', letterSpacing: '1px', margin: '0 0 2px' }}>SINHASTHA KUMBHPARV NASIK</div>
+          <div style={{ width: '100px', height: '2px', background: '#D4AF37', margin: '10px auto' }}></div>
+          <div style={{ fontSize: '12px', fontWeight: 700, color: '#D4AF37', letterSpacing: '3px', textTransform: 'uppercase', margin: '0 0 2px' }}>{content.snanPatrika.sectionLabel}</div>
+          <div style={{ fontSize: '16px', fontWeight: 800, color: '#7B1C1C', margin: '0 0 20px' }}>{content.snanPatrika.title}</div>
+        </div>
+
+        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '12px' }}>
+          <thead>
+            <tr style={{ background: '#7B1C1C', color: '#fff' }}>
+              {(content.snanPatrika.tableHeaders || ['Date','Day','Tithi','Occasion','Location']).map((h, i) => (
+                <th key={i} style={{ padding: '8px 6px', textAlign: 'left', fontSize: '10px', letterSpacing: '1px', fontWeight: 700 }}>{h}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {content.snanPatrika.dates.map((d, i) => {
+              const occasionText = d.occasion.split('—')[1] ? d.occasion.split('—')[1].trim() : d.occasion;
+              return (
+                <tr key={i} style={{ borderBottom: '1px solid rgba(212, 175, 55, 0.3)', background: i % 2 === 0 ? '#F8F3EC' : 'transparent' }}>
+                  <td style={{ padding: '7px 6px', fontWeight: 700, color: '#7B1C1C' }}>{d.date}</td>
+                  <td style={{ padding: '7px 6px', color: '#5C1515' }}>{d.day}</td>
+                  <td style={{ padding: '7px 6px', fontWeight: 600, color: '#5C1515' }}>{d.tithi}</td>
+                  <td style={{ padding: '7px 6px', color: '#3A2015', fontSize: '11px' }}>{occasionText}</td>
+                  <td style={{ padding: '7px 6px', fontWeight: 700, color: '#D4AF37', fontSize: '10px' }}>{d.location}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+
+        <div style={{ textAlign: 'center', marginTop: '24px' }}>
+          <div style={{ width: '50px', height: '1px', background: '#D4AF37', margin: '0 auto 10px' }}></div>
+          <div style={{ fontSize: '11px', color: '#7B1C1C', fontStyle: 'italic' }}>{content.heroSubtitle}</div>
+          <div style={{ fontSize: '9px', color: '#D4AF37', letterSpacing: '2px', marginTop: '4px', fontWeight: 700 }}>SINHASTHA KUMBHPARV NASIK {content.heroYears}</div>
+        </div>
+      </div>
+
       {/* ─── TRIKHANDI YOG ─── */}
-      <section id="trikhandi" className="p-8 sm:p-12 relative overflow-hidden bg-[var(--color-maroon)]/5">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[var(--color-golden)] rounded-full mix-blend-multiply filter blur-[120px] opacity-20 -translate-y-1/2 translate-x-1/3"></div>
-        <div className="relative z-10">
-          <h2 className="type-section-title text-[var(--color-maroon)] mb-5">
-            {content.trikhandiYog.title}
-          </h2>
-          <div className="space-y-6 mb-8">
-            {content.trikhandiYog.paragraphs.slice(0, 3).map((para, idx) => (
-              <p key={idx} className="type-lead text-[var(--color-text-main)]">{para}</p>
-            ))}
+      <section id="trikhandi" className="px-4 sm:px-6 lg:px-8 pb-4 sm:pb-8 pt-20 sm:pt-28 relative overflow-hidden">
+        <img
+          src="/images/trikhand.png"
+          alt=""
+          aria-hidden
+          className="absolute top-24 right-[5%] w-[45%] sm:w-[40%] lg:w-[35%] h-auto object-contain pointer-events-none select-none hidden lg:block"
+        />
+        <div className="max-w-5xl mx-auto relative z-10">
+          <div className="flex items-center justify-start gap-3 mb-6">
+            <span className="h-px w-8 bg-[var(--color-golden)]/40"></span>
+            <span className="h-px w-16 bg-gradient-to-r from-[var(--color-golden)]/60 via-[var(--color-golden)] to-[var(--color-golden)]/60"></span>
+            <span className="h-px w-8 bg-[var(--color-golden)]/40"></span>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+            className="text-left text-[var(--color-golden)] text-xs sm:text-sm font-bold uppercase tracking-[0.3em] mb-2 leading-relaxed"
+          >
+            {language === 'HI' ? (
+              <>
+                त्रिखंड योग का अलौकिक संयोग:<br />
+                नाशिक-त्र्यंबकेश्वर सिंहस्थ<br />
+                कुंभमेला (२०२६–२०२८)
+              </>
+            ) : language === 'MR' ? (
+              <>
+                त्रिखंड योगाचा दुर्मिळ खगोलीय चमत्कार:<br />
+                नाशिक-त्र्यंबकेश्वर सिंहस्थ<br />
+                कुंभपर्व (२०२६–२०२८)
+              </>
+            ) : (
+              <>
+                The Celestial Wonder of Trikhand Yog:<br />
+                Nashik-Trimbakeshwar Sinhastha<br />
+                Kumbh Mela (2026–2028)
+              </>
+            )}
+          </motion.div>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: 'easeOut', delay: 0.15 }}
+            className="text-left text-[var(--color-maroon)] text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight leading-tight max-w-4xl mt-4"
+          >
+            {content.trikhandiYog.title}
+          </motion.h2>
+          <img
+            src="/images/trikhand.png"
+            alt=""
+            aria-hidden
+            className="block lg:hidden w-3/4 mx-auto my-6 h-auto object-contain"
+          />
+          <div className="mb-12 mt-8 space-y-6">
+            {content.trikhandiYog.paragraphs.slice(1, 3).map((para, idx) => {
+              const contentEl = (
+                <motion.p
+                  key={idx}
+                  initial={{ y: 30, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.6, ease: 'easeOut', delay: idx * 0.2 }}
+                  className="text-[var(--color-text-main)] text-base sm:text-lg leading-[1.9] font-serif tracking-wide text-left max-w-4xl"
+                >
+                  {para}
+                </motion.p>
+              );
+              if (idx === 1) {
+                return (
+                  <div key={idx} className="relative">
+                    <div className="absolute top-0 bottom-0 left-0 right-[-4rem] flex flex-col items-end justify-start pt-20 gap-2 pointer-events-none select-none">
+                      <div className="text-[min(18vw,10rem)] font-bold leading-[1.15] text-[var(--color-maroon)]/[0.18] whitespace-nowrap text-center tracking-wider">
+                        {['त्रिखण्डयोगः'].map((line, i) => (
+                          <motion.div
+                            key={i}
+                            initial={{ clipPath: 'inset(0 100% 0 0)' }}
+                            whileInView={{ clipPath: 'inset(0 0% 0 0)' }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 1.5, ease: 'easeInOut', delay: i * 0.5 }}
+                          >
+                            {line}
+                          </motion.div>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="relative z-10">{contentEl}</div>
+                  </div>
+                );
+              }
+              return contentEl;
+            })}
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 relative">
             {content.trikhandiYog.paragraphs.slice(3, 6).map((para, idx) => {
               let title = '';
               let desc = para;
@@ -543,12 +806,24 @@ const Home = () => {
                 title = para.substring(0, dashIdx);
                 desc = para.substring(dashIdx + 3).trim();
               }
-              const extraClass = idx === 2 ? 'sm:col-span-2' : '';
+              const isFullWidth = idx === 2;
               return (
-                <div key={idx} className={`${extraClass} bg-white/60 backdrop-blur-sm border border-[var(--color-golden)]/30 p-5 rounded-2xl shadow-sm`}>
-                  {title && <h4 className="type-card-heading text-[var(--color-maroon-dark)] mb-2">{title}</h4>}
-                  <p className="type-body-sm text-[var(--color-text-main)]">{desc}</p>
-                </div>
+                <motion.div
+                  key={idx}
+                  initial={{ y: 40, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.6, ease: 'easeOut', delay: idx * 0.15 }}
+                  className={`${isFullWidth ? 'sm:col-span-2' : ''} bg-white/[0.04] backdrop-blur-[1px] border border-[var(--color-golden)]/30 p-6 sm:p-8 rounded-2xl hover:border-[var(--color-golden)]/60 transition-all duration-300`}
+                >
+                  <div className="flex items-center gap-3 mb-3">
+                    <span className={`w-2 h-2 rounded-full ${idx === 2 ? 'bg-[var(--color-maroon)]' : 'bg-[var(--color-golden)]'}`}></span>
+                    <h4 className={`${isFullWidth ? 'type-card-heading' : 'type-card-heading'} text-[var(--color-maroon)] mb-0`}>{title}</h4>
+                  </div>
+                  <p className="text-[var(--color-text-main)] text-sm sm:text-base leading-[1.8] font-serif font-semibold tracking-wide">
+                    {desc}
+                  </p>
+                </motion.div>
               );
             })}
           </div>

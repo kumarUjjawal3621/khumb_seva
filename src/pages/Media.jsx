@@ -4,54 +4,34 @@ import { useAppContext } from '../context/AppContext';
 import { mediaContent } from '../data/mediaContent';
 import FlipBook from '../components/media/FlipBook';
 import AudioBookPlayer from '../components/media/AudioBookPlayer';
-import { BookOpen, Headphones, ArrowLeft, Sparkles } from 'lucide-react';
+import { BookOpen, Headphones, ArrowLeft } from 'lucide-react';
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 40 },
-  show: (i) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: i * 0.12, duration: 0.55, ease: [0.22, 1, 0.36, 1] },
-  }),
-};
-
-const MediaCard = ({ icon: Icon, title, desc, meta, accent, onOpen, cta, index }) => (
+const Section = ({ icon: Icon, title, desc, meta, openCta, onClick, index }) => (
   <motion.button
     type="button"
-    custom={index}
-    variants={cardVariants}
-    initial="hidden"
-    animate="show"
-    whileHover={{ y: -6, transition: { duration: 0.25 } }}
-    whileTap={{ scale: 0.985 }}
-    onClick={onOpen}
-    className="group relative w-full text-left rounded-3xl overflow-hidden border border-[var(--color-golden)]/25 shadow-[0_16px_40px_-12px_rgba(123,28,28,0.18)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-golden)] focus-visible:ring-offset-2"
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5, ease: 'easeOut', delay: index * 0.15 }}
+    onClick={onClick}
+    className="group w-full text-left focus:outline-none relative"
   >
-    <div className={`absolute inset-0 bg-gradient-to-br ${accent} opacity-90 transition-opacity group-hover:opacity-100`} />
-    <div className="absolute inset-0 bg-[url('/logo.jpeg')] bg-center bg-no-repeat bg-[length:280px] opacity-[0.03] mix-blend-overlay pointer-events-none" />
-    <div className="absolute -right-8 -top-8 w-40 h-40 rounded-full bg-white/10 blur-2xl group-hover:scale-125 transition-transform duration-700" />
-
-    <div className="relative p-7 sm:p-9 flex flex-col h-full min-h-[260px]">
-      <div className="w-14 h-14 rounded-2xl bg-white/15 backdrop-blur-sm border border-white/25 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-        <Icon className="w-7 h-7 text-[var(--color-golden-light)]" strokeWidth={1.75} />
-      </div>
-
-      <h3 className="mt-6 text-2xl sm:text-[1.65rem] font-bold text-[var(--color-vanilla)] font-serif leading-tight">
+    <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none">
+      <Icon className="w-48 h-48 sm:w-56 sm:h-56 text-[var(--color-maroon)]/[0.06] group-hover:text-[var(--color-maroon)]/[0.1] transition-all duration-500" strokeWidth={1} />
+    </div>
+    <div className="relative flex flex-col items-start gap-1">
+      <h2 className="text-2xl font-bold text-[var(--color-maroon)] group-hover:text-[var(--color-maroon-dark)] transition-colors">
         {title}
-      </h3>
-      <p className="mt-3 text-sm sm:text-base text-[var(--color-vanilla)]/75 leading-relaxed flex-1">
+      </h2>
+      <p className="text-base text-[var(--color-text-main)]/65 leading-relaxed max-w-sm">
         {desc}
       </p>
-
-      <div className="mt-6 flex items-center justify-between gap-4">
-        <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--color-golden)]/90">
-          {meta}
-        </span>
-        <span className="inline-flex items-center gap-1.5 text-sm font-bold text-[var(--color-golden-light)] group-hover:gap-2.5 transition-all">
-          {cta}
-          <Sparkles className="w-4 h-4 opacity-70" />
-        </span>
-      </div>
+      <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--color-golden)]/70">
+        {meta}
+      </span>
+      <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--color-maroon)]/50 group-hover:text-[var(--color-maroon)] transition-colors mt-1">
+        {openCta}
+        <ArrowLeft className="w-4 h-4 rotate-180 group-hover:translate-x-0.5 transition-transform" />
+      </span>
     </div>
   </motion.button>
 );
@@ -60,80 +40,71 @@ const Media = () => {
   const { language } = useAppContext();
   const labels = mediaContent[language] || mediaContent.EN;
   const [view, setView] = useState(null);
+  const [hoveredSide, setHoveredSide] = useState(null);
 
   return (
-    <div className="relative min-h-[80vh] overflow-hidden">
-      {/* Ambient background */}
+    <div className="relative min-h-screen overflow-hidden pt-6 sm:pt-8">
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[var(--color-golden)]/8 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-0 w-[500px] h-[300px] bg-[var(--color-maroon)]/6 rounded-full blur-3xl" />
+        <div className="absolute top-32 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-[var(--color-golden)]/6 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-0 w-[600px] h-[400px] bg-[var(--color-maroon)]/4 rounded-full blur-3xl" />
       </div>
 
-      <div className="relative max-w-6xl mx-auto px-4 py-10 sm:py-14">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 sm:pb-10">
+        <motion.h1
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
+          className="text-center text-[var(--color-golden)] text-xl sm:text-2xl lg:text-3xl font-black font-serif uppercase tracking-[0.2em] pt-8 sm:pt-12 mb-[6.25rem]"
+        >
+          {language === 'HI' || language === 'MR' ? 'पवित्र मीडिया संग्रह' : 'SACRED MEDIA LIBRARY'}
+        </motion.h1>
+
         <AnimatePresence mode="wait">
           {!view ? (
-            <motion.div
+              <motion.div
               key="hub"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0, x: -20 }}
               transition={{ duration: 0.35 }}
-            >
-              {/* Header */}
-              <div className="text-center mb-12 sm:mb-16 max-w-2xl mx-auto">
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  className="inline-flex items-center gap-2 text-[11px] font-bold tracking-[0.22em] text-[var(--color-golden)] uppercase px-5 py-2 rounded-full bg-[var(--color-maroon)]/10 border border-[var(--color-golden)]/30 mb-5"
-                >
-                  <Sparkles className="w-3.5 h-3.5" />
-                  {labels.badge}
-                </motion.div>
-                <motion.h1
-                  initial={{ opacity: 0, y: -16 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.08 }}
-                  className="text-4xl sm:text-5xl font-bold text-[var(--color-maroon)] font-serif mb-4"
-                >
-                  {labels.title}
-                </motion.h1>
-                <motion.p
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.18 }}
-                  className="text-base sm:text-lg text-[var(--color-text-main)]/75 leading-relaxed"
-                >
-                  {labels.subtitle}
-                </motion.p>
-                <motion.div
-                  initial={{ scaleX: 0 }}
-                  animate={{ scaleX: 1 }}
-                  transition={{ delay: 0.3, duration: 0.6 }}
-                  className="mx-auto mt-8 w-24 h-[2px] bg-gradient-to-r from-transparent via-[var(--color-golden)] to-transparent origin-center"
-                />
-              </div>
-
-              {/* Cards */}
-              <div className="grid md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
-                <MediaCard
+              className="grid lg:grid-cols-2"
+              >
+                <div
+                  onMouseEnter={() => setHoveredSide('ebook')}
+                  onMouseLeave={() => setHoveredSide(null)}
+                  className={`flex items-start justify-center px-8 lg:px-12 py-6 transition-all duration-500 ${
+                  hoveredSide === 'ebook'
+                    ? 'scale-[1.02]'
+                    : ''
+                }`}
+              >
+                <Section
                   index={0}
                   icon={BookOpen}
                   title={labels.ebookTitle}
                   desc={labels.ebookDesc}
                   meta={labels.ebookMeta}
-                  accent="from-[#5c1515] via-[var(--color-maroon)] to-[#8b2525]"
-                  cta={labels.openExperience}
-                  onOpen={() => setView('ebook')}
+                  openCta={labels.openExperience}
+                  onClick={() => setView('ebook')}
                 />
-                <MediaCard
+              </div>
+              <div
+                onMouseEnter={() => setHoveredSide('audiobook')}
+                onMouseLeave={() => setHoveredSide(null)}
+                className={`flex items-start justify-center px-8 lg:px-12 py-6 border-t lg:border-t-0 lg:border-l border-[var(--color-golden)]/20 transition-all duration-500 ${
+                  hoveredSide === 'audiobook'
+                    ? 'scale-[1.02]'
+                    : ''
+                }`}
+              >
+                <Section
                   index={1}
                   icon={Headphones}
                   title={labels.audiobookTitle}
                   desc={labels.audiobookDesc}
                   meta={labels.audiobookMeta}
-                  accent="from-[#3a2015] via-[#5c3a20] to-[var(--color-camel)]"
-                  cta={labels.openExperience}
-                  onOpen={() => setView('audiobook')}
+                  openCta={labels.openExperience}
+                  onClick={() => setView('audiobook')}
                 />
               </div>
             </motion.div>
@@ -144,6 +115,7 @@ const Media = () => {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 24 }}
               transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              className="w-full"
             >
               <button
                 type="button"
