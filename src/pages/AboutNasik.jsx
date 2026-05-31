@@ -128,7 +128,7 @@ const SectionHeader = ({ label, title, light = false }) => (
         {label}
       </span>
     )}
-    <h2 className={`text-4xl sm:text-5xl lg:text-6xl font-serif font-bold leading-[0.98]
+    <h2 className={`text-4xl sm:text-5xl lg:text-6xl font-heading font-bold leading-[0.98]
       ${light ? 'text-[var(--color-vanilla)]' : 'text-[var(--color-maroon)]'}`}>
       {title}
     </h2>
@@ -149,15 +149,13 @@ const TempleDivider = () => (
 // UI Family 1 — HERO / IMMERSIVE BANNER
 // ─────────────────────────────────────────────────────────────────────────────
 const HeroBanner = ({ title, text, imageUrl, tagline, subtitle, id }) => (
-  <section id={id} className="relative w-full min-h-screen overflow-hidden shadow-2xl border-b border-[var(--color-golden)]/25 flex items-end">
+  <section id={id} className="relative w-full overflow-hidden shadow-2xl border-b border-[var(--color-golden)]/25 flex items-center -mt-16 sm:-mt-20 pt-16 sm:pt-20 min-h-[calc(100vh+4rem)] sm:min-h-[calc(100vh+5rem)]">
     <div className="absolute inset-0 z-0">
       <img src={imageUrl} alt={title} className="w-full h-full object-cover object-center scale-105" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#1a0505] via-[#5C1515]/55 to-black/20 z-10" />
-      {/* decorative top vignette */}
-      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-black/30 to-transparent z-10" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/30 z-10" />
     </div>
 
-    <div className="relative z-20 w-full px-8 sm:px-14 lg:px-20 pb-12 sm:pb-16 lg:pb-20 space-y-4 max-w-5xl">
+    <div className="relative z-20 w-full px-8 sm:px-14 lg:px-20 space-y-4 max-w-5xl">
       {tagline && (
         <span className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-[var(--color-golden)]/20 text-[var(--color-golden)] text-[11px] font-bold uppercase tracking-[0.18em] border border-[var(--color-golden)]/35 backdrop-blur-sm">
           <span className="w-1 h-1 rounded-full bg-[var(--color-golden)] animate-pulse" />
@@ -201,8 +199,7 @@ const CarouselSection = ({ slides, id, label }) => {
     <section id={id} className="space-y-0">
       <SectionHeader title={label} />
 
-      <div className="relative w-full overflow-hidden rounded-[2rem] shadow-2xl border border-[var(--color-golden)]/20" style={{ minHeight: '540px' }}>
-        {/* Background image with transition */}
+      <div className="relative w-full overflow-hidden" style={{ minHeight: '540px' }}>
         <AnimatePresence initial={false} custom={direction}>
           <motion.div
             key={active}
@@ -213,21 +210,25 @@ const CarouselSection = ({ slides, id, label }) => {
             transition={{ duration: 0.75, ease: [0.76, 0, 0.24, 1] }}
             className="absolute inset-0"
           >
-            <img src={slide.imageUrl} alt={slide.title} className="absolute inset-y-0 right-0 h-full w-[72%] object-contain object-right" style={{ minHeight: '540px' }} />
-            {/* Strong left-to-right gradient — NO white, pure dark maroon */}
-            <div className="absolute inset-0 bg-gradient-to-r from-[#150202] via-[#2a0808]/80 to-[#1a0505]/20" />
-            {/* Bottom vignette for dot-nav contrast */}
-            <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black/60 to-transparent" />
-            <div className="relative z-10 flex flex-col justify-center h-full min-h-[540px] px-8 sm:px-14 lg:px-20 py-14 max-w-2xl">
-              <div className="space-y-5">
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[var(--color-vanilla)] leading-tight drop-shadow-2xl">
+            <img src={slide.imageUrl} alt={slide.title} className="absolute inset-0 w-full h-full object-contain object-right" />
+            <div className="relative z-10 w-full h-full flex items-center px-8 sm:px-14 lg:px-20">
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="max-w-xl space-y-3"
+              >
+                <div className="flex items-center gap-3">
+                  <span className="h-px w-8 bg-[var(--color-golden)]" />
+                  <span className="text-[var(--color-golden)] text-[10px] font-bold uppercase tracking-[0.2em]">Sacred Story</span>
+                </div>
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[var(--color-maroon)] leading-tight">
                   {slide.title}
                 </h2>
-                <div className="h-[2px] w-16 bg-[var(--color-golden)]" />
-                <p className="text-[var(--color-vanilla)]/90 text-base lg:text-lg leading-8 font-medium border-l-4 border-[var(--color-golden)] pl-5 drop-shadow">
+                <p className="text-[var(--color-maroon)]/80 text-sm sm:text-base lg:text-lg leading-relaxed max-w-lg">
                   {slide.text}
                 </p>
-              </div>
+              </motion.div>
             </div>
           </motion.div>
         </AnimatePresence>
@@ -401,32 +402,50 @@ const TimelineSection = ({ sections, imgIndices, id, label }) => (
 // UI Family 5 — CULTURAL / EDITORIAL SHOWCASE
 // Sections: Revolutionaries(5), Savarkar(6), Heroines(7), Phalke(12)
 // ─────────────────────────────────────────────────────────────────────────────
-const EditorialCard = ({ title, text, imgUrl, accent }) => (
+const EditorialCard = ({ title, text, imgUrl }) => (
   <motion.div
-    initial={{ opacity: 0, y: 40 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, margin: '-60px' }}
-    transition={{ duration: 0.6 }}
-    className="relative h-full overflow-hidden rounded-2xl border border-[var(--color-golden)]/25 bg-white shadow-sm transition-shadow hover:shadow-lg"
+    variants={{
+      hidden: { opacity: 0, y: 50 },
+      visible: { opacity: 1, y: 0 },
+    }}
+    className="space-y-5"
   >
-    <div className="relative h-72 overflow-hidden bg-[var(--color-vanilla)]/50">
-      <img src={imgUrl} alt={title} className="absolute inset-0 h-full w-full object-contain object-center p-3" />
-    </div>
-    <div className="p-6 sm:p-7 space-y-4">
-      {accent && (
-        <span className="text-[var(--color-golden)] text-xs font-bold uppercase tracking-widest font-serif">{accent}</span>
-      )}
+    <motion.div
+      initial={{ opacity: 0, scale: 1.08 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true, margin: '-60px' }}
+      transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
+      className="overflow-hidden"
+    >
+      <img src={imgUrl} alt={title} className="w-full h-80 object-contain object-center" />
+    </motion.div>
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-60px' }}
+      transition={{ duration: 0.5, delay: 0.2, ease: 'easeOut' }}
+      className="space-y-3 max-w-lg"
+    >
       <h3 className="text-2xl font-serif font-bold text-[var(--color-maroon)] leading-tight">{title}</h3>
-      <div className="h-[2px] w-12 bg-[var(--color-golden)]/70" />
+      <div className="h-px w-10 bg-[var(--color-golden)]" />
       <p className="text-[var(--color-text-main)] text-sm sm:text-base leading-relaxed">{text}</p>
-    </div>
+    </motion.div>
   </motion.div>
 );
 
 const EditorialSection = ({ sections, imgIndices, id, label }) => (
   <section id={id} className="space-y-0">
     <SectionHeader title={label} />
-    <div className="grid gap-6 md:grid-cols-2">
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: '-60px' }}
+      variants={{
+        hidden: { opacity: 1 },
+        visible: { transition: { staggerChildren: 0.15 } },
+      }}
+      className="grid gap-14 md:grid-cols-2"
+    >
       {sections.map((sec, i) => (
         <EditorialCard
           key={sec.title}
@@ -435,7 +454,7 @@ const EditorialSection = ({ sections, imgIndices, id, label }) => (
           imgUrl={sectionImages[imgIndices[i]]}
         />
       ))}
-    </div>
+    </motion.div>
   </section>
 );
 
@@ -445,15 +464,13 @@ const EditorialSection = ({ sections, imgIndices, id, label }) => (
 // ─────────────────────────────────────────────────────────────────────────────
 const SplitStory = ({ title, text, imgUrl, isReversed, id }) => (
   <div id={id} className={`flex flex-col ${isReversed ? 'sm:flex-row-reverse' : 'sm:flex-row'} gap-6 sm:gap-12 items-stretch sm:items-center border-t border-[var(--color-golden)]/25 pt-10`}>
-    {/* image */}
-    <div className="w-full sm:w-[45%] flex-shrink-0 overflow-hidden rounded-xl border border-[var(--color-golden)]/20 shadow-sm bg-[var(--color-vanilla)]/40">
+    <div className="w-full sm:w-[45%] flex-shrink-0">
       <img
         src={imgUrl}
         alt={title}
-        className="w-full h-56 sm:h-72 object-cover object-center"
+        className="w-full h-72 sm:h-[28rem] object-contain object-center"
       />
     </div>
-    {/* text */}
     <div className="flex-1 flex flex-col justify-center space-y-5">
       <div className="flex items-center gap-3">
         <span className="h-[2px] w-8 bg-[var(--color-golden)]" />
@@ -577,7 +594,6 @@ const AboutNasik = () => {
             title={sections[0].title}
             text={sections[0].text}
             imageUrl={sectionImages[0]}
-            tagline={t.aboutNasik}
             subtitle={t.aboutNasikSub}
           />
 
