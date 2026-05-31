@@ -10,32 +10,19 @@ export const homeContent = {
       minutes: 'Minutes',
       seconds: 'Seconds'
     },
-    infoCards: [
-      {
-        title: "Sacred River",
-        desc: "The Godavari - \"Goda-Mai\" - originates in the Brahmagiri hills of Trimbakeshwar and is revered as the Dakshina Ganga (Ganges of the South), one of India's most holy rivers."
-      },
-      {
-        title: "The Amrit Legend",
-        desc: "During the cosmic churning of the ocean (Samudra Manthan), drops of Amrit (immortal nectar) fell at four places on Earth - Nasik being one of them - sanctifying it for eternity."
-      },
-      {
-        title: "Panchavati Connection",
-        desc: "Nasik holds the sacred distinction of being the site of the Panchavati forest, where Lord Ram, Sita Mata, and Lakshman resided during their exile."
-      }
-    ],
+    infoCards: [],
     intro: {
       sectionLabel: "The Divine Story",
       title: "Introduction",
       paragraphs: [
-        "The wait of twelve years is drawing to a close. The Nasik - Trimbakeshwar Sinhastha Kumbh Mela is not merely a gathering - it is a cosmic event, a sacred convergence where the heavens, the earth, and the holy Godavari River unite to throw open the doors of liberation.",
-        "The Nasik Kumbh, known as Sinhastha, is one of the four great Kumbh Melas held in India - alongside Prayagraj, Haridwar, and Ujjain. It stands uniquely apart as the only Kumbh governed by the planet Guru (Jupiter) entering the zodiac sign of Simha (Leo) - a celestial event that graces the earth once every twelve years.",
-        "What makes the Nasik Sinhastha extraordinary beyond all other Kumbhs is its dual sacred nature. The divine energy flows across two distinct power centres separated by 30 km:",
-        "• Ramkund, Panchavati (Nasik) - the sacred ground of the Vaishnava Akhadas, echoing with cries of \"Jai Shri Ram\"",
-        "• Kushavarta, Trimbakeshwar - the ancient seat of the Shaiva Akhadas, where Naga Babas roar \"Har Har Mahadev\"",
-        "During this Parva, the waters of Goda-Mai - the Godavari River, revered as the Dakshina Ganga (Ganges of the South) - are believed to be charged with extraordinary cosmic energy, transformed into Amrit, the nectar of immortality. A single holy dip during the prescribed auspicious Muhurta is said to cleanse the karma of countless lifetimes, grant the merit of a thousand Ashwamedha Yagnas, and liberate seven generations of one's ancestors.",
-        "Nasik also carries the unique spiritual distinction of being the land of Panchavati - where Lord Ram, Sita Mata, and Lakshman resided during their fourteen-year exile - making it a site of both Shaiva and Vaishnava devotion, unlike any other on earth.",
-        "Come, witness Sanatan Dharma come alive on the banks of the Godavari. This is not a journey of miles - it is a journey of the soul."
+        "In the long history of our Indian culture, there are certain festivals that have not merely remained religious rituals but have provided direction to the entire social life. The Sinhastha Kumbh Parva is one such extremely important festival. Kumbh does not mean just a festival of bathing; it is a festival that encompasses social harmony, a scientific perspective, scriptural debates, and faith. In Indian tradition, the word Kumbh is associated with the pitcher of nectar (Amrit). This Amrit Kumbh was not only for the gods but was also considered a symbol of life values for mankind. Therefore, the Kumbh Parva is considered a festival of self-purification, self-introspection, and social awakening for humanity. The Sinhastha Kumbh Parva is, in every sense, the largest religious gathering in the world. The reflection of the Indian society's ideology of 'Vasudhaiva Kutumbakam' (the world is one family), its way of life, and social values can be seen in the Sinhastha Kumbh Parva. The whole world holds immense curiosity and respect for it. A massive community comprising people of all castes, languages, sects, regions, various food habits, and customs within the Hindu religion gathers in one place, transcending all boundaries of rich-poor, men-women, scholar-ignorant, and householder-ascetic. They live together, eat together, and bathe in the Godavari River with the same enthusiasm.",
+        "The Kumbh Parva or Kumbh Mela is an unprecedented mega-event celebrated across India every three years at four different locations. Haridwar, Prayag, Nashik, and Ujjain are the four places where the Kumbh Parva is celebrated at intervals of three years each; thus, a Kumbh Parva takes place at a specific pilgrimage site once every twelve years. Without any formal invitation, millions of people participate in this Kumbh Parva. The purpose of the Kumbh Parva is for knowledge-seekers from every corner of India to come together and exchange various ideas from the Indian knowledge tradition.",
+        "The Mythological Story of Kumbh Parva: A significant mythological story regarding the organization of the Kumbh Parva is that of Samudra Manthan (churning of the ocean). According to the story mentioned in epics like the Ramayana, Mahabharata, and the Puranas, the gods and demons churned the ocean to obtain nectar, which is why it is called Amrit Manthan. The Kumbh Parva is celebrated at the four places where drops of nectar fell from the Amrit Kumbh (pitcher of nectar) that emerged during the Samudra Manthan.",
+        "Location Determination of Kumbh Parva: Haridwar, Prayag, Ujjain, Nashik. According to the tale of Samudra Manthan, the gods retrieved the pitcher of nectar from the demons, but while taking it to heaven, four drops spilled onto the earth. These four drops fell in Haridwar, Prayag, Nashik, and Ujjain, and these places were sanctified by the drops of nectar. Consequently, the Kumbh Parva began to be organized there.",
+        "Kumbh Parva and Adi Shankaracharya: To keep the flag of the Vedic religion flying high, Adi Shankaracharya established four mathas (monasteries) in the four directions of India and assigned specific responsibilities to the groups of ascetic disciples in his tradition. Since there were a total of ten such groups, they came to be known as the 'Dashanami' sect. Each ascetic group was addressed by a specific name. Shankaracharya encouraged these ascetic disciples to participate in the Kumbh Parva, the grand festival of the Indian knowledge tradition.",
+        "Naga Sadhus: The ascetic sadhus of Shankaracharya's disciple tradition lived a life of renunciation, performing spiritual practices under the guidance of their respective gurus. However, in the centuries that followed, considering the gravity of the situation caused by violent, forced religious conversions following foreign invasions of India, these ascetic sects armed some of their sadhus to fiercely resist them, transforming them into warriors. These warrior ascetics came to be known as Naga Sadhus. From time to time, these warrior Naga Sadhus displayed immense valor against the invasions of foreign Mughal forces.",
+        "Kumbh Parva: A Festival of Indian Knowledge Traditions: The organization of the Kumbh Mela is not merely for taking a holy bath and earning merit; there is certainly a much greater purpose behind it. The Kumbh Parva is a grand festival for the study of Indian knowledge traditions, the exchange of knowledge, and spiritual practice. The Kumbh Parva serves as a medium for knowledge-seekers from every corner of India to come together and discuss various subjects within the Indian knowledge tradition.",
+        "What makes the Nasik Sinhastha extraordinary beyond all other Kumbhs is its dual sacred nature. The divine energy flows across two distinct power centres separated by 30 km:"
       ]
     },
     snanPatrika: {
@@ -111,7 +98,7 @@ export const homeContent = {
   },
   HI: {
     heroTitle: "सिंहस्थ कुंभपर्व नासिक",
-    heroYears: "२०२६–२०२७–२०२८",
+    heroYears: "२०२६–२०२७",
     heroSubtitle: "पवित्र गोदावरी के तट पर एक पावन महासंगम",
     countdownText: "ध्वजारोहण प्रारंभ होने में",
     countdownUnits: {
@@ -120,32 +107,19 @@ export const homeContent = {
       minutes: 'मिनट',
       seconds: 'सेकंड'
     },
-    infoCards: [
-      {
-        title: "पवित्र नदी",
-        desc: "गोदावरी — \"गोदा-माई\" — का उद्गम त्र्यंबकेश्वर की ब्रह्मगिरि पहाड़ियों से होता है और इसे दक्षिण की गंगा के रूप में पूजा जाता है, जो भारत की सबसे पवित्र नदियों में से एक है।"
-      },
-      {
-        title: "अमृत की कथा",
-        desc: "समुद्र मंथन के दौरान, पृथ्वी पर चार स्थानों पर अमृत की बूंदें गिरी थीं — नासिक उनमें से एक है — जो इसे अनंत काल के लिए पवित्र बनाता है।"
-      },
-      {
-        title: "पंचवटी से संबंध",
-        desc: "नासिक को पंचवटी वन का स्थल होने का पवित्र गौरव प्राप्त है, जहाँ प्रभु श्रीराम, सीता माता और लक्ष्मण जी ने अपने वनवास के दौरान निवास किया था।"
-      }
-    ],
+    infoCards: [],
     intro: {
         sectionLabel: "अमृतकथा",
       title: "परिचय",
       paragraphs: [
-        "बारह वर्षों की प्रतीक्षा का अंत होने वाला है। नासिक-त्र्यंबकेश्वर सिंहस्थ कुंभ मेला केवल एक सामूहिक आयोजन नहीं है — यह एक दुर्लभ खगोलीय संरेखण है, एक पवित्र महासंगम है, जिसमें आकाश, पृथ्वी और गोदावरी माँ एकत्रित होकर मोक्ष के द्वार खोलते हैं।",
-        "नासिक सिंहस्थ, भारत के चार महाकुंभों में से एक है — प्रयागराज, हरिद्वार और उज्जैन के साथ। परंतु यह कुंभ एक अनोखी विशेषता रखता है — यह एकमात्र कुंभ है जो गुरु ग्रह के सिंह राशि में प्रवेश से संचालित होता है, जो प्रत्येक बारह वर्षों में एक बार ही घटित होता है।",
-        "जब गुरु सिंह राशि में विराजते हैं, तब गोदावरी माँ — दक्षिण की गंगा — के जल में अमृत की शक्ति समाहित हो जाती है। स्कंद पुराण के नासिक माहात्म्य के अनुसार, इस पवित्र पर्व में एक बार स्नान करने से सहस्र अश्वमेध यज्ञों का पुण्य प्राप्त होता है और सात पीढ़ियों के पूर्वजों का उद्धार होता है।",
-        "नासिक की एक अतिरिक्त विशेषता यह है कि यह पंचवटी की वह पावन भूमि है जहाँ वनवास काल में प्रभु श्रीराम, सीतामाता और लक्ष्मण जी निवास करते थे। साथ ही, त्र्यंबकेश्वर में भगवान शिव के बारह ज्योतिर्लिंगों में से एक विराजमान है और यहीं से गोदावरी माँ का उद्गम होता है। यही दोनों गुण इस कुंभ को अन्य सभी कुंभों से श्रेष्ठ और अद्वितीय बनाते हैं।",
-        "यह एक द्विध्रुवीय कुंभ है — दो पवित्र केंद्रों पर एक साथ आयोजित होने वाला विश्व का एकमात्र ऐसा महापर्व:",
-        "• रामकुंड, पंचवटी (नासिक) — वैष्णव अखाड़ों का पवित्र स्थल, जहाँ \"जय श्रीराम\" की गूँज गोदावरी के तट को अभिभूत कर देती है",
-        "• कुशावर्त, त्र्यंबकेश्वर — शैव अखाड़ों का प्राचीन केंद्र, जहाँ नागा बाबाओं की \"हर हर महादेव\" की गर्जना ब्रह्माण्ड को कँपाती है",
-        "आइए इस महाकुंभ में सम्मिलित हों — जहाँ जल केवल जल नहीं, बल्कि मोक्ष का प्रवेश द्वार है। यह यात्रा मीलों की नहीं — आत्मा की यात्रा है।"
+        "हमारे भारतीय संस्कृति के लंबे इतिहास में कुछ ऐसे पर्व हैं, जो केवल धार्मिक कर्मकांड न रहकर संपूर्ण समाज जीवन को दिशा देने वाले सिद्ध हुए हैं। सिंहस्थ कुंभपर्व उनमें से एक अत्यंत महत्वपूर्ण पर्व है। कुंभ का अर्थ केवल स्नान का उत्सव नहीं है, बल्कि यह सामाजिक समरसता, वैज्ञानिक दृष्टिकोण, शास्त्रार्थ और श्रद्धा—इन सभी का समावेश करने वाला उत्सव है। कुंभ शब्द भारतीय परंपरा में अमृत कलश से संबंधित है। यह अमृत कुंभ केवल देवताओं के लिए ही नहीं था, बल्कि मानव जाति के लिए भी जीवन मूल्यों का प्रतीक माना गया। इसलिए कुंभपर्व को मनुष्य की आत्मशुद्धि, आत्मनिरीक्षण और समाज जागरण का पर्व माना जाता है। सिंहस्थ कुंभपर्व दुनिया का हर मायने में सबसे बड़ा धार्मिक समारोह है। भारतीय समाज की 'वसुधैव कुटुंबकम्' की विचारधारा, जीवन शैली और सामाजिक मूल्यों का प्रतिबिंब सिंहस्थ कुंभपर्व में दिखाई देता है। इसे लेकर पूरी दुनिया में अत्यधिक जिज्ञासा और सम्मान है। हिंदू धर्म की सभी जातियों, भाषाओं, संप्रदायों, क्षेत्रों, विभिन्न खानपान और रीति-रिवाजों को मानने वाला, तथा अमीर-गरीब, स्त्री-पुरुष, विद्वान-अज्ञानी, गृहस्थ-संन्यासी आदि किसी भी भेद को माने बिना एक विशाल समुदाय एक स्थान पर एकत्र होता है, एक साथ रहता है, एक साथ भोजन करता है और एक ही उत्साह के साथ गोदावरी नदी में स्नान करता है।",
+        "कुंभपर्व या कुंभमेला भारतवर्ष में हर तीन साल में चार स्थानों पर मनाया जाने वाला एक अभूतपूर्व समारोह है। हरिद्वार, प्रयाग, नासिक, उज्जैन — इन चार स्थानों पर तीन-तीन साल के अंतराल पर कुंभपर्व मनाया जाता है, इस प्रकार एक तीर्थ स्थान पर फिर से बारह साल बाद कुंभपर्व आता है। बिना किसी निमंत्रण के लाखों की संख्या में लोग इस कुंभपर्व में शामिल होते हैं। कुंभपर्व का उद्देश्य भारत के कोने-कोने से ज्ञान साधकों का एक साथ आकर भारतीय ज्ञान परंपरा के विभिन्न विचारों का आदान-प्रदान करना है।",
+        "कुंभपर्व की पौराणिक कथा: कुंभपर्व के आयोजन के पीछे समुद्रमंथन की एक महत्वपूर्ण पौराणिक कथा बताई जाती है। रामायण, महाभारत और पुराणों जैसे ग्रंथों में उल्लेखित कथा के अनुसार, अमृत प्राप्ति के लिए देवताओं और दानवों ने समुद्र का मंथन किया, इसलिए इसे अमृतमंथन कहा जाता है। समुद्रमंथन से निकले अमृत कुंभ से जिन चार स्थानों पर अमृत की बूंदें गिरीं, उन स्थानों पर कुंभपर्व मनाया जाता है।",
+        "कुंभपर्व का स्थान निर्धारण: हरिद्वार, प्रयाग, उज्जैन, नासिक। समुद्रमंथन की कथा के अनुसार, देवताओं ने राक्षसों से अमृत का कलश प्राप्त किया, लेकिन उस कलश को स्वर्ग ले जाते समय उसमें से चार बूंदें पृथ्वी पर गिर गईं। ये चार बूंदें हरिद्वार, प्रयाग, नासिक और उज्जैन में गिरीं और अमृत की बूंदों के कारण ये स्थान पवित्र हो गए। बाद में वहां कुंभपर्व का आयोजन होने लगा।",
+        "कुंभपर्व और आद्य शंकराचार्य: आदि शंकराचार्य ने वैदिक धर्म की पताका फहराए रखने के लिए भारत की चारों दिशाओं में चार मठों की स्थापना की और अपनी परंपरा के संन्यासी शिष्यों के संघों को कुछ विशिष्ट जिम्मेदारियां सौंपी। कुल दस संघ होने के कारण उन्हें 'दशनामी' संप्रदाय कहा जाने लगा। प्रत्येक संन्यासी संघ को एक विशिष्ट नाम से संबोधित किया जाने लगा। शंकराचार्य ने संन्यासी शिष्यों को भारतीय ज्ञान परंपरा के उत्सव, कुंभपर्व में शामिल होने के लिए प्रेरित किया।",
+        "नागा साधु: शंकराचार्य की शिष्य परंपरा के संन्यासी साधु अपने-अपने गुरुओं के मार्गदर्शन में साधना करते हुए वैराग्यपूर्ण जीवन जीते थे। लेकिन बाद की कुछ शताब्दियों में भारत पर विदेशी आक्रमणों के बाद बलपूर्वक किए जाने वाले हिंसक धर्म-प्रसार के कारण, स्थिति की गंभीरता को भांपते हुए उसका कड़ा विरोध करने के लिए संन्यासियों के इन संप्रदायों ने अपने कुछ साधुओं को हथियारों से लैस कर योद्धा बना दिया। इन्हीं योद्धा संन्यासियों को नागा साधु कहा जाने लगा। इन योद्धा नागा साधुओं ने समय-समय पर विदेशी मुगल सत्ता के आक्रमणों के खिलाफ अत्यंत पराक्रम दिखाया।",
+        "कुंभपर्व - भारतीय ज्ञान परंपराओं का उत्सव: कुंभमेला का आयोजन केवल स्नान करके पुण्य कमाने के लिए नहीं होता, बल्कि इसके पीछे निश्चित रूप से इससे भी बड़ा कोई उद्देश्य होता है। कुंभपर्व भारतीय ज्ञान परंपराओं के अध्ययन, ज्ञान के आदान-प्रदान और साधना का एक बड़ा उत्सव है। कुंभपर्व भारत के कोने-कोने से ज्ञान साधकों को एक साथ आकर भारतीय ज्ञान परंपरा के विभिन्न विषयों पर चर्चा करने का एक निमित्त (अवसर) प्रदान करता है।",
+        "यह एक द्विध्रुवीय कुंभ है — दो पवित्र केंद्रों पर एक साथ आयोजित होने वाला विश्व का एकमात्र ऐसा महापर्व:"
       ]
     },
     snanPatrika: {
@@ -221,7 +195,7 @@ export const homeContent = {
   },
   MR: {
     heroTitle: "सिंहस्थ कुंभपर्व नासिक",
-    heroYears: "२०२६–२०२७–२०२८",
+    heroYears: "२०२६–२०२७",
     heroSubtitle: "पवित्र गोदावरीच्या तीरावर एक पावन महासंगम",
     countdownText: "ध्वजारोहण सुरू होण्यासाठी",
     countdownUnits: {
@@ -230,32 +204,19 @@ export const homeContent = {
       minutes: 'मिनिटे',
       seconds: 'सेकंद'
     },
-    infoCards: [
-      {
-        title: "पवित्र नदी",
-        desc: "गोदावरी — \"गोदा-माई\" — त्र्यंबकेश्वरच्या ब्रह्मगिरी पर्वतातून उगम पावते आणि तिला दक्षिणेची गंगा म्हणून पूजले जाते, जी भारतातील सर्वात पवित्र नद्यांपैकी एक आहे."
-      },
-      {
-        title: "अमृताची आख्यायिका",
-        desc: "समुद्रमंथनादरम्यान, पृथ्वीवर चार ठिकाणी अमृताचे थेंब पडले — त्यापैकी नासिक एक आहे — ज्यामुळे ते कायमचे पवित्र झाले."
-      },
-      {
-        title: "पंचवटीचा संबंध",
-        desc: "नासिकला पंचवटी वनाचे ठिकाण असण्याचा पवित्र सन्मान प्राप्त आहे, जिथे प्रभू श्रीराम, सीतामाता आणि लक्ष्मण यांनी वनवासात निवास केला होता."
-      }
-    ],
+    infoCards: [],
     intro: {
       sectionLabel: "अमृतकथा",
       title: "परिचय",
       paragraphs: [
-        "आता बारा वर्षांची प्रतीक्षा संपत आली आहे. नासिक-त्र्यंबकेश्वर सिंहस्थ कुंभमेळा हा केवळ एक जत्रा नाही — हे एक विश्वनाट्य आहे, एक दिव्य महासंगम आहे, ज्यामध्ये आकाश, पृथ्वी आणि गोदावरी माऊली एकत्र येऊन मोक्षाचे दार उघडतात.",
-        "भारतातील चार महाकुंभांपैकी नासिक सिंहस्थ एक आहे — प्रयागराज, हरिद्वार आणि उज्जैनसोबत. परंतु नासिकचा हा कुंभ इतर सर्वांहून वेगळा आणि श्रेष्ठ आहे, कारण हा एकमेव कुंभ आहे जो गुरु ग्रहाच्या (बृहस्पती) सिंह राशीत प्रवेशाने संचालित होतो — हे खगोलीय योग दर बारा वर्षांनी एकदाच येते.",
-        "जेव्हा गुरु सिंह राशीत विराजमान होतो, तेव्हा गोदावरी माऊलीच्या — दक्षिणेच्या गंगेच्या — पाण्यात अमृताची शक्ती संचारते असे स्कंद पुराणातील नासिक माहात्म्य सांगते. या महापर्वावर एकदा स्नान केल्याने सहस्र अश्वमेध यज्ञांचे पुण्य मिळते आणि सात पिढ्यांचा उद्धार होतो, असा आपल्या पूर्वजांचा अनुभव सिद्ध विश्वास आहे.",
-        "नासिकची आणखी एक अद्वितीय विशेषता म्हणजे हीच ती पंचवटीची भूमी, जिथे वनवासकाळात प्रभू श्रीराम, सीतामाता आणि लक्ष्मण यांनी निवास केला होता. त्र्यंबकेश्वरला भगवान शंकराचे बारा ज्योतिर्लिंगांपैकी एक विराजमान आहे आणि गोदावरी माऊली याच ब्रह्मगिरी पर्वतातून उगम पावते. हेच वैशिष्ट्य या कुंभाला अतुलनीय बनवते.",
-        "हा एक द्विध्रुवीय कुंभ आहे — जगातील एकमेव असा महापर्व जो दोन पवित्र स्थळांवर एकाच वेळी साजरा होतो:",
-        "• रामकुंड, पंचवटी (नासिक) — वैष्णव अखाड्यांचे पवित्र स्थान, जेथे \"जय श्रीराम\" चा जयघोष गोदावरीच्या तटाला दुमदुमवतो",
-        "• कुशावर्त, त्र्यंबकेश्वर — शैव अखाड्यांचे प्राचीन केंद्र, जेथे नागा बाबांची \"हर हर महादेव\" ची गर्जना आकाशाला भिडते",
-        "या सिंहस्थाला या. गोदावरी माऊलीच्या पवित्र तीरावर सनातन धर्म जिवंत होतो. ही तीर्थयात्रा मैलांची नाही — ती आत्म्याची यात्रा आहे."
+        "आपल्या भारतीय संस्कृतीच्या दीर्घ इतिहासात काही पर्वे अशी आहेत, जी केवळ धार्मिक विधी म्हणून न राहता संपूर्ण समाजजीवनाला दिशा देणारी ठरली आहेत. सिंहस्थ कुंभपर्व हे त्यातील एक अत्यंत महत्त्वाचे पर्व आहे. कुंभ म्हणजे केवळ स्नानाचा उत्सव नव्हे, तर सामाजिक समरसता, वैज्ञानिक दृष्टी, शास्त्रार्थ व श्रद्धा या सर्वांचा देखील समावेश असलेला उत्सव आहे. कुंभ हा शब्द भारतीय परंपरेत अमृताच्या कलशाशी संबंधित आहे. हा अमृतकुंभ केवळ देवतांसाठीच नव्हता, तर मानवजातीसाठीही जीवनमूल्यांचे प्रतीक मानला गेला. त्यामुळे कुंभपर्व हे मानवाच्या आत्मशुद्धीचे, आत्मपरीक्षणाचे आणि समाजजागृतीचे पर्व मानले जाते. सिंहस्थ कुंभपर्व हा जगातील सर्वार्थाने सर्वांत मोठा धार्मिक सोहळा आहे. भारतीय समाजाची 'वसुधैव कुटुंबकम्' ही विचारसरणी, जीवनपद्धती व सामाजिक मूल्ये यांचे प्रतिबिंब सिंहस्थ कुंभपर्वात उमटत असते. याविषयी संपूर्ण जग प्रचंड कुतूहल व आदर बाळगून आहे. हिंदू धर्मातील सर्व जात, भाषा, पंथ, प्रदेश, निरनिराळ्या खानपानाच्या पद्धती आणि चालीरीती असणारा आणि गरीब-श्रीमंत, स्त्री-पुरुष, विद्वान-अनभिज्ञ, गृहस्थ-संन्यासी इत्यादी कोणतेही भेद न मानता मोठा समुदाय एका ठिकाणी एकत्र जमतो एकत्र राहतो, एकत्र भोजन करतो आणि एकाच उत्साहात गोदावरी नदीत स्नान करतो.",
+        "कुंभपर्व किंवा कुंभमेळा हा भारतवर्षात दर तीन वर्षांनी चार स्थळांवर साजरा होणारा एक अभूतपूर्व सोहळा आहे. हरिद्वार, प्रयाग, नासिक आणि उज्जैन या चार ठिकाणी प्रत्येकी तीन वर्षांच्या अंतराने कुंभपर्व साजरा होत असतो, अशा प्रकारे एका तीर्थक्षेत्री पुन्हा बारा वर्षाने कुंभपर्व होतो. कोणत्याही निमंत्रणाशिवाय या कुंभमेळ्यात लाखोंच्या संख्येने लोक सामील होतात. कुंभपर्वाचे प्रयोजन हे भारताच्या कानाकोपऱ्यातील ज्ञानसाधकांनी एकत्र येऊन भारतीय ज्ञानपरंपरेतील वेगवेगळ्या विचारांचे आदान-प्रदान करणे हे आहे.",
+        "कुंभपर्वाची पौराणिक कथा कुंभपर्वाच्या आयोजनामागे समुद्रमंथन ही एक महत्त्वाची पौराणिक कथा सांगितली जाते. रामायण, महाभारत आणि पुराणे या ग्रंथांत उल्लेखिल्या कथेनुसार अमृताच्या प्राप्तीसाठी देव आणि दानवांनी समुद्राचे मंथन केले, म्हणून त्याला अमृतमंथन म्हणतात. समुद्रमंथनातून वर आलेल्या अमृतकुंभातून ज्या चार ठिकाणी अमृताचे थेंब पडले, त्या ठिकाणी कुंभपर्व साजरा केला जातो.",
+        "कुंभपर्वाची स्थाननिश्चिती हरिद्वार, प्रयाग, उज्जैन, नासिक. समुद्रमंथनाच्या कथेनुसार देवांनी अमृताचा कलश राक्षसांकडून मिळविला, परंतु तो कलश स्वर्गात नेत असताना त्यातील चार थेंब पृथ्वीवर पडले. हे चार थेंब हरिद्वार, प्रयाग, नासिक आणि उज्जैन येथे पडले आणि अमृताच्या थेंबांमुळे ही ठिकाणे पवित्र झाली. तेथे नंतर कुंभपर्वाचे आयोजन होऊ लागले.",
+        "कुंभपर्व आणि आद्य शंकराचार्य: आदि शंकराचार्यांनी वैदिक धर्माची पताका फडकवत ठेवण्यासाठी भारताच्या चार दिशांना चार मठांची स्थापना केली आणि त्यांच्या परंपरेतील संन्यासी शिष्यांच्या संघांना काही विशिष्ट जबाबदाऱ्या ठरवून दिल्या. कुल दस संघ असल्यामुळे त्यांना 'दशनामी' संप्रदाय म्हणू लागले. प्रत्येक संन्यासी संघाला एका विशिष्ट नावाने संबोधले जाऊ लागले. शंकराचार्यांनी संन्यासी शिष्यांना भारतीय ज्ञानपरंपरेचा उत्सव असलेल्या कुंभपर्वात सामील होण्यासाठी प्रवृत्त केले.",
+        "नागा साधू: शंकराचार्यांच्या शिष्यपरंपरेतील संन्यासी साधू आपापल्या गुरुंच्या मार्गदर्शनानुसार साधना करत वैराग्ययुक्त जीवन जगत असत. परंतु नंतरच्या काही शतकांमध्ये भारतात परकीय आक्रमणानंतर बलपूर्वक केले जाणाऱ्या हिंसक धर्मप्रसारामुळे परिस्थितीचे गांभीर्य लक्षात घेऊन त्याला कडवा विरोध करण्यासाठी संन्यासांच्या या संप्रदायांनी आपले काही साधू शस्त्रसुसज्ज करून योद्धे बनवले. या योद्धा साधूंना नागा साधू असे म्हणण्यात आले. या योद्धा नागा साधूंनी वेळोवेळी परकीय मघल सत्तेविरुद्ध अत्यंत पराक्रम दाखवला.",
+        "कुंभपर्व भारतीय ज्ञान परंपरांचा उत्सव: कुंभमेळ्याचे आयोजन हे फक्त स्नान करून पुण्य कमावण्यासाठी नसून त्यामागे त्याहीपेक्षा मोठा हेतू निश्चितच आहे. कुंभपर्व हा भारतीय ज्ञान परंपरांच्या अध्ययनाचा, ज्ञानाच्या आदान-प्रदानाचा आणि साधनेचा एक मोठा उत्सव आहे. कुंभपर्व भारताच्या कानाकोपऱ्यातील ज्ञानसाधकांना एकत्र येऊन भारतीय ज्ञानपरंपरेतील विविध विषयांवर चर्चा करण्यासाठी एक निमित्त प्रदान करतो.",
+        "हा एक द्विध्रुवीय कुंभ आहे — जगातील एकमेव असा महापर्व जो दोन पवित्र स्थळांवर एकाच वेळी साजरा होतो:"
       ]
     },
     snanPatrika: {

@@ -200,7 +200,7 @@ const Layout = ({ children }) => {
             {/* Brand */}
             <div>
               <img
-                src="/logo.jpeg"
+                src="/images/kumbhlogo.jpeg"
                 alt="Kumbhparv Logo"
                 className="h-28 w-auto object-contain rounded-xl ml-4"
               />

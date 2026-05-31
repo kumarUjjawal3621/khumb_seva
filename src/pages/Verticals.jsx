@@ -61,7 +61,7 @@ const Verticals = () => {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
-          className="inline-block text-[11px] font-bold tracking-[0.2em] text-[var(--color-golden)] uppercase px-4 py-1.5 rounded-full bg-[var(--color-maroon)]/10 border border-[var(--color-golden)]/30 mb-4 shadow-sm"
+          className="inline-block text-[11px] font-bold text-[var(--color-golden)] uppercase px-4 py-1.5 rounded-full bg-[var(--color-maroon)]/10 border border-[var(--color-golden)]/30 mb-4 shadow-sm"
         >
           {headings.badge}
         </motion.div>

@@ -175,7 +175,12 @@
     text-transform: uppercase;
   }
 
-  /* Devanagari — refined for Hindi/Marathi readability */
+  /* Devanagari — no letter-spacing (breaks conjunct characters) */
+  [data-lang="hi"] *,
+  [data-lang="mr"] * {
+    letter-spacing: normal !important;
+  }
+
   [data-lang="hi"] h1,
   [data-lang="mr"] h1,
   [data-lang="hi"] h2,
@@ -185,7 +190,6 @@
   [data-lang="hi"] h4,
   [data-lang="mr"] h4 {
     font-family: 'Noto Serif Devanagari', Georgia, serif;
-    letter-spacing: 0.004em;
     line-height: 1.3;
   }
 
@@ -193,13 +197,7 @@
   [data-lang="mr"] .type-display,
   [data-lang="hi"] .type-section-title,
   [data-lang="mr"] .type-section-title {
-    letter-spacing: 0.008em;
     line-height: 1.22;
-  }
-
-  [data-lang="hi"] .type-hero-years,
-  [data-lang="mr"] .type-hero-years {
-    letter-spacing: 0.08em;
   }
 
   [data-lang="hi"] .type-body,

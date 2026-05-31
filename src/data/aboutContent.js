@@ -1,5 +1,6 @@
 export const aboutContent = {
   EN: {
+    label: "Members of NTKMA",
     title: "Members of the Nasik–Trimbakeshwar Kumbh Mela Authority",
     tableHeaders: ["S. No.", "Role", "Designation / Member"],
     members: [
@@ -28,6 +29,7 @@ export const aboutContent = {
     ]
   },
   HI: {
+    label: "एनटीकेएमए के सदस्य",
     title: "नासिक-त्र्यंबकेश्वर कुंभ मेला प्राधिकरण के सदस्य",
     tableHeaders: ["क्र. सं.", "भूमिका", "पदनाम / सदस्य"],
     members: [
@@ -56,6 +58,7 @@ export const aboutContent = {
     ]
   },
   MR: {
+    label: "एनटीकेएमएचे सदस्य",
     title: "नासिक-त्र्यंबकेश्वर कुंभमेळा प्राधिकरणाचे सदस्य",
     tableHeaders: ["अ. क्र.", "भूमिका", "पदनाम / सदस्य"],
     members: [
@@ -64,7 +67,7 @@ export const aboutContent = {
       { sno: 3, role: 'उपाध्यक्ष', designation: 'विशेष पोलीस महानिरीक्षक, नासिक परिक्षेत्र' },
       { sno: 4, role: 'पदसिद्ध सदस्य', designation: 'जिल्हाधिकारी, अहिल्यानगर जिल्हा' },
       { sno: 5, role: 'पदसिद्ध सदस्य', designation: 'महानगर आयुक्त, नासिक महानगर प्रदेश विकास प्राधिकरण' },
-      { sno: 6, role: 'पदसिद्ध सदस्य', designation: 'पोलीस आयुक्त, naसिक शहर' }, // Let's correct this typo too: "naसिक" -> "नासिक"
+      { sno: 6, role: 'पदसिद्ध सदस्य', designation: 'पोलीस आयुक्त, नासिक शहर' }, // Let's correct this typo too: "naसिक" -> "नासिक"
       { sno: 7, role: 'पदसिद्ध सदस्य', designation: 'पोलीस अधीक्षक, नासिक ग्रामीण' },
       { sno: 8, role: 'पदसिद्ध सदस्य', designation: 'महानगरपालिका आयुक्त, नासिक महानगरपालिका' },
       { sno: 9, role: 'पदसिद्ध सदस्य', designation: 'मुख्य कार्यकारी अधिकारी, जिल्हा परिषद, नासिक' },

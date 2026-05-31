@@ -220,7 +220,7 @@ const CarouselSection = ({ slides, id, label }) => {
               >
                 <div className="flex items-center gap-3">
                   <span className="h-px w-8 bg-[var(--color-golden)]" />
-                  <span className="text-[var(--color-golden)] text-[10px] font-bold uppercase tracking-[0.2em]">Sacred Story</span>
+                  <span className="text-[var(--color-golden)] text-[10px] font-bold">{label}</span>
                 </div>
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[var(--color-maroon)] leading-tight">
                   {slide.title}
