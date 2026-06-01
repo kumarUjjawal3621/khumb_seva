@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 import { User, Mail, Phone, MapPin, CheckCircle2, Save, Download, Share2 } from 'lucide-react';
 import { db } from '../config/firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
-import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import Certificate from '../components/Certificate';
 
@@ -130,8 +129,7 @@ const Registration = () => {
     if (!printRef.current) return;
     setIsDownloading(true);
     try {
-      const canvas = await html2canvas(printRef.current, { scale: 2, useCORS: true, backgroundColor: '#ffffff' });
-      const imgData = canvas.toDataURL('image/png');
+      const imgData = printRef.current.toDataURL('image/png');
       const pdf = new jsPDF({ orientation: 'landscape', unit: 'px', format: [1000, 707] });
       pdf.addImage(imgData, 'PNG', 0, 0, 1000, 707);
       pdf.save('Kumbh_Parv_Certificate.pdf');
@@ -146,8 +144,7 @@ const Registration = () => {
     if (!printRef.current) return;
     setIsSharing(true);
     try {
-      const canvas = await html2canvas(printRef.current, { scale: 2, useCORS: true, backgroundColor: '#ffffff' });
-      canvas.toBlob(async (blob) => {
+      printRef.current.toBlob(async (blob) => {
         const file = new File([blob], 'Kumbh_Certificate.png', { type: 'image/png' });
         if (navigator.share) {
           await navigator.share({
@@ -156,7 +153,6 @@ const Registration = () => {
             files: [file]
           });
         } else {
-          // Fallback for browsers that don't support sharing files
           const url = URL.createObjectURL(blob);
           const link = document.createElement('a');
           link.href = url;
