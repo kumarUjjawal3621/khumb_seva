@@ -200,11 +200,18 @@ const Home = () => {
     return { label: occasion.split('—')[0].trim(), type: 'parvani' };
   };
 
+  const allDates = useMemo(() => {
+    return [...(content.snanPatrika.dates || [])];
+  }, [content.snanPatrika.dates]);
+
+  const nasikDates = allDates.slice(0, 3);
+  const triDates = allDates.slice(3);
+
   const sortedDates = useMemo(() => {
-    const arr = [...(content.snanPatrika.dates || [])];
+    const arr = [...allDates];
     arr.sort((a, b) => new Date(a.date) - new Date(b.date));
     return arr;
-  }, [content.snanPatrika.dates]);
+  }, [allDates]);
 
   const countdownLabels = content.countdownUnits || {
     days: 'Days',
@@ -493,7 +500,7 @@ const Home = () => {
                             transition={{ duration: 0.25, ease: 'easeOut' }}
                             className="overflow-hidden px-0 pb-4"
                           >
-                            <p className="text-[var(--color-text-main)] text-sm sm:text-base leading-7 font-medium">
+                            <p className="text-[var(--color-text-main)] text-sm sm:text-base leading-7 font-medium text-justify">
                               {body}
                             </p>
                           </motion.div>
@@ -511,7 +518,7 @@ const Home = () => {
                     whileInView={{ y: 0, opacity: 1 }}
                     viewport={{ once: true, amount: 0.3 }}
                     transition={{ duration: 0.6, ease: 'easeOut', delay: idx * 0.2 }}
-                    className="text-[var(--color-text-main)] text-base sm:text-lg leading-[1.9] font-medium text-center"
+                    className="text-[var(--color-text-main)] text-base sm:text-lg leading-[1.9] font-medium text-justify"
                   >
                     {para}
                   </motion.p>
@@ -520,10 +527,10 @@ const Home = () => {
                 if (isDualSection) {
                   regularEls.push(
                     <div key="dual-section" className="pt-6 pb-2 w-full">
-                      <div className="relative flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-0">
+                      <div className="relative flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-2">
 
                         {/* Ramkund */}
-                        <div className="flex flex-col items-center gap-2 relative z-10 sm:flex-1 sm:max-w-[38%]">
+                        <div className="flex flex-col items-center gap-2 relative z-10 sm:flex-1 sm:max-w-[44%]">
                           <motion.img
                             src="/images/ramkunda1.jpeg"
                             alt="Ramkund"
@@ -531,36 +538,15 @@ const Home = () => {
                             whileInView={{ x: 0, opacity: 1 }}
                             viewport={{ once: true, amount: 0.3 }}
                             transition={{ duration: 0.7, ease: 'easeOut' }}
-                            className="w-full max-w-[360px] h-auto object-contain drop-shadow-xl"
+                            className="w-full max-w-[420px] h-auto object-contain drop-shadow-xl"
                           />
-                          <div className="text-center w-full max-w-[360px] mx-auto">
+                          <div className="text-center w-full max-w-[420px] mx-auto">
                             <p className="text-[var(--color-maroon)] text-sm sm:text-base font-bold tracking-wide">Ramkund, Panchavati</p>
-                            <p className="text-[var(--color-maroon)]/60 text-[0.72rem] sm:text-[0.8rem] font-medium leading-5 tracking-tight max-w-full mx-auto overflow-hidden"
-                              style={{ display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical' }}>
-                              {dualSectionDescriptions[language]?.ramkund || dualSectionDescriptions.EN.ramkund}
-                            </p>
                           </div>
                         </div>
 
-                        {/* 30 KM connector line + label */}
-                        <div className="relative z-20 flex flex-col sm:flex-row items-center justify-center w-full sm:flex-1 py-2 sm:px-0">
-                          <div className="sm:hidden h-12 w-px border-l-2 border-dotted border-[var(--color-golden)]/50"></div>
-                          <div className="hidden sm:block flex-1 h-px border-t-2 border-dotted border-[var(--color-golden)]/50"></div>
-                          <motion.span
-                            initial={{ scale: 0 }}
-                            whileInView={{ scale: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.4, delay: 0.3, type: 'spring' }}
-                            className="text-[var(--color-golden)] text-sm sm:text-base font-bold tracking-[0.2em] mx-2"
-                          >
-                            30 KM
-                          </motion.span>
-                          <div className="hidden sm:block flex-1 h-px border-t-2 border-dotted border-[var(--color-golden)]/50"></div>
-                          <div className="sm:hidden h-12 w-px border-l-2 border-dotted border-[var(--color-golden)]/50"></div>
-                        </div>
-
                         {/* Kushavarta */}
-                        <div className="flex flex-col items-center gap-2 relative z-10 sm:flex-1 sm:max-w-[38%]">
+                        <div className="flex flex-col items-center gap-2 relative z-10 sm:flex-1 sm:max-w-[44%]">
                           <motion.img
                             src="/images/kushvarta1.jpeg"
                             alt="Kushavarta"
@@ -568,14 +554,10 @@ const Home = () => {
                             whileInView={{ x: 0, opacity: 1 }}
                             viewport={{ once: true, amount: 0.3 }}
                             transition={{ duration: 0.7, ease: 'easeOut' }}
-                            className="w-full max-w-[360px] h-auto object-contain drop-shadow-xl"
+                            className="w-full max-w-[420px] h-auto object-contain drop-shadow-xl"
                           />
-                          <div className="text-center w-full max-w-[360px] mx-auto">
+                          <div className="text-center w-full max-w-[420px] mx-auto">
                             <p className="text-[var(--color-maroon)] text-sm sm:text-base font-bold tracking-wide">Kushavarta, Trimbakeshwar</p>
-                            <p className="text-[var(--color-maroon)]/60 text-[0.72rem] sm:text-[0.8rem] font-medium leading-5 tracking-tight max-w-full mx-auto overflow-hidden"
-                              style={{ display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical' }}>
-                              {dualSectionDescriptions[language]?.kushavarta || dualSectionDescriptions.EN.kushavarta}
-                            </p>
                           </div>
                         </div>
                       </div>
@@ -690,16 +672,17 @@ const Home = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, ease: 'easeOut', delay: 0.25 }}
-            className="text-center text-[var(--color-text-main)] text-base sm:text-lg leading-[1.9] font-medium max-w-4xl mx-auto mb-6"
+            className="text-justify text-[var(--color-text-main)] text-base sm:text-lg leading-[1.9] font-medium max-w-4xl mx-auto mb-6"
           >
             {content.snanPatrika.description}
           </motion.p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {sortedDates.map((item, idx) => {
+            {nasikDates.map((item, idx) => {
               const { day, monthYear } = parseDate(item.date);
               const { label, type } = getBadgeType(item.occasion);
               const isShahi = type === 'shahi';
+              const shortLocation = item.location.includes(',') ? item.location.split(',')[1].trim() : item.location;
               
               return (
                 <div
@@ -709,43 +692,103 @@ const Home = () => {
                       window.open(`https://www.google.com/maps?q=${item.coords.lat},${item.coords.lng}`, '_blank');
                     }
                   }}
-                  className="group flex flex-col items-center text-center bg-white/10 backdrop-blur-[2px] border border-[var(--color-maroon)]/15 rounded-2xl px-6 py-8 cursor-pointer transition-all duration-300 ease-out hover:scale-[1.04] hover:shadow-xl hover:shadow-[var(--color-maroon)]/10 hover:border-[var(--color-maroon)]/40"
+                  className="group flex flex-col h-full items-center text-center bg-white/10 backdrop-blur-[2px] border border-[var(--color-maroon)]/15 rounded-2xl px-5 py-5 cursor-pointer transition-all duration-300 ease-out hover:scale-[1.04] hover:shadow-xl hover:shadow-[var(--color-maroon)]/10 hover:border-[var(--color-maroon)]/40"
                 >
                   {/* Badge */}
-                  <div className={`type-badge inline-block px-3 py-1 rounded-full mb-5 transition-all duration-300 ${isShahi ? 'text-[var(--color-maroon)] bg-[var(--color-maroon)]/8 group-hover:bg-[var(--color-maroon)]/15' : 'text-[var(--color-camel)] bg-[var(--color-camel)]/10 group-hover:bg-[var(--color-camel)]/20'}`}>
+                  <div className={`type-badge inline-block px-3 py-1 rounded-full mb-3 transition-all duration-300 ${language === 'HI' || language === 'MR' ? 'text-xs' : ''} ${isShahi ? 'text-[var(--color-maroon)] bg-[var(--color-maroon)]/8 group-hover:bg-[var(--color-maroon)]/15' : 'text-[var(--color-maroon)] bg-[var(--color-maroon)]/8 group-hover:bg-[var(--color-maroon)]/15'}`}>
                     {label}
                   </div>
 
                   {/* Date number - massive and elegant */}
-                  <div className="type-stat text-[var(--color-maroon)] leading-none mb-2 transition-all duration-300 group-hover:text-[var(--color-maroon-dark)]">
+                  <div className={`type-stat text-[var(--color-maroon)] leading-none mb-2 transition-all duration-300 group-hover:text-[var(--color-maroon-dark)] font-sans ![font-size:clamp(1.625rem,3vw+0.5rem,2.375rem)] ${language === 'HI' || language === 'MR' ? '![font-size:clamp(2rem,3.75vw+0.75rem,2.875rem)]' : ''}`}>
                     {day}
                   </div>
 
                   {/* Month, year and weekday */}
-                  <div className="text-[11px] font-bold text-[var(--color-camel)] tracking-[0.25em] uppercase mb-4">
+                  <div className={`text-[11px] font-bold text-[var(--color-maroon)] tracking-[0.25em] uppercase mb-2 ${language === 'HI' || language === 'MR' ? '![font-size:0.8125rem]' : ''}`}>
                     {monthYear} <span className="text-[var(--color-maroon)]/30 mx-1.5">•</span> {item.day}
                   </div>
 
                   {/* Decorative divider */}
-                  <div className="w-12 h-px bg-gradient-to-r from-transparent via-[var(--color-golden)]/50 to-transparent mb-4 transition-all duration-300 group-hover:w-20 group-hover:via-[var(--color-golden)]/80"></div>
+                  <div className="w-12 h-px bg-gradient-to-r from-transparent via-[var(--color-maroon)]/50 to-transparent mb-2 transition-all duration-300 group-hover:w-20 group-hover:via-[var(--color-maroon)]/80"></div>
 
                   {/* Tithi */}
-                  <div className="type-card-heading text-[var(--color-maroon-dark)] mb-2">
+                  <div className="type-card-heading text-[var(--color-maroon-dark)] mb-1">
                     {item.tithi}
                   </div>
 
                   {/* Occasion */}
-                  <p className="type-body-sm text-[var(--color-text-main)]/80 max-w-xs">
+                  <p className="type-body-sm text-[var(--color-text-main)]/80 max-w-xs text-justify grow">
                     {item.occasion.split('—')[1] ? item.occasion.split('—')[1].trim() : item.occasion}
                   </p>
 
                   {/* Location */}
-                  <div className="mt-4 flex flex-col items-center gap-1">
+                  <div className="mt-auto flex flex-col items-center gap-1">
                     <div className="flex items-center gap-1.5 group-hover:gap-2 transition-all duration-300">
-                      <svg className="w-3.5 h-3.5 text-[var(--color-golden)]/60 group-hover:text-[var(--color-golden)] transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                      <span className="text-[10px] font-bold text-[var(--color-golden)] tracking-[0.15em] uppercase group-hover:text-[var(--color-golden-light)] transition-all duration-300">{item.location}</span>
+                      <svg className="w-3.5 h-3.5 text-[var(--color-maroon)]/60 group-hover:text-[var(--color-maroon)] transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                      <span className={`text-xs font-bold text-[var(--color-maroon)] tracking-[0.15em] uppercase group-hover:text-[var(--color-maroon-dark)] transition-all duration-300 ${language === 'HI' || language === 'MR' ? '![font-size:0.8125rem]' : ''}`}>{shortLocation}</span>
                     </div>
-                    <span className="text-[9px] text-[var(--color-golden)]/40 group-hover:text-[var(--color-golden)]/80 font-medium tracking-wider transition-all duration-300 opacity-0 group-hover:opacity-100">
+                    <span className="text-[9px] text-[var(--color-maroon)]/40 group-hover:text-[var(--color-maroon)]/80 font-medium tracking-wider transition-all duration-300 opacity-0 group-hover:opacity-100">
+                      {content.snanPatrika.tapToView}
+                    </span>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+            {triDates.map((item, idx) => {
+              const { day, monthYear } = parseDate(item.date);
+              const { label, type } = getBadgeType(item.occasion);
+              const isShahi = type === 'shahi';
+              const shortLocation = item.location.includes(',') ? item.location.split(',')[1].trim() : item.location;
+              
+              return (
+                <div
+                  key={idx}
+                  onClick={() => {
+                    if (item.coords) {
+                      window.open(`https://www.google.com/maps?q=${item.coords.lat},${item.coords.lng}`, '_blank');
+                    }
+                  }}
+                  className="group flex flex-col h-full items-center text-center bg-white/10 backdrop-blur-[2px] border border-[var(--color-maroon)]/15 rounded-2xl px-5 py-5 cursor-pointer transition-all duration-300 ease-out hover:scale-[1.04] hover:shadow-xl hover:shadow-[var(--color-maroon)]/10 hover:border-[var(--color-maroon)]/40"
+                >
+                  {/* Badge */}
+                  <div className={`type-badge inline-block px-3 py-1 rounded-full mb-3 transition-all duration-300 ${language === 'HI' || language === 'MR' ? 'text-xs' : ''} ${isShahi ? 'text-[var(--color-maroon)] bg-[var(--color-maroon)]/8 group-hover:bg-[var(--color-maroon)]/15' : 'text-[var(--color-maroon)] bg-[var(--color-maroon)]/8 group-hover:bg-[var(--color-maroon)]/15'}`}>
+                    {label}
+                  </div>
+
+                  {/* Date number - massive and elegant */}
+                  <div className={`type-stat text-[var(--color-maroon)] leading-none mb-2 transition-all duration-300 group-hover:text-[var(--color-maroon-dark)] font-sans ![font-size:clamp(1.625rem,3vw+0.5rem,2.375rem)] ${language === 'HI' || language === 'MR' ? '![font-size:clamp(2rem,3.75vw+0.75rem,2.875rem)]' : ''}`}>
+                    {day}
+                  </div>
+
+                  {/* Month, year and weekday */}
+                  <div className={`text-[11px] font-bold text-[var(--color-maroon)] tracking-[0.25em] uppercase mb-2 ${language === 'HI' || language === 'MR' ? '![font-size:0.8125rem]' : ''}`}>
+                    {monthYear} <span className="text-[var(--color-maroon)]/30 mx-1.5">•</span> {item.day}
+                  </div>
+
+                  {/* Decorative divider */}
+                  <div className="w-12 h-px bg-gradient-to-r from-transparent via-[var(--color-maroon)]/50 to-transparent mb-2 transition-all duration-300 group-hover:w-20 group-hover:via-[var(--color-maroon)]/80"></div>
+
+                  {/* Tithi */}
+                  <div className="type-card-heading text-[var(--color-maroon-dark)] mb-1">
+                    {item.tithi}
+                  </div>
+
+                  {/* Occasion */}
+                  <p className="type-body-sm text-[var(--color-text-main)]/80 max-w-xs text-justify grow">
+                    {item.occasion.split('—')[1] ? item.occasion.split('—')[1].trim() : item.occasion}
+                  </p>
+
+                  {/* Location */}
+                  <div className="mt-auto flex flex-col items-center gap-1">
+                    <div className="flex items-center gap-1.5 group-hover:gap-2 transition-all duration-300">
+                      <svg className="w-3.5 h-3.5 text-[var(--color-maroon)]/60 group-hover:text-[var(--color-maroon)] transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                      <span className={`text-xs font-bold text-[var(--color-maroon)] tracking-[0.15em] uppercase group-hover:text-[var(--color-maroon-dark)] transition-all duration-300 ${language === 'HI' || language === 'MR' ? '![font-size:0.8125rem]' : ''}`}>{shortLocation}</span>
+                    </div>
+                    <span className="text-[9px] text-[var(--color-maroon)]/40 group-hover:text-[var(--color-maroon)]/80 font-medium tracking-wider transition-all duration-300 opacity-0 group-hover:opacity-100">
                       {content.snanPatrika.tapToView}
                     </span>
                   </div>
@@ -791,7 +834,7 @@ const Home = () => {
             </tr>
           </thead>
           <tbody>
-            {content.snanPatrika.dates.map((d, i) => {
+            {sortedDates.map((d, i) => {
               const occasionText = d.occasion.split('—')[1] ? d.occasion.split('—')[1].trim() : d.occasion;
               return (
                 <tr key={i} style={{ borderBottom: '1px solid rgba(212, 175, 55, 0.3)', background: i % 2 === 0 ? '#F8F3EC' : 'transparent' }}>
@@ -865,7 +908,7 @@ const Home = () => {
                   whileInView={{ y: 0, opacity: 1 }}
                   viewport={{ once: true, amount: 0.3 }}
                   transition={{ duration: 0.6, ease: 'easeOut', delay: idx * 0.2 }}
-                  className="text-[var(--color-text-main)] text-base sm:text-lg leading-[1.9] font-medium text-left max-w-4xl"
+                  className="text-[var(--color-text-main)] text-base sm:text-lg leading-[1.9] font-medium text-justify max-w-4xl"
                 >
                   {para}
                 </motion.p>
@@ -904,7 +947,7 @@ const Home = () => {
                     <span className={`w-2 h-2 rounded-full ${idx === 2 ? 'bg-[var(--color-maroon)]' : 'bg-[var(--color-golden)]'}`}></span>
                     <h4 className={`${isFullWidth ? 'type-card-heading' : 'type-card-heading'} text-[var(--color-maroon)] mb-0`}>{title}</h4>
                   </div>
-                  <p className="text-[var(--color-text-main)] text-sm sm:text-base leading-[1.8] font-medium font-semibold">
+                  <p className="text-[var(--color-text-main)] text-sm sm:text-base leading-[1.8] font-medium font-semibold text-justify">
                     {desc}
                   </p>
                 </motion.div>

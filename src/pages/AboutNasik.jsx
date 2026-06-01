@@ -267,7 +267,7 @@ const HeroBanner = ({ title, text, imageUrl: _img, tagline, subtitle, id }) => {
         <h1 className="text-4xl sm:text-6xl lg:text-7xl font-serif font-bold text-[var(--color-vanilla)] leading-tight drop-shadow-2xl">
           {title}
         </h1>
-        <p className="text-[var(--color-vanilla)]/88 text-base sm:text-lg lg:text-xl leading-8 max-w-3xl drop-shadow font-medium">
+        <p className="text-[var(--color-vanilla)]/88 text-base sm:text-lg lg:text-xl leading-8 max-w-3xl drop-shadow font-medium text-justify">
           {text}
         </p>
       </div>
@@ -325,7 +325,7 @@ const CarouselSection = ({ slides, id, label }) => {
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[var(--color-maroon)] leading-tight">
                   {slide.title}
                 </h2>
-                <p className="text-[var(--color-maroon)]/80 text-sm sm:text-base lg:text-lg leading-relaxed max-w-lg">
+                <p className="text-[var(--color-maroon)]/80 text-sm sm:text-base lg:text-lg leading-relaxed max-w-lg text-justify">
                   {slide.text}
                 </p>
               </motion.div>
@@ -389,7 +389,7 @@ const AccordionItem = ({ title, text, imgUrl, isOpen, onToggle }) => (
           </div>
         )}
         <div className="flex-1">
-          <p className="text-[var(--color-text-main)] text-base sm:text-lg leading-8 font-medium">{text}</p>
+          <p className="text-[var(--color-text-main)] text-base sm:text-lg leading-8 font-medium text-justify">{text}</p>
         </div>
       </div>
     </div>
@@ -454,7 +454,7 @@ const TimelineSection = ({ sections, imgIndices, id, label }) => (
             >
               <h3 className="font-serif font-bold text-xl sm:text-2xl text-[var(--color-maroon)] leading-tight">{sec.title}</h3>
               <div className="my-3 sm:my-4 h-[2px] w-14 bg-[var(--color-golden)]/70" />
-              <p className="text-[var(--color-text-main)] text-base sm:text-lg leading-7 sm:leading-8">{sec.text}</p>
+              <p className="text-[var(--color-text-main)] text-base sm:text-lg leading-7 sm:leading-8 text-justify">{sec.text}</p>
             </motion.div>
           );
           return (
@@ -528,7 +528,7 @@ const EditorialCard = ({ title, text, imgUrl }) => (
     >
       <h3 className="text-2xl font-serif font-bold text-[var(--color-maroon)] leading-tight">{title}</h3>
       <div className="h-px w-10 bg-[var(--color-golden)]" />
-      <p className="text-[var(--color-text-main)] text-sm sm:text-base leading-relaxed">{text}</p>
+      <p className="text-[var(--color-text-main)] text-sm sm:text-base leading-relaxed text-justify">{text}</p>
     </motion.div>
   </motion.div>
 );
@@ -577,7 +577,7 @@ const SplitStory = ({ title, text, imgUrl, isReversed, id }) => (
         <span className="text-[var(--color-golden)] text-xs font-bold uppercase tracking-widest font-serif">Nasik</span>
       </div>
       <h3 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[var(--color-maroon)] leading-tight">{title}</h3>
-      <p className="text-[var(--color-text-main)] text-base lg:text-lg leading-8 border-l-2 border-[var(--color-golden)]/40 pl-5 py-1 italic">{text}</p>
+      <p className="text-[var(--color-text-main)] text-base lg:text-lg leading-8 border-l-2 border-[var(--color-golden)]/40 pl-5 py-1 italic text-justify">{text}</p>
     </div>
   </div>
 );

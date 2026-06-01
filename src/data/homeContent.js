@@ -34,50 +34,50 @@ export const homeContent = {
       tableHeaders: ["Date", "Day", "Tithi", "Occasion", "Location"],
       dates: [
         {
-          date: "10 July 2027",
-          day: "Thursday",
-          tithi: "गुरु पौर्णिमा",
-          occasion: "Parvani Snan — Guru Purnima. The full moon dedicated to the Guru principle. Marks the spiritual opening of the Kumbh season.",
-          location: "Nasik & Trimbakeshwar",
-          coords: { lat: 19.9975, lng: 73.7898 }
-        },
-        {
           date: "2 August 2027",
           day: "Sunday",
-          tithi: "आषाढ सोमवती अमावस्या",
+          tithi: "आषाढ सोमवती अमावस्या (सूर्यग्रहण)",
           occasion: "Amrut Snan 1 — Ashadh Somvati Amavasya. The rarest convergence of a new moon with lunar (Soma) energy. Supreme auspiciousness.",
-          location: "Nasik & Trimbakeshwar",
-          coords: { lat: 19.9975, lng: 73.7898 }
-        },
-        {
-          date: "9 August 2027",
-          day: "Sunday",
-          tithi: "श्रावण पौर्णिमा / रक्षाबंधन",
-          occasion: "Parvani Snan — Shravan Purnima / Raksha Bandhan. Sacred to Lord Shiva; pilgrims perform Abhishek at Trimbakeshwar Jyotirlinga before bathing.",
-          location: "Nasik & Trimbakeshwar",
-          coords: { lat: 19.9975, lng: 73.7898 }
+          location: "Ramkund, Nasik",
+          coords: { lat: 20.0102, lng: 73.7566 }
         },
         {
           date: "31 August 2027",
           day: "Monday",
-          tithi: "श्रावण अमावस्या",
+          tithi: "श्रावण अमावस्या (मुख्य पर्व)",
           occasion: "Amrut Snan 2 — Shravan Amavasya. New moon of the sacred month of Shravan, deeply auspicious for ancestral rites and purification.",
-          location: "Nasik & Trimbakeshwar",
-          coords: { lat: 19.9975, lng: 73.7898 }
+          location: "Ramkund, Nasik",
+          coords: { lat: 20.0102, lng: 73.7566 }
         },
         {
           date: "11 September 2027",
           day: "Friday",
           tithi: "भाद्रपद एकादशी",
-          occasion: "Amrut Snan 3 (Nasik) — Bhadrapada Ekadashi. The Vaishnava Akhadas lead the Amrut procession at Ramkund with the chant of Jai Shri Ram.",
+          occasion: "Amrut Snan 3 — Bhadrapada Ekadashi. The Vaishnava Akhadas lead the Amrut procession at Ramkund with the chant of Jai Shri Ram.",
           location: "Ramkund, Nasik",
           coords: { lat: 20.0102, lng: 73.7566 }
+        },
+        {
+          date: "2 August 2027",
+          day: "Sunday",
+          tithi: "आषाढ सोमवती अमावस्या (सूर्यग्रहण)",
+          occasion: "Amrut Snan 1 — Ashadh Somvati Amavasya. The rarest convergence of a new moon with lunar (Soma) energy. Supreme auspiciousness.",
+          location: "Kushavarta, Trimbakeshwar",
+          coords: { lat: 19.9328, lng: 73.5308 }
+        },
+        {
+          date: "31 August 2027",
+          day: "Monday",
+          tithi: "श्रावण अमावस्या (मुख्य पर्व)",
+          occasion: "Amrut Snan 2 — Shravan Amavasya. New moon of the sacred month of Shravan, deeply auspicious for ancestral rites and purification.",
+          location: "Kushavarta, Trimbakeshwar",
+          coords: { lat: 19.9328, lng: 73.5308 }
         },
         {
           date: "12 September 2027",
           day: "Saturday",
           tithi: "भाद्रपद द्वादशी",
-          occasion: "Amrut Snan 3 (Trimbakeshwar) — Bhadrapada Dwadashi. The Shaiva Akhadas and Naga Babas perform the sacred bath at Kushavarta.",
+          occasion: "Amrut Snan 3 — Bhadrapada Dwadashi. The Shaiva Akhadas and Naga Babas perform the sacred bath at Kushavarta.",
           location: "Kushavarta, Trimbakeshwar",
           coords: { lat: 19.9328, lng: 73.5308 }
         }
@@ -131,50 +131,50 @@ export const homeContent = {
       tableHeaders: ["तारीख", "दिन", "तिथि", "अवसर", "स्थान"],
       dates: [
         {
-          date: "१० जुलाई २०२७",
-          day: "गुरुवार",
-          tithi: "गुरु पौर्णिमा",
-          occasion: "पार्वणी स्नान — गुरु तत्व को समर्पित पूर्णिमा। कुंभ पर्व के शुभारंभ का संकेत। गुरु-शिष्य परंपरा की आराधना का दिन।",
-          location: "नासिक एवं त्र्यंबकेश्वर",
-          coords: { lat: 19.9975, lng: 73.7898 }
-        },
-        {
           date: "२ अगस्त २०२७",
           day: "रविवार",
-          tithi: "आषाढ सोमवती अमावस्या",
-          occasion: "प्रथम अमृत स्नान — सोमवती अमावस्या का अत्यंत दुर्लभ और सर्वश्रेष्ठ योग। नासिक और त्र्यंबकेश्वर दोनों स्थानों पर एक साथ आयोजित।",
-          location: "नासिक एवं त्र्यंबकेश्वर",
-          coords: { lat: 19.9975, lng: 73.7898 }
-        },
-        {
-          date: "९ अगस्त २०२७",
-          day: "रविवार",
-          tithi: "श्रावण पौर्णिमा / रक्षाबंधन",
-          occasion: "पार्वणी स्नान — श्रावण पूर्णिमा, भगवान शिव को अत्यंत प्रिय। त्र्यंबकेश्वर ज्योतिर्लिंग पर अभिषेक पश्चात स्नान का विशेष महत्व।",
-          location: "नासिक एवं त्र्यंबकेश्वर",
-          coords: { lat: 19.9975, lng: 73.7898 }
+          tithi: "आषाढ सोमवती अमावस्या (सूर्यग्रहण)",
+          occasion: "प्रथम अमृत स्नान — सोमवती अमावस्या का अत्यंत दुर्लभ और सर्वश्रेष्ठ योग। नासिक के रामकुंड पर भव्य स्नान।",
+          location: "रामकुंड, नासिक",
+          coords: { lat: 20.0102, lng: 73.7566 }
         },
         {
           date: "३१ अगस्त २०२७",
           day: "सोमवार",
-          tithi: "श्रावण अमावस्या",
+          tithi: "श्रावण अमावस्या (मुख्य पर्व)",
           occasion: "द्वितीय अमृत स्नान — श्रावण मास की अमावस्या, पितृ तर्पण और आत्म शुद्धि के लिए अत्यंत महत्वपूर्ण। अखाड़ों का भव्य जुलूस।",
-          location: "नासिक एवं त्र्यंबकेश्वर",
-          coords: { lat: 19.9975, lng: 73.7898 }
+          location: "रामकुंड, नासिक",
+          coords: { lat: 20.0102, lng: 73.7566 }
         },
         {
           date: "११ सितंबर २०२७",
           day: "शुक्रवार",
           tithi: "भाद्रपद एकादशी",
-          occasion: "तृतीय अमृत स्नान (नासिक) — रामकुंड, पंचवटी में वैष्णव अखाड़ों का अमृत स्नान। \"जय श्रीराम\" के जयघोष के साथ भव्य शोभायात्रा।",
+          occasion: "तृतीय अमृत स्नान — भाद्रपद एकादशी। रामकुंड, पंचवटी में वैष्णव अखाड़ों का अमृत स्नान। \"जय श्रीराम\" के जयघोष के साथ भव्य शोभायात्रा।",
           location: "रामकुंड, नासिक",
           coords: { lat: 20.0102, lng: 73.7566 }
+        },
+        {
+          date: "२ अगस्त २०२७",
+          day: "रविवार",
+          tithi: "आषाढ सोमवती अमावस्या (सूर्यग्रहण)",
+          occasion: "प्रथम अमृत स्नान — सोमवती अमावस्या का अत्यंत दुर्लभ और सर्वश्रेष्ठ योग। त्र्यंबकेश्वर के कुशावर्त पर दिव्य स्नान।",
+          location: "कुशावर्त, त्र्यंबकेश्वर",
+          coords: { lat: 19.9328, lng: 73.5308 }
+        },
+        {
+          date: "३१ अगस्त २०२७",
+          day: "सोमवार",
+          tithi: "श्रावण अमावस्या (मुख्य पर्व)",
+          occasion: "द्वितीय अमृत स्नान — श्रावण मास की अमावस्या, पितृ तर्पण और आत्म शुद्धि के लिए अत्यंत महत्वपूर्ण। अखाड़ों का भव्य जुलूस।",
+          location: "कुशावर्त, त्र्यंबकेश्वर",
+          coords: { lat: 19.9328, lng: 73.5308 }
         },
         {
           date: "१२ सितंबर २०२७",
           day: "शनिवार",
           tithi: "भाद्रपद द्वादशी",
-          occasion: "तृतीय अमृत स्नान (त्र्यंबकेश्वर) — कुशावर्त में शैव अखाड़ों और नागा बाबाओं का अमृत स्नान। \"हर हर महादेव\" की गर्जना के साथ दिव्य स्नान।",
+          occasion: "तृतीय अमृत स्नान — भाद्रपद द्वादशी। कुशावर्त में शैव अखाड़ों और नागा बाबाओं का अमृत स्नान। \"हर हर महादेव\" की गर्जना के साथ दिव्य स्नान।",
           location: "कुशावर्त, त्र्यंबकेश्वर",
           coords: { lat: 19.9328, lng: 73.5308 }
         }
@@ -228,50 +228,50 @@ export const homeContent = {
       tableHeaders: ["तारीख", "दिवस", "तिथी", "प्रसंग", "स्थान"],
       dates: [
         {
-          date: "१० जुलै २०२७",
-          day: "गुरुवार",
-          tithi: "गुरु पौर्णिमा",
-          occasion: "पार्वणी स्नान — गुरुतत्त्वाला समर्पित पौर्णिमा। कुंभपर्वाच्या आध्यात्मिक प्रारंभाची नांदी।",
-          location: "नासिक व त्र्यंबकेश्वर",
-          coords: { lat: 19.9975, lng: 73.7898 }
-        },
-        {
           date: "२ ऑगस्ट २०२७",
           day: "रविवार",
-          tithi: "आषाढ सोमवती अमावस्या",
-          occasion: "प्रथम अमृत स्नान — सोमवती अमावस्येचा अत्यंत दुर्मिळ योग। नासिक आणि त्र्यंबकेश्वर दोन्ही ठिकाणी एकाच वेळी भव्य सोहळा।",
-          location: "नासिक व त्र्यंबकेश्वर",
-          coords: { lat: 19.9975, lng: 73.7898 }
-        },
-        {
-          date: "९ ऑगस्ट २०२७",
-          day: "रविवार",
-          tithi: "श्रावण पौर्णिमा / रक्षाबंधन",
-          occasion: "पार्वणी स्नान — श्रावण पौर्णिमा, भगवान शंकराला अत्यंत प्रिय। त्र्यंबकेश्वर ज्योतिर्लिंगावर अभिषेकानंतर स्नानाचे विशेष महत्त्व।",
-          location: "नासिक व त्र्यंबकेश्वर",
-          coords: { lat: 19.9975, lng: 73.7898 }
+          tithi: "आषाढ सोमवती अमावस्या (सूर्यग्रहण)",
+          occasion: "प्रथम अमृत स्नान — सोमवती अमावस्येचा अत्यंत दुर्मिळ योग। नासिकमधील रामकुंड येथे भव्य सोहळा।",
+          location: "रामकुंड, नासिक",
+          coords: { lat: 20.0102, lng: 73.7566 }
         },
         {
           date: "३१ ऑगस्ट २०२७",
           day: "सोमवार",
-          tithi: "श्रावण अमावस्या",
+          tithi: "श्रावण अमावस्या (मुख्य पर्व)",
           occasion: "द्वितीय अमृत स्नान — श्रावण मासातील अमावस्या, पितृतर्पण व आत्मशुद्धीसाठी अत्यंत पवित्र। अखाड्यांचा भव्य मिरवणूक सोहळा।",
-          location: "नासिक व त्र्यंबकेश्वर",
-          coords: { lat: 19.9975, lng: 73.7898 }
+          location: "रामकुंड, नासिक",
+          coords: { lat: 20.0102, lng: 73.7566 }
         },
         {
           date: "११ सप्टेंबर २०२७",
           day: "शुक्रवार",
           tithi: "भाद्रपद एकादशी",
-          occasion: "तृतीय अमृत स्नान (नासिक) — रामकुंड, पंचवटी येथे वैष्णव अखाड्यांचा अमृत स्नान सोहळा। \"जय श्रीराम\" च्या जयघोषात दिव्य मिरवणूक।",
+          occasion: "तृतीय अमृत स्नान — भाद्रपद एकादशी। रामकुंड, पंचवटी येथे वैष्णव अखाड्यांचा अमृत स्नान सोहळा। \"जय श्रीराम\" च्या जयघोषात दिव्य मिरवणूक।",
           location: "रामकुंड, नासिक",
           coords: { lat: 20.0102, lng: 73.7566 }
+        },
+        {
+          date: "२ ऑगस्ट २०२७",
+          day: "रविवार",
+          tithi: "आषाढ सोमवती अमावस्या (सूर्यग्रहण)",
+          occasion: "प्रथम अमृत स्नान — सोमवती अमावस्येचा अत्यंत दुर्मिळ योग। त्र्यंबकेश्वरमधील कुशावर्त येथे दिव्य सोहळा।",
+          location: "कुशावर्त, त्र्यंबकेश्वर",
+          coords: { lat: 19.9328, lng: 73.5308 }
+        },
+        {
+          date: "३१ ऑगस्ट २०२७",
+          day: "सोमवार",
+          tithi: "श्रावण अमावस्या (मुख्य पर्व)",
+          occasion: "द्वितीय अमृत स्नान — श्रावण मासातील अमावस्या, पितृतर्पण व आत्मशुद्धीसाठी अत्यंत पवित्र। अखाड्यांचा भव्य मिरवणूक सोहळा।",
+          location: "कुशावर्त, त्र्यंबकेश्वर",
+          coords: { lat: 19.9328, lng: 73.5308 }
         },
         {
           date: "१२ सप्टेंबर २०२७",
           day: "शनिवार",
           tithi: "भाद्रपद द्वादशी",
-          occasion: "तृतीय अमृत स्नान (त्र्यंबकेश्वर) — कुशावर्त येथे शैव अखाडे व नागा बाबांचा अमृत स्नान सोहळा। \"हर हर महादेव\" च्या गर्जनेत पवित्र स्नान।",
+          occasion: "तृतीय अमृत स्नान — भाद्रपद द्वादशी। कुशावर्त येथे शैव अखाडे व नागा बाबांचा अमृत स्नान सोहळा। \"हर हर महादेव\" च्या गर्जनेत पवित्र स्नान।",
           location: "कुशावर्त, त्र्यंबकेश्वर",
           coords: { lat: 19.9328, lng: 73.5308 }
         }
