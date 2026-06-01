@@ -57,7 +57,7 @@ export const content = {
       navAboutNasik: "About Nasik",
       navMedia: "Media",
       navNews: "News & Alerts",
-      navEvents: "Events",
+      navEvents: "Activities",
       navVerticals: "Verticals",
       footerRights: "© 2027 Kumbhparv Nasik. All rights reserved.",
       footerTagline: "A sacred journey of faith and devotion.",

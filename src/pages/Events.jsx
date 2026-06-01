@@ -4,11 +4,11 @@ import { School, GraduationCap, Theater, Mic, Video, Bus, Music, PenTool, Palett
 
 const eventsData = {
   EN: {
-    badge: 'Events',
-    title: 'Our Events',
+    badge: 'Activities',
+    title: 'Our Activities',
     sections: [
       {
-        title: 'Janjagran Events',
+        title: 'Janjagran',
         subtitle: 'Awareness and outreach programs to educate and engage the community.',
         icon: 'School',
         items: [
@@ -18,7 +18,7 @@ const eventsData = {
         ]
       },
       {
-        title: 'Bhavjagran Events',
+        title: 'Bhavjagran',
         subtitle: 'Cultural and spiritual programs to connect hearts with devotion.',
         icon: 'Mic',
         items: [
@@ -33,7 +33,7 @@ const eventsData = {
         ]
       },
       {
-        title: 'Jansahabhag Events',
+        title: 'Jansahabhag',
         subtitle: 'Collaborative events bringing together community leaders and professionals.',
         icon: 'Users',
         items: [
@@ -49,8 +49,8 @@ const eventsData = {
     title: 'हमारे कार्यक्रम',
     sections: [
       {
-        title: 'जनजागरण कार्यक्रम',
-        subtitle: 'समुदाय को शिक्षित और जागरूक करने के लिए आउटरीच कार्यक्रम।',
+        title: 'जनजागरण',
+        subtitle: 'समुदाय को शिक्षित और जागरूक करने के लिए जनजागरण कार्यक्रम।',
         icon: 'School',
         items: [
           { name: 'स्कूल', icon: 'School' },
@@ -59,7 +59,7 @@ const eventsData = {
         ]
       },
       {
-        title: 'भावजागरण कार्यक्रम',
+        title: 'भावजागरण',
         subtitle: 'भक्ति और सांस्कृतिक भावना से हृदय जोड़ने वाले कार्यक्रम।',
         icon: 'Mic',
         items: [
@@ -74,7 +74,7 @@ const eventsData = {
         ]
       },
       {
-        title: 'जनसहभाग कार्यक्रम',
+        title: 'जनसहभाग',
         subtitle: 'सामुदायिक नेताओं और पेशेवरों को एक साथ लाने वाले सहयोगी कार्यक्रम।',
         icon: 'Users',
         items: [
@@ -90,8 +90,8 @@ const eventsData = {
     title: 'आमचे उपक्रम',
     sections: [
       {
-        title: 'जनजागरण उपक्रम',
-        subtitle: 'समाजाला शिक्षित आणि जागरूक करण्यासाठी आउटरीच उपक्रम.',
+        title: 'जनजागरण',
+        subtitle: 'समाजाला शिक्षित आणि जागरूक करण्यासाठी जनजागरण उपक्रम.',
         icon: 'School',
         items: [
           { name: 'शाळा', icon: 'School' },
@@ -100,7 +100,7 @@ const eventsData = {
         ]
       },
       {
-        title: 'भावजागरण उपक्रम',
+        title: 'भावजागरण',
         subtitle: 'भावना आणि भक्तीने हृदय जोडणारे सांस्कृतिक उपक्रम.',
         icon: 'Mic',
         items: [
@@ -115,7 +115,7 @@ const eventsData = {
         ]
       },
       {
-        title: 'जनसहभाग उपक्रम',
+        title: 'जनसहभाग',
         subtitle: 'समुदाय नेते आणि व्यावसायिकांना एकत्र आणणारे सहयोगी उपक्रम.',
         icon: 'Users',
         items: [
@@ -140,7 +140,7 @@ const sectionIconMap = {
 
 const sectionColors = {
   'Janjagran': { from: '#7B1C1C', to: '#A52A2A', light: 'rgba(123,28,28,0.08)' },
-  'Bhavjagran': { from: '#D4AF37', to: '#C5A028', light: 'rgba(212,175,55,0.08)' },
+  'Bhavjagran': { from: '#7B1C1C', to: '#A52A2A', light: 'rgba(123,28,28,0.08)' },
   'Jansahabhag': { from: '#8B4513', to: '#6B3410', light: 'rgba(139,69,19,0.08)' }
 };
 
