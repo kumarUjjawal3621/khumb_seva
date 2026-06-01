@@ -146,34 +146,134 @@ const TempleDivider = () => (
 );
 
 // ─────────────────────────────────────────────────────────────────────────────
-// UI Family 1 — HERO / IMMERSIVE BANNER
+// UI Family 1 — HERO / IMMERSIVE BANNER  (mirrors Home.jsx hero)
 // ─────────────────────────────────────────────────────────────────────────────
-const HeroBanner = ({ title, text, imageUrl, tagline, subtitle, id }) => (
-  <section id={id} className="relative w-full overflow-hidden shadow-2xl border-b border-[var(--color-golden)]/25 flex items-center -mt-16 sm:-mt-20 pt-16 sm:pt-20 min-h-[calc(100vh+4rem)] sm:min-h-[calc(100vh+5rem)]">
-    <div className="absolute inset-0 z-0">
-      <img src={imageUrl} alt={title} className="w-full h-full object-cover object-center scale-105" />
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/30 z-10" />
-    </div>
+const heroBgImages = [
+  '/images/Nasik hero/hero1.png',
+  '/images/Nasik hero/hero2.png',
+  '/images/Nasik hero/hero3.png',
+];
 
-    <div className="relative z-20 w-full px-8 sm:px-14 lg:px-20 space-y-4 max-w-5xl">
-      {tagline && (
-        <span className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-[var(--color-golden)]/20 text-[var(--color-golden)] text-[11px] font-bold uppercase tracking-[0.18em] border border-[var(--color-golden)]/35 backdrop-blur-sm">
-          <span className="w-1 h-1 rounded-full bg-[var(--color-golden)] animate-pulse" />
-          {tagline}
-        </span>
-      )}
-      {subtitle && (
-        <p className="text-[var(--color-camel-light)] font-serif italic text-lg sm:text-xl drop-shadow-md">{subtitle}</p>
-      )}
-      <h1 className="text-4xl sm:text-6xl lg:text-7xl font-serif font-bold text-[var(--color-vanilla)] leading-tight drop-shadow-2xl">
-        {title}
-      </h1>
-      <p className="text-[var(--color-vanilla)]/88 text-base sm:text-lg lg:text-xl leading-8 max-w-3xl drop-shadow font-medium">
-        {text}
-      </p>
-    </div>
-  </section>
-);
+const HeroBanner = ({ title, text, imageUrl: _img, tagline, subtitle, id }) => {
+  const { language, setLanguage } = useAppContext();
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [carouselStarted, setCarouselStarted] = useState(false);
+
+  useEffect(() => {
+    const startTimer = setTimeout(() => {
+      setCarouselStarted(true);
+      setCurrentIndex(1);
+    }, 3500);
+    return () => clearTimeout(startTimer);
+  }, []);
+
+  useEffect(() => {
+    if (!carouselStarted) return;
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % heroBgImages.length);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, [carouselStarted]);
+
+  return (
+    <section
+      id={id}
+      className="relative w-full overflow-hidden shadow-2xl border-b border-[var(--color-golden)]/25 flex items-center -mt-16 sm:-mt-20 pt-16 sm:pt-20 min-h-[calc(100vh+4rem)] sm:min-h-[calc(100vh+5rem)]"
+    >
+      <div className="absolute inset-0 overflow-hidden select-none pointer-events-none bg-black">
+        {carouselStarted ? (
+          <AnimatePresence>
+            <motion.img
+              key={currentIndex}
+              src={heroBgImages[currentIndex]}
+              alt=""
+              aria-hidden
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '-100%' }}
+              transition={{ duration: 1.5, ease: 'easeInOut' }}
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+          </AnimatePresence>
+        ) : (
+          <img
+            src={heroBgImages[0]}
+            alt=""
+            aria-hidden
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        )}
+        <div className="absolute inset-0 bg-black/35 z-10" />
+      </div>
+
+      {/* Desktop logo top-left */}
+      <div className="absolute top-2 sm:top-4 left-4 sm:left-10 lg:left-16 z-20 sm:block hidden">
+        <a href="/" className="hover:opacity-90 transition-opacity">
+          <img
+            src="/images/logo.png"
+            alt="Kumbhparv Logo"
+            className="h-20 sm:h-24 w-auto object-contain drop-shadow-lg brightness-0 invert"
+          />
+        </a>
+      </div>
+
+      {/* Mobile logo centered */}
+      <div className="absolute top-16 left-0 right-0 z-20 flex items-center justify-center sm:hidden">
+        <img
+          src="/images/logo.png"
+          alt="Kumbhparv Logo"
+          className="h-20 w-auto object-contain drop-shadow-lg brightness-0 invert"
+        />
+      </div>
+
+      {/* Desktop language selector top-right */}
+      <div className="absolute top-8 right-4 sm:right-10 lg:right-16 z-[60] sm:block hidden">
+        <div className="flex items-center gap-2">
+          {[
+            { code: 'EN', label: 'English' },
+            { code: 'HI', label: 'हिन्दी' },
+            { code: 'MR', label: 'मराठी' },
+          ].map((lang, idx) => (
+            <span key={lang.code} className="flex items-center">
+              {idx > 0 && <span className="text-white/20 mx-0.5">|</span>}
+              <button
+                onClick={() => setLanguage(lang.code)}
+                className={`text-[11px] sm:text-xs font-bold tracking-wide transition-all duration-200 ${
+                  language === lang.code
+                    ? 'text-white'
+                    : 'text-white/40 hover:text-white/80'
+                }`}
+              >
+                {lang.label}
+              </button>
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* Content */}
+      <div className="relative z-20 w-full px-8 sm:px-14 lg:px-20 space-y-4 max-w-5xl">
+        {tagline && (
+          <span className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-[var(--color-golden)]/20 text-[var(--color-golden)] text-[11px] font-bold uppercase tracking-[0.18em] border border-[var(--color-golden)]/35 backdrop-blur-sm">
+            <span className="w-1 h-1 rounded-full bg-[var(--color-golden)] animate-pulse" />
+            {tagline}
+          </span>
+        )}
+        {subtitle && (
+          <p className="text-[var(--color-camel-light)] font-serif italic text-lg sm:text-xl drop-shadow-md">
+            {subtitle}
+          </p>
+        )}
+        <h1 className="text-4xl sm:text-6xl lg:text-7xl font-serif font-bold text-[var(--color-vanilla)] leading-tight drop-shadow-2xl">
+          {title}
+        </h1>
+        <p className="text-[var(--color-vanilla)]/88 text-base sm:text-lg lg:text-xl leading-8 max-w-3xl drop-shadow font-medium">
+          {text}
+        </p>
+      </div>
+    </section>
+  );
+};
 
 // ─────────────────────────────────────────────────────────────────────────────
 // UI Family 2 — CAROUSEL / FULL-BLEED SLIDES
