@@ -311,7 +311,7 @@ const CarouselSection = ({ slides, id, label }) => {
             className="absolute inset-0 flex"
           >
             {/* Text panel — left */}
-            <div className="w-full sm:w-[45%] lg:w-[42%] flex items-center px-6 sm:px-10 lg:px-14 bg-gradient-to-r from-white via-white to-white/95">
+            <div className="w-full sm:w-[48%] lg:w-[45%] flex items-center px-6 sm:px-10 lg:px-14">
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -325,14 +325,14 @@ const CarouselSection = ({ slides, id, label }) => {
                 <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-[var(--color-maroon)] leading-tight">
                   {slide.title}
                 </h2>
-                <p className="text-[var(--color-maroon)]/80 text-sm sm:text-base lg:text-lg leading-relaxed text-justify">
+                <p className="text-[var(--color-maroon)]/80 text-xs sm:text-sm lg:text-base leading-relaxed text-justify">
                   {slide.text}
                 </p>
               </motion.div>
             </div>
             {/* Image panel — right */}
-            <div className="hidden sm:block flex-1 overflow-hidden">
-              <img src={slide.imageUrl} alt={slide.title} className="w-full h-full object-cover" />
+            <div className="hidden sm:block flex-[0.85] self-center overflow-hidden">
+              <img src={slide.imageUrl} alt={slide.title} className="w-full h-auto max-h-[50vh] object-contain" />
             </div>
           </motion.div>
         </AnimatePresence>
