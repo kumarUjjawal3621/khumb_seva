@@ -62,8 +62,10 @@ const Layout = ({ children }) => {
             <div className="hidden md:flex items-center w-full relative">
               {/* Logo — appears on scroll */}
               <div className={`absolute left-0 transition-all duration-300 ${scrolled ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
-                <a href="/" className="hover:opacity-90 transition-opacity">
-                  <img src="/images/logo.png" alt="Kumbhparv Logo" className="h-14 w-auto object-contain brightness-0 invert" />
+                <a href="/" className="hover:opacity-90 transition-opacity block">
+                  <div className="bg-[var(--color-camel-light)] rounded-lg px-2 py-1.5 shadow-sm">
+                    <img src="/logo_cert.png" alt="Kumbhparv Logo" className="h-14 w-auto object-contain" />
+                  </div>
                 </a>
               </div>
 
@@ -153,8 +155,10 @@ const Layout = ({ children }) => {
               </div>
               {/* Centered logo — appears on scroll */}
               <div className={`absolute left-1/2 -translate-x-1/2 transition-all duration-300 ${scrolled ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
-                <a href="/" className="hover:opacity-90 transition-opacity">
-                  <img src="/images/logo.png" alt="Kumbhparv Logo" className="h-14 w-auto object-contain brightness-0 invert" />
+                <a href="/" className="hover:opacity-90 transition-opacity block">
+                  <div className="bg-[var(--color-camel-light)] rounded-lg px-1.5 py-1 shadow-sm">
+                    <img src="/logo_cert.png" alt="Kumbhparv Logo" className="h-12 w-auto object-contain" />
+                  </div>
                 </a>
               </div>
               <div className="flex items-center gap-3 ml-auto">
