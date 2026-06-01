@@ -474,7 +474,7 @@ const Home = () => {
                         className="w-full flex items-center justify-between py-4 text-left"
                         aria-expanded={isOpen}
                       >
-                        <span className="font-serif font-semibold text-base sm:text-lg text-[var(--color-maroon)] leading-tight pr-4">
+                        <span className="font-serif font-bold text-lg sm:text-xl text-[var(--color-maroon)] leading-tight pr-4">
                           {heading}
                         </span>
                         <span className={`flex-shrink-0 w-7 h-7 rounded-full border border-[var(--color-golden)]/40 flex items-center justify-center text-[var(--color-golden)] transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>
@@ -493,7 +493,7 @@ const Home = () => {
                             transition={{ duration: 0.25, ease: 'easeOut' }}
                             className="overflow-hidden px-0 pb-4"
                           >
-                            <p className="text-[var(--color-text-main)] text-sm sm:text-base leading-7 font-serif tracking-wide">
+                            <p className="text-[var(--color-text-main)] text-sm sm:text-base leading-7 font-medium">
                               {body}
                             </p>
                           </motion.div>
@@ -511,7 +511,7 @@ const Home = () => {
                     whileInView={{ y: 0, opacity: 1 }}
                     viewport={{ once: true, amount: 0.3 }}
                     transition={{ duration: 0.6, ease: 'easeOut', delay: idx * 0.2 }}
-                    className="text-[var(--color-text-main)] text-base sm:text-lg leading-[1.9] font-serif tracking-wide text-center"
+                    className="text-[var(--color-text-main)] text-base sm:text-lg leading-[1.9] font-medium text-center"
                   >
                     {para}
                   </motion.p>
@@ -630,7 +630,7 @@ const Home = () => {
                   <h3 className="text-[var(--color-maroon)] text-2xl sm:text-3xl font-bold mb-3">
                     {card.title}
                   </h3>
-                  <p className="text-[var(--color-text-main)] text-base sm:text-lg leading-[1.9] font-serif tracking-wide max-w-4xl">
+                  <p className="text-[var(--color-text-main)] text-base sm:text-lg leading-[1.9] font-medium max-w-4xl">
                     {card.desc}
                   </p>
                   {idx === content.infoCards.length - 1 && (
@@ -690,7 +690,7 @@ const Home = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, ease: 'easeOut', delay: 0.25 }}
-            className="text-center text-[var(--color-text-main)] text-base sm:text-lg leading-[1.9] font-serif tracking-wide max-w-4xl mx-auto mb-6"
+            className="text-center text-[var(--color-text-main)] text-base sm:text-lg leading-[1.9] font-medium max-w-4xl mx-auto mb-6"
           >
             {content.snanPatrika.description}
           </motion.p>
@@ -865,7 +865,7 @@ const Home = () => {
                   whileInView={{ y: 0, opacity: 1 }}
                   viewport={{ once: true, amount: 0.3 }}
                   transition={{ duration: 0.6, ease: 'easeOut', delay: idx * 0.2 }}
-                  className="text-[var(--color-text-main)] text-base sm:text-lg leading-[1.9] font-serif tracking-wide text-left max-w-4xl"
+                  className="text-[var(--color-text-main)] text-base sm:text-lg leading-[1.9] font-medium text-left max-w-4xl"
                 >
                   {para}
                 </motion.p>
@@ -904,7 +904,7 @@ const Home = () => {
                     <span className={`w-2 h-2 rounded-full ${idx === 2 ? 'bg-[var(--color-maroon)]' : 'bg-[var(--color-golden)]'}`}></span>
                     <h4 className={`${isFullWidth ? 'type-card-heading' : 'type-card-heading'} text-[var(--color-maroon)] mb-0`}>{title}</h4>
                   </div>
-                  <p className="text-[var(--color-text-main)] text-sm sm:text-base leading-[1.8] font-serif font-semibold tracking-wide">
+                  <p className="text-[var(--color-text-main)] text-sm sm:text-base leading-[1.8] font-medium font-semibold">
                     {desc}
                   </p>
                 </motion.div>
