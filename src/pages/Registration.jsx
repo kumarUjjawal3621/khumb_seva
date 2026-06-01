@@ -8,6 +8,33 @@ import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import Certificate from '../components/Certificate';
 
+const highlightWords = {
+  EN: {
+    pledge: ['social harmony', 'traditional knowledge', 'eco-friendly', 'Godavari', 'Nandini', 'civic rules', 'traffic rules', 'indigenous', 'local artisans', 'safety', 'discipline', 'emergencies', 'pilgrims', 'Kumbh'],
+    seva: ['volunteer', 'medical', 'emergency', 'food donation', 'financial contribution', 'business opportunities', 'technology', 'technical support', 'security', 'accommodation', 'training', 'cleanliness', 'guide pilgrims', 'traffic management', 'crowd control', 'digital platforms']
+  },
+  HI: {
+    pledge: ['सामाजिक समरसता', 'पारंपरिक ज्ञान', 'स्वच्छ', 'गोदावरी', 'नंदिनी', 'नगर नियम', 'यातायात नियम', 'स्थानीय उत्पाद', 'स्थानीय कारीगर', 'सुरक्षा', 'अनुशासन', 'आपातकालीन', 'तीर्थयात्रियों', 'कुंभ'],
+    seva: ['स्वयंसेवक', 'चिकित्सा', 'आपातकालीन', 'भोजन दान', 'आर्थिक योगदान', 'व्यावसायिक अवसर', 'प्रौद्योगिकी', 'तकनीकी सहायता', 'सुरक्षा प्रबंधन', 'आवास', 'प्रशिक्षण', 'स्वच्छता', 'तीर्थयात्रियों का मार्गदर्शन', 'यातायात प्रबंधन', 'भीड़ नियंत्रण', 'डिजिटल प्लेटफॉर्म']
+  },
+  MR: {
+    pledge: ['सामाजिक समरसता', 'पारंपरिक ज्ञान', 'स्वच्छ', 'गोदावरी', 'नंदिनी', 'नागरी नियम', 'वाहतूक नियम', 'स्थानिक उत्पादने', 'स्थानिक कारागीर', 'सुरक्षा', 'शिस्त', 'आणीबाणी', 'यात्रेकरू', 'कुंभ'],
+    seva: ['स्वयंसेवक', 'वैद्यकीय', 'आणीबाणी', 'अन्नदान', 'आर्थिक योगदान', 'व्यवसाय संधी', 'तंत्रज्ञान', 'तांत्रिक सहाय्य', 'सुरक्षा व्यवस्थापन', 'निवास', 'प्रशिक्षण', 'स्वच्छता', 'यात्रेकरूंना मार्गदर्शन', 'वाहतूक व्यवस्थापन', 'गर्दी नियंत्रण', 'डिजिटल प्लॅटफॉर्म']
+  }
+};
+
+const highlightText = (text, keywords) => {
+  if (!keywords || keywords.length === 0) return text;
+  const sorted = [...keywords].sort((a, b) => b.length - a.length);
+  const escaped = sorted.map(k => k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|');
+  const regex = new RegExp(`(${escaped})`, 'gi');
+  const parts = text.split(regex);
+  const keywordSet = new Set(keywords.map(k => k.toLowerCase()));
+  return parts.map((part, i) =>
+    keywordSet.has(part.toLowerCase()) ? <span key={i} className="font-bold text-[var(--color-maroon)]">{part}</span> : part
+  );
+};
+
 const Registration = () => {
   const { t, language, setLanguage } = useAppContext();
   const [formData, setFormData] = useState({
@@ -328,7 +355,7 @@ const Registration = () => {
               <div className="mt-0.5 min-w-[28px]">
                 <div className="w-7 h-7 rounded-full bg-[var(--color-camel)]/20 text-[var(--color-maroon)] flex items-center justify-center text-xs font-bold border border-[var(--color-camel)]/30">{idx + 1}</div>
               </div>
-              <p className="text-sm text-[var(--color-text-main)] leading-relaxed">{point}</p>
+              <p className="text-sm text-[var(--color-text-main)] leading-relaxed">{highlightText(point, highlightWords[language]?.pledge)}</p>
             </div>
           ))}
         </div>
@@ -357,7 +384,7 @@ const Registration = () => {
                 <div className={`mt-0.5 w-5 h-5 rounded-full flex-shrink-0 flex items-center justify-center border-2 ${isSelected ? 'border-[var(--color-golden)] bg-[var(--color-golden)]' : 'border-[var(--color-camel)]/50'}`}>
                   {isSelected && <CheckCircle2 className="w-3.5 h-3.5 text-[var(--color-maroon)]" />}
                 </div>
-                <p className={`text-sm ${isSelected ? 'font-bold text-[var(--color-maroon)]' : 'text-[var(--color-text-main)]'}`}>{seva}</p>
+                <p className={`text-sm ${isSelected ? 'font-bold text-[var(--color-maroon)]' : 'text-[var(--color-text-main)]'}`}>{highlightText(seva, highlightWords[language]?.seva)}</p>
               </div>
             );
           })}

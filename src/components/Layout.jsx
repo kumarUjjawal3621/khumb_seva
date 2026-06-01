@@ -14,9 +14,10 @@ const Layout = ({ children }) => {
 
   const navLinks = [
     { path: '/', label: t.labels.navHome || 'Home' },
-    { path: '/about', label: t.labels.navAbout || 'About Us' },
     { path: '/about-nasik', label: t.labels.navAboutNasik || 'History' },
     { path: '/media', label: t.labels.navMedia || 'Media' },
+    { path: '/news', label: t.labels.navNews || 'News & Alerts' },
+    { path: '/about', label: t.labels.navAbout || 'Team' },
     { path: '/register', label: t.labels.volunteerRegistration || 'Volunteer Registration' }
   ];
 
@@ -33,6 +34,15 @@ const Layout = ({ children }) => {
 
   useEffect(() => {
     setMobileOpen(false);
+  }, [location]);
+
+  useEffect(() => {
+    if (location.hash) {
+      const el = document.getElementById(location.hash.replace('#', ''));
+      if (el) {
+        setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'center' }), 100);
+      }
+    }
   }, [location]);
 
   return (
@@ -65,7 +75,7 @@ const Layout = ({ children }) => {
                       <Link
                         key={link.path}
                         to={link.path}
-                        className={`px-4 py-2 rounded-lg text-[11px] font-bold uppercase tracking-[0.1em] transition-all duration-200 pointer-events-auto bg-[var(--color-golden)] text-[var(--color-maroon)] shadow-md hover:shadow-lg hover:brightness-110 border-2 border-[var(--color-golden)]`}
+                        className={`px-4 py-2 rounded-lg ${language === 'HI' || language === 'MR' ? 'text-[13px]' : 'text-[11px]'} font-bold uppercase tracking-[0.1em] transition-all duration-200 pointer-events-auto bg-[var(--color-golden)] text-[var(--color-maroon)] shadow-md hover:shadow-lg hover:brightness-110 border-2 border-[var(--color-golden)]`}
                       >
                         {link.label}
                       </Link>
@@ -75,7 +85,7 @@ const Layout = ({ children }) => {
                     <Link
                       key={link.path}
                       to={link.path}
-                      className={`px-3 py-2 rounded-lg text-[11px] font-bold uppercase tracking-[0.1em] transition-all duration-200 pointer-events-auto ${
+                      className={`px-3 py-2 rounded-lg ${language === 'HI' || language === 'MR' ? 'text-[13px]' : 'text-[11px]'} font-bold uppercase tracking-[0.1em] transition-all duration-200 pointer-events-auto ${
                         isActive
                           ? scrolled
                             ? 'bg-white/20 text-white'

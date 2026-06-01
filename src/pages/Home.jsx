@@ -349,7 +349,7 @@ const Home = () => {
       <div className="relative">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
         {/* ─── COUNTDOWN ─── */}
-        <div ref={countdownRef} className="pt-6 pb-0 text-center relative">
+        <div ref={countdownRef} id="flag-hoisting" className="pt-6 pb-0 text-center relative">
         <p className="type-eyebrow text-[var(--color-maroon-dark)] mb-8">
           {content.countdownText}
         </p>
@@ -829,23 +829,11 @@ const Home = () => {
             className="text-left text-[var(--color-golden)] text-xs sm:text-sm font-bold uppercase tracking-[0.3em] mb-2 leading-relaxed"
           >
             {language === 'HI' ? (
-              <>
-                त्रिखंड योग का अलौकिक संयोग:<br />
-                नाशिक-त्र्यंबकेश्वर सिंहस्थ<br />
-                कुंभमेला (२०२६–२०२८)
-              </>
+              'त्रिखंड योग — सिंहस्थ कुंभ का अलौकिक संयोग'
             ) : language === 'MR' ? (
-              <>
-                त्रिखंड योगाचा दुर्मिळ खगोलीय चमत्कार:<br />
-                नाशिक-त्र्यंबकेश्वर सिंहस्थ<br />
-                कुंभपर्व (२०२६–२०२८)
-              </>
+              'त्रिखंड योग — सिंहस्थ कुंभपर्वाचा अलौकिक संयोग'
             ) : (
-              <>
-                The Celestial Wonder of Trikhand Yog:<br />
-                Nashik-Trimbakeshwar Sinhastha<br />
-                Kumbh Mela (2026–2028)
-              </>
+              'The Celestial Wonder of Sinhastha Kumbh'
             )}
           </motion.div>
           <motion.h2

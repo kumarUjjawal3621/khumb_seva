@@ -84,7 +84,7 @@ export const homeContent = {
       ]
     },
     trikhandiYog: {
-      title: "Trikhand Yog — The Celestial Wonder of Sinhastha Kumbh",
+      title: "Trikhand Yog",
       paragraphs: [
         "The Celestial Wonder of Trikhand Yog: Nashik-Trimbakeshwar Sinhastha Kumbh Mela (2026–2028)",
         "The upcoming Sinhastha Kumbhparva is not just a congregation; it is a timeless celebration of social harmony that has been observed for thousands of years. Bringing together people across all castes, languages, sects, regions, culinary habits, and customs, it transcends all barriers. Rich or poor, man or woman, scholar or unlearned, householder or ascetic - everyone gathers with equal enthusiasm to take a holy dip in the sacred Godavari River. It stands as the world's largest peaceful festival and a living testament to the Indian philosophy of 'Vasudhaiva Kutumbakam' - The World is One Family.",
@@ -181,7 +181,7 @@ export const homeContent = {
       ]
     },
     trikhandiYog: {
-      title: "त्रिखंड योग — नाशिक-त्र्यंबकेश्वर सिंहस्थ कुंभमेला का अलौकिक संयोग",
+      title: "त्रिखंड योग",
       paragraphs: [
         "त्रिखंड योग का अलौकिक संयोग: नाशिक-त्र्यंबकेश्वर सिंहस्थ कुंभमेला (२०२६–२०२८)",
         "हजारों वर्षों से चली आ रही सामाजिक समरसता को सुदृढ़ करने वाला अनूठा उत्सव यानी सिंहस्थ कुंभपर्व है । हिंदू धर्म के सभी जातियों, भाषाओं, पंथों, क्षेत्रों, खान-पान की पद्धतियों और रीति-रिवाजों के लोग, अमीर-गरीब, स्त्री-पुरुष, विद्वान-अज्ञानी, और गृहस्थ-संन्यासी का भेद भूलकर एक साथ आते हैं और पूर्ण उत्साह के साथ गोदावरी नदी में पवित्र स्नान करते हैं । यह दुनिया का सबसे बड़ा शांतिपूर्ण उत्सव है , जो भारतीय दर्शन 'वसुधैव कुटुंबकम्' (संपूर्ण विश्व एक परिवार है) का जीवंत उदाहरण प्रस्तुत करता है ।",
@@ -278,7 +278,7 @@ export const homeContent = {
       ]
     },
     trikhandiYog: {
-      title: "त्रिखंड योग — नाशिक-त्र्यंबकेश्वर सिंहस्थ कुंभपर्वाचा दुर्मिळ खगोलीय चमत्कार",
+      title: "त्रिखंड योग",
       paragraphs: [
         "त्रिखंड योगाचा दुर्मिळ खगोलीय चमत्कार: नाशिक-त्र्यंबकेश्वर सिंहस्थ कुंभपर्व (२०२६–२०२८)",
         "हजारो वर्षांपासून चालत आलेला, सामाजिक समरसता वाढीस लावणारा अपूर्व उत्सव म्हणजे सिंहस्थ कुंभपर्व! हिंदू धर्मातील सर्व जात, भाषा, पंथ, प्रदेश, निरनिराळ्या खानपान पद्धती आणि चालीरिती असणारा; तसेच गरीब-श्रीमंत, स्त्री-पुरुष, विद्वान-अनभिज्ञ, गृहस्थ-संन्यासी असा कोणताही भेद न मानता एक प्रचंड समुदाय एकाच ठिकाणी एकत्र जमतो आणि गोदावरी नदीत पवित्र स्नान करतो. विशेष म्हणजे, यानिमित्ताने जगातील सर्वात मोठा शांततापूर्ण उत्सव जल्लोषात साजरा होतो. 'वसुधैव कुटुंबकम्' (संपूर्ण विश्व एक कुटुंब आहे) या भारतीय तत्त्वज्ञानाचे हे एक जिवंत उदाहरण आहे.",
