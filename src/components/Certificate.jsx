@@ -6,10 +6,12 @@ const WIDTH = 2000;
 const HEIGHT = 1414;
 
 const CONFIG = {
-  EN: { img: '/images/certificate/English certificate.png', x: 1006, y: 652, fontSize: 46 },
-  HI: { img: '/images/certificate/hindi certificate.png', x: 987, y: 739, fontSize: 46 },
-  MR: { img: '/images/certificate/marathi certificate.png', x: 1000, y: 749, fontSize: 46 },
+  EN: { img: '/images/certificate/eng_cert.png', x: 1000, y: 604, fontSize: 46, yMin: 567, yMax: 640 },
+  HI: { img: '/images/certificate/hindi_cert.png', x: 981, y: 656, fontSize: 46, yMin: 620, yMax: 692 },
+  MR: { img: '/images/certificate/marathi_cert.png', x: 977, y: 636, fontSize: 46, yMin: 595, yMax: 676 },
 };
+
+const MAX_TEXT_WIDTH = 800;
 
 const Certificate = React.forwardRef(({ overrideData, preview = false }, ref) => {
   const canvasRef = useRef(null);
@@ -37,7 +39,16 @@ const Certificate = React.forwardRef(({ overrideData, preview = false }, ref) =>
       const fontFamily = ['HI', 'MR'].includes(language)
         ? '"Noto Sans Devanagari", "Noto Serif Devanagari", sans-serif'
         : '"Playfair Display", Georgia, serif';
-      ctx.font = `700 ${cfg.fontSize}px ${fontFamily}`;
+
+      let fontSize = cfg.fontSize;
+      ctx.font = `700 ${fontSize}px ${fontFamily}`;
+      let textWidth = ctx.measureText(displayName).width;
+      while (textWidth > MAX_TEXT_WIDTH && fontSize > 20) {
+        fontSize -= 2;
+        ctx.font = `700 ${fontSize}px ${fontFamily}`;
+        textWidth = ctx.measureText(displayName).width;
+      }
+
       ctx.fillStyle = '#111827';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
