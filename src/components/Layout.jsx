@@ -17,6 +17,7 @@ const Layout = ({ children }) => {
     { path: '/about-nasik', label: t.labels.navAboutNasik || 'History' },
     { path: '/media', label: t.labels.navMedia || 'Media' },
     { path: '/news', label: t.labels.navNews || 'News & Alerts' },
+    { path: '/events', label: t.labels.navEvents || 'Events' },
     { path: '/about', label: t.labels.navAbout || 'Team' },
     { path: '/register', label: t.labels.volunteerRegistration || 'Volunteer Registration' }
   ];
