@@ -299,7 +299,7 @@ const CarouselSection = ({ slides, id, label }) => {
     <section id={id} className="space-y-0">
       <SectionHeader title={label} />
 
-      <div className="relative w-full overflow-hidden" style={{ minHeight: '540px' }}>
+      <div className="relative w-full overflow-hidden rounded-2xl" style={{ minHeight: '480px' }}>
         <AnimatePresence initial={false} custom={direction}>
           <motion.div
             key={active}
@@ -308,27 +308,31 @@ const CarouselSection = ({ slides, id, label }) => {
             animate={{ x: '0%' }}
             exit={(dir) => ({ x: `${dir * -100}%` })}
             transition={{ duration: 0.75, ease: [0.76, 0, 0.24, 1] }}
-            className="absolute inset-0"
+            className="absolute inset-0 flex"
           >
-            <img src={slide.imageUrl} alt={slide.title} className="absolute inset-0 w-full h-full object-contain object-right" />
-            <div className="relative z-10 w-full h-full flex items-center px-8 sm:px-14 lg:px-20">
+            {/* Text panel — left */}
+            <div className="w-full sm:w-[45%] lg:w-[42%] flex items-center px-6 sm:px-10 lg:px-14 bg-gradient-to-r from-white via-white to-white/95">
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="max-w-xl space-y-3"
+                className="w-full space-y-3"
               >
                 <div className="flex items-center gap-3">
                   <span className="h-px w-8 bg-[var(--color-golden)]" />
                   <span className="text-[var(--color-golden)] text-[10px] font-bold">{label}</span>
                 </div>
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[var(--color-maroon)] leading-tight">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-[var(--color-maroon)] leading-tight">
                   {slide.title}
                 </h2>
-                <p className="text-[var(--color-maroon)]/80 text-sm sm:text-base lg:text-lg leading-relaxed max-w-lg text-justify">
+                <p className="text-[var(--color-maroon)]/80 text-sm sm:text-base lg:text-lg leading-relaxed text-justify">
                   {slide.text}
                 </p>
               </motion.div>
+            </div>
+            {/* Image panel — right */}
+            <div className="hidden sm:block flex-1 overflow-hidden">
+              <img src={slide.imageUrl} alt={slide.title} className="w-full h-full object-cover" />
             </div>
           </motion.div>
         </AnimatePresence>
@@ -649,9 +653,9 @@ const AboutNasik = () => {
   // ── Grouped section data ─────────────────────────────────────────────────
   // Family 2 — Carousel slides
   const carouselSlides = hasData ? [
-    { title: sections[1].title,  text: sections[1].text,  imageUrl: sectionImages[1]  },  // Rama
-    { title: sections[13].title, text: sections[13].text, imageUrl: sectionImages[13] },  // Goda Aarti
-    { title: sections[17].title, text: sections[17].text, imageUrl: sectionImages[17] },  // Gudi Padwa
+    { title: sections[1].title,  text: sections[1].text,  imageUrl: '/images/Kalaram.png' },      // Rama
+    { title: sections[13].title, text: sections[13].text, imageUrl: '/images/Goda Aarti.png' },   // Goda Aarti
+    { title: sections[17].title, text: sections[17].text, imageUrl: sectionImages[17] },          // Gudi Padwa
   ] : [];
 
   // Family 3 — Accordion
