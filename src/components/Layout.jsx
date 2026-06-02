@@ -61,11 +61,9 @@ const Layout = ({ children }) => {
             {/* Desktop */}
             <div className="hidden md:flex items-center w-full relative">
               {/* Logo — appears on scroll */}
-              <div className={`absolute left-0 transition-all duration-300 ${scrolled ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
-                <a href="/" className="hover:opacity-90 transition-opacity block">
-                  <div className="bg-[var(--color-camel-light)] rounded-lg px-2 py-1.5 shadow-sm">
-                    <img src="/logo_cert.png" alt="Kumbhparv Logo" className="h-14 w-auto object-contain" />
-                  </div>
+              <div className={`absolute left-0 -ml-16 sm:-ml-20 lg:-ml-24 transition-all duration-300 ${scrolled ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+                <a href="/" className="hover:opacity-90 transition-opacity block bg-white/90 rounded-md p-1">
+                  <img src="/logo_cert.png" alt="Kumbhparv Logo" className="h-14 w-auto object-contain" />
                 </a>
               </div>
 
@@ -79,6 +77,7 @@ const Layout = ({ children }) => {
                         key={link.path}
                         to={link.path}
                         className={`px-4 py-2 rounded-lg ${language === 'HI' || language === 'MR' ? 'text-[13px]' : 'text-[11px]'} font-bold uppercase tracking-[0.1em] transition-all duration-200 pointer-events-auto bg-[var(--color-golden)] text-[var(--color-maroon)] shadow-md hover:shadow-lg hover:brightness-110 border-2 border-[var(--color-golden)]`}
+                        style={scrolled ? { backdropFilter: 'blur(4px)' } : undefined}
                       >
                         {link.label}
                       </Link>
@@ -144,8 +143,8 @@ const Layout = ({ children }) => {
                       onClick={() => setLanguage(lang.code)}
                       className={`text-[11px] font-bold tracking-wide transition-all duration-200 ${
                         language === lang.code
-                          ? 'text-white'
-                          : 'text-white/40 hover:text-white/80'
+                          ? scrolled ? 'text-white' : 'text-white'
+                          : scrolled ? 'text-white/40 hover:text-white/80' : 'text-white/40 hover:text-white/80'
                       }`}
                     >
                       {lang.label}
@@ -155,10 +154,8 @@ const Layout = ({ children }) => {
               </div>
               {/* Centered logo — appears on scroll */}
               <div className={`absolute left-1/2 -translate-x-1/2 transition-all duration-300 ${scrolled ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
-                <a href="/" className="hover:opacity-90 transition-opacity block">
-                  <div className="bg-[var(--color-camel-light)] rounded-lg px-1.5 py-1 shadow-sm">
-                    <img src="/logo_cert.png" alt="Kumbhparv Logo" className="h-12 w-auto object-contain" />
-                  </div>
+                <a href="/" className="hover:opacity-90 transition-opacity block bg-white/90 rounded-md p-0.5 shadow-md">
+                  <img src="/logo_cert.png" alt="Kumbhparv Logo" className="h-10 w-auto object-contain" />
                 </a>
               </div>
               <div className="flex items-center gap-3 ml-auto">

@@ -6,32 +6,85 @@ import FlipBook from '../components/media/FlipBook';
 import AudioBookPlayer from '../components/media/AudioBookPlayer';
 import { BookOpen, Headphones, ArrowLeft } from 'lucide-react';
 
-const Section = ({ icon: Icon, title, desc, meta, openCta, onClick, index }) => (
+const languages = [
+  {
+    key: 'MR',
+    label: 'Marathi',
+    script: 'मराठी',
+    sample: 'कुंभपर्व',
+    desc: 'Interactive flipbook with narration',
+  },
+  {
+    key: 'EN',
+    label: 'English',
+    script: 'English',
+    sample: 'Kumbhparv',
+    desc: 'Interactive flipbook with narration',
+  },
+  {
+    key: 'HI',
+    label: 'Hindi',
+    script: 'हिन्दी',
+    sample: 'कुंभपर्व',
+    desc: 'Interactive flipbook with narration',
+  },
+];
+
+const BookCard = ({ lang, available, onClick, index, bgImage, Icon, title }) => (
   <motion.button
     type="button"
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.5, ease: 'easeOut', delay: index * 0.15 }}
-    onClick={onClick}
-    className="group w-full text-left focus:outline-none relative"
+    transition={{ duration: 0.45, ease: 'easeOut', delay: index * 0.08 }}
+    onClick={available ? onClick : undefined}
+    className={`group w-full rounded-2xl text-center transition-all duration-300 ${
+      available ? 'cursor-pointer' : 'cursor-default'
+    }`}
+    style={{ perspective: '800px' }}
   >
-    <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none">
-      <Icon className="w-48 h-48 sm:w-56 sm:h-56 text-[var(--color-maroon)]/[0.06] group-hover:text-[var(--color-maroon)]/[0.1] transition-all duration-500" strokeWidth={1} />
-    </div>
-    <div className="relative flex flex-col items-start gap-1">
-      <h2 className="text-2xl font-bold text-[var(--color-maroon)] group-hover:text-[var(--color-maroon-dark)] transition-colors">
-        {title}
-      </h2>
-      <p className="text-base text-[var(--color-text-main)]/65 leading-relaxed max-w-sm">
-        {desc}
-      </p>
-      <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--color-golden)]/70">
-        {meta}
-      </span>
-      <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--color-maroon)]/50 group-hover:text-[var(--color-maroon)] transition-colors mt-1">
-        {openCta}
-        <ArrowLeft className="w-4 h-4 rotate-180 group-hover:translate-x-0.5 transition-transform" />
-      </span>
+    <div
+      className={`relative overflow-hidden rounded-2xl border transition-all duration-300 ${
+        available
+          ? 'border-[var(--color-golden)]/30 shadow-[0_4px_16px_-6px_rgba(123,28,28,0.12)] hover:shadow-[0_16px_40px_-12px_rgba(123,28,28,0.25)] hover:-translate-y-1.5'
+          : 'border-[var(--color-golden)]/15'
+      }`}
+      style={{ aspectRatio: '3 / 4' }}
+    >
+      {available ? (
+        <>
+          <img
+            src={bgImage}
+            alt=""
+            className="absolute inset-0 w-full h-full object-cover"
+            draggable={false}
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 via-40% to-transparent to-60%" />
+        </>
+      ) : (
+        <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-vanilla)]/30 to-white opacity-60" />
+      )}
+      <div className="relative flex flex-col items-start justify-end h-full px-4 pb-5">
+        <span className={`text-2xl sm:text-3xl font-bold drop-shadow-lg ${
+          available ? 'text-white' : 'text-[var(--color-maroon)]/50'
+        }`}>
+          {title}
+        </span>
+        <span className={`mt-1.5 text-sm font-bold uppercase drop-shadow-md ${
+          available ? 'text-[var(--color-golden)]' : 'text-[var(--color-golden)]/60'
+        }`}>
+          {lang.script}
+        </span>
+        <span className={`text-xs mt-1 drop-shadow ${
+          available ? 'text-white/80' : 'text-[var(--color-text-main)]/45'
+        }`}>
+          {lang.label}
+        </span>
+        {!available && (
+          <span className="mt-3 text-[10px] uppercase tracking-widest font-semibold text-[var(--color-text-main)]/35 bg-white/70 px-3 py-1 rounded-full border border-[var(--color-golden)]/20">
+            Coming Soon
+          </span>
+        )}
+      </div>
     </div>
   </motion.button>
 );
@@ -40,7 +93,6 @@ const Media = () => {
   const { language } = useAppContext();
   const labels = mediaContent[language] || mediaContent.EN;
   const [view, setView] = useState(null);
-  const [hoveredSide, setHoveredSide] = useState(null);
 
   return (
     <div className="relative min-h-[100dvh] overflow-hidden pt-6 sm:pt-8">
@@ -54,58 +106,67 @@ const Media = () => {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: 'easeOut' }}
-          className="text-center text-[var(--color-golden)] text-xl sm:text-2xl lg:text-3xl font-black font-serif uppercase tracking-[0.2em] pt-8 sm:pt-12 mb-[6.25rem]"
+          className="text-center text-[var(--color-golden)] text-xl sm:text-2xl lg:text-3xl font-black font-serif uppercase tracking-[0.2em] pt-8 sm:pt-12 mb-16"
         >
           {language === 'HI' || language === 'MR' ? 'पवित्र मीडिया संग्रह' : 'SACRED MEDIA LIBRARY'}
         </motion.h1>
 
         <AnimatePresence mode="wait">
           {!view ? (
-              <motion.div
+            <motion.div
               key="hub"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0, x: -20 }}
               transition={{ duration: 0.35 }}
-              className="grid lg:grid-cols-2"
-              >
-                <div
-                  onMouseEnter={() => setHoveredSide('ebook')}
-                  onMouseLeave={() => setHoveredSide(null)}
-                  className={`flex items-start justify-center px-8 lg:px-12 py-6 transition-all duration-500 ${
-                  hoveredSide === 'ebook'
-                    ? 'scale-[1.02]'
-                    : ''
-                }`}
-              >
-                <Section
-                  index={0}
-                  icon={BookOpen}
-                  title={labels.ebookTitle}
-                  desc={labels.ebookDesc}
-                  meta={labels.ebookMeta}
-                  openCta={labels.openExperience}
-                  onClick={() => setView('ebook')}
-                />
+              className="flex flex-col lg:flex-row gap-10 lg:gap-14"
+            >
+              {/* Left: Interactive E-Book */}
+              <div className="lg:w-1/2">
+                <div className="flex items-center gap-3 mb-6">
+                  <BookOpen className="w-6 h-6 text-[var(--color-maroon)]" />
+                  <h2 className="text-2xl font-bold text-[var(--color-maroon)]">
+                    {labels.ebookTitle}
+                  </h2>
+                </div>
+                <div className="grid grid-cols-2 gap-4">
+                  {languages.map((lang, i) => (
+                    <BookCard
+                      key={lang.key}
+                      index={i}
+                      lang={lang}
+                      available={lang.key === 'MR'}
+                      onClick={() => setView('ebook')}
+                      bgImage="/images/ebook.png"
+                      Icon={BookOpen}
+                      title={lang.key === 'MR' ? 'ई-बुक' : lang.key === 'HI' ? 'ई-बुक' : 'E-Book'}
+                    />
+                  ))}
+                </div>
               </div>
-              <div
-                onMouseEnter={() => setHoveredSide('audiobook')}
-                onMouseLeave={() => setHoveredSide(null)}
-                className={`flex items-start justify-center px-8 lg:px-12 py-6 border-t lg:border-t-0 lg:border-l border-[var(--color-golden)]/20 transition-all duration-500 ${
-                  hoveredSide === 'audiobook'
-                    ? 'scale-[1.02]'
-                    : ''
-                }`}
-              >
-                <Section
-                  index={1}
-                  icon={Headphones}
-                  title={labels.audiobookTitle}
-                  desc={labels.audiobookDesc}
-                  meta={labels.audiobookMeta}
-                  openCta={labels.openExperience}
-                  onClick={() => setView('audiobook')}
-                />
+
+              {/* Right: Audio Book */}
+              <div className="lg:w-1/2">
+                <div className="flex items-center gap-3 mb-6">
+                  <Headphones className="w-6 h-6 text-[var(--color-maroon)]" />
+                  <h2 className="text-2xl font-bold text-[var(--color-maroon)]">
+                    {labels.audiobookTitle}
+                  </h2>
+                </div>
+                <div className="grid grid-cols-2 gap-4">
+                  {languages.map((lang, i) => (
+                    <BookCard
+                      key={lang.key}
+                      index={i + 3}
+                      lang={lang}
+                      available={lang.key === 'MR'}
+                      onClick={() => setView('audiobook')}
+                      bgImage="/images/ebook.png"
+                      Icon={Headphones}
+                      title={lang.key === 'MR' ? 'ऑडिओबुक' : lang.key === 'HI' ? 'ऑडिओबुक' : 'Audiobook'}
+                    />
+                  ))}
+                </div>
               </div>
             </motion.div>
           ) : (
