@@ -54,6 +54,7 @@ const HeroSection = () => {
   return (
     <div className="relative min-h-[100dvh] flex flex-col items-end justify-center px-4 sm:px-10 lg:px-16 overflow-hidden shadow-lg border-b border-[var(--color-golden)]/30">
       <div className="absolute inset-0 overflow-hidden select-none pointer-events-none bg-black/80">
+        <div className="absolute -top-20 -left-20 w-64 h-64 sm:w-96 sm:h-96 bg-[radial-gradient(circle_at_center,white_0%,rgba(255,255,255,0.15)_40%,transparent_70%)] opacity-60" />
         <AnimatePresence>
           <motion.img
             key={currentIndex}

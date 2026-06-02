@@ -135,6 +135,37 @@ const AudioBookPlayer = ({ labels }) => {
     loadChapter(chapter, isPlaying);
   };
 
+  const progressBarRef = useRef(null);
+  const [isSeeking, setIsSeeking] = useState(false);
+
+  const seek = useCallback((clientX) => {
+    const bar = progressBarRef.current;
+    if (!bar || !duration) return;
+    const rect = bar.getBoundingClientRect();
+    const ratio = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
+    const audio = audioRef.current;
+    if (audio) {
+      audio.currentTime = ratio * duration;
+    }
+  }, [duration]);
+
+  const handleProgressClick = useCallback((e) => {
+    seek(e.clientX);
+  }, [seek]);
+
+  const handleProgressPointerDown = useCallback((e) => {
+    setIsSeeking(true);
+    seek(e.clientX);
+    const handleMove = (ev) => seek(ev.clientX);
+    const handleUp = () => {
+      setIsSeeking(false);
+      document.removeEventListener('pointermove', handleMove);
+      document.removeEventListener('pointerup', handleUp);
+    };
+    document.addEventListener('pointermove', handleMove);
+    document.addEventListener('pointerup', handleUp);
+  }, [seek]);
+
   const overallProgress =
     ((currentChapter - 1 + (duration ? progress / duration : 0)) / NARRATED_PAGES) * 100;
 
@@ -149,11 +180,7 @@ const AudioBookPlayer = ({ labels }) => {
       >
         {/* Decorative header */}
         <div className="relative bg-gradient-to-br from-[var(--color-maroon)] via-[#5c1515] to-[#3a0f0f] px-6 sm:px-10 pt-10 pb-16 text-center">
-          <div className="absolute inset-0 opacity-20">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[12rem] font-bold text-white select-none pointer-events-none">
-              ॐ
-            </div>
-          </div>
+
 
           <motion.div
             animate={isPlaying ? { scale: [1, 1.06, 1] } : { scale: 1 }}
@@ -187,10 +214,19 @@ const AudioBookPlayer = ({ labels }) => {
             <span>{formatTime(progress)}</span>
             <span>{formatTime(duration)}</span>
           </div>
-          <div className="h-2 rounded-full bg-[var(--color-maroon)]/10 overflow-hidden mb-1">
-            <motion.div
-              className="h-full rounded-full bg-gradient-to-r from-[var(--color-maroon)] to-[var(--color-golden)]"
+          <div
+            ref={progressBarRef}
+            className="h-2 rounded-full bg-[var(--color-maroon)]/10 overflow-hidden mb-1 cursor-pointer group relative"
+            onClick={handleProgressClick}
+            onPointerDown={handleProgressPointerDown}
+          >
+            <div
+              className="h-full rounded-full bg-gradient-to-r from-[var(--color-maroon)] to-[var(--color-golden)] transition-[width] duration-75"
               style={{ width: duration ? `${(progress / duration) * 100}%` : '0%' }}
+            />
+            <div
+              className="absolute top-1/2 -translate-y-1/2 w-3.5 h-3.5 rounded-full bg-[var(--color-golden)] border-2 border-white shadow-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"
+              style={{ left: duration ? `${(progress / duration) * 100}%` : '0%', transform: `translate(-50%, -50%)` }}
             />
           </div>
 

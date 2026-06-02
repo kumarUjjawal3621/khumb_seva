@@ -19,7 +19,7 @@ const sectionImages = [
   '/images/Illustrations/Audyogik va krushi.png',      // 10 Industrial & Agricultural Journey
   '/images/Illustrations/sanskrutik vatchal.png',      // 11 Cultural Journey
   '/images/Illustrations/dadasaheb phalke.png',        // 12 Dadasaheb Phalke
-  '/images/Illustrations/Goda aarti.png',              // 13 Tradition of Goda Aarti
+  '/images/Illustrations/Goda aarti.jpg',              // 13 Tradition of Goda Aarti
   '/images/Illustrations/varsa sthal.png',             // 14 Heritage Sites
   '/images/Illustrations/jaivavividhata.png',          // 15 Biodiversity of Nasik
   '/images/Illustrations/khadyasanskruti.png',         // 16 Food Culture of Nasik
@@ -208,22 +208,24 @@ const HeroBanner = ({ title, text, imageUrl: _img, tagline, subtitle, id }) => {
 
       {/* Desktop logo top-left */}
       <div className="absolute top-2 sm:top-4 left-4 sm:left-10 lg:left-16 z-20 sm:block hidden">
-        <a href="/" className="hover:opacity-90 transition-opacity">
+        <a href="/" className="hover:opacity-90 transition-opacity block bg-white/90 rounded-md p-1">
           <img
-            src="/images/logo.png"
+            src="/logo_cert.png"
             alt="Kumbhparv Logo"
-            className="h-20 sm:h-24 w-auto object-contain drop-shadow-lg brightness-0 invert"
+            className="h-16 sm:h-20 w-auto object-contain"
           />
         </a>
       </div>
 
       {/* Mobile logo centered */}
       <div className="absolute top-16 left-0 right-0 z-20 flex items-center justify-center sm:hidden">
-        <img
-          src="/images/logo.png"
-          alt="Kumbhparv Logo"
-          className="h-20 w-auto object-contain drop-shadow-lg brightness-0 invert"
-        />
+        <a href="/" className="hover:opacity-90 transition-opacity block bg-white/90 rounded-md p-1">
+          <img
+            src="/logo_cert.png"
+            alt="Kumbhparv Logo"
+            className="h-14 w-auto object-contain"
+          />
+        </a>
       </div>
 
       {/* Desktop language selector top-right */}
@@ -332,7 +334,7 @@ const CarouselSection = ({ slides, id, label }) => {
             </div>
             {/* Image panel — right */}
             <div className="hidden sm:block flex-[0.85] self-center overflow-hidden">
-              <img src={slide.imageUrl} alt={slide.title} className="w-full h-auto max-h-[50vh] object-contain" />
+              <img src={slide.imageUrl} alt={slide.title} className="w-full h-full max-h-[50vh] object-cover" />
             </div>
           </motion.div>
         </AnimatePresence>
@@ -654,7 +656,7 @@ const AboutNasik = () => {
   // Family 2 — Carousel slides
   const carouselSlides = hasData ? [
     { title: sections[1].title,  text: sections[1].text,  imageUrl: '/images/Kalaram.png' },      // Rama
-    { title: sections[13].title, text: sections[13].text, imageUrl: '/images/Goda Aarti.png' },   // Goda Aarti
+    { title: sections[13].title, text: sections[13].text, imageUrl: '/images/Goda Aarti.jpg' },   // Goda Aarti
     { title: sections[17].title, text: sections[17].text, imageUrl: sectionImages[17] },          // Gudi Padwa
   ] : [];
 

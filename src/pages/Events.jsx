@@ -138,123 +138,110 @@ const sectionIconMap = {
   Users: Users
 };
 
-const sectionColors = {
-  'Janjagran': { from: '#7B1C1C', to: '#A52A2A', light: 'rgba(123,28,28,0.08)' },
-  'Bhavjagran': { from: '#7B1C1C', to: '#A52A2A', light: 'rgba(123,28,28,0.08)' },
-  'Jansahabhag': { from: '#8B4513', to: '#6B3410', light: 'rgba(139,69,19,0.08)' }
-};
-
-const getSectionKey = (title) => {
-  if (title.includes('Janjagran') || title.includes('जनजागरण')) return 'Janjagran';
-  if (title.includes('Bhavjagran') || title.includes('भावजागरण')) return 'Bhavjagran';
-  return 'Jansahabhag';
-};
-
 const Events = () => {
   const { language } = useAppContext();
   const content = eventsData[language] || eventsData['EN'];
 
   const containerVariants = {
     hidden: { opacity: 0 },
-    show: { opacity: 1, transition: { staggerChildren: 0.08 } }
+    show: { opacity: 1, transition: { staggerChildren: 0.06 } }
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 80 } }
+    hidden: { opacity: 0, y: 16 },
+    show: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 70, damping: 12 } }
   };
 
   return (
-    <div className="max-w-5xl mx-auto py-8 sm:py-12 px-4 min-h-[70vh]">
-      {/* Page Header */}
-      <div className="text-center mb-12">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-          className="inline-block text-[11px] font-bold text-[var(--color-golden)] uppercase px-4 py-1.5 rounded-full bg-[var(--color-maroon)]/10 border border-[var(--color-golden)]/30 mb-4 shadow-sm"
-        >
-          {content.badge}
-        </motion.div>
-        <motion.h1
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-3xl sm:text-4xl md:text-5xl font-bold text-[var(--color-maroon)] mb-4 leading-tight font-serif"
-        >
-          {content.title}
-        </motion.h1>
+    <div className="relative min-h-[100dvh] overflow-hidden pt-6 sm:pt-8">
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-32 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[var(--color-golden)]/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-0 w-[500px] h-[300px] bg-[var(--color-maroon)]/3 rounded-full blur-3xl" />
       </div>
 
-      {/* Sections */}
-      <div className="space-y-16">
-        {content.sections.map((section, sIdx) => {
-          const key = getSectionKey(section.title);
-          const colors = sectionColors[key];
-          const SectionIcon = sectionIconMap[section.icon] || School;
+      <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 sm:pb-12">
+        {/* Page Header */}
+        <div className="text-center mb-6 sm:mb-8 pt-4 sm:pt-6">
+          <motion.span
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="inline-block text-[10px] font-bold text-[var(--color-golden)] uppercase tracking-[0.25em] mb-4"
+          >
+            {content.badge}
+          </motion.span>
+          <motion.h1
+            initial={{ opacity: 0, y: -12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-3xl sm:text-4xl md:text-5xl font-black text-[var(--color-maroon)] leading-tight font-serif"
+          >
+            {content.title}
+          </motion.h1>
+        </div>
 
-          return (
-            <motion.section
-              key={sIdx}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.15 }}
-              transition={{ duration: 0.6 }}
-            >
-              {/* Section Header */}
-              <div className="flex items-center gap-4 mb-2">
-                <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center shadow-md"
-                  style={{ background: colors.light, color: colors.from }}
-                >
-                  <SectionIcon className="w-6 h-6" />
-                </div>
-                <div>
-                  <h2 className="text-2xl sm:text-3xl font-bold font-serif" style={{ color: colors.from }}>
-                    {section.title}
-                  </h2>
-                  <p className="text-sm text-[var(--color-text-main)]/70 mt-0.5">{section.subtitle}</p>
-                </div>
-              </div>
-              <div className="w-full h-px bg-gradient-to-r my-5" style={{ background: `linear-gradient(to right, ${colors.from}30, transparent)` }} />
+        {/* Sections */}
+        <div className="space-y-8 sm:space-y-12">
+          {content.sections.map((section, sIdx) => {
+            const SectionIcon = sectionIconMap[section.icon] || School;
 
-              {/* Cards Grid */}
-              <motion.div
-                variants={containerVariants}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true, amount: 0.1 }}
-                className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4"
+            return (
+              <motion.section
+                key={sIdx}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.15 }}
+                transition={{ duration: 0.5, delay: sIdx * 0.1 }}
               >
-                {section.items.map((item, iIdx) => {
-                  const IconComp = iconMap[item.icon] || School;
-                  return (
-                    <motion.div
-                      key={iIdx}
-                      variants={itemVariants}
-                      whileHover={{ y: -4, boxShadow: `0 8px 20px -8px ${colors.from}40` }}
-                      className="bg-white/80 backdrop-blur-sm rounded-xl p-5 border border-[var(--color-camel)]/30 shadow-sm transition-all duration-300 flex flex-col items-center text-center group cursor-default"
-                      style={{ borderColor: `${colors.from}15` }}
-                    >
-                      <div
-                        className="w-11 h-11 rounded-full flex items-center justify-center mb-3 transition-colors duration-300"
-                        style={{
-                          background: colors.light,
-                          color: colors.from
-                        }}
+                {/* Section Header */}
+                <div className="mb-4 sm:mb-5">
+                  <div className="flex items-center gap-3 mb-1">
+                    <div className="w-9 h-9 rounded-lg bg-[var(--color-maroon)]/8 flex items-center justify-center text-[var(--color-maroon)]">
+                      <SectionIcon className="w-4.5 h-4.5" />
+                    </div>
+                    <div>
+                      <h2 className="text-lg sm:text-xl font-bold text-[var(--color-maroon)] font-serif">
+                        {section.title}
+                      </h2>
+                    </div>
+                  </div>
+                  <p className="text-sm text-[var(--color-text-main)]/55 ml-12 mb-3 leading-relaxed max-w-lg">
+                    {section.subtitle}
+                  </p>
+                  <div className="w-full h-px bg-gradient-to-r from-[var(--color-maroon)]/15 via-[var(--color-golden)]/20 to-transparent" />
+                </div>
+
+                {/* Cards Grid */}
+                  <motion.div
+                  variants={containerVariants}
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={{ once: true, amount: 0.1 }}
+                  className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2.5 sm:gap-3"
+                >
+                  {section.items.map((item, iIdx) => {
+                    const IconComp = iconMap[item.icon] || School;
+                    return (
+                      <motion.div
+                        key={iIdx}
+                        variants={itemVariants}
+                        whileHover={{ y: -2 }}
+                        className="group rounded-xl border border-[var(--color-golden)]/15 bg-white/60 px-3 py-4 sm:py-5 flex flex-col items-center text-center cursor-default transition-all duration-300 hover:border-[var(--color-golden)]/35 hover:bg-white/90 hover:shadow-[0_6px_20px_-8px_rgba(123,28,28,0.12)]"
                       >
-                        <IconComp className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" />
-                      </div>
-                      <h3 className="text-sm font-bold text-[var(--color-maroon)] leading-snug">
-                        {item.name}
-                      </h3>
-                    </motion.div>
-                  );
-                })}
-              </motion.div>
-            </motion.section>
-          );
-        })}
+                        <div className="w-9 h-9 rounded-full bg-[var(--color-maroon)]/6 flex items-center justify-center text-[var(--color-maroon)]/70 mb-2 transition-all duration-300 group-hover:bg-[var(--color-maroon)]/10 group-hover:text-[var(--color-maroon)]">
+                          <IconComp className="w-4 h-4 transition-transform duration-300 group-hover:scale-110" />
+                        </div>
+                        <h3 className="text-xs sm:text-sm font-semibold text-[var(--color-maroon)]/80 leading-snug transition-colors duration-300 group-hover:text-[var(--color-maroon)]">
+                          {item.name}
+                        </h3>
+                      </motion.div>
+                    );
+                  })}
+                </motion.div>
+              </motion.section>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

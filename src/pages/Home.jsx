@@ -252,8 +252,8 @@ const Home = () => {
 
         {/* Desktop logo top-left */}
         <div className="absolute top-2 sm:top-4 left-4 sm:left-10 lg:left-16 z-20 sm:block hidden">
-          <a href="/" className="hover:opacity-90 transition-opacity">
-            <img src="/images/logo.png" alt="Kumbhparv Logo" className="h-20 sm:h-24 w-auto object-contain drop-shadow-lg brightness-0 invert" />
+          <a href="/" className="hover:opacity-90 transition-opacity block bg-white/90 rounded-md p-1">
+            <img src="/logo_cert.png" alt="Kumbhparv Logo" className="h-16 sm:h-20 w-auto object-contain" />
           </a>
         </div>
 
@@ -284,8 +284,8 @@ const Home = () => {
 
         {/* Mobile logo centered */}
         <div className="absolute top-16 left-0 right-0 z-20 flex items-center justify-center sm:hidden">
-          <a href="/" className="hover:opacity-90 transition-opacity">
-            <img src="/images/logo.png" alt="Kumbhparv Logo" className="h-20 w-auto object-contain drop-shadow-lg brightness-0 invert" />
+          <a href="/" className="hover:opacity-90 transition-opacity block bg-white/90 rounded-md p-1">
+            <img src="/logo_cert.png" alt="Kumbhparv Logo" className="h-14 w-auto object-contain" />
           </a>
         </div>
 

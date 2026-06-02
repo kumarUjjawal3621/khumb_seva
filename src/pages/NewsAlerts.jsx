@@ -107,7 +107,7 @@ const NewsAlerts = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: idx * 0.15 }}
               onClick={item.link ? () => window.open(item.link, '_blank') : idx === 2 ? () => navigate('/#flag-hoisting') : idx === 3 ? downloadImage : undefined}
-              className={`glass-card rounded-xl p-6 sm:p-8 flex gap-5 ${item.link || idx === 2 || idx === 3 ? 'cursor-pointer' : ''}`}
+              className={`rounded-xl p-6 sm:p-8 flex gap-5 transition-shadow duration-300 ${item.link || idx === 2 || idx === 3 ? 'cursor-pointer hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)]' : ''}`}
             >
               <div className="shrink-0 w-12 h-12 rounded-full bg-[var(--color-golden)]/20 flex items-center justify-center">
                 <Icon className="w-6 h-6 text-[var(--color-golden)]" />

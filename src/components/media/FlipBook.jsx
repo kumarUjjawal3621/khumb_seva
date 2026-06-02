@@ -54,6 +54,7 @@ const FlipBook = ({ labels }) => {
   const narrationRef = useRef(null);
   const flipSoundRef = useRef(null);
   const narrationMutedRef = useRef(false);
+  const narrationActiveRef = useRef(false);
 
   useEffect(() => {
     narrationMutedRef.current = narrationMuted;
@@ -97,6 +98,7 @@ const FlipBook = ({ labels }) => {
         return;
       }
 
+      narrationActiveRef.current = true;
       audio.src = pageAudio(page);
       audio.load();
       audio
@@ -111,7 +113,11 @@ const FlipBook = ({ labels }) => {
 
   useEffect(() => {
     if (!isReady) return;
-    loadNarration(narrationPage);
+    if (narrationActiveRef.current && hasNarration(narrationPage)) {
+      startNarration(narrationPage);
+    } else {
+      loadNarration(narrationPage);
+    }
   }, [narrationPage, isReady]);
 
   useEffect(() => {
@@ -170,7 +176,9 @@ const FlipBook = ({ labels }) => {
     if (narrationPlaying) {
       audio.pause();
       setNarrationPlaying(false);
+      narrationActiveRef.current = false;
     } else {
+      narrationActiveRef.current = true;
       if (audio.src) {
         audio.play().then(() => setNarrationPlaying(true)).catch(() => {});
       } else {
