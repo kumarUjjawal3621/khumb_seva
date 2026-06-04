@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import Registration from './pages/Registration';
 import AboutUs from './pages/AboutUs';
 import AboutNasik from './pages/AboutNasik';
+import AboutKumbh from './pages/AboutKumbh';
 import Verticals from './pages/Verticals';
 import Media from './pages/Media';
 import NewsAlerts from './pages/NewsAlerts';
@@ -36,6 +37,7 @@ const MainApp = () => {
         <Route path="/" element={<Layout><Home /></Layout>} />
         <Route path="/register" element={<Layout><Registration /></Layout>} />
         <Route path="/about" element={<Layout><AboutUs /></Layout>} />
+        <Route path="/about-kumbh" element={<Layout><AboutKumbh /></Layout>} />
         <Route path="/about-nasik" element={<Layout><AboutNasik /></Layout>} />
         <Route path="/verticals" element={<Layout><Verticals /></Layout>} />
         <Route path="/media" element={<Layout><Media /></Layout>} />

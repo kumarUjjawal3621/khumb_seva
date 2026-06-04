@@ -14,7 +14,7 @@ const Layout = ({ children }) => {
 
   const navLinks = [
     { path: '/', label: t.labels.navHome || 'Home' },
-    { path: '/about-nasik', label: t.labels.navAboutNasik || 'History' },
+    { path: '/about-nasik', label: t.labels.navAboutNasik || 'About Nasik' },
     { path: '/media', label: t.labels.navMedia || 'Media' },
     { path: '/news', label: t.labels.navNews || 'News & Alerts' },
     { path: '/events', label: t.labels.navEvents || 'Events' },

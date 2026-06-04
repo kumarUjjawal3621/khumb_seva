@@ -360,69 +360,73 @@ const Home = () => {
         <p className="type-eyebrow text-[var(--color-maroon-dark)] mb-8">
           {content.countdownText}
         </p>
-        <div className="flex justify-center items-center gap-3 sm:gap-6">
-          <motion.div
-            initial={{ y: -80, opacity: 0 }}
-            animate={countdownAnimated ? { y: 0, opacity: 1 } : { y: -80, opacity: 0 }}
-            transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.05 }}
-            className="text-center"
-          >
-            <div className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-[var(--color-golden)] drop-shadow-lg leading-none tracking-[0.05em]">
-              {String(timeLeft.days).padStart(3, '0')}
-            </div>
-            <div className="text-xs sm:text-sm uppercase tracking-[0.2em] text-[var(--color-maroon)]/60 mt-1.5 font-medium">{countdownLabels.days}</div>
-          </motion.div>
-          <motion.span
-            initial={{ y: -80, opacity: 0 }}
-            animate={countdownAnimated ? { y: 0, opacity: 1 } : { y: -80, opacity: 0 }}
-            transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.1 }}
-            className="text-2xl sm:text-3xl lg:text-4xl text-[var(--color-golden)]/40 font-light leading-none self-center mt-2 sm:mt-3"
-          >:</motion.span>
-          <motion.div
-            initial={{ y: -80, opacity: 0 }}
-            animate={countdownAnimated ? { y: 0, opacity: 1 } : { y: -80, opacity: 0 }}
-            transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.15 }}
-            className="text-center"
-          >
-            <div className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-[var(--color-golden)] drop-shadow-lg leading-none tracking-[0.05em]">
-              {String(timeLeft.hours).padStart(2, '0')}
-            </div>
-            <div className="text-xs sm:text-sm uppercase tracking-[0.2em] text-[var(--color-maroon)]/60 mt-1.5 font-medium">{countdownLabels.hours}</div>
-          </motion.div>
-          <motion.span
-            initial={{ y: -80, opacity: 0 }}
-            animate={countdownAnimated ? { y: 0, opacity: 1 } : { y: -80, opacity: 0 }}
-            transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.2 }}
-            className="text-2xl sm:text-3xl lg:text-4xl text-[var(--color-golden)]/40 font-light leading-none self-center mt-2 sm:mt-3"
-          >:</motion.span>
-          <motion.div
-            initial={{ y: -80, opacity: 0 }}
-            animate={countdownAnimated ? { y: 0, opacity: 1 } : { y: -80, opacity: 0 }}
-            transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.25 }}
-            className="text-center"
-          >
-            <div className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-[var(--color-golden)] drop-shadow-lg leading-none tracking-[0.05em]">
-              {String(timeLeft.minutes).padStart(2, '0')}
-            </div>
-            <div className="text-xs sm:text-sm uppercase tracking-[0.2em] text-[var(--color-maroon)]/60 mt-1.5 font-medium">{countdownLabels.minutes}</div>
-          </motion.div>
-          <motion.span
-            initial={{ y: -80, opacity: 0 }}
-            animate={countdownAnimated ? { y: 0, opacity: 1 } : { y: -80, opacity: 0 }}
-            transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.3 }}
-            className="text-2xl sm:text-3xl lg:text-4xl text-[var(--color-golden)]/40 font-light leading-none self-center mt-2 sm:mt-3"
-          >:</motion.span>
-          <motion.div
-            initial={{ y: -80, opacity: 0 }}
-            animate={countdownAnimated ? { y: 0, opacity: 1 } : { y: -80, opacity: 0 }}
-            transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.35 }}
-            className="text-center"
-          >
-            <div className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-[var(--color-golden)] drop-shadow-lg leading-none tracking-[0.05em]">
-              {String(timeLeft.seconds).padStart(2, '0')}
-            </div>
-            <div className="text-xs sm:text-sm uppercase tracking-[0.2em] text-[var(--color-maroon)]/60 mt-1.5 font-medium">{countdownLabels.seconds}</div>
-          </motion.div>
+        <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-0">
+          <div></div>
+          <div className="flex items-center gap-3 sm:gap-6">
+            <motion.div
+              initial={{ y: -80, opacity: 0 }}
+              animate={countdownAnimated ? { y: 0, opacity: 1 } : { y: -80, opacity: 0 }}
+              transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.05 }}
+              className="text-center"
+            >
+              <div className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-[var(--color-golden)] drop-shadow-lg leading-none tracking-[0.05em]">
+                {String(timeLeft.days).padStart(3, '0')}
+              </div>
+              <div className="text-xs sm:text-sm uppercase tracking-[0.2em] text-[var(--color-maroon)]/60 mt-1.5 font-medium">{countdownLabels.days}</div>
+            </motion.div>
+            <motion.span
+              initial={{ y: -80, opacity: 0 }}
+              animate={countdownAnimated ? { y: 0, opacity: 1 } : { y: -80, opacity: 0 }}
+              transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.1 }}
+              className="text-2xl sm:text-3xl lg:text-4xl text-[var(--color-golden)]/40 font-light leading-none self-center mt-2 sm:mt-3"
+            >:</motion.span>
+            <motion.div
+              initial={{ y: -80, opacity: 0 }}
+              animate={countdownAnimated ? { y: 0, opacity: 1 } : { y: -80, opacity: 0 }}
+              transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.15 }}
+              className="text-center"
+            >
+              <div className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-[var(--color-golden)] drop-shadow-lg leading-none tracking-[0.05em]">
+                {String(timeLeft.hours).padStart(2, '0')}
+              </div>
+              <div className="text-xs sm:text-sm uppercase tracking-[0.2em] text-[var(--color-maroon)]/60 mt-1.5 font-medium">{countdownLabels.hours}</div>
+            </motion.div>
+            <motion.span
+              initial={{ y: -80, opacity: 0 }}
+              animate={countdownAnimated ? { y: 0, opacity: 1 } : { y: -80, opacity: 0 }}
+              transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.2 }}
+              className="text-2xl sm:text-3xl lg:text-4xl text-[var(--color-golden)]/40 font-light leading-none self-center mt-2 sm:mt-3"
+            >:</motion.span>
+            <motion.div
+              initial={{ y: -80, opacity: 0 }}
+              animate={countdownAnimated ? { y: 0, opacity: 1 } : { y: -80, opacity: 0 }}
+              transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.25 }}
+              className="text-center"
+            >
+              <div className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-[var(--color-golden)] drop-shadow-lg leading-none tracking-[0.05em]">
+                {String(timeLeft.minutes).padStart(2, '0')}
+              </div>
+              <div className="text-xs sm:text-sm uppercase tracking-[0.2em] text-[var(--color-maroon)]/60 mt-1.5 font-medium">{countdownLabels.minutes}</div>
+            </motion.div>
+            <motion.span
+              initial={{ y: -80, opacity: 0 }}
+              animate={countdownAnimated ? { y: 0, opacity: 1 } : { y: -80, opacity: 0 }}
+              transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.3 }}
+              className="text-2xl sm:text-3xl lg:text-4xl text-[var(--color-golden)]/40 font-light leading-none self-center mt-2 sm:mt-3"
+            >:</motion.span>
+            <motion.div
+              initial={{ y: -80, opacity: 0 }}
+              animate={countdownAnimated ? { y: 0, opacity: 1 } : { y: -80, opacity: 0 }}
+              transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.35 }}
+              className="text-center"
+            >
+              <div className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-[var(--color-golden)] drop-shadow-lg leading-none tracking-[0.05em]">
+                {String(timeLeft.seconds).padStart(2, '0')}
+              </div>
+              <div className="text-xs sm:text-sm uppercase tracking-[0.2em] text-[var(--color-maroon)]/60 mt-1.5 font-medium">{countdownLabels.seconds}</div>
+            </motion.div>
+          </div>
+          <div></div>
         </div>
         </div>
       </div>
@@ -453,17 +457,18 @@ const Home = () => {
           >
             {content.intro.title}
           </motion.h2>
-          <div className="mb-10 mt-6 space-y-6">
+          <div className="mb-8 mt-4 space-y-3">
             {(() => {
               const triggers = {
                 EN: '30 km',
-                HI: 'दो पवित्र केंद्रों',
-                MR: 'दोन पवित्र स्थळांवर',
+                HI: 'दो विशिष्ट तीर्थस्थलों',
+                MR: 'दोन स्वतंत्र तीर्थक्षेत्रांमध्ये',
               };
               const regularEls = [];
               const collapsibleEls = [];
 
               content.intro.paragraphs.forEach((para, idx) => {
+                if (idx < 2) return; // moved to About Kumbh page
                 const isDualSection = para.includes(triggers[language] || triggers.EN);
                 const headingsSet = collapsibleHeadings[language] || collapsibleHeadings.EN;
                 const matchedHeading = Array.from(headingsSet).find((heading) => para.startsWith(heading));
@@ -474,18 +479,18 @@ const Home = () => {
                   const body = para.slice(heading.length).trim();
                   const isOpen = openSections[heading];
                   collapsibleEls.push(
-                    <div key={`collapsible-${idx}`} className="w-full border-b border-[var(--color-golden)]/25">
+                    <div key={`collapsible-${idx}`} className="w-full border-b border-[var(--color-golden)]/20">
                       <button
                         type="button"
                         onClick={() => toggleSection(heading)}
-                        className="w-full flex items-center justify-between py-4 text-left"
+                        className="w-full flex items-center justify-between py-2.5 text-left"
                         aria-expanded={isOpen}
                       >
-                        <span className="font-serif font-bold text-lg sm:text-xl text-[var(--color-maroon)] leading-tight pr-4">
+                        <span className="font-serif font-semibold text-base sm:text-lg text-[var(--color-maroon)] leading-snug pr-3">
                           {heading}
                         </span>
-                        <span className={`flex-shrink-0 w-7 h-7 rounded-full border border-[var(--color-golden)]/40 flex items-center justify-center text-[var(--color-golden)] transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>
-                          <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                        <span className={`flex-shrink-0 w-6 h-6 rounded-full border border-[var(--color-golden)]/40 flex items-center justify-center text-[var(--color-golden)] transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>
+                          <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                             <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                           </svg>
                         </span>
@@ -497,10 +502,10 @@ const Home = () => {
                             initial={{ height: 0, opacity: 0 }}
                             animate={{ height: 'auto', opacity: 1 }}
                             exit={{ height: 0, opacity: 0 }}
-                            transition={{ duration: 0.25, ease: 'easeOut' }}
-                            className="overflow-hidden px-0 pb-4"
+                            transition={{ duration: 0.2, ease: 'easeOut' }}
+                            className="overflow-hidden px-0 pb-3"
                           >
-                            <p className="text-[var(--color-text-main)] text-sm sm:text-base leading-7 font-medium text-justify">
+                            <p className="text-[var(--color-text-main)] text-sm sm:text-base leading-6 font-medium text-justify">
                               {body}
                             </p>
                           </motion.div>
@@ -518,7 +523,7 @@ const Home = () => {
                     whileInView={{ y: 0, opacity: 1 }}
                     viewport={{ once: true, amount: 0.3 }}
                     transition={{ duration: 0.6, ease: 'easeOut', delay: idx * 0.2 }}
-                    className="text-[var(--color-text-main)] text-base sm:text-lg leading-[1.9] font-medium text-justify"
+                    className="text-[var(--color-text-main)] text-sm sm:text-base leading-[1.7] font-medium text-justify"
                   >
                     {para}
                   </motion.p>
@@ -526,7 +531,7 @@ const Home = () => {
                 regularEls.push(pEl);
                 if (isDualSection) {
                   regularEls.push(
-                    <div key="dual-section" className="pt-6 pb-2 w-full">
+                    <div key="dual-section" className="pt-3 pb-6 w-full">
                       <div className="relative flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-2">
 
                         {/* Ramkund */}
@@ -572,12 +577,11 @@ const Home = () => {
 
           <div className="flex justify-end mb-6">
             <Link
-              to="/about-nasik"
-              className="group inline-flex items-center gap-2 text-[var(--color-golden)] hover:text-[var(--color-maroon)] text-sm sm:text-base font-semibold tracking-wide transition-colors duration-300"
+              to="/about-kumbh"
+              className="group relative inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold tracking-wider text-[var(--color-maroon)] bg-[var(--color-golden)]/10 hover:bg-[var(--color-golden)]/25 border border-[var(--color-golden)]/40 hover:border-[var(--color-golden)]/70 transition-all duration-300 shadow-sm hover:shadow-md"
             >
-              <span className="border-b-2 border-current pb-0.5">
-                {language === 'HI' ? 'जानें नासिक के बारे में' : language === 'MR' ? 'जाणून घ्या नासिक बद्दल' : 'Know more about Nasik'}
-              </span>
+              <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+              <span>{language === 'HI' ? 'कुंभपर्व के बारे में और जानें' : language === 'MR' ? 'कुंभपर्व बद्दल अधिक जाणून घ्या' : 'Know more about Kumbhparv'}</span>
               <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
             </Link>
           </div>
@@ -625,11 +629,10 @@ const Home = () => {
                     >
                       <Link
                         to="/about-nasik"
-                        className="group inline-flex items-center gap-2 text-[var(--color-golden)] hover:text-[var(--color-maroon)] text-sm sm:text-base font-semibold tracking-wide transition-colors duration-300"
+                        className="group relative inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold tracking-wider text-[var(--color-maroon)] bg-[var(--color-golden)]/10 hover:bg-[var(--color-golden)]/25 border border-[var(--color-golden)]/40 hover:border-[var(--color-golden)]/70 transition-all duration-300 shadow-sm hover:shadow-md"
                       >
-                        <span className="border-b-2 border-current pb-0.5">
-                          {language === 'HI' ? 'जानें नासिक के बारे में' : language === 'MR' ? 'जाणून घ्या नासिक बद्दल' : 'Know more about Nasik'}
-                        </span>
+                        <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              <span>{language === 'HI' ? 'दिव्य कथा जानें' : language === 'MR' ? 'दिव्य कथा जाणून घ्या' : 'Know The Divine Story'}</span>
                         <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
                       </Link>
                     </motion.div>
@@ -856,106 +859,6 @@ const Home = () => {
         </div>
       </div>
 
-      {/* ─── TRIKHANDI YOG ─── */}
-      <section id="trikhandi" className="px-4 sm:px-6 lg:px-8 pb-4 sm:pb-8 pt-10 sm:pt-16 relative">
-        <div className="max-w-5xl mx-auto relative z-10">
-          <div className="flex items-center justify-start gap-3 mb-6">
-            <span className="h-px w-8 bg-[var(--color-golden)]/40"></span>
-            <span className="h-px w-16 bg-gradient-to-r from-[var(--color-golden)]/60 via-[var(--color-golden)] to-[var(--color-golden)]/60"></span>
-            <span className="h-px w-8 bg-[var(--color-golden)]/40"></span>
-          </div>
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
-            className="text-left text-[var(--color-golden)] text-xs sm:text-sm font-bold uppercase tracking-[0.3em] mb-2 leading-relaxed"
-          >
-            {language === 'HI' ? (
-              'त्रिखंड योग — सिंहस्थ कुंभ का अलौकिक संयोग'
-            ) : language === 'MR' ? (
-              'त्रिखंड योग — सिंहस्थ कुंभपर्वाचा अलौकिक संयोग'
-            ) : (
-              'The Celestial Wonder of Sinhastha Kumbh'
-            )}
-          </motion.div>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, ease: 'easeOut', delay: 0.15 }}
-            className="text-left text-[var(--color-maroon)] text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight leading-tight max-w-4xl mt-4"
-          >
-            {content.trikhandiYog.title}
-          </motion.h2>
-          <img
-            src="/images/trikhand.png"
-            alt=""
-            aria-hidden
-            className="block lg:hidden w-3/4 mx-auto my-6 h-auto object-contain"
-          />
-          <div className="mb-6 mt-6 space-y-6">
-            <img
-              src="/images/trikhand.png"
-              alt="Trikhand Yog"
-              className="hidden lg:block float-right w-[40%] lg:w-[35%] ml-6 lg:ml-8 mb-4 h-auto object-contain"
-            />
-            {content.trikhandiYog.paragraphs.slice(1, 3).map((para, idx) => {
-              const contentEl = (
-                <motion.p
-                  key={idx}
-                  initial={{ y: 30, opacity: 0 }}
-                  whileInView={{ y: 0, opacity: 1 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.6, ease: 'easeOut', delay: idx * 0.2 }}
-                  className="text-[var(--color-text-main)] text-base sm:text-lg leading-[1.9] font-medium text-justify max-w-4xl"
-                >
-                  {para}
-                </motion.p>
-              );
-              return contentEl;
-            })}
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 relative">
-            {content.trikhandiYog.paragraphs.slice(3, 6).map((para, idx) => {
-              let title = '';
-              let desc = para;
-              const colonIdx = para.indexOf(':');
-              const dashIdx = para.indexOf('  ');
-              const questionIdx = para.indexOf('? ');
-              if (questionIdx !== -1 && (colonIdx === -1 || questionIdx < colonIdx) && (dashIdx === -1 || questionIdx < dashIdx)) {
-                title = para.substring(0, questionIdx + 1).trim();
-                desc = para.substring(questionIdx + 2).trim();
-              } else if (colonIdx !== -1) {
-                title = para.substring(0, colonIdx).trim();
-                desc = para.substring(colonIdx + 1).trim();
-              } else if (dashIdx !== -1) {
-                title = para.substring(0, dashIdx).trim();
-                desc = para.substring(dashIdx + 3).trim();
-              }
-              const isFullWidth = idx === 2;
-              return (
-                <motion.div
-                  key={idx}
-                  initial={{ y: 40, opacity: 0 }}
-                  whileInView={{ y: 0, opacity: 1 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.6, ease: 'easeOut', delay: idx * 0.15 }}
-                  className={`${isFullWidth ? 'sm:col-span-2' : ''} bg-white/[0.04] backdrop-blur-[1px] border border-[var(--color-golden)]/30 p-6 sm:p-8 rounded-2xl hover:border-[var(--color-golden)]/60 transition-all duration-300`}
-                >
-                  <div className="flex items-center gap-3 mb-3">
-                    <span className={`w-2 h-2 rounded-full ${idx === 2 ? 'bg-[var(--color-maroon)]' : 'bg-[var(--color-golden)]'}`}></span>
-                    <h4 className={`${isFullWidth ? 'type-card-heading' : 'type-card-heading'} text-[var(--color-maroon)] mb-0`}>{title}</h4>
-                  </div>
-                  <p className="text-[var(--color-text-main)] text-sm sm:text-base leading-[1.8] font-medium font-semibold text-justify">
-                    {desc}
-                  </p>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
       </div>
     </div>
   );
