@@ -8,12 +8,14 @@ const Layout = ({ children }) => {
   const location = useLocation();
   const isHome = location.pathname === '/';
   const isAboutNasik = location.pathname === '/about-nasik';
-  const transparentHeader = isHome || isAboutNasik;
+  const isAboutKumbh = location.pathname === '/about-kumbh';
+  const transparentHeader = isHome || isAboutNasik || isAboutKumbh;
   const [scrolled, setScrolled] = useState(!transparentHeader);
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const navLinks = [
     { path: '/', label: t.labels.navHome || 'Home' },
+    { path: '/about-kumbh', label: t.labels.navAboutKumbh || 'About Kumbh' },
     { path: '/about-nasik', label: t.labels.navAboutNasik || 'About Nasik' },
     { path: '/media', label: t.labels.navMedia || 'Media' },
     { path: '/news', label: t.labels.navNews || 'News & Alerts' },
@@ -61,13 +63,13 @@ const Layout = ({ children }) => {
             {/* Desktop */}
             <div className="hidden md:flex items-center w-full relative">
               {/* Logo — appears on scroll */}
-              <div className={`absolute left-0 -ml-16 sm:-ml-20 lg:-ml-24 transition-all duration-300 ${scrolled ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+              <div className={`absolute left-0 -ml-16 sm:-ml-20 lg:-ml-24 transition-all duration-300 ${scrolled || isAboutKumbh ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
                 <a href="/" className="hover:opacity-90 transition-opacity block bg-white/90 rounded-md p-1">
                   <img src="/logo_cert.png" alt="Kumbhparv Logo" className="h-14 w-auto object-contain" />
                 </a>
               </div>
 
-              <nav className="flex items-center justify-center flex-1 gap-2 pointer-events-none">
+              <nav className="flex items-center justify-center flex-1 gap-2 pointer-events-none mr-28">
                 {navLinks.map((link, idx) => {
                   const isActive = location.pathname === link.path;
                   const isCTA = idx === navLinks.length - 1;
@@ -104,7 +106,7 @@ const Layout = ({ children }) => {
               </nav>
 
               {/* Lang toggle — appears on scroll */}
-              <div className={`absolute right-0 transition-all duration-300 ${scrolled ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+              <div className={`absolute right-0 transition-all duration-300 ${scrolled || isAboutKumbh ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
                 <div className="flex items-center gap-2">
                   {[
                     { code: 'EN', label: 'English' },
@@ -153,7 +155,7 @@ const Layout = ({ children }) => {
                 ))}
               </div>
               {/* Centered logo — appears on scroll */}
-              <div className={`absolute left-1/2 -translate-x-1/2 transition-all duration-300 ${scrolled ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+              <div className={`absolute left-1/2 -translate-x-1/2 transition-all duration-300 ${scrolled || isAboutKumbh ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
                 <a href="/" className="hover:opacity-90 transition-opacity block bg-white/90 rounded-md p-0.5 shadow-md">
                   <img src="/logo_cert.png" alt="Kumbhparv Logo" className="h-10 w-auto object-contain" />
                 </a>
@@ -201,7 +203,7 @@ const Layout = ({ children }) => {
       </header>
 
       {/* Main Content */}
-      <main className={`flex-1 w-full mx-auto ${location.pathname !== '/' ? 'pt-16 sm:pt-20' : ''}`}>
+      <main className={`flex-1 w-full mx-auto ${location.pathname !== '/' && location.pathname !== '/about-kumbh' ? 'pt-16 sm:pt-20' : ''}`}>
         {children}
       </main>
 

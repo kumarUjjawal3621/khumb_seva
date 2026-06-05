@@ -294,11 +294,11 @@ const Home = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
-            className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-white leading-[1.15] tracking-wider font-heading drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)]"
+            className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-white leading-[1.15] font-heading drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)]"
           >
-            <span className="sm:whitespace-nowrap max-w-[85vw] inline-block">{content.heroTitle.split(' ').slice(0, -1).join(' ')}</span>
+            <span className="sm:whitespace-nowrap max-w-[85vw] inline-block">{content.heroTitle}</span>
             <br />
-            <span className="text-[var(--color-golden)]">{content.heroTitle.split(' ').pop()}</span>
+            <span className="text-[var(--color-golden)] text-lg sm:text-2xl md:text-3xl lg:text-4xl">{content.heroLocation}</span>
           </motion.h1>
 
           <motion.div
@@ -431,162 +431,25 @@ const Home = () => {
         </div>
       </div>
 
-      {/* ─── ABOUT SECTION ─── */}
+      {/* ─── DOWNLOAD SNAN PATRIKA CTA ─── */}
+      <div className="flex justify-end max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 pb-2">
+        <button
+          onClick={downloadImage}
+          disabled={downloading}
+          className="group inline-flex items-center gap-2.5 px-3 py-1.5 rounded text-[var(--color-maroon)] hover:text-[var(--color-maroon-dark)] text-xs font-semibold tracking-wider transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed underline underline-offset-4 decoration-[var(--color-golden)]/60 hover:decoration-[var(--color-golden)] decoration-2 hover:bg-[var(--color-maroon)]/[0.06]"
+        >
+          {downloading ? (
+            <span className="inline-block w-3 h-3 border border-[var(--color-maroon)]/30 border-t-[var(--color-maroon)] rounded-full animate-spin"></span>
+          ) : (
+            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          )}
+          {content.snanPatrika?.downloadLabel || 'Download Snan Patrika'}
+        </button>
+      </div>
+
+      {/* ─── INFO CARDS ─── */}
       <section id="about" className="px-4 sm:px-6 lg:px-8 pb-4 sm:pb-8 pt-20 sm:pt-28">
         <div className="max-w-6xl mx-auto">
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <span className="h-px w-8 bg-[var(--color-golden)]/40"></span>
-            <span className="h-px w-16 bg-gradient-to-r from-[var(--color-golden)]/60 via-[var(--color-golden)] to-[var(--color-golden)]/60"></span>
-            <span className="h-px w-8 bg-[var(--color-golden)]/40"></span>
-          </div>
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
-            className="text-center text-[var(--color-golden)] text-xs sm:text-sm font-bold uppercase tracking-[0.3em] mb-4"
-          >
-            {content.intro.sectionLabel || 'The Divine Story'}
-          </motion.p>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, ease: 'easeOut', delay: 0.15 }}
-            className="text-center text-[var(--color-maroon)] text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight"
-          >
-            {content.intro.title}
-          </motion.h2>
-          <div className="mb-8 mt-4 space-y-3">
-            {(() => {
-              const triggers = {
-                EN: '30 km',
-                HI: 'दो विशिष्ट तीर्थस्थलों',
-                MR: 'दोन स्वतंत्र तीर्थक्षेत्रांमध्ये',
-              };
-              const regularEls = [];
-              const collapsibleEls = [];
-
-              content.intro.paragraphs.forEach((para, idx) => {
-                if (idx < 2) return; // moved to About Kumbh page
-                const isDualSection = para.includes(triggers[language] || triggers.EN);
-                const headingsSet = collapsibleHeadings[language] || collapsibleHeadings.EN;
-                const matchedHeading = Array.from(headingsSet).find((heading) => para.startsWith(heading));
-                const isCollapsible = Boolean(matchedHeading);
-
-                if (isCollapsible && matchedHeading) {
-                  const heading = matchedHeading;
-                  const body = para.slice(heading.length).trim();
-                  const isOpen = openSections[heading];
-                  collapsibleEls.push(
-                    <div key={`collapsible-${idx}`} className="w-full border-b border-[var(--color-golden)]/20">
-                      <button
-                        type="button"
-                        onClick={() => toggleSection(heading)}
-                        className="w-full flex items-center justify-between py-2.5 text-left"
-                        aria-expanded={isOpen}
-                      >
-                        <span className="font-serif font-semibold text-base sm:text-lg text-[var(--color-maroon)] leading-snug pr-3">
-                          {heading}
-                        </span>
-                        <span className={`flex-shrink-0 w-6 h-6 rounded-full border border-[var(--color-golden)]/40 flex items-center justify-center text-[var(--color-golden)] transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>
-                          <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                          </svg>
-                        </span>
-                      </button>
-                      <AnimatePresence initial={false}>
-                        {isOpen && (
-                          <motion.div
-                            key="content"
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: 'auto', opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            transition={{ duration: 0.2, ease: 'easeOut' }}
-                            className="overflow-hidden px-0 pb-3"
-                          >
-                            <p className="text-[var(--color-text-main)] text-sm sm:text-base leading-6 font-medium text-justify">
-                              {body}
-                            </p>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </div>
-                  );
-                  return;
-                }
-
-                const pEl = (
-                  <motion.p
-                    key={`p-${idx}`}
-                    initial={{ y: 30, opacity: 0 }}
-                    whileInView={{ y: 0, opacity: 1 }}
-                    viewport={{ once: true, amount: 0.3 }}
-                    transition={{ duration: 0.6, ease: 'easeOut', delay: idx * 0.2 }}
-                    className="text-[var(--color-text-main)] text-sm sm:text-base leading-[1.7] font-medium text-justify"
-                  >
-                    {para}
-                  </motion.p>
-                );
-                regularEls.push(pEl);
-                if (isDualSection) {
-                  regularEls.push(
-                    <div key="dual-section" className="pt-3 pb-6 w-full">
-                      <div className="relative flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-2">
-
-                        {/* Ramkund */}
-                        <div className="flex flex-col items-center gap-2 relative z-10 sm:flex-1 sm:max-w-[44%]">
-                          <motion.img
-                            src="/images/ramkunda1.jpeg"
-                            alt="Ramkund"
-                            initial={{ x: -80, opacity: 0 }}
-                            whileInView={{ x: 0, opacity: 1 }}
-                            viewport={{ once: true, amount: 0.3 }}
-                            transition={{ duration: 0.7, ease: 'easeOut' }}
-                            className="w-full max-w-[420px] h-auto object-contain drop-shadow-xl"
-                          />
-                          <div className="text-center w-full max-w-[420px] mx-auto">
-                            <p className="text-[var(--color-maroon)] text-sm sm:text-base font-bold tracking-wide">Ramkund, Panchavati</p>
-                          </div>
-                        </div>
-
-                        {/* Kushavarta */}
-                        <div className="flex flex-col items-center gap-2 relative z-10 sm:flex-1 sm:max-w-[44%]">
-                          <motion.img
-                            src="/images/kushvarta1.jpeg"
-                            alt="Kushavarta"
-                            initial={{ x: 80, opacity: 0 }}
-                            whileInView={{ x: 0, opacity: 1 }}
-                            viewport={{ once: true, amount: 0.3 }}
-                            transition={{ duration: 0.7, ease: 'easeOut' }}
-                            className="w-full max-w-[420px] h-auto object-contain drop-shadow-xl"
-                          />
-                          <div className="text-center w-full max-w-[420px] mx-auto">
-                            <p className="text-[var(--color-maroon)] text-sm sm:text-base font-bold tracking-wide">Kushavarta, Trimbakeshwar</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                }
-              });
-
-              return [...regularEls, ...collapsibleEls];
-            })()}
-          </div>
-
-          <div className="flex justify-end mb-6">
-            <Link
-              to="/about-kumbh"
-              className="group relative inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold tracking-wider text-[var(--color-maroon)] bg-[var(--color-golden)]/10 hover:bg-[var(--color-golden)]/25 border border-[var(--color-golden)]/40 hover:border-[var(--color-golden)]/70 transition-all duration-300 shadow-sm hover:shadow-md"
-            >
-              <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
-              <span>{language === 'HI' ? 'कुंभपर्व के बारे में और जानें' : language === 'MR' ? 'कुंभपर्व बद्दल अधिक जाणून घ्या' : 'Know more about Kumbhparv'}</span>
-              <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
-            </Link>
-          </div>
-
-          {/* ─── INFO CARDS ─── */}
           <div className="space-y-12 sm:space-y-16">
             {content.infoCards?.map((card, idx) => (
               <motion.div

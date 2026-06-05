@@ -1,30 +1,70 @@
-import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useAppContext } from '../context/AppContext';
 import { homeContent } from '../data/homeContent';
 
 const AboutKumbh = () => {
   const { language } = useAppContext();
   const content = homeContent[language] || homeContent['EN'];
+  const [openSections, setOpenSections] = useState({});
+
+  const toggleSection = (heading) => {
+    setOpenSections((prev) => ({
+      ...prev,
+      [heading]: !prev[heading]
+    }));
+  };
+
+  const collapsibleHeadings = {
+    EN: new Set([
+      'Location Determination of Kumbh Parva:',
+      'Kumbh Parva and Adi Shankaracharya:',
+      'Naga Sadhus:',
+      'Kumbh Parva: A Festival of Indian Knowledge Traditions:',
+      'The Mythological Story of Kumbh Parva:'
+    ]),
+    HI: new Set([
+      'कुंभपर्व की पौराणिक कथा:',
+      'कुंभपर्व का स्थान निर्धारण:',
+      'कुंभपर्व और आद्य शंकराचार्य:',
+      'नागा साधु:',
+      'कुंभपर्व - भारतीय ज्ञान परंपराओं का उत्सव:',
+    ]),
+    MR: new Set([
+      'कुंभपर्वाची पौराणिक कथा',
+      'कुंभपर्वाची स्थाननिश्चिती',
+      'कुंभपर्व आणि आद्य शंकराचार्य:',
+      'नागा साधू:',
+      'कुंभपर्व भारतीय ज्ञान परंपरांचा उत्सव:',
+    ])
+  };
 
   return (
     <div className="w-full pb-20" data-lang={language.toLowerCase()}>
-      {/* ─── PAGE HEADER ─── */}
-      <section className="relative pt-28 sm:pt-36 pb-12 sm:pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-maroon)]/5 to-transparent pointer-events-none" />
-        <div className="max-w-5xl mx-auto relative z-10 text-center">
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <span className="h-px w-8 bg-[var(--color-golden)]/40"></span>
-            <span className="h-px w-16 bg-gradient-to-r from-[var(--color-golden)]/60 via-[var(--color-golden)] to-[var(--color-golden)]/60"></span>
-            <span className="h-px w-8 bg-[var(--color-golden)]/40"></span>
+      {/* ─── HERO ─── */}
+      <section className="relative h-screen w-full overflow-hidden">
+        <img
+          src="/images/about kumbh hero.jpeg"
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-black/30" />
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="max-w-5xl mx-auto px-4 text-center relative z-10">
+            <div className="flex items-center justify-center gap-3 mb-6">
+              <span className="h-px w-8 bg-[var(--color-golden)]/40"></span>
+              <span className="h-px w-16 bg-gradient-to-r from-[var(--color-golden)]/60 via-[var(--color-golden)] to-[var(--color-golden)]/60"></span>
+              <span className="h-px w-8 bg-[var(--color-golden)]/40"></span>
+            </div>
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease: 'easeOut', delay: 0.15 }}
+              className="text-white text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight drop-shadow-lg"
+            >
+              {language === 'HI' ? 'कुंभ के बारे में' : language === 'MR' ? 'कुंभ बद्दल' : 'About Kumbh'}
+            </motion.h1>
           </div>
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: 'easeOut', delay: 0.15 }}
-            className="text-[var(--color-maroon)] text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight"
-          >
-            {language === 'HI' ? 'कुंभ के बारे में' : language === 'MR' ? 'कुंभ बद्दल' : 'About Kumbh'}
-          </motion.h1>
         </div>
       </section>
 
@@ -67,6 +107,131 @@ const AboutKumbh = () => {
                 {para}
               </motion.p>
             ))}
+          </div>
+
+          {/* ─── DUAL SACRED GEOGRAPHY ─── */}
+          <motion.p
+            initial={{ y: 30, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true, amount: 0.3 }}
+            className="text-[var(--color-text-main)] text-base sm:text-lg leading-[1.9] font-medium text-justify mb-6"
+          >
+            {content.intro.paragraphs[7]}
+          </motion.p>
+
+          {/* ─── RAMKUND & KUSHAVARTA IMAGES ─── */}
+          <div className="pt-3 pb-6 w-full">
+            <div className="relative flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-2">
+              <div className="flex flex-col items-center gap-2 relative z-10 sm:flex-1 sm:max-w-[44%]">
+                <motion.img
+                  src="/images/ramkunda1.jpeg"
+                  alt="Ramkund"
+                  initial={{ x: -80, opacity: 0 }}
+                  whileInView={{ x: 0, opacity: 1 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.7, ease: 'easeOut' }}
+                  className="w-full max-w-[420px] h-auto object-contain drop-shadow-xl"
+                />
+                <div className="text-center w-full max-w-[420px] mx-auto">
+                  <p className="text-[var(--color-maroon)] text-sm sm:text-base font-bold tracking-wide">Ramkund, Panchavati</p>
+                </div>
+              </div>
+              <div className="flex flex-col items-center gap-2 relative z-10 sm:flex-1 sm:max-w-[44%]">
+                <motion.img
+                  src="/images/kushvarta1.jpeg"
+                  alt="Kushavarta"
+                  initial={{ x: 80, opacity: 0 }}
+                  whileInView={{ x: 0, opacity: 1 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.7, ease: 'easeOut' }}
+                  className="w-full max-w-[420px] h-auto object-contain drop-shadow-xl"
+                />
+                <div className="text-center w-full max-w-[420px] mx-auto">
+                  <p className="text-[var(--color-maroon)] text-sm sm:text-base font-bold tracking-wide">Kushavarta, Trimbakeshwar</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* ─── PARAGRAPHS & COLLAPSIBLES ─── */}
+          <div className="mb-8 mt-4 space-y-3">
+            {(() => {
+              const triggers = {
+                EN: '30 km',
+                HI: 'दो विशिष्ट तीर्थस्थलों',
+                MR: 'दोन स्वतंत्र तीर्थक्षेत्रांमध्ये',
+              };
+              const regularEls = [];
+              const collapsibleEls = [];
+
+              content.intro.paragraphs.forEach((para, idx) => {
+                if (idx < 2) return;
+                const isDualSection = para.includes(triggers[language] || triggers.EN);
+                const headingsSet = collapsibleHeadings[language] || collapsibleHeadings.EN;
+                const matchedHeading = Array.from(headingsSet).find((heading) => para.startsWith(heading));
+                const isCollapsible = Boolean(matchedHeading);
+
+                if (isCollapsible && matchedHeading) {
+                  const heading = matchedHeading;
+                  const body = para.slice(heading.length).trim();
+                  const isOpen = openSections[heading];
+                  collapsibleEls.push(
+                    <div key={`collapsible-${idx}`} className="w-full border-b border-[var(--color-golden)]/20">
+                      <button
+                        type="button"
+                        onClick={() => toggleSection(heading)}
+                        className="w-full flex items-center justify-between py-2.5 text-left"
+                        aria-expanded={isOpen}
+                      >
+                        <span className="font-serif font-semibold text-base sm:text-lg text-[var(--color-maroon)] leading-snug pr-3">
+                          {heading}
+                        </span>
+                        <span className={`flex-shrink-0 w-6 h-6 rounded-full border border-[var(--color-golden)]/40 flex items-center justify-center text-[var(--color-golden)] transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>
+                          <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                          </svg>
+                        </span>
+                      </button>
+                      <AnimatePresence initial={false}>
+                        {isOpen && (
+                          <motion.div
+                            key="content"
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: 'auto', opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.2, ease: 'easeOut' }}
+                            className="overflow-hidden px-0 pb-3"
+                          >
+                            <p className="text-[var(--color-text-main)] text-sm sm:text-base leading-6 font-medium text-justify">
+                              {body}
+                            </p>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  );
+                  return;
+                }
+
+                if (isDualSection) return;
+
+                const pEl = (
+                  <motion.p
+                    key={`p-${idx}`}
+                    initial={{ y: 30, opacity: 0 }}
+                    whileInView={{ y: 0, opacity: 1 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    transition={{ duration: 0.6, ease: 'easeOut', delay: idx * 0.2 }}
+                    className="text-[var(--color-text-main)] text-sm sm:text-base leading-[1.7] font-medium text-justify"
+                  >
+                    {para}
+                  </motion.p>
+                );
+                regularEls.push(pEl);
+              });
+
+              return [...regularEls, ...collapsibleEls];
+            })()}
           </div>
         </div>
       </section>

@@ -1,6 +1,7 @@
 export const homeContent = {
   EN: {
-    heroTitle: "Sinhastha Kumbhparv Nasik",
+    heroTitle: "Sinhastha Kumbhparv",
+    heroLocation: "Nasik - Trimbakeshwar",
     heroYears: "2026–2027",
     heroSubtitle: "A Sacred Confluence on the Banks of the Holy Godavari",
     countdownText: "Countdown to Flag Hosting",
@@ -97,7 +98,8 @@ export const homeContent = {
     }
   },
   HI: {
-    heroTitle: "सिंहस्थ कुंभपर्व नासिक",
+    heroTitle: "सिंहस्थ कुंभपर्व",
+    heroLocation: "नासिक - त्र्यंबकेश्वर",
     heroYears: "२०२६–२०२७",
     heroSubtitle: "पवित्र गोदावरी के तट पर एक पावन महासंगम",
     countdownText: "ध्वजारोहण प्रारंभ होने में",
@@ -194,7 +196,8 @@ export const homeContent = {
     }
   },
   MR: {
-    heroTitle: "सिंहस्थ कुंभपर्व नासिक",
+    heroTitle: "सिंहस्थ कुंभपर्व",
+    heroLocation: "नासिक - त्र्यंबकेश्वर",
     heroYears: "२०२६–२०२७",
     heroSubtitle: "पवित्र गोदावरीच्या तीरावर एक पावन महासंगम",
     countdownText: "ध्वजारोहण सुरू होण्यासाठी",
